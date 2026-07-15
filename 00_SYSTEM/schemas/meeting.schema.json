@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "meeting.schema.json",
+  "title": "Monvi Brain Meeting",
+  "allOf": [
+    { "$ref": "note.schema.json" },
+    {
+      "type": "object",
+      "required": ["type", "meeting_date", "participants", "agenda", "decisions", "action_items"],
+      "properties": {
+        "type": { "const": "meeting" },
+        "meeting_date": { "$ref": "note.schema.json#/$defs/date" },
+        "participants": {
+          "type": "array",
+          "items": { "type": "string", "minLength": 1 },
+          "uniqueItems": true
+        },
+        "agenda": { "type": "array", "items": { "type": "string", "minLength": 1 } },
+        "decisions": { "type": "array", "items": { "type": "string", "minLength": 1 } },
+        "action_items": { "type": "array", "items": { "type": "string", "minLength": 1 } },
+        "client_id": { "type": ["string", "null"] },
+        "project_id": { "type": ["string", "null"] }
+      }
+    }
+  ]
+}

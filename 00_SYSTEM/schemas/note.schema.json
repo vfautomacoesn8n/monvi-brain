@@ -1,0 +1,125 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "note.schema.json",
+  "title": "Monvi Brain Note",
+  "description": "Metadados canônicos compartilhados por notas do Monvi Brain.",
+  "type": "object",
+  "required": [
+    "id",
+    "type",
+    "title",
+    "status",
+    "owner",
+    "confidentiality",
+    "created_at",
+    "updated_at",
+    "reviewed_at",
+    "review_cycle",
+    "sources",
+    "related",
+    "aliases",
+    "tags"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$",
+      "minLength": 3,
+      "description": "Identificador único, estável e em kebab-case."
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "source",
+        "fact",
+        "hypothesis",
+        "decision",
+        "concept",
+        "entity",
+        "process",
+        "service",
+        "policy",
+        "synthesis",
+        "client",
+        "project",
+        "meeting",
+        "risk",
+        "task",
+        "output"
+      ]
+    },
+    "title": {
+      "type": "string",
+      "minLength": 1
+    },
+    "status": {
+      "type": "string",
+      "enum": ["draft", "review", "approved", "deprecated", "archived"]
+    },
+    "owner": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Responsável humano ou unassigned."
+    },
+    "confidentiality": {
+      "type": "string",
+      "enum": ["public", "internal", "confidential", "restricted"]
+    },
+    "created_at": {
+      "$ref": "#/$defs/date"
+    },
+    "updated_at": {
+      "$ref": "#/$defs/date"
+    },
+    "reviewed_at": {
+      "oneOf": [
+        { "$ref": "#/$defs/date" },
+        { "type": "null" }
+      ]
+    },
+    "review_cycle": {
+      "type": "string",
+      "enum": ["none", "monthly", "quarterly", "semiannual", "annual", "on-change"]
+    },
+    "sources": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/link" },
+      "uniqueItems": true
+    },
+    "related": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/link" },
+      "uniqueItems": true
+    },
+    "aliases": {
+      "type": "array",
+      "items": { "type": "string", "minLength": 1 },
+      "uniqueItems": true
+    },
+    "tags": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^[a-z0-9]+(?:[-/][a-z0-9]+)*$"
+      },
+      "uniqueItems": true
+    }
+  },
+  "$defs": {
+    "date": {
+      "type": "string",
+      "format": "date",
+      "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"
+    },
+    "link": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Caminho Markdown relativo ou identificador estável."
+    },
+    "nonEmptyString": {
+      "type": "string",
+      "minLength": 1
+    }
+  },
+  "additionalProperties": true
+}

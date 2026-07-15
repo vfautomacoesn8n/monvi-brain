@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "decision.schema.json",
+  "title": "Monvi Brain Decision",
+  "allOf": [
+    { "$ref": "note.schema.json" },
+    {
+      "type": "object",
+      "required": ["type", "decision_state", "context", "decision", "decided_at", "deciders"],
+      "properties": {
+        "type": { "const": "decision" },
+        "decision_state": {
+          "type": "string",
+          "enum": ["proposed", "approved", "rejected", "superseded"]
+        },
+        "context": { "type": "string", "minLength": 1 },
+        "decision": { "type": "string", "minLength": 1 },
+        "decided_at": {
+          "oneOf": [
+            { "$ref": "note.schema.json#/$defs/date" },
+            { "type": "null" }
+          ]
+        },
+        "deciders": {
+          "type": "array",
+          "items": { "type": "string", "minLength": 1 },
+          "uniqueItems": true
+        },
+        "supersedes": { "type": ["string", "null"] }
+      }
+    }
+  ]
+}

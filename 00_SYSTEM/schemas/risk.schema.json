@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "risk.schema.json",
+  "title": "Monvi Brain Risk",
+  "allOf": [
+    { "$ref": "note.schema.json" },
+    {
+      "type": "object",
+      "required": ["type", "risk_status", "likelihood", "impact", "mitigation"],
+      "properties": {
+        "type": { "const": "risk" },
+        "risk_status": {
+          "type": "string",
+          "enum": ["identified", "monitoring", "mitigating", "accepted", "closed"]
+        },
+        "likelihood": { "type": "integer", "minimum": 1, "maximum": 5 },
+        "impact": { "type": "integer", "minimum": 1, "maximum": 5 },
+        "mitigation": { "type": "string" },
+        "contingency": { "type": "string" },
+        "client_id": { "type": ["string", "null"] },
+        "project_id": { "type": ["string", "null"] }
+      }
+    }
+  ]
+}

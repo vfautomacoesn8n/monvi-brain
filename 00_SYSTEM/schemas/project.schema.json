@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "project.schema.json",
+  "title": "Monvi Brain Project",
+  "allOf": [
+    { "$ref": "note.schema.json" },
+    {
+      "type": "object",
+      "required": ["type", "client_id", "phase", "project_status"],
+      "properties": {
+        "type": { "const": "project" },
+        "client_id": { "type": ["string", "null"] },
+        "phase": { "type": "string", "minLength": 1 },
+        "project_status": {
+          "type": "string",
+          "enum": ["planned", "active", "on-hold", "completed", "cancelled", "archived"]
+        },
+        "start_date": {
+          "oneOf": [
+            { "$ref": "note.schema.json#/$defs/date" },
+            { "type": "null" }
+          ]
+        },
+        "target_date": {
+          "oneOf": [
+            { "$ref": "note.schema.json#/$defs/date" },
+            { "type": "null" }
+          ]
+        }
+      }
+    }
+  ]
+}

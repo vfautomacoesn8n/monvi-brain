@@ -1,0 +1,26 @@
+# Credenciais e segredos
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+
+# Estado local do Obsidian e do sistema operacional
+.obsidian/workspace*
+.obsidian/cache/
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Arquivos temporários
+*.tmp
+*.temp
+*.bak
+*.swp
+~$*
+
+# Worktrees locais
+.worktrees/
+worktrees/

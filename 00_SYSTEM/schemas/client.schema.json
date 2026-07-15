@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "client.schema.json",
+  "title": "Monvi Brain Client",
+  "allOf": [
+    { "$ref": "note.schema.json" },
+    {
+      "type": "object",
+      "required": ["type", "client_code", "relationship_status"],
+      "properties": {
+        "type": { "const": "client" },
+        "client_code": {
+          "type": "string",
+          "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+        },
+        "relationship_status": {
+          "type": "string",
+          "enum": ["prospect", "active", "paused", "closed", "archived"]
+        },
+        "directory_scope": { "type": "string", "minLength": 1 }
+      }
+    }
+  ]
+}

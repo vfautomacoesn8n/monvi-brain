@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "source.schema.json",
+  "title": "Monvi Brain Source",
+  "allOf": [
+    { "$ref": "note.schema.json" },
+    {
+      "type": "object",
+      "required": ["type", "source_kind", "original_path", "captured_at"],
+      "properties": {
+        "type": { "const": "source" },
+        "source_kind": {
+          "type": "string",
+          "enum": ["document", "meeting", "web", "email", "dataset", "image", "audio", "video", "other"]
+        },
+        "original_path": { "type": "string", "minLength": 1 },
+        "captured_at": { "$ref": "note.schema.json#/$defs/date" },
+        "checksum": {
+          "type": ["string", "null"],
+          "pattern": "^[A-Za-z0-9:_-]+$"
+        },
+        "external_url": { "type": ["string", "null"], "format": "uri" }
+      }
+    }
+  ]
+}

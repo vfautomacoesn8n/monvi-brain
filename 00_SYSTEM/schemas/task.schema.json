@@ -1,0 +1,39 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "task.schema.json",
+  "title": "Monvi Brain Task",
+  "allOf": [
+    { "$ref": "note.schema.json" },
+    {
+      "type": "object",
+      "required": ["type", "task_state", "agent", "allowed_paths", "forbidden_paths", "acceptance_criteria"],
+      "properties": {
+        "type": { "const": "task" },
+        "task_state": {
+          "type": "string",
+          "enum": ["inbox", "active", "review", "blocked", "done"]
+        },
+        "agent": { "type": "string", "minLength": 1 },
+        "active_client": { "type": ["string", "null"] },
+        "allowed_paths": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "type": "string", "minLength": 1 },
+          "uniqueItems": true
+        },
+        "forbidden_paths": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "type": "string", "minLength": 1 },
+          "uniqueItems": true
+        },
+        "acceptance_criteria": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "type": "string", "minLength": 1 }
+        },
+        "blocked_reason": { "type": ["string", "null"] }
+      }
+    }
+  ]
+}
