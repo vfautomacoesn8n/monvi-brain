@@ -12,7 +12,9 @@ review_cycle: quarterly
 sources:
   - "../01_RAW/monvi/Monvi - Manual da marca.pdf"
   - "../01_RAW/monvi/Monvi - Catalogo de serviços.pdf"
+  - "../01_RAW/monvi/Monvi - Estratégia Empresarial.pdf"
   - "task-2026-001"
+  - "task-2026-003"
   - "../docs/superpowers/specs/2026-07-15-monvi-brain-design.md"
 related:
   - "marketing/Manual-da-marca.md"
@@ -33,7 +35,15 @@ Este índice reúne o conhecimento inicial do bootstrap e a primeira fonte insti
 
 ## Estratégia
 
+- [Estratégia Empresarial](estrategia/Estrategia-empresarial.md)
+- [Diagnóstico estratégico](estrategia/Diagnostico.md)
+- [Diferenciais estratégicos](estrategia/Diferenciais.md)
+- [Proposta de valor](estrategia/Proposta-de-valor.md)
+- [Modelo de negócio](estrategia/Modelo-de-negocio.md)
+- [Roadmap estratégico](estrategia/Roadmap.md)
+- [Riscos estratégicos](estrategia/Riscos-estrategicos.md)
 - [Posicionamento](estrategia/Posicionamento.md)
+- [Índice de estratégia](estrategia/README.md)
 - [Princípio central](estrategia/Principio-central.md)
 
 ## Serviços

@@ -11,7 +11,9 @@ reviewed_at: null
 review_cycle: quarterly
 sources:
   - "../../01_RAW/monvi/Monvi - Manual da marca.pdf"
+  - "../../01_RAW/monvi/Monvi - Estratégia Empresarial.pdf"
   - "task-2026-001"
+  - "task-2026-003"
   - "../../docs/superpowers/specs/2026-07-15-monvi-brain-design.md"
 related:
   - "../empresa/Monvi.md"
@@ -51,6 +53,12 @@ A descrição de bootstrap também inclui e-commerce e manutenção. A ausência
 ## Limites
 
 Esta página permanece em `review`. Não foram inferidos preços, resultados, diferenciais adicionais, segmentos comerciais ou promessas não sustentadas.
+
+## Corroboração pela Estratégia Empresarial
+
+**Fato institucional:** a Estratégia Empresarial V1.0 reapresenta a formulação institucional e os atributos de comunicação já registrados (página 5), sem substituir a fonte do Manual da Marca.
+
+**Hipótese estratégica:** os públicos listados na estratégia — como prestadores de serviço, clínicas, lojas, restaurantes, negócios locais e e-commerce — são direcionamento estratégico declarado, não segmentação comercial aprovada (páginas 5 e 10).
 
 ## Governança de publicação
 

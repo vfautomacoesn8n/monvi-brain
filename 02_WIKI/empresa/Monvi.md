@@ -11,7 +11,9 @@ reviewed_at: null
 review_cycle: quarterly
 sources:
   - "../../01_RAW/monvi/Monvi - Manual da marca.pdf"
+  - "../../01_RAW/monvi/Monvi - Estratégia Empresarial.pdf"
   - "task-2026-001"
+  - "task-2026-003"
   - "../../docs/superpowers/specs/2026-07-15-monvi-brain-design.md"
 related:
   - "../estrategia/Principio-central.md"
@@ -48,6 +50,12 @@ A especificação humana de bootstrap registrou sites, e-commerce, inteligência
 ## Estado do conhecimento
 
 Conteúdo `internal` pronto para revisão humana. A fonte institucional foi ingerida visualmente; os contatos e ativos operacionais exibidos no documento ainda dependem de confirmação.
+
+## Corroboração pela Estratégia Empresarial
+
+**Fato institucional:** a Estratégia Empresarial V1.0 repete a descrição da Monvi como operação de sites, automações e IA aplicada, orientada a vender melhor, organizar processos e reduzir tarefas manuais (página 3). Esta corroboração não altera o significado das fontes anteriores.
+
+**Hipótese estratégica:** o documento também apresenta direção de mercado e de negócio; esses trechos foram registrados em [Estratégia Empresarial](../estrategia/Estrategia-empresarial.md) como hipóteses ou decisões pendentes, não como atributos institucionais comprovados.
 
 ## Governança de publicação
 
