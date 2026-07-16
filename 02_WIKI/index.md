@@ -11,12 +11,14 @@ reviewed_at: null
 review_cycle: quarterly
 sources:
   - "../01_RAW/monvi/Monvi - Manual da marca.pdf"
+  - "../01_RAW/monvi/Monvi - Catalogo de serviços.pdf"
   - "task-2026-001"
   - "../docs/superpowers/specs/2026-07-15-monvi-brain-design.md"
 related:
   - "marketing/Manual-da-marca.md"
   - "marketing/Identidade-visual.md"
   - "marketing/Tom-de-voz.md"
+  - "servicos/Catalogo-de-servicos.md"
 aliases: ["Wiki", "Índice de conhecimento"]
 tags: [wiki, index]
 ---
@@ -36,6 +38,7 @@ Este índice reúne o conhecimento inicial do bootstrap e a primeira fonte insti
 
 ## Serviços
 
+- [Catálogo de Serviços Monvi V1.0](servicos/Catalogo-de-servicos.md)
 - [Sites](servicos/Sites.md)
 - [E-commerce](servicos/E-commerce.md)
 - [Inteligência artificial](servicos/Inteligencia-artificial.md)
