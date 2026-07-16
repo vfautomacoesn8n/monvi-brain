@@ -64,7 +64,10 @@ Este índice reúne o conhecimento inicial do bootstrap e a primeira fonte insti
 
 ## Processos
 
+- [Manual de Processos](processos/Manual-de-processos.md)
+- [Modelo operacional](processos/Modelo-operacional.md)
 - [Fluxo operacional](processos/Fluxo-operacional.md)
+- [Índice de processos](processos/README.md)
 
 ## Tecnologia
 
