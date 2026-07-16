@@ -19,12 +19,19 @@ As permissões seguem privilégio mínimo, escopo explícito de tarefa e separa�
 
 Toda tarefa de escrita deve declarar:
 
-- `task_id`: ID único;
+- `id`: ID único e canônico da tarefa;
+- `type`: deve ser `task`;
+- `title`: resultado esperado da tarefa;
+- `status`: estado editorial da nota;
+- `owner`: responsável pela tarefa;
+- `reviewer`: pessoa responsável pela revisão ou `unassigned`, sempre como string não vazia;
+- `confidentiality`: classificação aplicável à tarefa;
+- `active_client`: identificador do cliente ativo ou `null` quando a tarefa não estiver ligada a cliente;
+- `created_at` e `updated_at`: datas no formato `YYYY-MM-DD`;
 - `agent`: agente responsável;
 - `allowed_paths`: caminhos que podem ser modificados;
 - `forbidden_paths`: caminhos proibidos, incluindo `01_RAW` para agentes;
-- `active_client`: cliente ativo ou `none`;
-- `reviewer`: pessoa responsável ou `unassigned`;
+- `requires_review`: booleano que indica se a entrega exige revisão;
 - `acceptance_criteria`: evidências objetivas de conclusão.
 
 Ausência ou ambiguidade de escopo autoriza leitura mínima e elaboração de plano, não escrita expansiva.

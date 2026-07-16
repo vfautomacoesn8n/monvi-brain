@@ -4,6 +4,7 @@ type: task
 title: "Tarefa — resultado esperado"
 status: draft
 owner: unassigned
+reviewer: unassigned
 confidentiality: internal
 created_at: "YYYY-MM-DD"
 updated_at: "YYYY-MM-DD"
@@ -18,6 +19,7 @@ agent: unassigned
 active_client: null
 allowed_paths: ["path/explicitly/allowed"]
 forbidden_paths: ["01_RAW", "path/explicitly/forbidden"]
+requires_review: true
 acceptance_criteria: ["Critério observável de conclusão"]
 blocked_reason: null
 ---

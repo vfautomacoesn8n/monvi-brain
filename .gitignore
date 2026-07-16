@@ -8,11 +8,14 @@
 *.pfx
 
 # Estado local do Obsidian e do sistema operacional
-.obsidian/workspace*
-.obsidian/cache/
+.obsidian/
 .DS_Store
 Thumbs.db
 desktop.ini
+
+# Saídas e trabalho local do ambiente
+/outputs/
+/work/
 
 # Arquivos temporários
 *.tmp

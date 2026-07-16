@@ -20,7 +20,7 @@
 ## Evento mínimo de ingestão
 
 ```json
-{"event_id":"ingest-YYYYMMDD-sequence","timestamp":"YYYY-MM-DD","task_id":"task-id","agent":"agent-id","source":"../../01_RAW/path/to/source","classification":"internal","outputs":["../../02_WIKI/path/to/page.md"],"contradictions":[],"status":"review"}
+{"event_id":"ingest-YYYYMMDD-sequence","timestamp":"YYYY-MM-DD","task":"task-id","agent":"agent-id","source":"../../01_RAW/path/to/source","classification":"internal","outputs":["../../02_WIKI/path/to/page.md"],"contradictions":[],"status":"review"}
 ```
 
 Substitua todos os valores de exemplo. Não registre o evento se a fonte não foi realmente processada.

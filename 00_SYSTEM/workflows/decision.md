@@ -14,7 +14,7 @@
 ## Evento mínimo
 
 ```json
-{"event_id":"decision-YYYYMMDD-sequence","timestamp":"YYYY-MM-DD","task_id":"task-id","decision_id":"decision-id","state":"approved","deciders":["person-id"],"record":"../../03_OPERATIONS/decisoes/file.md","supersedes":null}
+{"event_id":"decision-YYYYMMDD-sequence","timestamp":"YYYY-MM-DD","task":"task-id","decision_id":"decision-id","state":"approved","deciders":["person-id"],"record":"../../03_OPERATIONS/decisoes/file.md","supersedes":null}
 ```
 
 Valores são exemplos de formato e devem ser substituídos por dados registrados.

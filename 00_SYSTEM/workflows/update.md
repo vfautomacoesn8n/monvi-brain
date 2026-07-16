@@ -2,7 +2,7 @@
 
 ## Procedimento
 
-1. Confirme tarefa, agente, caminhos permitidos, caminhos proibidos e cliente ativo.
+1. Confirme `id`, agente, revisor, necessidade de revisão, caminhos permitidos, caminhos proibidos e `active_client` da tarefa.
 2. Localize a nota por índice, ID, título e aliases; procure duplicatas.
 3. Leia a nota, suas fontes, páginas relacionadas e mudanças recentes no Git.
 4. Classifique a mudança como correção factual, atualização temporal, conexão, depreciação ou proposta de revisão.
