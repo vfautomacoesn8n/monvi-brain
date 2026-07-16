@@ -51,7 +51,8 @@ IDs são estáveis, únicos e em letras minúsculas, por exemplo `wiki-monvi-001
 ## Proveniência
 
 - `sources` contém caminhos Markdown relativos ou identificadores estáveis de fontes.
-- Uma fonte em `01_RAW` é preservada sem reescrita; sua interpretação vive em outra camada.
+- Todo conteúdo dentro de `01_RAW` é somente leitura para agentes. Nenhum arquivo nessa árvore pode ser criado, editado, movido, renomeado ou excluído por agente, salvo tarefa administrativa excepcional explicitamente aprovada por humano; sua interpretação vive em outra camada.
+- O [`manifesto de fontes`](../registries/source-manifest.md) é metadado operacional fora de `01_RAW`: pode ser atualizado por uma ingestão autorizada, mas não substitui nem modifica a fonte original.
 - Afirmações relevantes devem ser vinculadas ao trecho, arquivo ou decisão que as suporta.
 - Quando este bootstrap for a única origem de um texto inicial, use `AI-CONTRACT.md` ou a especificação registrada no histórico Git como fonte de bootstrap, sem apresentá-la como validação externa.
 

@@ -2,7 +2,7 @@
 
 ## Procedimento
 
-1. Confirme `id`, agente, revisor, necessidade de revisão, caminhos permitidos, caminhos proibidos e `active_client` da tarefa.
+1. Confirme `id`, agente, revisor, necessidade de revisão, caminhos permitidos para escrita, caminhos somente leitura, caminhos proibidos e `active_client` da tarefa.
 2. Localize a nota por índice, ID, título e aliases; procure duplicatas.
 3. Leia a nota, suas fontes, páginas relacionadas e mudanças recentes no Git.
 4. Classifique a mudança como correção factual, atualização temporal, conexão, depreciação ou proposta de revisão.
@@ -14,6 +14,6 @@
 
 ## Restrições
 
-- Não alterar `01_RAW`.
+- Todo conteúdo de `01_RAW` é somente leitura para agentes; não criar, editar, mover, renomear ou excluir nessa árvore, salvo tarefa administrativa excepcional explicitamente aprovada por humano.
 - Não reduzir confidencialidade nem promover a `approved` automaticamente.
 - Não excluir; depreciação e arquivamento preservam o histórico.

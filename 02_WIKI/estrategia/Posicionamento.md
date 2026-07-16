@@ -4,26 +4,54 @@ type: concept
 title: Posicionamento
 status: review
 owner: unassigned
-confidentiality: public
+confidentiality: internal
 created_at: "2026-07-15"
-updated_at: "2026-07-15"
+updated_at: "2026-07-16"
 reviewed_at: null
 review_cycle: quarterly
 sources:
+  - "../../01_RAW/monvi/Monvi - Manual da marca.pdf"
+  - "task-2026-001"
   - "../../docs/superpowers/specs/2026-07-15-monvi-brain-design.md"
 related:
   - "../empresa/Monvi.md"
   - "Principio-central.md"
+  - "../marketing/Manual-da-marca.md"
+  - "../marketing/Tom-de-voz.md"
 aliases: ["Posicionamento da Monvi"]
 tags: [estrategia, posicionamento]
 ---
 
 # Posicionamento
 
-## Descrição inicial fornecida
+## Formulação documentada
 
-> A Monvi é uma empresa de soluções digitais que ajuda negócios a vender melhor, organizar processos e reduzir tarefas manuais por meio de sites, e-commerce, inteligência artificial, automações e manutenção.
+**Posicionamento institucional — não resultado comprovado:** a Monvi se apresenta como empresa de soluções digitais que ajuda negócios a vender melhor, organizar processos e reduzir tarefas manuais com sites, inteligência artificial e automações (Manual da Marca V1.0, seção visual 4).
 
-## Limite
+## Objetivos declarados
 
-Esta formulação está em revisão e não deve ser ampliada com segmentos, diferenciais, resultados, preços ou promessas não fornecidos.
+- **Vender melhor:** sites e experiências digitais que buscam converter e comunicar com clareza.
+- **Organizar processos:** automações que conectam ferramentas e estruturam o dia a dia.
+- **Reduzir tarefas manuais:** inteligência artificial aplicada a atividades que consomem tempo.
+
+Esses itens são alegações de posicionamento da marca. A fonte não apresenta métricas, casos ou evidências de resultados.
+
+## Para quem
+
+O manual direciona a comunicação a negócios que precisam crescer com estrutura, sem depender de tarefas repetitivas e planilhas soltas (seção visual 4). Trata-se de definição de público no posicionamento, não de segmentação comercial aprovada nesta ingestão.
+
+## Como a marca comunica
+
+Comunicação simples, objetiva e com estética tecnológica premium; precisa, sem distanciamento (seção visual 4). A política detalhada está em [Tom de voz](../marketing/Tom-de-voz.md).
+
+## Divergência de escopo
+
+A descrição de bootstrap também inclui e-commerce e manutenção. A ausência desses serviços no manual não foi interpretada como exclusão, pois a decisão humana estabelece que o manual complementa o catálogo existente.
+
+## Limites
+
+Esta página permanece em `review`. Não foram inferidos preços, resultados, diferenciais adicionais, segmentos comerciais ou promessas não sustentadas.
+
+## Governança de publicação
+
+A classificação internal desta página só pode ser alterada por um workflow futuro de publicação, com revisão humana registrada.

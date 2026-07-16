@@ -6,19 +6,24 @@ status: review
 owner: unassigned
 confidentiality: internal
 created_at: "2026-07-15"
-updated_at: "2026-07-15"
+updated_at: "2026-07-16"
 reviewed_at: null
 review_cycle: quarterly
 sources:
+  - "../01_RAW/monvi/Monvi - Manual da marca.pdf"
+  - "task-2026-001"
   - "../docs/superpowers/specs/2026-07-15-monvi-brain-design.md"
-related: []
+related:
+  - "marketing/Manual-da-marca.md"
+  - "marketing/Identidade-visual.md"
+  - "marketing/Tom-de-voz.md"
 aliases: ["Wiki", "Índice de conhecimento"]
 tags: [wiki, index]
 ---
 
 # Índice da Wiki
 
-Este índice contém apenas conhecimento inicial fornecido na especificação do bootstrap. As páginas permanecem em `draft` ou `review` até validação humana e ingestão de fontes institucionais.
+Este índice reúne o conhecimento inicial do bootstrap e a primeira fonte institucional ingerida. Todas as páginas permanecem em `draft` ou `review` até validação humana.
 
 ## Empresa
 
@@ -37,6 +42,13 @@ Este índice contém apenas conhecimento inicial fornecido na especificação do
 - [Automações](servicos/Automacoes.md)
 - [Manutenção](servicos/Manutencao.md)
 
+## Marketing
+
+- [Manual da Marca Monvi V1.0](marketing/Manual-da-marca.md)
+- [Identidade visual da Monvi](marketing/Identidade-visual.md)
+- [Tom de voz da Monvi](marketing/Tom-de-voz.md)
+- [Índice de marketing](marketing/README.md)
+
 ## Processos
 
 - [Fluxo operacional](processos/Fluxo-operacional.md)
@@ -52,7 +64,6 @@ Este índice contém apenas conhecimento inicial fornecido na especificação do
 ## Áreas preparadas
 
 - [Comercial](comercial/README.md)
-- [Marketing](marketing/README.md)
 - [Entidades](entidades/README.md)
 - [Conceitos](conceitos/README.md)
 - [Glossário](glossario/README.md)

@@ -15,7 +15,7 @@ Em caso de conflito, as instruções humanas explícitas e atuais prevalecem; de
 
 ## Antes de agir
 
-1. Identifique o ID da tarefa, o agente responsável, o cliente ativo quando houver, os caminhos permitidos e os caminhos proibidos.
+1. Identifique o ID da tarefa, o agente responsável, o cliente ativo quando houver, os caminhos permitidos para escrita, os caminhos somente leitura e os caminhos proibidos.
 2. Classifique a operação como leitura, proposta, escrita, aprovação, arquivamento ou exclusão.
 3. Confirme a confidencialidade dos arquivos envolvidos e o menor escopo necessário.
 4. Procure páginas equivalentes, aliases e duplicatas antes de criar uma nota.
@@ -24,6 +24,8 @@ Em caso de conflito, as instruções humanas explícitas e atuais prevalecem; de
 ## Durante e depois
 
 - Preserve fontes e referências; separe fato, hipótese, decisão, recomendação e exemplo fictício.
-- Não altere `01_RAW/`, não aprove conteúdo por conta própria e não resolva contradições silenciosamente.
+- Todo conteúdo dentro de `01_RAW/` é somente leitura para agentes. Nenhum arquivo nessa árvore pode ser criado, editado, movido, renomeado ou excluído por agente, salvo tarefa administrativa excepcional explicitamente aprovada por humano.
+- Metadados operacionais de fontes permanecem fora de `01_RAW/`, em especial no [`00_SYSTEM/registries/source-manifest.md`](00_SYSTEM/registries/source-manifest.md), e só podem ser atualizados por ingestões autorizadas.
+- Não aprove conteúdo por conta própria e não resolva contradições silenciosamente.
 - Atualize índices e logs quando o workflow exigir.
 - Cite os caminhos relativos utilizados e resuma mudanças, validações, riscos e itens que dependem de revisão.

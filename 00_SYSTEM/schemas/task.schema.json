@@ -13,6 +13,7 @@
         "reviewer",
         "active_client",
         "allowed_paths",
+        "read_only_paths",
         "forbidden_paths",
         "requires_review",
         "acceptance_criteria"
@@ -33,6 +34,11 @@
         "allowed_paths": {
           "type": "array",
           "minItems": 1,
+          "items": { "type": "string", "minLength": 1, "pattern": "^(?!01_RAW(?:/|$)).+" },
+          "uniqueItems": true
+        },
+        "read_only_paths": {
+          "type": "array",
           "items": { "type": "string", "minLength": 1 },
           "uniqueItems": true
         },
@@ -49,6 +55,11 @@
           "items": { "type": "string", "minLength": 1 }
         },
         "blocked_reason": { "type": ["string", "null"] }
+      },
+      "x-monvi-path-set-rules": {
+        "description": "Extensão de governança validada pelo workflow: allowed_paths, read_only_paths e forbidden_paths devem ser mutuamente exclusivos; caminhos em 01_RAW só podem ser declarados em read_only_paths.",
+        "mutually_exclusive": ["allowed_paths", "read_only_paths", "forbidden_paths"],
+        "raw_paths_only_in": "read_only_paths"
       }
     }
   ]

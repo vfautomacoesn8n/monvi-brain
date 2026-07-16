@@ -18,7 +18,8 @@ task_state: inbox
 agent: unassigned
 active_client: null
 allowed_paths: ["path/explicitly/allowed"]
-forbidden_paths: ["01_RAW", "path/explicitly/forbidden"]
+read_only_paths: []
+forbidden_paths: ["path/explicitly/forbidden"]
 requires_review: true
 acceptance_criteria: ["Critério observável de conclusão"]
 blocked_reason: null
@@ -29,6 +30,10 @@ blocked_reason: null
 ## Contexto
 
 ## Instruções
+
+- `allowed_paths` autoriza criar, editar, mover ou excluir.
+- `read_only_paths` autoriza apenas consulta; fontes em `01_RAW` devem constar somente aqui.
+- `forbidden_paths` proíbe leitura e alteração. Os três conjuntos não podem se sobrepor.
 
 ## Critérios de aceite
 

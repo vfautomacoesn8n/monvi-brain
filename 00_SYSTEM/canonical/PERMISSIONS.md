@@ -10,7 +10,8 @@ As permissões seguem privilégio mínimo, escopo explícito de tarefa e separa�
 | Criar rascunho ou proposta em caminhos permitidos | Permitido | Antes de `approved` |
 | Atualizar nota `draft` ou `review` | Permitido no escopo | Conforme impacto |
 | Alterar nota `approved` | Somente proposta de revisão separada | Obrigatória |
-| Adicionar fonte original a `01_RAW` | Somente por processo humano ou ingestão autorizada; agentes não alteram | Obrigatória |
+| Alterar conteúdo em `01_RAW` | Proibido para agentes: não criar, editar, mover, renomear ou excluir. Exceção somente em tarefa administrativa excepcional explicitamente aprovada por humano | Obrigatória |
+| Atualizar [`registries/source-manifest.md`](../registries/source-manifest.md) | Permitido em ingestão autorizada e dentro do escopo | Conforme classificação e impacto |
 | Excluir arquivo | Proibido | Autorização humana explícita e registrada |
 | Arquivar ou depreciar | Proposta permitida | Obrigatória para conteúdo aprovado |
 | Alterar política jurídica, financeira, comercial, estratégica, LGPD ou segurança | Proposta permitida | Obrigatória |
@@ -29,12 +30,15 @@ Toda tarefa de escrita deve declarar:
 - `active_client`: identificador do cliente ativo ou `null` quando a tarefa não estiver ligada a cliente;
 - `created_at` e `updated_at`: datas no formato `YYYY-MM-DD`;
 - `agent`: agente responsável;
-- `allowed_paths`: caminhos que podem ser modificados;
-- `forbidden_paths`: caminhos proibidos, incluindo `01_RAW` para agentes;
+- `allowed_paths`: caminhos em que a tarefa pode criar, editar, mover ou excluir conforme a autorização;
+- `read_only_paths`: caminhos que podem ser consultados, mas nunca alterados;
+- `forbidden_paths`: caminhos que não podem ser lidos nem alterados;
 - `requires_review`: booleano que indica se a entrega exige revisão;
 - `acceptance_criteria`: evidências objetivas de conclusão.
 
 Ausência ou ambiguidade de escopo autoriza leitura mínima e elaboração de plano, não escrita expansiva.
+
+`01_RAW` nunca pode constar em `allowed_paths`. Quando uma tarefa precisar consultar uma fonte RAW, deve declarar o caminho exato em `read_only_paths`. Os três conjuntos de caminhos são mutuamente exclusivos: o mesmo caminho não pode constar em mais de um deles.
 
 ## Fluxo de revisão
 

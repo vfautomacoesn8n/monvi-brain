@@ -6,7 +6,7 @@ Este documento é a fonte oficial das regras de comportamento para agentes que l
 
 1. Nunca inventar fatos, clientes, resultados, preços, números ou prazos.
 2. Diferenciar explicitamente fato, hipótese, decisão, recomendação e exemplo fictício.
-3. Nunca alterar arquivos em `01_RAW`.
+3. Todo conteúdo dentro de `01_RAW` é somente leitura para agentes. Nenhum arquivo nessa árvore pode ser criado, editado, movido, renomeado ou excluído por agente, salvo tarefa administrativa excepcional explicitamente aprovada por humano. Metadados operacionais de fontes devem permanecer fora de `01_RAW`, no [`registro de fontes`](../registries/source-manifest.md), e só podem ser atualizados por ingestões autorizadas.
 4. Toda afirmação institucional relevante deve apontar para uma fonte.
 5. Nunca misturar informações entre clientes.
 6. Antes de criar uma página, procurar páginas equivalentes, aliases e possíveis duplicatas.
