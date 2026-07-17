@@ -15,9 +15,11 @@ sources:
   - "../01_RAW/monvi/Monvi - Estratégia Empresarial.pdf"
   - "../01_RAW/monvi/06_LGPD_e_Seguranca_Monvi.pdf"
   - "../01_RAW/monvi/05_Juridico_Monvi.pdf"
+  - "../01_RAW/monvi/04_Comercial_e_Vendas_Monvi.pdf"
   - "task-2026-001"
   - "task-2026-003"
   - "task-2026-005"
+  - "task-2026-007"
   - "../docs/superpowers/specs/2026-07-15-monvi-brain-design.md"
 related:
   - "marketing/Manual-da-marca.md"
@@ -87,9 +89,13 @@ Este índice reúne o conhecimento inicial do bootstrap e a primeira fonte insti
 - [Índice de Segurança](seguranca/README.md)
 - [LGPD e Segurança — base de referência](seguranca/LGPD-e-seguranca.md)
 
+## Comercial
+
+- [Índice comercial](comercial/README.md)
+- [Comercial e Vendas](comercial/Comercial-e-vendas.md)
+
 ## Áreas preparadas
 
-- [Comercial](comercial/README.md)
 - [Entidades](entidades/README.md)
 - [Conceitos](conceitos/README.md)
 - [Glossário](glossario/README.md)
