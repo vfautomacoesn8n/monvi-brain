@@ -6,15 +6,17 @@ status: review
 owner: unassigned
 confidentiality: internal
 created_at: "2026-07-15"
-updated_at: "2026-07-16"
+updated_at: "2026-07-17"
 reviewed_at: null
 review_cycle: quarterly
 sources:
   - "../01_RAW/monvi/Monvi - Manual da marca.pdf"
   - "../01_RAW/monvi/Monvi - Catalogo de serviços.pdf"
   - "../01_RAW/monvi/Monvi - Estratégia Empresarial.pdf"
+  - "../01_RAW/monvi/06_LGPD_e_Seguranca_Monvi.pdf"
   - "task-2026-001"
   - "task-2026-003"
+  - "task-2026-005"
   - "../docs/superpowers/specs/2026-07-15-monvi-brain-design.md"
 related:
   - "marketing/Manual-da-marca.md"
@@ -76,6 +78,8 @@ Este índice reúne o conhecimento inicial do bootstrap e a primeira fonte insti
 ## Segurança
 
 - [Classificação da informação](seguranca/Classificacao-da-informacao.md)
+- [Índice de Segurança](seguranca/README.md)
+- [LGPD e Segurança — base de referência](seguranca/LGPD-e-seguranca.md)
 
 ## Áreas preparadas
 

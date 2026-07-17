@@ -12,6 +12,8 @@ Registro operacional das fontes originais preservadas em `01_RAW`. Todo conteúd
 
 | `source-manual-processos-monvi-v2` | `01_RAW/monvi/Manual_de_Processos_Monvi_Redesenhado_2026.pdf` | PDF com camada textual | `internal` | `2026-07-16` | `sha256:A1E9B6C0EC95BF8300489EFC9371B7DFDD87D24C399113824FCCE6F2C1208072` | `task-2026-004` |
 
+
+| `source-lgpd-seguranca-monvi-v1` | `01_RAW/monvi/06_LGPD_e_Seguranca_Monvi.pdf` | PDF com camada textual e verificação visual pontual | `confidential` | `2026-07-16` | `sha256:CE20F577C34F6CB5290A0D55C38AB9A1936448FEC2DC7758F12C7A4714D7352A` | `task-2026-005` |
 A fonte original permanece em [`01_RAW/monvi/Monvi - Manual da marca.pdf`](../../01_RAW/monvi/Monvi%20-%20Manual%20da%20marca.pdf).
 
 Siga o [workflow de ingestão](../workflows/ingest.md). Alterações neste registro devem permanecer dentro do escopo de uma tarefa autorizada e ser registradas nos logs auditáveis.
