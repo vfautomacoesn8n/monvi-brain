@@ -14,6 +14,7 @@ sources:
   - "../01_RAW/monvi/Monvi - Catalogo de serviços.pdf"
   - "../01_RAW/monvi/Monvi - Estratégia Empresarial.pdf"
   - "../01_RAW/monvi/06_LGPD_e_Seguranca_Monvi.pdf"
+  - "../01_RAW/monvi/05_Juridico_Monvi.pdf"
   - "task-2026-001"
   - "task-2026-003"
   - "task-2026-005"
@@ -74,6 +75,11 @@ Este índice reúne o conhecimento inicial do bootstrap e a primeira fonte insti
 ## Tecnologia
 
 - [Monvi Brain](tecnologia/Monvi-Brain.md)
+
+## Jurídico
+
+- [Índice Jurídico](juridico/README.md)
+- [Jurídico e Contratos](juridico/Juridico-e-contratos.md)
 
 ## Segurança
 
