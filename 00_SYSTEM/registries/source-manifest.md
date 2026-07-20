@@ -16,6 +16,7 @@ Registro operacional das fontes originais preservadas em `01_RAW`. Todo conteúd
 | `source-lgpd-seguranca-monvi-v1` | `01_RAW/monvi/06_LGPD_e_Seguranca_Monvi.pdf` | PDF com camada textual e verificação visual pontual | `confidential` | `2026-07-16` | `sha256:CE20F577C34F6CB5290A0D55C38AB9A1936448FEC2DC7758F12C7A4714D7352A` | `task-2026-005` |
 | `source-juridico-monvi-v1` | `01_RAW/monvi/05_Juridico_Monvi.pdf` | PDF com camada textual e verificação visual pontual | `confidential` | `2026-07-17` | `sha256:01427FF4B703386B83F62B864EEFFB994C54400D2F98F3669EA0D00BCC944D0A` | `task-2026-006` |
 | `source-comercial-vendas-monvi-v1` | `01_RAW/monvi/04_Comercial_e_Vendas_Monvi.pdf` | PDF com camada textual e verificação visual pontual | `internal` | `2026-07-17` | `sha256:E0DFB9187C48D10FECBEF1720A4EE651761DB910BCEDD10F25821D1C05F68833` | `task-2026-007` |
+| `source-conteudo-marketing-monvi-v1` | `01_RAW/monvi/11_Conteudo_e_Marketing_Monvi.pdf` | PDF com camada textual e verificação visual pontual | `internal` | `2026-07-17` | `sha256:56330F6D9AC9C6F45F3A192EFFFEBC333F5FBF79E7A61FC43DF2C9FFB859E093` | `task-2026-008` |
 A fonte original permanece em [`01_RAW/monvi/Monvi - Manual da marca.pdf`](../../01_RAW/monvi/Monvi%20-%20Manual%20da%20marca.pdf).
 
 Siga o [workflow de ingestão](../workflows/ingest.md). Alterações neste registro devem permanecer dentro do escopo de uma tarefa autorizada e ser registradas nos logs auditáveis.

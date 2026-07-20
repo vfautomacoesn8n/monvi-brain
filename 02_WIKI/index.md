@@ -16,10 +16,12 @@ sources:
   - "../01_RAW/monvi/06_LGPD_e_Seguranca_Monvi.pdf"
   - "../01_RAW/monvi/05_Juridico_Monvi.pdf"
   - "../01_RAW/monvi/04_Comercial_e_Vendas_Monvi.pdf"
+  - "../01_RAW/monvi/11_Conteudo_e_Marketing_Monvi.pdf"
   - "task-2026-001"
   - "task-2026-003"
   - "task-2026-005"
   - "task-2026-007"
+  - "task-2026-008"
   - "../docs/superpowers/specs/2026-07-15-monvi-brain-design.md"
 related:
   - "marketing/Manual-da-marca.md"
@@ -65,7 +67,8 @@ Este índice reúne o conhecimento inicial do bootstrap e a primeira fonte insti
 - [Manual da Marca Monvi V1.0](marketing/Manual-da-marca.md)
 - [Identidade visual da Monvi](marketing/Identidade-visual.md)
 - [Tom de voz da Monvi](marketing/Tom-de-voz.md)
-- [Índice de marketing](marketing/README.md)
+- [Índice de Marketing](marketing/README.md)
+- [Conteúdo e Marketing](marketing/Conteudo-e-marketing.md)
 
 ## Processos
 
