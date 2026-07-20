@@ -6,7 +6,7 @@ status: review
 owner: unassigned
 confidentiality: internal
 created_at: "2026-07-15"
-updated_at: "2026-07-17"
+updated_at: "2026-07-20"
 reviewed_at: null
 review_cycle: quarterly
 sources:
@@ -17,16 +17,19 @@ sources:
   - "../01_RAW/monvi/05_Juridico_Monvi.pdf"
   - "../01_RAW/monvi/04_Comercial_e_Vendas_Monvi.pdf"
   - "../01_RAW/monvi/11_Conteudo_e_Marketing_Monvi.pdf"
+  - "../01_RAW/monvi/12_Plano_de_Marketing_Monvi.pdf"
   - "task-2026-001"
   - "task-2026-003"
   - "task-2026-005"
   - "task-2026-007"
   - "task-2026-008"
+  - "task-2026-009"
   - "../docs/superpowers/specs/2026-07-15-monvi-brain-design.md"
 related:
   - "marketing/Manual-da-marca.md"
   - "marketing/Identidade-visual.md"
   - "marketing/Tom-de-voz.md"
+  - "marketing/Plano-de-marketing.md"
   - "servicos/Catalogo-de-servicos.md"
 aliases: ["Wiki", "Índice de conhecimento"]
 tags: [wiki, index]
@@ -69,6 +72,7 @@ Este índice reúne o conhecimento inicial do bootstrap e a primeira fonte insti
 - [Tom de voz da Monvi](marketing/Tom-de-voz.md)
 - [Índice de Marketing](marketing/README.md)
 - [Conteúdo e Marketing](marketing/Conteudo-e-marketing.md)
+- [Plano de Marketing](marketing/Plano-de-marketing.md)
 
 ## Processos
 
