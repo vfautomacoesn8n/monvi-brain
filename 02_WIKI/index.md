@@ -18,18 +18,21 @@ sources:
   - "../01_RAW/monvi/04_Comercial_e_Vendas_Monvi.pdf"
   - "../01_RAW/monvi/11_Conteudo_e_Marketing_Monvi.pdf"
   - "../01_RAW/monvi/12_Plano_de_Marketing_Monvi.pdf"
+  - "../01_RAW/monvi/07_Operacao_Monvi.pdf"
   - "task-2026-001"
   - "task-2026-003"
   - "task-2026-005"
   - "task-2026-007"
   - "task-2026-008"
   - "task-2026-009"
+  - "task-2026-010"
   - "../docs/superpowers/specs/2026-07-15-monvi-brain-design.md"
 related:
   - "marketing/Manual-da-marca.md"
   - "marketing/Identidade-visual.md"
   - "marketing/Tom-de-voz.md"
   - "marketing/Plano-de-marketing.md"
+  - "processos/Playbook-operacao-e-entrega.md"
   - "servicos/Catalogo-de-servicos.md"
 aliases: ["Wiki", "Índice de conhecimento"]
 tags: [wiki, index]
@@ -80,6 +83,7 @@ Este índice reúne o conhecimento inicial do bootstrap e a primeira fonte insti
 - [Modelo operacional](processos/Modelo-operacional.md)
 - [Fluxo operacional](processos/Fluxo-operacional.md)
 - [Índice de processos](processos/README.md)
+- [Playbook de operação e entrega](processos/Playbook-operacao-e-entrega.md)
 
 ## Tecnologia
 

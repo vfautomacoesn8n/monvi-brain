@@ -6,12 +6,14 @@ status: review
 owner: unassigned
 confidentiality: internal
 created_at: "2026-07-16"
-updated_at: "2026-07-16"
+updated_at: "2026-07-20"
 reviewed_at: null
 review_cycle: quarterly
 sources:
   - "../../01_RAW/monvi/Manual_de_Processos_Monvi_Redesenhado_2026.pdf"
   - "task-2026-004"
+  - "../../01_RAW/monvi/07_Operacao_Monvi.pdf"
+  - "task-2026-010"
 related: []
 aliases: []
 tags: [processo, operacao]
@@ -34,3 +36,12 @@ Manual de Processos V2.0, páginas 2–16. Este índice apenas organiza páginas
 - [QA, aceite e handoff](QA-aceite-e-handoff.md)
 - [Indicadores](Indicadores-operacionais.md)
 - [Fluxos por serviço](Fluxos-por-servico.md)
+
+## Operação e entrega — modelos complementares
+
+- [Playbook de operação e entrega](Playbook-operacao-e-entrega.md)
+- [Briefing e onboarding — modelo](Briefing-e-onboarding-modelo.md)
+- [Checklists de entrega por serviço](Checklists-de-entrega-por-servico.md)
+- [Cronograma, entrega e manual do cliente](Cronograma-entrega-e-manual-do-cliente.md)
+
+> As páginas acima complementam o Manual de Processos com templates, campos e checklists em revisão. Não comprovam operação implantada, execução concluída, cronograma ativo, SLA, contrato vigente ou responsável atribuído.
