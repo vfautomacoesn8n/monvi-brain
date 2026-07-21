@@ -24,6 +24,7 @@ sources:
   - "../01_RAW/monvi/02_Apresentacao_Institucional_Monvi.pdf"
   - "../01_RAW/monvi/02_Proposta_Comercial_Monvi.pdf"
   - "../01_RAW/monvi/13_Template_Case_Study_Monvi.pdf"
+  - "../01_RAW/monvi/14_Relatorio_Cliente_Monvi.pdf"
   - "task-2026-001"
   - "task-2026-003"
   - "task-2026-005"
@@ -35,6 +36,7 @@ sources:
   - "task-2026-012"
   - "task-2026-013"
   - "task-2026-014"
+  - "task-2026-015"
   - "../docs/superpowers/specs/2026-07-15-monvi-brain-design.md"
 related:
   - "marketing/Manual-da-marca.md"
@@ -48,6 +50,9 @@ related:
   - "marketing/Case-study.md"
   - "../03_OPERATIONS/templates/Case-study.md"
   - "../03_OPERATIONS/templates/Checklist-evidencias-case-study.md"
+  - "processos/Relatorio-de-cliente.md"
+  - "../03_OPERATIONS/templates/Relatorio-de-cliente.md"
+  - "../03_OPERATIONS/templates/Checklist-relatorio-de-cliente.md"
   - "servicos/Catalogo-de-servicos.md"
 aliases: ["Wiki", "Índice de conhecimento"]
 tags: [wiki, index]
@@ -109,6 +114,9 @@ Este índice reúne o conhecimento inicial do bootstrap e a primeira fonte insti
 - [Case study](marketing/Case-study.md)
 - [Template de case study](../03_OPERATIONS/templates/Case-study.md)
 - [Checklist de evidências para case study](../03_OPERATIONS/templates/Checklist-evidencias-case-study.md)
+- [Relatório de cliente](processos/Relatorio-de-cliente.md)
+- [Template de relatório de cliente](../03_OPERATIONS/templates/Relatorio-de-cliente.md)
+- [Checklist de relatório de cliente](../03_OPERATIONS/templates/Checklist-relatorio-de-cliente.md)
 
 ## Jurídico
 
