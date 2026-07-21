@@ -2,15 +2,15 @@
 id: template-proposta-comercial-monvi
 type: output
 title: "Proposta comercial"
-status: review
+status: approved
 owner: unassigned
 reviewer: ceo-monvi
 confidentiality: confidential
 active_client: null
-requires_review: true
+requires_review: false
 created_at: "2026-07-21"
 updated_at: "2026-07-21"
-reviewed_at: null
+reviewed_at: "2026-07-21"
 review_cycle: on-change
 sources:
   - "../../01_RAW/monvi/02_Proposta_Comercial_Monvi.pdf"
@@ -31,11 +31,11 @@ created_from_task: task-2026-013
 
 # Proposta comercial
 
-> **STATUS: MODELO EM REVISÃO**
+> **STATUS: MODELO INTERNO OFICIAL — USO COM RESSALVAS**
 >
-> Este documento não está aprovado para envio sem revisão humana.
-> Preços, prazos, condições, escopo, exclusões, responsabilidades e linguagem jurídica devem ser validados para cada proposta.
-
+> Estrutura aprovada para elaboração interna de propostas personalizadas da Monvi.
+> Cada proposta exige preenchimento completo, revisão comercial e validações operacional, jurídica, financeira, de LGPD e de segurança quando aplicáveis.
+> Este modelo não autoriza envio externo automático e não estabelece preço, prazo, garantia, SLA, escopo ou condição universal.
 ## 1. Identificação
 
 | Campo | Preencher para esta proposta |
@@ -249,6 +249,28 @@ As referências abaixo vêm do PDF e não são termos automáticos, preço ofici
 - quatro etapas de cronograma;
 - condição exemplificada de 50% na aprovação e 50% na entrega;
 - validade exemplificada de sete dias.
+
+## Governança de uso aprovada
+
+**Uso permitido:** modelo interno oficial para preparar propostas comerciais personalizadas.
+
+**Condições obrigatórias antes do envio externo:**
+
+- identificar cliente, projeto, versão, validade e responsável comercial;
+- definir escopo, exclusões, entregáveis, limites, dependências e critérios de aceite;
+- aprovar investimento, impostos, custos de terceiros, pagamento e condição de início;
+- validar cronograma, premissas, responsabilidades e impactos de mudança;
+- revisar linguagem jurídica, propriedade intelectual, tratamento de dados, suporte, manutenção e SLA quando aplicáveis;
+- remover placeholders e referências-modelo não utilizadas;
+- revisar visualmente o documento final.
+
+**Limites permanentes:**
+
+- proposta não substitui contrato, SOW, DPA ou termo de aceite;
+- aprovação comercial não inicia automaticamente o projeto;
+- nenhum preço, prazo, garantia, resultado, disponibilidade ou condição é padrão universal;
+- manutenção, suporte e SLA existem somente quando definidos e contratados;
+- a aprovação deste template não representa parecer jurídico nem comprovação de conformidade com LGPD ou segurança.
 
 ## Proveniência e limite de uso
 

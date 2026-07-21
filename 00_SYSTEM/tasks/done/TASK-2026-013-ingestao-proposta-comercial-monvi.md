@@ -2,16 +2,16 @@
 id: task-2026-013
 type: task
 title: "Ingestão da Proposta Comercial Monvi"
-status: review
-task_state: review
+status: approved
+task_state: done
 owner: codex
 reviewer: ceo-monvi
 confidentiality: confidential
 active_client: null
-requires_review: true
+requires_review: false
 created_at: "2026-07-21"
 updated_at: "2026-07-21"
-reviewed_at: null
+reviewed_at: "2026-07-21"
 review_cycle: on-change
 sources:
   - "../../../01_RAW/monvi/02_Proposta_Comercial_Monvi.pdf"
@@ -102,3 +102,17 @@ A confirmação externa registrou quatro páginas A4, layout íntegro, tabelas d
 Não preencher campos, não definir preço, desconto, parcelamento, validade, SLA, prazo, responsável real, canal, ferramenta, obrigação, aceite, base legal ou condição jurídica. A formulação de aceite da fonte deve ser substituída por texto seguro e marcada para revisão jurídica; aprovação comercial não inicia contrato ou projeto por si só.
 
 Pendências humanas: aprovar escopo, exclusões, preços, condições de pagamento, cronograma, responsabilidades, dependências de terceiros, condições de início, texto jurídico, tratamento de dados, propriedade intelectual, suporte, manutenção e autorização de envio externo.
+
+## Encerramento humano
+
+- decisão: B — template oficial com ressalvas;
+- aprovador: ceo-monvi;
+- data: 2026-07-21;
+- artefato aprovado: `03_OPERATIONS/templates/Proposta-comercial.md`;
+- uso permitido: modelo interno oficial para elaboração de propostas personalizadas;
+- uso externo: somente após preenchimento, revisão comercial e validações aplicáveis;
+- movimento final: `review` para `done`;
+- ressalvas: preços, prazos, validade, pagamento, escopo, responsabilidades, propriedade intelectual, tratamento de dados, suporte, manutenção e SLA permanecem variáveis por proposta;
+- limite jurídico: proposta não substitui contrato, SOW, DPA ou termo de aceite e a aprovação do template não constitui parecer jurídico;
+- limite operacional: aprovação comercial não inicia automaticamente o projeto e nenhum resultado é garantido;
+- pendências especializadas: validações jurídica, de LGPD e de segurança permanecem obrigatórias conforme o caso concreto.
