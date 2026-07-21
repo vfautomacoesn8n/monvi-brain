@@ -2,13 +2,13 @@
 id: task-2026-017
 type: task
 title: "Aprovação humana do Lote 1 com ressalvas"
-status: review
-task_state: review
+status: approved
+task_state: done
 owner: codex
 reviewer: ceo-monvi
 confidentiality: internal
 active_client: null
-requires_review: true
+requires_review: false
 created_at: "2026-07-21"
 updated_at: "2026-07-21"
 reviewed_at: null
@@ -137,3 +137,15 @@ Nenhuma aprovação deste lote aprova outra task ou altera artefatos derivados. 
 - task 008: orientações não equivalem a operação ativa;
 - task 014: exemplos, clientes, depoimentos e métricas são fictícios;
 - task 015: indicadores, SLA, atividades, recomendações e renovação não são fatos operacionais confirmados.
+
+## Encerramento humano
+
+- decisão: aprovada;
+- aprovador: ceo-monvi;
+- data: 2026-07-21;
+- escopo: validação da execução do Lote 1 de aprovação com ressalvas;
+- evidência de execução: commit `f12b13b`;
+- evidência de correção documental: commit `de397dc`;
+- resultado: cinco tasks aprovadas e movidas para `done`;
+- ressalvas: preservadas integralmente;
+- limite: este encerramento não altera ou amplia as aprovações concedidas às tasks do lote.
