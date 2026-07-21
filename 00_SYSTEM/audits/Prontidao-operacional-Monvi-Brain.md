@@ -2,15 +2,15 @@
 id: audit-prontidao-operacional-monvi-brain
 type: output
 title: "Prontidão operacional do Monvi Brain"
-status: review
+status: approved
 confidentiality: internal
 active_client: null
-requires_review: true
+requires_review: false
 reviewer: ceo-monvi
 created_from_task: task-2026-020
 created_at: "2026-07-21"
 updated_at: "2026-07-21"
-reviewed_at: null
+reviewed_at: "2026-07-21"
 review_cycle: on-change
 ---
 
@@ -209,3 +209,16 @@ O Monvi Brain está pronto como base de conhecimento e governança documental.
 A operação da Monvi ainda precisa de implantação, evidência e rotina. O foco imediato deve ser inventário, sistema comercial, operação padrão, métricas executivas e validação especializada.
 
 Nenhuma conclusão deste relatório deve ser interpretada como comprovação de implantação, conformidade, conta ativa, resultado, cliente, contrato, SLA ou controle vigente.
+
+## Aprovação humana
+
+- aprovador: ceo-monvi;
+- data: 2026-07-21;
+- conclusão aprovada: a governança documental da Monvi está pronta, mas a prontidão operacional ainda é parcial;
+- prioridades aprovadas:
+  1. inventário operacional mínimo;
+  2. sistema comercial mínimo;
+  3. operação e entrega padrão;
+  4. métricas executivas;
+  5. bloqueios jurídicos, de LGPD e de segurança;
+- limite: esta aprovação não comprova implantação operacional, conformidade, contas ativas, métricas medidas, controles vigentes, contratos válidos ou resultados.

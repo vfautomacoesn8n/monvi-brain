@@ -2,16 +2,16 @@
 id: task-2026-020
 type: task
 title: "Auditoria de prontidão operacional do Monvi Brain"
-status: review
-task_state: review
+status: approved
+task_state: done
 owner: codex
 reviewer: ceo-monvi
 confidentiality: internal
 active_client: null
-requires_review: true
+requires_review: false
 created_at: "2026-07-21"
 updated_at: "2026-07-21"
-reviewed_at: null
+reviewed_at: "2026-07-21"
 review_cycle: on-change
 sources:
   - "../../../00_SYSTEM/tasks/done/"
@@ -118,3 +118,15 @@ A auditoria concluiu que a governança documental está pronta, enquanto a pront
 5. bloqueios jurídicos, de LGPD e de segurança.
 
 A task permanece em `review`. Nenhuma Wiki, template, política, conta, ferramenta ou processo foi alterado ou declarado implantado.
+
+## Encerramento humano
+
+- decisão: aprovada;
+- aprovador: ceo-monvi;
+- data: 2026-07-21;
+- relatório aprovado: `00_SYSTEM/audits/Prontidao-operacional-Monvi-Brain.md`;
+- movimento final: `review` para `done`;
+- conclusão: governança documental pronta e prontidão operacional parcial;
+- prioridades aprovadas: inventário operacional, sistema comercial mínimo, operação e entrega padrão, métricas executivas e bloqueios jurídicos, de LGPD e de segurança;
+- limite: esta task encerra a auditoria e não executa o plano de 30 dias;
+- salvaguarda: nenhuma implantação, conformidade, conta ativa, métrica medida ou controle vigente foi presumido.
