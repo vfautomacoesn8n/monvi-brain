@@ -2,13 +2,13 @@
 id: task-2026-014
 type: task
 title: "Ingestão do Template de Case Study Monvi"
-status: review
-task_state: review
+status: approved
+task_state: done
 owner: codex
 reviewer: ceo-monvi
 confidentiality: internal
 active_client: null
-requires_review: true
+requires_review: false
 created_at: "2026-07-21"
 updated_at: "2026-07-21"
 reviewed_at: null
@@ -105,3 +105,11 @@ Seis páginas A4 foram renderizadas em 1191 × 1684 px. O layout geral é legív
 ## Riscos e decisões humanas pendentes
 
 Definir critérios de evidência, autorização de nome/marca/logo/imagem/depoimento/métrica, classificação de case preenchido, texto de publicação, revisão jurídica, LGPD e Segurança, Comercial, Marketing e aprovação final. Nenhum checklist aprova automaticamente uma publicação.
+## Aprovação humana
+
+- decisão: aprovada com ressalva;
+- aprovador: ceo-monvi;
+- data: 2026-07-21;
+- escopo: ingestão, rastreabilidade e artefatos derivados;
+- limite: não confirma operação, contatos, preços, métricas, resultados, SLA ou publicação externa;
+- ressalva: exemplos, clientes, depoimentos e métricas da fonte são fictícios e não podem ser publicados como resultados reais.

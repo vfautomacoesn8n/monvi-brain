@@ -2,7 +2,7 @@
 id: task-2026-001
 type: task
 title: "Ingestão do Manual da Marca Monvi"
-status: review
+status: approved
 owner: codex
 reviewer: ceo-monvi
 confidentiality: internal
@@ -15,7 +15,7 @@ sources:
 related: []
 aliases: []
 tags: [task, ingestao, marca]
-task_state: review
+task_state: done
 agent: codex
 active_client: null
 allowed_paths:
@@ -38,7 +38,7 @@ forbidden_paths:
   - "02_WIKI/processos/"
   - "02_WIKI/tecnologia/"
   - "04_OUTPUTS/"
-requires_review: true
+requires_review: false
 acceptance_criteria:
   - "Manifesto de fontes movido para 00_SYSTEM/registries e referências internas atualizadas."
   - "Somente o Manual da Marca Monvi V1.0 é processado; os demais documentos permanecem fora do escopo."
@@ -74,3 +74,11 @@ Validar schemas, JSON/JSONL, frontmatter YAML, links relativos, unicidade de IDs
 ## Revisão e entrega
 
 Após execução e validações bem-sucedidas, mover esta tarefa para `00_SYSTEM/tasks/review/` e alterar somente `task_state` de `active` para `review`. A aprovação final cabe ao revisor humano.
+## Aprovação humana
+
+- decisão: aprovada com ressalva;
+- aprovador: ceo-monvi;
+- data: 2026-07-21;
+- escopo: ingestão, rastreabilidade e artefatos derivados;
+- limite: não confirma operação, contatos, preços, métricas, resultados, SLA ou publicação externa;
+- ressalva: contatos e canais exibidos devem ser confirmados antes de uso externo.

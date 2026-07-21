@@ -2,13 +2,13 @@
 id: task-2026-015
 type: task
 title: "Ingestão do Relatório de Cliente Monvi"
-status: review
-task_state: review
+status: approved
+task_state: done
 owner: codex
 reviewer: ceo-monvi
 confidentiality: internal
 active_client: null
-requires_review: true
+requires_review: false
 created_at: "2026-07-21"
 updated_at: "2026-07-21"
 reviewed_at: null
@@ -137,3 +137,11 @@ Seis páginas A4 foram renderizadas em 1191 × 1684 px. O layout geral está ín
 ## Riscos e decisões humanas pendentes
 
 Definir dados, evidências, escopo, plano, responsabilidades, SLA aplicável, critérios de status, aprovações, classificação de relatório preenchido, destinatários, canal seguro e autorização de envio. Revisão operacional é exigida; revisão Comercial, Jurídica, LGPD e Segurança e CEO aplica-se conforme oportunidade, obrigação, dado, incidente, acesso ou risco. Nenhum checklist aprova automaticamente um relatório ou envio.
+## Aprovação humana
+
+- decisão: aprovada com ressalva;
+- aprovador: ceo-monvi;
+- data: 2026-07-21;
+- escopo: ingestão, rastreabilidade e artefatos derivados;
+- limite: não confirma operação, contatos, preços, métricas, resultados, SLA ou publicação externa;
+- ressalva: indicadores, SLA, atividades, recomendações e renovação da fonte são fictícios ou estruturais, não fatos operacionais.
