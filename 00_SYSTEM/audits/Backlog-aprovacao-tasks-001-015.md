@@ -1,81 +1,68 @@
 ---
 id: audit-backlog-approval-tasks-001-015
-type: audit
-title: "Matriz de aprovação das tasks 001–015"
-status: review
+type: output
+title: "Consolidação final do backlog das tasks 001–015"
+status: approved
 confidentiality: internal
 active_client: null
-requires_review: true
+requires_review: false
 reviewer: ceo-monvi
 created_from_task: task-2026-016
-date: 2026-07-21
+created_at: "2026-07-21"
+updated_at: "2026-07-21"
+reviewed_at: "2026-07-21"
+review_cycle: on-change
 ---
 
-# Matriz de aprovação das tasks 001–015
+# Consolidação final do backlog das tasks 001–015
 
-> Este documento prepara decisões humanas. Não aprova, reclassifica ou move tasks automaticamente.
+## Contexto
 
-## Matriz consolidada
+Este relatório foi criado originalmente para preparar as decisões humanas das tasks `001` a `015`. Desde então, os lotes de aprovação, as correções documentais e as decisões executivas foram executados e registrados em commits próprios.
 
-| Task | Categoria | Condição atual | Ressalva ou decisão | Validação | Recomendação | Responsável | Próxima ação | Bloqueia |
-|---|---|---|---|---|---|---|---|---|
-| 001 | B — pronta com ressalva | Escopo concluído | Confirmar contatos exibidos | Não | Aprovação com ressalva | CEO | Confirmar contatos | Não, se aceita |
-| 002 | D — requer decisão do CEO | Escopo concluído | Ferramentas, serviços e limites da oferta | Não | Decisão antes da aprovação | CEO | Responder perguntas | Sim |
-| 003 | D — requer decisão do CEO | Escopo concluído | Público, posicionamento, prioridades, orçamento e indicadores | Não | Decisão antes da aprovação | CEO | Responder perguntas | Sim |
-| 004 | C — requer correção documental | Correção concluída pela task 016 | Aprovação humana pendente | Não | Revisar correção | CEO | Validar índice | Não |
-| 005 | E — requer validação especializada | Escopo concluído | LGPD e Segurança | Jurídico, DPO/LGPD e Segurança | Encaminhar para parecer | Especialistas e CEO | Registrar pareceres | Sim |
-| 006 | E — requer validação especializada | Escopo concluído; índice corrigido | Conteúdo jurídico | Jurídico | Encaminhar para parecer | Jurídico e CEO | Registrar parecer | Sim |
-| 007 | B — pronta com ressalva | Escopo concluído | Modelos não criam CRM, leads, preço, metas ou operação | Não | Aprovação com ressalva | CEO | Preservar limites | Não, se aceita |
-| 008 | B — pronta com ressalva | Escopo concluído | CTA, frequência, automação e métricas são orientação | Não | Aprovação com ressalva | CEO | Preservar limites | Não, se aceita |
-| 009 | D — requer decisão do CEO | Escopo concluído | Públicos, canais, campanhas, orçamento, responsáveis e métricas | Não | Decisão antes da aprovação | CEO | Responder perguntas | Sim |
-| 010 | C — requer correção documental | Sobreposição corrigida pela task 016 | Aprovação humana pendente | Não | Revisar correção | CEO | Validar paths | Não |
-| 011 | D — requer decisão do CEO | Escopo concluído | Stack, custos, planos, titularidade, pagamentos e responsáveis | Não | Decisão antes da aprovação | CEO | Responder perguntas | Sim |
-| 012 | D — requer decisão do CEO | Escopo concluído | Contatos, domínio, serviços, benefícios e posicionamento externo | Não | Decisão antes da aprovação | CEO | Responder perguntas | Sim |
-| 013 | E — requer validação especializada | Escopo concluído | Preço, escopo, aceite, obrigações, dados e texto jurídico | Jurídico, Comercial e LGPD/Segurança | Encaminhar para parecer | Especialistas e CEO | Registrar pareceres | Sim |
-| 014 | B — pronta com ressalva | Escopo concluído | Limitação visual documentada e mitigada | Não | Aprovação com ressalva | CEO | Preservar contexto fictício | Não, se aceita |
-| 015 | B — pronta com ressalva | Escopo concluído | Limitação de contexto documentada e mitigada | Não | Aprovação com ressalva | CEO | Preservar classificação | Não, se aceita |
+O documento registra o estado final administrativo dessa fase. Ele não transforma minutas jurídicas ou de LGPD em políticas vigentes e não comprova implantação operacional.
 
-## Lote potencial de aprovação com ressalvas
+## Estado consolidado
 
-- task-2026-001
-- task-2026-007
-- task-2026-008
-- task-2026-014
-- task-2026-015
+| Task | Estado final | Decisão ou condição preservada |
+| --- | --- | --- |
+| 001 | `done` / `approved` | Manual da marca aprovado com ressalvas sobre contatos, operação e uso externo. |
+| 002 | `done` / `approved` | Catálogo e serviços aprovados após decisões executivas; ferramentas preferenciais não são exclusivas. |
+| 003 | `done` / `approved` | Estratégia aprovada com horizonte, prioridades, indicadores e responsabilidades executivas. |
+| 004 | `done` / `approved` | Correções documentais e referências validadas. |
+| 005 | `review` | Requer validação especializada de Jurídico, LGPD/DPO e Segurança antes de vigência ou publicação. |
+| 006 | `review` | Requer revisão jurídica antes de uso, assinatura ou adoção como instrumento vigente. |
+| 007 | `done` / `approved` | Modelos comerciais aprovados com ressalvas; não criam CRM, pipeline, preço ou operação ativa. |
+| 008 | `done` / `approved` | Conteúdo e marketing aprovados com ressalvas; orientações não comprovam campanha ou resultado. |
+| 009 | `done` / `approved` | Plano de marketing aprovado após decisões executivas sobre público, canais, frequência e métricas. |
+| 010 | `done` / `approved` | Operação aprovada com ressalvas; modelos não comprovam processo implantado. |
+| 011 | `done` / `approved` | Infraestrutura aprovada após decisões executivas; inventário operacional permanece pendente. |
+| 012 | `done` / `approved` | Apresentação institucional aprovada com limites sobre contatos, domínio e alegações externas. |
+| 013 | `done` / `approved` | Template comercial aprovado como modelo interno oficial com ressalvas e revisão humana obrigatória. |
+| 014 | `done` / `approved` | Template de case study aprovado com preservação de contexto fictício e evidências. |
+| 015 | `done` / `approved` | Relatório de cliente aprovado como modelo, sem cliente ou resultado real presumido. |
 
-Nenhuma aprovação foi executada.
+## Pendências remanescentes
 
-## Correções documentais concluídas
+### Task 005 — LGPD e Segurança
 
-- task-2026-004: referências de navegação corrigidas no índice.
-- task-2026-010: sobreposição entre ead_only_paths e orbidden_paths corrigida.
+Permanece em `review`. As minutas e controles não comprovam conformidade, implantação, DPO nomeado, canal ativo, prazos aprovados ou validade jurídica. Exige parecer especializado e decisão humana própria.
 
-Correção documental concluída. Aprovação humana ainda pendente.
+### Task 006 — Jurídico e Contratos
 
-## Decisões do CEO
+Permanece em `review`. As minutas não estão autorizadas para assinatura ou uso externo sem revisão jurídica, preenchimento dos campos e adequação ao caso concreto.
 
-### Task 002 — Serviços
-- Confirmar Nuvemshop e n8n como ferramentas oficiais da oferta.
-- Confirmar serviços ativos, limites e responsáveis.
+## Histórico de decisões relacionadas
 
-### Task 003 — Estratégia
-- Confirmar público prioritário, posicionamento, prioridades, responsáveis, orçamento, indicadores e horizonte.
+- lote 1 aprovado e encerrado pelas tasks `017`;
+- lote 2 e correções documentais aprovados e encerrados pela task `018`;
+- decisões executivas aplicadas e encerradas pela task `019`;
+- proposta comercial aprovada com ressalvas pela task `013`;
+- a task `016` encerra somente a consolidação administrativa do backlog.
 
-### Task 009 — Plano de Marketing
-- Confirmar públicos, canais, campanhas, orçamento, frequência, responsáveis, métricas e aprovações.
+## Limites
 
-### Task 011 — Assinaturas e infraestrutura
-- Confirmar ferramentas, planos, custos, titularidade, pagamentos, responsáveis, renovação e cancelamento.
-
-### Task 012 — Apresentação Institucional
-- Confirmar contatos, domínio, serviços, benefícios, posicionamento, linguagem externa e autorização comercial.
-
-## Validações especializadas
-
-- task-2026-005: Jurídico, DPO/LGPD e Segurança.
-- task-2026-006: Jurídico.
-- task-2026-013: Jurídico, Comercial e LGPD/Segurança quando aplicável.
-
-## Regra
-
-Mover uma task para pproved exige decisão humana explícita e registro próprio.
+- `done` e `approved` representam aprovação documental dentro da governança do Monvi Brain;
+- não representam implantação, contratação, publicação externa, conformidade legal, resultado, preço, SLA ou operação ativa;
+- as tasks `005` e `006` permanecem bloqueadas por validação especializada;
+- este relatório não substitui parecer jurídico, de LGPD ou de segurança.
