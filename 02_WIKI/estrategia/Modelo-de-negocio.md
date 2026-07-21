@@ -6,7 +6,7 @@ status: review
 owner: unassigned
 confidentiality: internal
 created_at: "2026-07-16"
-updated_at: "2026-07-16"
+updated_at: "2026-07-21"
 reviewed_at: null
 review_cycle: quarterly
 sources:
@@ -64,3 +64,11 @@ Não há preço, margem, orçamento, CAC, MRR, meta de receita, taxa de convers�
 | Parceiros | Freelancers, Vercel, Cloudflare, Nuvemshop e n8n | Decisão pendente |
 | Custos | Assinaturas, infraestrutura e freelancers | Decisão pendente |
 | Receita | Projetos e recorrência de suporte | Hipótese estratégica / decisão pendente |
+
+## Decisão executiva do CEO — 2026-07-21
+
+A direção aprovada prioriza projetos de implementação e aumento gradual de receita recorrente por manutenção, suporte, automações e evoluções contínuas.
+
+O orçamento estratégico será definido trimestralmente com base em caixa, prioridade e retorno esperado. Nenhum investimento recorrente deve ser aprovado sem responsável, objetivo, custo e critério de continuidade.
+
+**Responsabilidades provisórias:** Victor conduz direção estratégica, comercial e posicionamento; Filipe conduz direção técnica e operação; investimentos e revisão trimestral são compartilhados. A divisão depende de alinhamento entre os sócios e não comprova estrutura operacional implantada.

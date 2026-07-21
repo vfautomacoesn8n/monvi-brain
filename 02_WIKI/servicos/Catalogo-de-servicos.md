@@ -6,7 +6,7 @@ status: review
 owner: unassigned
 confidentiality: internal
 created_at: "2026-07-16"
-updated_at: "2026-07-16"
+updated_at: "2026-07-21"
 reviewed_at: null
 review_cycle: on-change
 sources:
@@ -68,3 +68,22 @@ O catálogo apresenta cinco frentes: Sites, E-commerce, Inteligência Artificial
 - Definir cobertura, limites, canais de suporte, disponibilidade e SLA em documentação comercial e contratual separada.
 - Submeter uso de dados de clientes, acessos, modelos e integrações de IA à avaliação posterior de Segurança e LGPD.
 - Confirmar `monvi.com` e `contato@monvi.com`, exibidos no documento, como canais operacionais.
+
+## Decisão executiva do CEO — 2026-07-21
+
+**Posição institucional aprovada:** a Monvi mantém oferta ativa de landing pages, sites institucionais, sites por código, e-commerce em Nuvemshop, assistentes de IA, agentes de IA, automações com n8n, integrações via API e webhook e manutenção recorrente.
+
+Nuvemshop e n8n são ferramentas preferenciais, mas não exclusivas. A escolha final depende do diagnóstico, escopo, viabilidade técnica e contexto comercial.
+
+### Limites aprovados
+
+- não há promessa de resultado comercial garantido;
+- prazos começam após o recebimento dos acessos, conteúdos e aprovações obrigatórios;
+- integrações dependem das APIs, permissões, limites e estabilidade de terceiros;
+- ferramentas, consumo de APIs e serviços de terceiros podem ser cobrados separadamente;
+- mudanças fora do escopo exigem avaliação e orçamento adicional;
+- decisões críticas apoiadas por IA exigem supervisão humana;
+- soluções críticas de IA, automação e integração exigem monitoramento e manutenção;
+- manutenção é limitada ao SLA efetivamente contratado.
+
+A aprovação da oferta não comprova disponibilidade imediata, contratação, implantação ou capacidade ilimitada.

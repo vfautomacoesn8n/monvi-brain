@@ -6,7 +6,7 @@ status: review
 owner: unassigned
 confidentiality: internal
 created_at: "2026-07-15"
-updated_at: "2026-07-16"
+updated_at: "2026-07-21"
 reviewed_at: null
 review_cycle: quarterly
 sources:
@@ -60,3 +60,11 @@ Entregáveis não substituem o SOW de cada projeto. Não foram inferidos preço,
 ## Pendências de validação
 
 Confirmar escopo operacional de plataforma, suporte inicial e configuração de domínio antes de qualquer proposta comercial.
+
+## Decisão executiva do CEO — 2026-07-21
+
+Landing pages, sites institucionais e sites desenvolvidos por código integram a oferta ativa da Monvi.
+
+O prazo contratual começa somente após o recebimento das entradas obrigatórias, incluindo briefing, conteúdo, acessos e aprovações. Entregas, integrações, domínio, publicação e suporte continuam condicionados ao escopo formal de cada projeto. Não há promessa de resultado comercial garantido.
+
+**Responsabilidade provisória:** Filipe responde pela frente técnica de sites; Victor responde por estratégia, diagnóstico, atendimento e aprovação final de proposta. Essa divisão depende de alinhamento entre os sócios antes de se tornar regra operacional definitiva.

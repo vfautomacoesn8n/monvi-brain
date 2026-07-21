@@ -9,7 +9,7 @@ confidentiality: confidential
 active_client: null
 requires_review: true
 created_at: "2026-07-20"
-updated_at: "2026-07-20"
+updated_at: "2026-07-21"
 reviewed_at: null
 review_cycle: on-change
 sources:
@@ -71,3 +71,13 @@ Há dependências não confirmadas de escopo, dados, acessos, clientes, contrato
 ## Proveniência
 
 Fonte: `01_RAW/monvi/09_Assinaturas_e_Infraestrutura_Monvi.pdf`, páginas 5, 7 e 8, com conferência visual das tabelas e notas.
+
+## Decisão executiva do CEO — 2026-07-21
+
+Vercel e Cloudflare são ferramentas preferenciais para publicação, DNS, segurança e performance; GitHub integra a stack oficial de código e versionamento. Outras soluções podem ser adotadas quando houver justificativa.
+
+Contas críticas devem usar e-mail corporativo da Monvi e dois administradores quando possível.
+
+**Responsabilidade provisória:** Filipe responde por infraestrutura, DNS, código, deploy e segurança técnica. Victor e Filipe compartilham decisões sobre IA, automações e contratações recorrentes. A divisão depende de alinhamento entre os sócios.
+
+A decisão não comprova domínio, ambiente, conta, deploy, backup, monitoramento ou infraestrutura implantada.

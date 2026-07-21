@@ -6,7 +6,7 @@ status: review
 owner: unassigned
 confidentiality: internal
 created_at: "2026-07-15"
-updated_at: "2026-07-16"
+updated_at: "2026-07-21"
 reviewed_at: null
 review_cycle: quarterly
 sources:
@@ -60,3 +60,11 @@ Entregáveis não substituem o SOW de cada projeto. Não foram inferidos preço,
 ## Pendências de validação
 
 Confirmar, para cada projeto, a adequação de n8n, integrações disponíveis, acessos e limites operacionais antes de desenhar ou executar qualquer fluxo.
+
+## Decisão executiva do CEO — 2026-07-21
+
+Automações com n8n integram a oferta ativa da Monvi. Integrações via API e webhook integram a oferta **com limitações**.
+
+n8n é ferramenta preferencial, mas não exclusiva. A execução depende de APIs disponíveis, documentação, permissões, autenticação, limites de uso, estabilidade de terceiros, ambiente de testes e critérios de aceite. Soluções críticas exigem monitoramento, manutenção e tratamento de falhas.
+
+**Responsabilidade provisória:** Filipe responde pela execução técnica; Victor e Filipe compartilham decisões de IA, arquitetura e novas contratações recorrentes. A divisão depende de alinhamento entre os sócios.

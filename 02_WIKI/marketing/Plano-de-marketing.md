@@ -7,7 +7,7 @@ owner: unassigned
 reviewer: ceo-monvi
 confidentiality: internal
 created_at: "2026-07-20"
-updated_at: "2026-07-20"
+updated_at: "2026-07-21"
 reviewed_at: null
 review_cycle: on-change
 sources: ["../../01_RAW/monvi/12_Plano_de_Marketing_Monvi.pdf", "task-2026-009"]
@@ -60,3 +60,29 @@ Decisões pendentes: validar públicos, oferta, canais, prioridades, campanhas, 
 ## Proveniência
 
 Fonte: `01_RAW/monvi/12_Plano_de_Marketing_Monvi.pdf`, pp. 1–9; páginas 3–9 verificadas visualmente em auxiliares temporários não canônicos.
+
+## Decisão executiva do CEO — 2026-07-21
+
+### Direção aprovada
+
+O público prioritário de marketing são PMEs de serviços, comércio e e-commerce com operação ativa e problemas de organização digital.
+
+Canais prioritários: Instagram, LinkedIn, site da Monvi, WhatsApp e e-mail.
+
+Campanhas iniciais:
+
+- diagnóstico digital;
+- site que organiza e vende;
+- menos tarefa manual.
+
+Frequência inicial:
+
+- Instagram: três publicações por semana;
+- LinkedIn: duas publicações por semana;
+- conteúdos aprofundados: dois por mês;
+- e-mail: um ou dois por mês;
+- stories conforme bastidores e projetos.
+
+Não há orçamento nominal aprovado. A sequência é conteúdo orgânico, prospecção e indicação, seguida de testes pequenos de mídia. O investimento só deve escalar após validação de oferta, página, rastreamento e follow-up.
+
+Canais, frequência e campanhas devem ser revisados com dados reais. A aprovação do plano não comprova campanha ativa, orçamento executado ou resultado.

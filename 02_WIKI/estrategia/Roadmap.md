@@ -6,7 +6,7 @@ status: review
 owner: unassigned
 confidentiality: internal
 created_at: "2026-07-16"
-updated_at: "2026-07-16"
+updated_at: "2026-07-21"
 reviewed_at: null
 review_cycle: quarterly
 sources:
@@ -60,3 +60,18 @@ Não há responsáveis aprovados, orçamento, métricas numéricas, datas fixas,
 | 0–3 meses | Formalizar contratos, escopos e checklists; organizar portfólio; publicar site e canais; definir ICP/nichos | Recomendação / decisão pendente |
 | 3–9 meses | Criar templates n8n; lançar recorrência; estruturar funil e métricas; desenvolver parceiros freelancers | Recomendação / decisão pendente |
 | 9–18 meses | Consolidar previsibilidade de recorrência; expandir agentes de IA; avaliar equipe fixa; revisar marca e posicionamento | Hipótese estratégica / decisão pendente |
+
+## Decisão executiva do CEO — 2026-07-21
+
+O horizonte estratégico aprovado é de 12 meses, com revisão trimestral e planejamento operacional mensal.
+
+A ordem de prioridade aprovada é:
+
+1. oferta e processo comercial;
+2. padronização de entrega e gestão de projetos;
+3. receita recorrente;
+4. automação e IA;
+5. cases reais;
+6. previsibilidade financeira.
+
+Esta ordem substitui a interpretação dos horizontes documentais como autorização automática. Datas, responsáveis detalhados, capacidade e orçamento de cada iniciativa devem ser definidos nos respectivos planos de execução.

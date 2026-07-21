@@ -6,7 +6,7 @@ status: review
 owner: unassigned
 confidentiality: internal
 created_at: "2026-07-15"
-updated_at: "2026-07-16"
+updated_at: "2026-07-21"
 reviewed_at: null
 review_cycle: quarterly
 sources:
@@ -60,3 +60,11 @@ Entregáveis não substituem o SOW de cada projeto. Não foram inferidos preço,
 ## Pendências de validação
 
 Confirmar, para cada projeto, a adequação de Nuvemshop, os limites de configuração e o escopo de automações antes de comunicação comercial.
+
+## Decisão executiva do CEO — 2026-07-21
+
+E-commerce em Nuvemshop integra a oferta ativa da Monvi. Nuvemshop é plataforma preferencial, mas não exclusiva; sua adoção depende do diagnóstico, do catálogo, das integrações e da viabilidade de cada projeto.
+
+Custos de plataforma, aplicativos, meios de pagamento, frete e terceiros podem ser cobrados separadamente. Alterações fora do escopo exigem avaliação e orçamento adicional. A oferta ativa não comprova loja implantada, conta existente ou resultado comercial.
+
+**Responsabilidade provisória:** Filipe responde pela execução técnica de e-commerce; Victor responde por estratégia, atendimento e aprovação final de proposta. A atribuição depende de alinhamento entre os sócios.

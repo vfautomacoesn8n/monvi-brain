@@ -6,7 +6,7 @@ status: review
 owner: unassigned
 confidentiality: internal
 created_at: "2026-07-16"
-updated_at: "2026-07-16"
+updated_at: "2026-07-21"
 reviewed_at: null
 review_cycle: quarterly
 sources:
@@ -65,3 +65,24 @@ O documento usa a formulação “Menos tarefa manual. Mais resultado.” (pági
 - [Modelo de negócio](Modelo-de-negocio.md)
 - [Roadmap](Roadmap.md)
 - [Riscos estratégicos](Riscos-estrategicos.md)
+
+## Decisão executiva do CEO — 2026-07-21
+
+### Público prioritário
+
+Pequenas e médias empresas de serviços, comércio e e-commerce com operação ativa, desorganização digital, tarefas manuais ou baixa integração.
+
+### Posicionamento atual
+
+> A Monvi organiza a operação digital de empresas para vender melhor, reduzir tarefas manuais e crescer com mais estrutura.
+
+### Prioridades para o horizonte de 12 meses
+
+1. fortalecer oferta e processo comercial;
+2. padronizar entrega e gestão de projetos;
+3. aumentar receita recorrente;
+4. desenvolver automação e IA;
+5. construir cases reais;
+6. melhorar previsibilidade financeira.
+
+A revisão estratégica será trimestral e o planejamento operacional, mensal. O público prioritário deve ser refinado com dados comerciais reais. Esta decisão orienta o planejamento, mas não comprova demanda, capacidade, orçamento ou execução.

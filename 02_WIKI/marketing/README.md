@@ -6,7 +6,7 @@ status: review
 owner: unassigned
 confidentiality: internal
 created_at: "2026-07-15"
-updated_at: "2026-07-20"
+updated_at: "2026-07-21"
 reviewed_at: null
 review_cycle: quarterly
 sources:
@@ -63,3 +63,11 @@ As páginas distinguem fatos documentais, posicionamento, regras e exemplos. Nen
 Calendário, frequências, canais, pautas, CTAs, métricas e produção são modelos em revisão. A operação real fica fora da Wiki; não há campanha ativa, publicação, responsável, automação ou métrica real confirmada.
 
 - [Case study](Case-study.md)
+
+## Decisão executiva do CEO — 2026-07-21
+
+A direção de marketing aprovada prioriza Instagram, LinkedIn, site, WhatsApp e e-mail, com campanhas de diagnóstico digital, sites orientados à organização e venda, e redução de tarefas manuais.
+
+Conteúdo institucional exige aprovação de Victor; conteúdo técnico sensível exige validação de Filipe; cases e dados de clientes exigem autorização formal do cliente; investimento em mídia exige decisão conjunta.
+
+A aprovação define direção e governança, não comprova calendário executado, publicação, campanha ou resultado.

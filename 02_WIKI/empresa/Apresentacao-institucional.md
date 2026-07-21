@@ -89,3 +89,19 @@ Os arquivos não são duplicatas binárias e não exigem sínteses separadas. O 
 ## Estado e revisão
 
 Esta página permanece em `review`. Quaisquer decisões sobre publicação, contato, oferta, prova, processo, tecnologia ou comunicação exigem confirmação humana e as páginas especializadas vinculadas.
+
+## Decisão executiva do CEO — 2026-07-21
+
+### Base institucional aprovada
+
+**Posicionamento:** a Monvi ajuda empresas a vender melhor, organizar processos e reduzir tarefas manuais com sites, e-commerce, inteligência artificial, automações e manutenção contínua.
+
+**Assinatura:** “Menos tarefa manual. Mais resultado.”
+
+**Público:** PMEs de serviços, comércio e e-commerce com operação ativa e necessidade de organização digital.
+
+**Benefícios comunicáveis:** clareza operacional, redução de tarefas repetitivas, melhor experiência, processos conectados, presença digital profissional e estrutura para crescimento.
+
+**Diferenciais comunicáveis:** visão de negócio e tecnologia, soluções ligadas à operação real, continuidade, clareza de processo, uso responsável de IA e flexibilidade tecnológica.
+
+Contatos e domínio permanecem pendentes de validação. O uso externo da apresentação depende de revisão final de contatos, domínio, serviços e conteúdo visual. Benefícios e diferenciais não constituem resultados garantidos.

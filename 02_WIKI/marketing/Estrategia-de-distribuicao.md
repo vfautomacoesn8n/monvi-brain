@@ -7,7 +7,7 @@ owner: unassigned
 reviewer: ceo-monvi
 confidentiality: internal
 created_at: "2026-07-20"
-updated_at: "2026-07-20"
+updated_at: "2026-07-21"
 reviewed_at: null
 review_cycle: on-change
 sources: ["../../01_RAW/monvi/12_Plano_de_Marketing_Monvi.pdf", "task-2026-009"]
@@ -55,3 +55,16 @@ O modelo **Alcance → Engajamento → Consideração → Conversão → Handoff
 ## Proveniência
 
 Fonte: PDF Plano de Marketing, pp. 5–8, verificadas visualmente.
+
+## Decisão executiva do CEO — 2026-07-21
+
+Os canais prioritários são Instagram, LinkedIn, site da Monvi, WhatsApp e e-mail.
+
+A ordem inicial de investimento é:
+
+1. conteúdo orgânico;
+2. prospecção e indicação;
+3. testes pequenos de mídia;
+4. escala somente após validação de oferta, página, rastreamento e follow-up.
+
+Campanhas aprovadas para estruturação: diagnóstico digital, site que organiza e vende e menos tarefa manual. Nenhuma delas é considerada ativa apenas por esta decisão.

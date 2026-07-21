@@ -9,7 +9,7 @@ confidentiality: confidential
 active_client: null
 requires_review: true
 created_at: "2026-07-20"
-updated_at: "2026-07-20"
+updated_at: "2026-07-21"
 reviewed_at: null
 review_cycle: on-change
 sources:
@@ -73,3 +73,17 @@ Há risco de tratar linguagem institucional da fonte como fato operacional. Exig
 ## Proveniência
 
 Fonte: `01_RAW/monvi/09_Assinaturas_e_Infraestrutura_Monvi.pdf`, página 2, verificada visualmente na renderização temporária correspondente. A classificação é `confidential`; esta página permanece em `review`.
+
+## Decisão executiva do CEO — 2026-07-21
+
+### Stack institucional aprovada
+
+**Oficial:** Google Workspace, Google Drive, Figma, GitHub e Google Analytics.
+
+**Preferencial:** Vercel, Cloudflare, Nuvemshop, n8n e OpenAI API.
+
+**Alternativas permitidas:** Make, outros provedores de IA, publicação, e-commerce ou ferramentas justificadas por contexto técnico, operacional ou comercial.
+
+A classificação como oficial ou preferencial não comprova contratação, conta ativa, plano, custo ou implantação.
+
+Contas críticas devem usar e-mail corporativo da Monvi e possuir dois administradores quando a plataforma permitir.

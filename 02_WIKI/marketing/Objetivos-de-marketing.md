@@ -7,7 +7,7 @@ owner: unassigned
 reviewer: ceo-monvi
 confidentiality: internal
 created_at: "2026-07-20"
-updated_at: "2026-07-20"
+updated_at: "2026-07-21"
 reviewed_at: null
 review_cycle: on-change
 sources: ["../../01_RAW/monvi/12_Plano_de_Marketing_Monvi.pdf", "task-2026-009"]
@@ -54,3 +54,11 @@ Definir indicadores, metas, baseline, fonte de dados, responsáveis, ferramentas
 ## Proveniência
 
 Fonte: PDF Plano de Marketing, p. 3, verificada visualmente.
+
+## Decisão executiva do CEO — 2026-07-21
+
+O marketing deve gerar confiança, explicar a oferta, demonstrar capacidade e alimentar o processo comercial.
+
+O público prioritário são PMEs de serviços, comércio e e-commerce com operação ativa e problemas de organização digital. A validação deve ocorrer com dados reais de leads qualificados, diagnósticos, propostas, fechamento e receita por canal.
+
+A direção está aprovada; metas numéricas, baseline e resultado permanecem pendentes de medição.

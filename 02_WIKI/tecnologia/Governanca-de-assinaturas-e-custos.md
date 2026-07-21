@@ -9,7 +9,7 @@ confidentiality: confidential
 active_client: null
 requires_review: true
 created_at: "2026-07-20"
-updated_at: "2026-07-20"
+updated_at: "2026-07-21"
 reviewed_at: null
 review_cycle: on-change
 sources:
@@ -66,3 +66,24 @@ Definir stack aprovado, ferramentas ativas, titularidade, responsável por pagam
 ## Proveniência
 
 Fonte: `01_RAW/monvi/09_Assinaturas_e_Infraestrutura_Monvi.pdf`, página 10, com tabela e campos vazios verificados visualmente.
+
+## Decisão executiva do CEO — 2026-07-21
+
+Toda assinatura deve registrar, quando existir:
+
+- ferramenta;
+- plano;
+- valor;
+- finalidade;
+- titular;
+- responsável;
+- renovação;
+- forma de pagamento;
+- cliente relacionado, quando aplicável;
+- critério de continuidade.
+
+A renovação exige uso, responsável, custo justificado, controle de acesso e ausência de alternativa melhor. O cancelamento deve ocorrer em caso de desuso, duplicidade, custo injustificado, risco, falta de responsável ou substituição.
+
+Victor responde provisoriamente pelo controle financeiro, assinaturas e ferramentas comerciais e de marketing. Novas contratações recorrentes exigem decisão conjunta de Victor e Filipe.
+
+Nenhum valor, plano, conta, pagamento ou assinatura ativa é confirmado por esta decisão.

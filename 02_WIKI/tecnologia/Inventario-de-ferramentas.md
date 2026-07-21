@@ -9,7 +9,7 @@ confidentiality: confidential
 active_client: null
 requires_review: true
 created_at: "2026-07-20"
-updated_at: "2026-07-20"
+updated_at: "2026-07-21"
 reviewed_at: null
 review_cycle: on-change
 sources:
@@ -68,3 +68,15 @@ A fonte recomenda não inserir dados sensíveis sem base e proteção adequadas,
 ## Proveniência
 
 Fonte: `01_RAW/monvi/09_Assinaturas_e_Infraestrutura_Monvi.pdf`, páginas 3–9, conferidas visualmente. Esta síntese não transforma a lista em inventário operacional.
+
+## Decisão executiva do CEO — 2026-07-21
+
+A governança institucional passa a distinguir três categorias:
+
+| Categoria | Ferramentas |
+| --- | --- |
+| Oficial | Google Workspace, Google Drive, Figma, GitHub, Google Analytics |
+| Preferencial | Vercel, Cloudflare, Nuvemshop, n8n, OpenAI API |
+| Alternativa permitida | Make e outras soluções justificadas |
+
+Esta tabela registra decisão de stack, não inventário operacional. Planos, valores, contas, licenças, titularidade real, meios de pagamento e estado de implantação continuam pendentes de levantamento.

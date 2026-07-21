@@ -7,7 +7,7 @@ owner: unassigned
 reviewer: ceo-monvi
 confidentiality: internal
 created_at: "2026-07-20"
-updated_at: "2026-07-20"
+updated_at: "2026-07-21"
 reviewed_at: null
 review_cycle: on-change
 sources: ["../../01_RAW/monvi/12_Plano_de_Marketing_Monvi.pdf", "task-2026-009"]
@@ -54,3 +54,20 @@ Consulte [[Metricas-de-conteudo]] e [[Metricas-comerciais]].
 ## Proveniência
 
 Fonte: PDF Plano de Marketing, pp. 3, 7 e 9, verificadas visualmente.
+
+## Decisão executiva do CEO — 2026-07-21
+
+Indicadores prioritários:
+
+- leads qualificados;
+- diagnósticos agendados;
+- propostas geradas;
+- taxa de fechamento;
+- custo por lead;
+- custo por oportunidade;
+- receita originada por canal;
+- conteúdos que geraram conversa comercial.
+
+Victor responde provisoriamente por estratégia, aprovação institucional, calendário, publicação e follow-up. Filipe responde provisoriamente por validação técnica, conteúdo técnico, integrações e rastreamento. Investimento em mídia exige decisão conjunta.
+
+Os indicadores ainda não possuem baseline, fórmula operacional, fonte confirmada ou resultado medido.

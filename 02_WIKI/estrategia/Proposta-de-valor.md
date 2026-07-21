@@ -6,7 +6,7 @@ status: review
 owner: unassigned
 confidentiality: internal
 created_at: "2026-07-16"
-updated_at: "2026-07-16"
+updated_at: "2026-07-21"
 reviewed_at: null
 review_cycle: quarterly
 sources:
@@ -50,3 +50,11 @@ Não há preço, SLA, volume, garantia, disponibilidade, métrica de conversão 
 ## Exemplo de comunicação
 
 “Um site que trabalha por você. Automação que devolve tempo.” é uma frase de aplicação institucional da página 7; não é uma garantia de resultado.
+
+## Decisão executiva do CEO — 2026-07-21
+
+A proposta de valor atual conecta sites, e-commerce, inteligência artificial, automações e manutenção à organização da operação digital do cliente.
+
+> A Monvi organiza a operação digital de empresas para vender melhor, reduzir tarefas manuais e crescer com mais estrutura.
+
+Benefícios comunicados devem permanecer como objetivos e possibilidades condicionadas ao diagnóstico, ao escopo e à execução. Não podem ser apresentados como resultados garantidos.

@@ -9,7 +9,7 @@ confidentiality: confidential
 active_client: null
 requires_review: true
 created_at: "2026-07-20"
-updated_at: "2026-07-20"
+updated_at: "2026-07-21"
 reviewed_at: null
 review_cycle: on-change
 sources:
@@ -39,3 +39,9 @@ Esta área documenta modelos, referências e decisões pendentes de tecnologia. 
 ## Proveniência
 
 Fonte em revisão: `01_RAW/monvi/09_Assinaturas_e_Infraestrutura_Monvi.pdf`. Ingestão: `task-2026-011`.
+
+## Decisão executiva do CEO — 2026-07-21
+
+A stack institucional aprovada distingue ferramentas oficiais, preferenciais e alternativas justificadas. A governança exige titularidade institucional, controle de acesso, registro de custos e revisão de continuidade.
+
+A aprovação da stack não equivale a inventário operacional nem comprova adoção. Valores, planos, contas, meios de pagamento e assinaturas ativas devem ser levantados separadamente.

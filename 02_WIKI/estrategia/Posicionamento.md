@@ -6,7 +6,7 @@ status: review
 owner: unassigned
 confidentiality: internal
 created_at: "2026-07-15"
-updated_at: "2026-07-16"
+updated_at: "2026-07-21"
 reviewed_at: null
 review_cycle: quarterly
 sources:
@@ -63,3 +63,13 @@ Esta página permanece em `review`. Não foram inferidos preços, resultados, di
 ## Governança de publicação
 
 A classificação internal desta página só pode ser alterada por um workflow futuro de publicação, com revisão humana registrada.
+
+## Decisão executiva do CEO — 2026-07-21
+
+**Posicionamento institucional aprovado:**
+
+> A Monvi organiza a operação digital de empresas para vender melhor, reduzir tarefas manuais e crescer com mais estrutura.
+
+O público prioritário é formado por pequenas e médias empresas de serviços, comércio e e-commerce com operação ativa e problemas de organização digital. Esse direcionamento deve ser refinado com dados reais de propostas, fechamentos, ticket e margem.
+
+A formulação expressa posicionamento e intenção; não constitui promessa ou comprovação de resultado.

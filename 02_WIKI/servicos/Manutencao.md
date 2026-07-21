@@ -6,7 +6,7 @@ status: review
 owner: unassigned
 confidentiality: internal
 created_at: "2026-07-15"
-updated_at: "2026-07-16"
+updated_at: "2026-07-21"
 reviewed_at: null
 review_cycle: quarterly
 sources:
@@ -60,3 +60,9 @@ Não foi registrado SLA como compromisso da Monvi. Não foram inferidos preço, 
 ## Pendências de validação
 
 Definir comercialmente escopo, plano, canal, SLA, cobertura, monitoramento e responsabilidades antes de qualquer contratação.
+
+## Decisão executiva do CEO — 2026-07-21
+
+Manutenção recorrente integra a oferta ativa da Monvi. Cobertura, canais, disponibilidade, prazos de resposta, pequenas evoluções, monitoramento e responsabilidades são limitados ao plano e ao SLA efetivamente contratados.
+
+A aprovação do serviço não cria SLA padrão, disponibilidade garantida, cobertura ilimitada ou obrigação sobre itens fora do escopo. Soluções críticas de IA, automação e integração devem prever monitoramento e manutenção compatíveis com o risco.

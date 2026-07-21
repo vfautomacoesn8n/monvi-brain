@@ -211,3 +211,15 @@ Contatos e domínio permanecem pendentes de validação. Uso externo somente ap�
 ## Próxima execução e controles
 
 Aplicar somente nos caminhos permitidos, produzir relatório de aplicação e acrescentar o evento de mudanças. A movimentação das cinco tasks de origem para done depende de revisão humana do diff; esta task não autoriza staging, commit, push nem alterações fora do escopo.
+
+## Execução documental — 2026-07-21
+
+As decisões executivas foram aplicadas aos documentos permitidos de serviços, estratégia, marketing, tecnologia e apresentação institucional.
+
+Relatório: `00_SYSTEM/audits/Aprovacao-decisoes-executivas-tasks-002-003-009-011-012.md`.
+
+As tasks 002, 003, 009, 011 e 012 permanecem em `review`. A task 019 também permanece em `review`, com `requires_review: true`.
+
+Nenhuma task foi movida para `done`. O lote depende de revisão humana do diff e de aprovação explícita antes de staging, commit ou encerramento.
+
+A execução não presume implantação operacional, contratação de ferramentas, contas ativas, custos reais, domínio validado, contatos oficiais, métricas medidas ou aceitação definitiva das responsabilidades provisórias.

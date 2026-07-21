@@ -6,7 +6,7 @@ status: review
 owner: unassigned
 confidentiality: internal
 created_at: "2026-07-15"
-updated_at: "2026-07-16"
+updated_at: "2026-07-21"
 reviewed_at: null
 review_cycle: quarterly
 sources:
@@ -60,3 +60,11 @@ Entregáveis não substituem o SOW de cada projeto. Não foram inferidos preço,
 ## Pendências de validação
 
 Revisar com responsáveis humanos o uso de dados de clientes, canais, segurança, LGPD, modelos e integrações antes de execução comercial ou operacional.
+
+## Decisão executiva do CEO — 2026-07-21
+
+Assistentes e agentes de IA integram a oferta ativa da Monvi **com limitações**. Cada solução depende de caso de uso, qualidade da base de conhecimento, acessos, integrações, custos de API, testes, tratamento de falhas e critérios de supervisão.
+
+Decisões críticas não podem ser delegadas integralmente à IA e exigem supervisão humana. Soluções críticas exigem monitoramento e manutenção. A aprovação da oferta não comprova agente implantado, autonomia irrestrita, precisão garantida ou conformidade automática.
+
+**Responsabilidade provisória:** Victor e Filipe compartilham esta frente, combinando definição de negócio, riscos, arquitetura, implementação e testes. A divisão final depende de alinhamento entre os sócios.
