@@ -211,3 +211,16 @@ Ao marcar como ganho, registrar:
 - task em `review`;
 - `changes.jsonl` válido;
 - nenhum caminho protegido alterado.
+
+## Execução inicial
+
+- data: 2026-07-21;
+- sistema criado: `03_OPERATIONS/commercial/Sistema-comercial-minimo-Monvi.md`;
+- template de qualificação criado: `03_OPERATIONS/templates/Qualificacao-de-lead-Monvi.md`;
+- template de pipeline criado: `03_OPERATIONS/templates/Pipeline-comercial-Monvi.md`;
+- todos os materiais permanecem em `review`;
+- task mantida em `review`;
+- nenhum CRM pago foi presumido;
+- nenhuma automação foi criada;
+- nenhuma promessa de resultado foi adicionada;
+- próxima decisão humana: revisar pipeline, limite de tentativas, qualificação e handoff.
