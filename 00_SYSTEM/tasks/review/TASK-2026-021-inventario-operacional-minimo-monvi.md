@@ -214,3 +214,15 @@ A criticidade deve usar:
 - adequação à LGPD;
 - auditoria técnica de segurança;
 - registro de segredos ou credenciais.
+
+## Execução inicial
+
+- data: 2026-07-21;
+- entregável criado: `00_SYSTEM/audits/Inventario-operacional-minimo-Monvi.md`;
+- status do entregável: `review`;
+- task mantida em `review`;
+- ativos conhecidos foram listados sem presumir existência, contratação ou configuração;
+- campos não comprovados foram marcados como `não confirmado` ou `declarado, sem evidência`;
+- nenhuma credencial sensível foi registrada;
+- riscos imediatos e ordem de verificação foram documentados;
+- próxima decisão humana: revisar a matriz e confirmar os primeiros ativos críticos.
