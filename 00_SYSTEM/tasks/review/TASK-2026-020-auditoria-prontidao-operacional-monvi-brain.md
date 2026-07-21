@@ -104,3 +104,17 @@ Esta task é de diagnóstico. Não autoriza:
 - criar contas, contratar ferramentas ou publicar canais;
 - declarar operação, conformidade, resultados ou controles implantados;
 - atribuir responsabilidades definitivas sem decisão humana.
+
+## Execução da auditoria — 2026-07-21
+
+O relatório `00_SYSTEM/audits/Prontidao-operacional-Monvi-Brain.md` foi criado em `review`.
+
+A auditoria concluiu que a governança documental está pronta, enquanto a prontidão operacional é parcial. As cinco prioridades propostas são:
+
+1. inventário operacional mínimo;
+2. sistema comercial mínimo;
+3. operação e entrega padrão;
+4. métricas executivas;
+5. bloqueios jurídicos, de LGPD e de segurança.
+
+A task permanece em `review`. Nenhuma Wiki, template, política, conta, ferramenta ou processo foi alterado ou declarado implantado.
