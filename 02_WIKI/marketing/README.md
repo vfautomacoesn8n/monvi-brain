@@ -61,3 +61,5 @@ Conhecimento de marketing curado a partir de fontes identificadas. Todo o conte�
 As páginas distinguem fatos documentais, posicionamento, regras e exemplos. Nenhuma peça demonstrativa foi tratada como publicação aprovada, e nenhuma alegação de benefício foi tratada como resultado comprovado.
 
 Calendário, frequências, canais, pautas, CTAs, métricas e produção são modelos em revisão. A operação real fica fora da Wiki; não há campanha ativa, publicação, responsável, automação ou métrica real confirmada.
+
+- [Case study](Case-study.md)

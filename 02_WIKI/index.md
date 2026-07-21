@@ -23,6 +23,7 @@ sources:
   - "../01_RAW/monvi/02_Apresentacao_Institucional_Monvi.pptx"
   - "../01_RAW/monvi/02_Apresentacao_Institucional_Monvi.pdf"
   - "../01_RAW/monvi/02_Proposta_Comercial_Monvi.pdf"
+  - "../01_RAW/monvi/13_Template_Case_Study_Monvi.pdf"
   - "task-2026-001"
   - "task-2026-003"
   - "task-2026-005"
@@ -33,6 +34,7 @@ sources:
   - "task-2026-011"
   - "task-2026-012"
   - "task-2026-013"
+  - "task-2026-014"
   - "../docs/superpowers/specs/2026-07-15-monvi-brain-design.md"
 related:
   - "marketing/Manual-da-marca.md"
@@ -43,6 +45,9 @@ related:
   - "tecnologia/Assinaturas-e-infraestrutura.md"
   - "empresa/Apresentacao-institucional.md"
   - "../03_OPERATIONS/templates/Proposta-comercial.md"
+  - "marketing/Case-study.md"
+  - "../03_OPERATIONS/templates/Case-study.md"
+  - "../03_OPERATIONS/templates/Checklist-evidencias-case-study.md"
   - "servicos/Catalogo-de-servicos.md"
 aliases: ["Wiki", "Índice de conhecimento"]
 tags: [wiki, index]
@@ -101,6 +106,9 @@ Este índice reúne o conhecimento inicial do bootstrap e a primeira fonte insti
 - [Assinaturas e infraestrutura](tecnologia/Assinaturas-e-infraestrutura.md)
 - [Apresentação institucional](empresa/Apresentacao-institucional.md)
 - [Template de proposta comercial](../03_OPERATIONS/templates/Proposta-comercial.md)
+- [Case study](marketing/Case-study.md)
+- [Template de case study](../03_OPERATIONS/templates/Case-study.md)
+- [Checklist de evidências para case study](../03_OPERATIONS/templates/Checklist-evidencias-case-study.md)
 
 ## Jurídico
 
