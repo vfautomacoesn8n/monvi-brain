@@ -2,18 +2,18 @@
 id: task-2026-019
 type: task
 title: "Aplicação das decisões executivas do CEO — serviços, estratégia, marketing, infraestrutura e apresentação institucional"
-status: review
-task_state: review
+status: approved
+task_state: done
 owner: codex
 agent: codex
 reviewer: ceo-monvi
 approver: ceo-monvi
 confidentiality: internal
 active_client: null
-requires_review: true
+requires_review: false
 created_at: "2026-07-21"
 updated_at: "2026-07-21"
-reviewed_at: null
+reviewed_at: "2026-07-21"
 review_cycle: on-change
 sources:
   - "task-2026-002"
@@ -231,3 +231,16 @@ Após revisão humana do diff e do commit `9f85640`, as tasks `002`, `003`, `009
 O relatório de aplicação foi aprovado. A task `019` permanece em `review`, com `task_state: review` e `requires_review: true`, até seu encerramento próprio.
 
 Pendências mantidas: validação de contatos e domínio, inventário operacional, alinhamento de responsabilidades entre os sócios, definição de métricas e baselines, validações jurídica, de LGPD e de segurança e comprovação de qualquer implantação.
+
+## Encerramento humano
+
+- decisão: aprovada;
+- aprovador: ceo-monvi;
+- data: 2026-07-21;
+- execução documental: commit `9f85640`;
+- aprovação das tasks de origem: commit `50425f4`;
+- relatório: `00_SYSTEM/audits/Aprovacao-decisoes-executivas-tasks-002-003-009-011-012.md`;
+- resultado: decisões executivas aplicadas, revisadas e aprovadas para as tasks `002`, `003`, `009`, `011` e `012`;
+- movimento final: `review` para `done`;
+- limites preservados: não há comprovação automática de implantação operacional, resultados, custos, contas, contatos, domínio, métricas medidas ou aceitação definitiva de responsabilidades provisórias;
+- pendências especializadas: jurídico, LGPD, segurança e revisão comercial específica permanecem governadas por suas próprias tasks.
