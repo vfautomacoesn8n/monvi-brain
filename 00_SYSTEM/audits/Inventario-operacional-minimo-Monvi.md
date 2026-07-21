@@ -186,3 +186,27 @@ Este documento:
 - não substitui inventário financeiro;
 - não substitui contrato, DPA ou política de acesso;
 - não autoriza compra, cancelamento ou migração.
+
+## Estado de pausa
+
+A validação factual deste inventário foi pausada porque a Monvi ainda não possui acesso, titularidade ou evidência suficiente para confirmar os ativos críticos.
+
+### Condição para retomada
+
+Retomar quando houver, no mínimo:
+
+- acesso ou evidência do domínio e DNS;
+- identificação do Google Workspace e administradores;
+- identificação da organização ou contas GitHub;
+- confirmação de Cloudflare e Vercel;
+- confirmação do ambiente n8n;
+- confirmação da organização ou projetos da OpenAI API.
+
+### Estado preservado
+
+- documento em `review`;
+- campos não comprovados mantidos como `não confirmado` ou `declarado, sem evidência`;
+- nenhuma credencial sensível registrada;
+- nenhuma conta presumida;
+- nenhuma conformidade presumida;
+- nenhuma compra, migração, configuração ou cancelamento executado.

@@ -226,3 +226,15 @@ A criticidade deve usar:
 - nenhuma credencial sensível foi registrada;
 - riscos imediatos e ordem de verificação foram documentados;
 - próxima decisão humana: revisar a matriz e confirmar os primeiros ativos críticos.
+
+## Pausa operacional
+
+- data: 2026-07-21;
+- decisão: pausar a execução sem encerrar a task;
+- motivo: a Monvi ainda não possui acesso, titularidade ou evidência suficiente sobre os ativos críticos;
+- ativos dependentes: domínio e DNS, Google Workspace, GitHub, Cloudflare, Vercel, n8n e OpenAI API;
+- status mantido: `review`;
+- task_state mantido: `review`;
+- condição de retomada: obter acesso, titularidade ou evidência mínima dos ativos críticos;
+- limite: a ausência de dados não deve ser convertida em confirmação, aprovação ou conformidade;
+- próxima frente recomendada: sistema comercial mínimo.
