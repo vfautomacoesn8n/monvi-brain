@@ -2,15 +2,15 @@
 id: output-aprovacao-decisoes-executivas-002-003-009-011-012
 type: output
 title: "Aplicação das decisões executivas — tasks 002, 003, 009, 011 e 012"
-status: review
+status: approved
 owner: codex
 reviewer: ceo-monvi
 confidentiality: internal
 active_client: null
-requires_review: true
+requires_review: false
 created_at: "2026-07-21"
 updated_at: "2026-07-21"
-reviewed_at: null
+reviewed_at: "2026-07-21"
 review_cycle: on-change
 sources:
   - "task-2026-019"
@@ -84,3 +84,11 @@ As tasks 002, 003, 009, 011, 012 e 019 permanecem em `review`. Nenhuma task foi 
 ## Resultado
 
 As decisões foram aplicadas como posição institucional atual, mantendo fatos documentais, limitações e pendências separados. Nenhuma implantação, contratação, resultado ou capacidade ilimitada foi presumida.
+
+## Aprovação humana do lote
+
+O CEO da Monvi aprovou, em 2026-07-21, a aplicação documental registrada no commit `9f85640`.
+
+As tasks 002, 003, 009, 011 e 012 foram movidas de `review` para `done` com ressalvas. A task 019 permanece em `review` até seu encerramento próprio.
+
+A aprovação não remove as pendências especializadas, não confirma implantação operacional e não transforma responsabilidades provisórias em regra definitiva sem alinhamento entre os sócios.

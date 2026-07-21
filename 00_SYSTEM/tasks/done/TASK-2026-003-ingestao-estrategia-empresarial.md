@@ -2,13 +2,13 @@
 id: task-2026-003
 type: task
 title: "Ingestão da Estratégia Empresarial Monvi"
-status: review
+status: approved
 owner: codex
 reviewer: ceo-monvi
 confidentiality: internal
 created_at: "2026-07-16"
-updated_at: "2026-07-16"
-reviewed_at: null
+updated_at: "2026-07-21"
+reviewed_at: "2026-07-21"
 review_cycle: on-change
 sources:
   - "../../../01_RAW/monvi/Monvi - Estratégia Empresarial.pdf"
@@ -16,7 +16,7 @@ related:
   - "../../../02_WIKI/estrategia/Estrategia-empresarial.md"
 aliases: []
 tags: [task, ingestao, estrategia]
-task_state: review
+task_state: done
 agent: codex
 active_client: null
 allowed_paths:
@@ -48,7 +48,7 @@ forbidden_paths:
   - "02_WIKI/tecnologia/"
   - "03_OPERATIONS/clientes/"
   - "04_OUTPUTS/"
-requires_review: true
+requires_review: false
 acceptance_criteria:
   - "Somente a Estratégia Empresarial Monvi V1.0 é processada e o conteúdo de 01_RAW permanece intacto."
   - "Toda informação derivada é classificada como fato institucional, diagnóstico interno, hipótese estratégica, recomendação, decisão pendente, decisão aprovada, campo não preenchido ou exemplo de comunicação."
@@ -78,3 +78,14 @@ Os critérios observáveis estão registrados no frontmatter. Depois das valida�
 ## Validações
 
 Validar JSON/JSONL, frontmatter, schema da tarefa, links relativos, IDs, SHA-256, integridade de `01_RAW` e escopo de arquivos alterados.
+
+## Encerramento humano
+
+- decisão: aprovada com ressalvas;
+- aprovador: ceo-monvi;
+- data: 2026-07-21;
+- execução documental: `task-2026-019`;
+- evidência de execução: commit `9f85640`;
+- relatório: `00_SYSTEM/audits/Aprovacao-decisoes-executivas-tasks-002-003-009-011-012.md`;
+- resultado: decisões executivas aplicadas à Wiki e revisadas em lote;
+- limite: aprovação executiva e documental não comprova implantação operacional, contratação, resultado, capacidade ilimitada ou aceitação definitiva das responsabilidades provisórias.

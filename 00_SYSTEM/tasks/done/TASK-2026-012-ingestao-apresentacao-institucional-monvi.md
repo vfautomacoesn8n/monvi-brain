@@ -2,16 +2,16 @@
 id: task-2026-012
 type: task
 title: "Ingestão da Apresentação Institucional Monvi"
-status: review
-task_state: review
+status: approved
+task_state: done
 owner: codex
 reviewer: ceo-monvi
 confidentiality: internal
 active_client: null
-requires_review: true
+requires_review: false
 created_at: "2026-07-21"
 updated_at: "2026-07-21"
-reviewed_at: null
+reviewed_at: "2026-07-21"
 review_cycle: on-change
 sources:
   - "../../../01_RAW/monvi/02_Apresentacao_Institucional_Monvi.pptx"
@@ -99,3 +99,14 @@ PPTX e PDF não são duplicatas binárias. Equivalências textual, estrutural e 
 ## Riscos e decisões pendentes
 
 Evitar duplicação com Marca, Estratégia, Serviços, Processos, Comercial e Tecnologia. Benefícios, diferenciais, serviços, processo, stack, público, e-mail e domínio são alegações ou textos da apresentação; exigem confirmação humana antes de qualquer publicação, compromisso, operação ou contato.
+
+## Encerramento humano
+
+- decisão: aprovada com ressalvas;
+- aprovador: ceo-monvi;
+- data: 2026-07-21;
+- execução documental: `task-2026-019`;
+- evidência de execução: commit `9f85640`;
+- relatório: `00_SYSTEM/audits/Aprovacao-decisoes-executivas-tasks-002-003-009-011-012.md`;
+- resultado: decisões executivas aplicadas à Wiki e revisadas em lote;
+- limite: aprovação executiva e documental não comprova implantação operacional, contratação, resultado, capacidade ilimitada ou aceitação definitiva das responsabilidades provisórias.

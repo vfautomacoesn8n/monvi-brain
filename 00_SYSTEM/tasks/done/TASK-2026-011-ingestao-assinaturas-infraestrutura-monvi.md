@@ -2,14 +2,14 @@
 id: task-2026-011
 type: task
 title: "Ingestão de Assinaturas e Infraestrutura Monvi"
-status: review
-task_state: review
+status: approved
+task_state: done
 owner: codex
 reviewer: ceo-monvi
 confidentiality: confidential
 created_at: "2026-07-20"
-updated_at: "2026-07-20"
-reviewed_at: null
+updated_at: "2026-07-21"
+reviewed_at: "2026-07-21"
 review_cycle: on-change
 sources:
   - "../../../01_RAW/monvi/09_Assinaturas_e_Infraestrutura_Monvi.pdf"
@@ -70,7 +70,7 @@ forbidden_paths:
   - "03_OPERATIONS/"
   - "04_OUTPUTS/"
   - "05_SHARED/"
-requires_review: true
+requires_review: false
 acceptance_criteria:
   - "Somente a fonte 01_RAW/monvi/09_Assinaturas_e_Infraestrutura_Monvi.pdf é processada e preserva SHA-256 73B5398E98F069BB565C0FCCC54EEE36A2FFD1C76BE31700554EADF2CDBF00AD."
   - "Quatro sínteses confidential/review, o README de Tecnologia, o índice, o manifesto e os logs preservam proveniência, source_pages e a distinção entre alegação documental e operação confirmada."
@@ -104,3 +104,14 @@ Ferramenta citada, “uso na Monvi”, “stack da Monvi”, “plataforma padr�
 ## Riscos e decisões pendentes
 
 Evitar interpretação operacional das alegações documentais. Permanecem pendentes definição humana de stack aprovado, ferramentas ativas, planos, custos, titularidade, pagamento, renovação, responsabilidade operacional, centros de custo, cancelamento, credenciais, offboarding, continuidade e controles de segurança.
+
+## Encerramento humano
+
+- decisão: aprovada com ressalvas;
+- aprovador: ceo-monvi;
+- data: 2026-07-21;
+- execução documental: `task-2026-019`;
+- evidência de execução: commit `9f85640`;
+- relatório: `00_SYSTEM/audits/Aprovacao-decisoes-executivas-tasks-002-003-009-011-012.md`;
+- resultado: decisões executivas aplicadas à Wiki e revisadas em lote;
+- limite: aprovação executiva e documental não comprova implantação operacional, contratação, resultado, capacidade ilimitada ou aceitação definitiva das responsabilidades provisórias.

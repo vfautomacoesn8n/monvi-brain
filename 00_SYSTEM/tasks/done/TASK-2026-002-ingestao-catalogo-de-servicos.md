@@ -2,20 +2,20 @@
 id: task-2026-002
 type: task
 title: "Ingestão do Catálogo de Serviços Monvi"
-status: review
+status: approved
 owner: codex
 reviewer: ceo-monvi
 confidentiality: internal
 created_at: "2026-07-16"
-updated_at: "2026-07-16"
-reviewed_at: null
+updated_at: "2026-07-21"
+reviewed_at: "2026-07-21"
 review_cycle: on-change
 sources:
   - "../../../01_RAW/monvi/Monvi - Catalogo de serviços.pdf"
 related: []
 aliases: []
 tags: [task, ingestao, servicos]
-task_state: review
+task_state: done
 agent: codex
 active_client: null
 allowed_paths:
@@ -39,7 +39,7 @@ forbidden_paths:
   - "02_WIKI/processos/"
   - "02_WIKI/tecnologia/"
   - "04_OUTPUTS/"
-requires_review: true
+requires_review: false
 acceptance_criteria:
   - "Somente o Catálogo de Serviços Monvi V1.0 é consultado e permanece intacto."
   - "As seis páginas de serviços ficam em status review e confidencialidade internal, com proveniência até o catálogo."
@@ -78,3 +78,14 @@ Validar JSON/JSONL, frontmatter, schema da tarefa, links relativos, IDs, integri
 ## Revisão e entrega
 
 Após execução e validações, mover a tarefa para `00_SYSTEM/tasks/review/` e alterar somente `task_state` para `review`. A aprovação final cabe ao revisor humano.
+
+## Encerramento humano
+
+- decisão: aprovada com ressalvas;
+- aprovador: ceo-monvi;
+- data: 2026-07-21;
+- execução documental: `task-2026-019`;
+- evidência de execução: commit `9f85640`;
+- relatório: `00_SYSTEM/audits/Aprovacao-decisoes-executivas-tasks-002-003-009-011-012.md`;
+- resultado: decisões executivas aplicadas à Wiki e revisadas em lote;
+- limite: aprovação executiva e documental não comprova implantação operacional, contratação, resultado, capacidade ilimitada ou aceitação definitiva das responsabilidades provisórias.

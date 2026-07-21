@@ -223,3 +223,11 @@ As tasks 002, 003, 009, 011 e 012 permanecem em `review`. A task 019 também per
 Nenhuma task foi movida para `done`. O lote depende de revisão humana do diff e de aprovação explícita antes de staging, commit ou encerramento.
 
 A execução não presume implantação operacional, contratação de ferramentas, contas ativas, custos reais, domínio validado, contatos oficiais, métricas medidas ou aceitação definitiva das responsabilidades provisórias.
+
+## Aprovação das tasks de origem — 2026-07-21
+
+Após revisão humana do diff e do commit `9f85640`, as tasks `002`, `003`, `009`, `011` e `012` foram aprovadas com ressalvas e movidas para `done`.
+
+O relatório de aplicação foi aprovado. A task `019` permanece em `review`, com `task_state: review` e `requires_review: true`, até seu encerramento próprio.
+
+Pendências mantidas: validação de contatos e domínio, inventário operacional, alinhamento de responsabilidades entre os sócios, definição de métricas e baselines, validações jurídica, de LGPD e de segurança e comprovação de qualquer implantação.
