@@ -2,7 +2,7 @@
 id: task-2026-010
 type: task
 title: "Ingestão da Operação Monvi"
-status: review
+status: approved
 owner: codex
 reviewer: ceo-monvi
 confidentiality: internal
@@ -15,7 +15,7 @@ sources:
 related: []
 aliases: []
 tags: [task, ingestao, operacao, processos]
-task_state: review
+task_state: done
 agent: codex
 active_client: null
 allowed_paths:
@@ -79,7 +79,7 @@ forbidden_paths:
   - "04_OUTPUTS/"
   - "05_SHARED/"
   - "00_SYSTEM/canonical/"
-requires_review: true
+requires_review: false
 acceptance_criteria:
   - "Somente 01_RAW/monvi/07_Operacao_Monvi.pdf é processado e preserva SHA-256 22A92B650549385841BFBF9BD4D2147C615691E30971D18655392F75D8897B9C."
   - "Quatro sínteses em review/internal preservam source_pages, distinção entre modelos e operação, e não alteram páginas da task-2026-004."
@@ -115,3 +115,12 @@ Esta fonte complementa a granularidade de briefing, onboarding, checklists, cron
 ## Riscos e decisões pendentes
 
 Evitar duplicação com a task-2026-004 e interpretação de condições de modelo como operação vigente. Permanecem pendentes definição humana de clientes, projetos, escopos, contratos, responsáveis, ferramentas, canais, SLAs, datas, aprovações e quaisquer automações.
+
+## Aprovação humana
+
+- decisão: aprovada;
+- aprovador: ceo-monvi;
+- data: 2026-07-21;
+- escopo: ingestão, rastreabilidade e correção dos conjuntos de paths;
+- evidência da correção: commit `8b3a63a`;
+- ressalva: a aprovação documental não confirma operação ativa, responsáveis, ferramentas, SLA ou automações em produção.

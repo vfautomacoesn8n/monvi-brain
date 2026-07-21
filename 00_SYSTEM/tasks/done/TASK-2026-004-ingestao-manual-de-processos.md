@@ -2,7 +2,7 @@
 id: task-2026-004
 type: task
 title: "Ingestão do Manual de Processos Monvi"
-status: review
+status: approved
 owner: codex
 reviewer: ceo-monvi
 confidentiality: internal
@@ -15,13 +15,13 @@ sources:
 related: []
 aliases: []
 tags: [task, ingestao, processos]
-task_state: review
+task_state: done
 agent: codex
 active_client: null
 allowed_paths: ["02_WIKI/processos/", "02_WIKI/index.md", "00_SYSTEM/registries/", "00_SYSTEM/logs/", "00_SYSTEM/tasks/active/", "00_SYSTEM/tasks/review/"]
 read_only_paths: ["01_RAW/monvi/Manual_de_Processos_Monvi_Redesenhado_2026.pdf", "work/manual-processos-render/"]
 forbidden_paths: ["01_RAW/monvi/Monvi - Manual da marca.pdf", "01_RAW/monvi/Monvi - Catalogo de serviços.pdf", "01_RAW/monvi/Monvi - Estratégia Empresarial.pdf", "02_WIKI/servicos/", "02_WIKI/estrategia/", "02_WIKI/marketing/", "02_WIKI/empresa/", "02_WIKI/comercial/", "02_WIKI/seguranca/", "02_WIKI/tecnologia/", "03_OPERATIONS/", "04_OUTPUTS/", "AI-START.md", "AGENTS.md", "00_SYSTEM/canonical/"]
-requires_review: true
+requires_review: false
 acceptance_criteria: ["Somente o Manual de Processos é ingerido e RAW/renderizações ficam intactos.", "Modelo proposto permanece review/internal.", "Não há tarefas, SLA ou processos ativos."]
 blocked_reason: null
 ---
@@ -29,3 +29,12 @@ blocked_reason: null
 
 ## Decisão aprovada
 Documentar modelo proposto sem implantar operação.
+
+## Aprovação humana
+
+- decisão: aprovada;
+- aprovador: ceo-monvi;
+- data: 2026-07-21;
+- escopo: ingestão, rastreabilidade e correção de navegação;
+- evidência da correção: commit `8b3a63a`;
+- ressalva: a aprovação documental não confirma implantação operacional dos processos descritos.
