@@ -2,13 +2,13 @@
 id: task-2026-018
 type: task
 title: "Aprovação do Lote 2 de correções documentais"
-status: review
-task_state: review
+status: approved
+task_state: done
 owner: codex
 reviewer: ceo-monvi
 confidentiality: internal
 active_client: null
-requires_review: true
+requires_review: false
 created_at: "2026-07-21"
 updated_at: "2026-07-21"
 reviewed_at: null
@@ -112,3 +112,14 @@ Os processos e modelos permanecem documentais. Esta aprovação não amplia esco
 - task `018` mantida em `review`;
 - nenhuma outra task alterada;
 - manifesto, ingestion log, RAW, Wiki, templates e checklists inalterados.
+
+## Encerramento humano
+
+- decisão: aprovada;
+- aprovador: ceo-monvi;
+- data: 2026-07-21;
+- escopo: validação da execução do Lote 2 de correções documentais;
+- evidência de execução: commit `7331c64`;
+- resultado: tasks `004` e `010` aprovadas e movidas para `done`;
+- correções: referência de navegação e exclusividade dos conjuntos de paths confirmadas;
+- limite: este encerramento não declara processos, ferramentas, SLAs ou automações como operacionais.
