@@ -2,14 +2,14 @@
 id: template-lead-qualification-monvi
 title: Qualificação de lead da Monvi
 type: template
-status: review
+status: approved
 owner: ceo-monvi
 reviewer: ceo-monvi
 active_client: null
-requires_review: true
+requires_review: false
 created_at: "2026-07-21"
 updated_at: "2026-07-21"
-reviewed_at: null
+reviewed_at: "2026-07-21"
 source_task: task-2026-022
 classification: internal
 ---
@@ -94,3 +94,17 @@ classification: internal
 - não prometer resultado;
 - não enviar proposta sem escopo mínimo;
 - marcar hipóteses como hipóteses.
+
+## Aprovação humana
+
+- decisão: aprovado;
+- aprovador: ceo-monvi;
+- data: 2026-07-21;
+- padrões aprovados:
+  1. pipeline com 12 etapas;
+  2. até 3 tentativas de contato, em pelo menos 5 dias úteis e por no máximo 2 canais adequados;
+  3. proposta somente após qualificação mínima;
+  4. toda oportunidade deve ter responsável, próxima ação e data;
+  5. negócio ganho exige handoff formal para operação;
+  6. implantação inicial em planilha, sem contratação de CRM ou automação nesta etapa;
+- limite: esta aprovação define o padrão operacional interno e não comprova implantação, uso contínuo, resultado comercial, conformidade jurídica ou integração técnica.

@@ -2,16 +2,16 @@
 id: task-2026-022
 title: Sistema comercial mínimo da Monvi
 type: task
-status: review
-task_state: review
+status: approved
+task_state: done
 priority: high
 owner: ceo-monvi
 reviewer: ceo-monvi
 active_client: null
-requires_review: true
+requires_review: false
 created_at: "2026-07-21"
 updated_at: "2026-07-21"
-reviewed_at: null
+reviewed_at: "2026-07-21"
 allowed_paths:
   - 00_SYSTEM/tasks/review/TASK-2026-022-sistema-comercial-minimo-monvi.md
   - 00_SYSTEM/tasks/done/TASK-2026-022-sistema-comercial-minimo-monvi.md
@@ -224,3 +224,16 @@ Ao marcar como ganho, registrar:
 - nenhuma automação foi criada;
 - nenhuma promessa de resultado foi adicionada;
 - próxima decisão humana: revisar pipeline, limite de tentativas, qualificação e handoff.
+
+## Encerramento humano
+
+- decisão: aprovada;
+- aprovador: ceo-monvi;
+- data: 2026-07-21;
+- materiais aprovados:
+  - `03_OPERATIONS/commercial/Sistema-comercial-minimo-Monvi.md`;
+  - `03_OPERATIONS/templates/Qualificacao-de-lead-Monvi.md`;
+  - `03_OPERATIONS/templates/Pipeline-comercial-Monvi.md`;
+- movimento final: `review` para `done`;
+- padrões aprovados: pipeline, qualificação, limite de tentativas, próxima ação obrigatória, handoff e implantação inicial em planilha;
+- limite: esta task aprova o desenho operacional, mas não comprova implantação real, uso de CRM, automações, resultados ou conformidade.
