@@ -79,8 +79,6 @@ forbidden_paths:
   - "04_OUTPUTS/"
   - "05_SHARED/"
   - "00_SYSTEM/canonical/"
-  - "AI-START.md"
-  - "AGENTS.md"
 requires_review: true
 acceptance_criteria:
   - "Somente 01_RAW/monvi/07_Operacao_Monvi.pdf é processado e preserva SHA-256 22A92B650549385841BFBF9BD4D2147C615691E30971D18655392F75D8897B9C."
