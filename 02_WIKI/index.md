@@ -20,6 +20,8 @@ sources:
   - "../01_RAW/monvi/12_Plano_de_Marketing_Monvi.pdf"
   - "../01_RAW/monvi/07_Operacao_Monvi.pdf"
   - "../01_RAW/monvi/09_Assinaturas_e_Infraestrutura_Monvi.pdf"
+  - "../01_RAW/monvi/02_Apresentacao_Institucional_Monvi.pptx"
+  - "../01_RAW/monvi/02_Apresentacao_Institucional_Monvi.pdf"
   - "task-2026-001"
   - "task-2026-003"
   - "task-2026-005"
@@ -28,6 +30,7 @@ sources:
   - "task-2026-009"
   - "task-2026-010"
   - "task-2026-011"
+  - "task-2026-012"
   - "../docs/superpowers/specs/2026-07-15-monvi-brain-design.md"
 related:
   - "marketing/Manual-da-marca.md"
@@ -36,6 +39,7 @@ related:
   - "marketing/Plano-de-marketing.md"
   - "processos/Playbook-operacao-e-entrega.md"
   - "tecnologia/Assinaturas-e-infraestrutura.md"
+  - "empresa/Apresentacao-institucional.md"
   - "servicos/Catalogo-de-servicos.md"
 aliases: ["Wiki", "Índice de conhecimento"]
 tags: [wiki, index]
@@ -92,6 +96,7 @@ Este índice reúne o conhecimento inicial do bootstrap e a primeira fonte insti
 
 - [Monvi Brain](tecnologia/Monvi-Brain.md)
 - [Assinaturas e infraestrutura](tecnologia/Assinaturas-e-infraestrutura.md)
+- [Apresentação institucional](empresa/Apresentacao-institucional.md)
 
 ## Jurídico
 
