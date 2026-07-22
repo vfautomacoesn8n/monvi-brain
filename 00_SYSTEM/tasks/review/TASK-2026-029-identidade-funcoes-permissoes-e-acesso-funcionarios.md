@@ -294,3 +294,17 @@ A task só pode ser aprovada quando:
 ## Resultado esperado
 
 Um modelo claro, auditável e progressivo para adicionar, alterar, suspender e remover pessoas e seus Helppers no ecossistema Monvi.
+
+## Execução inicial
+
+- data: 2026-07-22;
+- seis entregáveis criados;
+- Victor e Filipe formalizados como founders e CEOs;
+- autoridade máxima com controles;
+- identidade, papéis, escopos e matriz de acesso definidos;
+- onboarding, mudança de função, suspensão e offboarding definidos;
+- manual operacional criado;
+- nenhuma conta real criada;
+- nenhuma permissão real concedida;
+- nenhuma integração implementada;
+- todos os documentos permanecem em review.
