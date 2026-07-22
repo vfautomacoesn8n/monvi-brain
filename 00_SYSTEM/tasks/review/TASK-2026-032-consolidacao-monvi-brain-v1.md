@@ -748,3 +748,26 @@ Monvi Brain v1.0 consolidado documentalmente, navegável no Obsidian, governado,
 - `02_WIKI/Mapa-operacional-Monvi-Brain.md`;
 - `02_WIKI/Dashboard-executivo-Monvi.md`;
 - `02_WIKI/Dashboard-operacional-Monvi.md`.
+
+## Fase 4 — Fonte de verdade, segurança, decisões e evidências
+
+- data: 2026-07-22;
+- política de fonte de verdade criada;
+- política de segurança documental e isolamento criada;
+- registro de decisões institucionais criado;
+- registro de pendências, riscos e limitações criado;
+- template de decisão institucional criado;
+- template de evidência documental criado;
+- chats permanecem fora da autoridade documental;
+- secrets continuam proibidos;
+- testes finais permanecem não executados;
+- documentos permanecem em review.
+
+### Entregáveis da fase 4
+
+- `00_SYSTEM/policies/Politica-fonte-de-verdade-e-resolucao-de-conflitos-Monvi-Brain.md`;
+- `00_SYSTEM/policies/Politica-seguranca-documental-e-isolamento-Monvi-Brain.md`;
+- `00_SYSTEM/registries/Registro-decisoes-institucionais-Monvi.md`;
+- `00_SYSTEM/registries/Registro-pendencias-riscos-e-limitacoes-v1.md`;
+- `00_SYSTEM/templates/Template-registro-decisao-institucional.md`;
+- `00_SYSTEM/templates/Template-evidencia-documental.md`.
