@@ -206,3 +206,16 @@ Toda exceção deve registrar:
 - task em `review`;
 - `changes.jsonl` válido;
 - nenhum caminho protegido alterado.
+
+## Execução inicial
+
+- data: 2026-07-21;
+- matriz criada: `03_OPERATIONS/governance/Bloqueios-legais-LGPD-seguranca-Monvi.md`;
+- checklist criado: `03_OPERATIONS/templates/Checklist-de-liberacao-legal-LGPD-seguranca-Monvi.md`;
+- registro criado: `03_OPERATIONS/templates/Registro-de-risco-e-excecao-Monvi.md`;
+- todos os materiais permanecem em `review`;
+- task mantida em `review`;
+- nenhum parecer jurídico foi emitido;
+- nenhuma conformidade foi afirmada;
+- nenhuma implementação técnica foi afirmada;
+- próxima decisão humana: revisar severidade, bloqueios, decisões, responsabilidades e exceções.
