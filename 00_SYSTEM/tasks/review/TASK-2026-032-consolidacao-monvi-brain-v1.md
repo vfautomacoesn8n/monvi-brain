@@ -706,3 +706,20 @@ Monvi Brain v1.0 consolidado documentalmente, navegável no Obsidian, governado,
 
 - `00_SYSTEM/registries/Auditoria-global-Monvi-Brain-v1.md`;
 - `00_SYSTEM/registries/Inventario-documental-Monvi-Brain-v1.md`.
+
+## Fase 2 — Regras e classificação dos achados
+
+- data: 2026-07-22;
+- política de metadados, taxonomia, links e versionamento criada;
+- achados da auditoria classificados;
+- checklist de correção estrutural controlada criado;
+- correções em massa continuam proibidas;
+- owners, reviewers e source tasks não serão inferidos sem evidência;
+- testes finais permanecem não executados;
+- documentos permanecem em review.
+
+### Entregáveis da fase 2
+
+- `00_SYSTEM/policies/Politica-metadados-taxonomia-links-e-versionamento-Monvi-Brain.md`;
+- `00_SYSTEM/registries/Classificacao-achados-auditoria-Monvi-Brain-v1.md`;
+- `00_SYSTEM/templates/Checklist-correcao-estrutural-controlada-Monvi-Brain.md`.
