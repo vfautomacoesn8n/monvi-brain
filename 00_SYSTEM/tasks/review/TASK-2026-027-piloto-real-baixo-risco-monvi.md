@@ -238,3 +238,17 @@ O piloto falha quando:
 - task em `review`;
 - `changes.jsonl` válido;
 - nenhum caminho protegido alterado.
+
+## Seleção humana do piloto
+
+- decisão: aprovada;
+- aprovador: ceo-monvi;
+- data: 2026-07-21;
+- piloto selecionado: fluxo interno de entrada e qualificação de leads;
+- natureza: piloto interno real;
+- cliente externo: não;
+- publicação: não;
+- automação: não;
+- contratação: não;
+- execução real concluída: não;
+- próxima ação: registrar o primeiro lead real da Monvi.
