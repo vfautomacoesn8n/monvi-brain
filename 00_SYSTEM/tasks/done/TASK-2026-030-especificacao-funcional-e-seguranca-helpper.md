@@ -2,15 +2,15 @@
 id: task-2026-030
 title: Especificação funcional e de segurança do Helpper
 type: task
-status: review
-task_state: review
+status: approved
+task_state: done
 owner: ceo-monvi
 reviewer: ceo-monvi
 active_client: null
-requires_review: true
+requires_review: false
 created_at: "2026-07-22"
 updated_at: "2026-07-22"
-reviewed_at: null
+reviewed_at: "2026-07-22"
 classification: internal
 priority: high
 depends_on:
@@ -493,3 +493,32 @@ A primeira versão cobria os oito entregáveis, mas ainda precisava tornar expl�
 ### Estado
 
 Os documentos continuam em `review`. A task ainda não está aprovada.
+
+## Aprovação final
+
+### Decisão
+
+A task 030 está aprovada.
+
+### Escopo aprovado
+
+- Helpper Core;
+- Helpper especialista;
+- Helpper individual;
+- contexto;
+- delegação;
+- reporte;
+- memória;
+- skills e ferramentas;
+- aprovação humana;
+- tratamento de erros;
+- segurança;
+- auditoria;
+- custos;
+- supervisão;
+- suspensão;
+- kill switch.
+
+### Limite
+
+A aprovação cobre documentação e governança. Não comprova implementação, autenticação, integrações, disponibilidade, conformidade ou segurança operacional.
