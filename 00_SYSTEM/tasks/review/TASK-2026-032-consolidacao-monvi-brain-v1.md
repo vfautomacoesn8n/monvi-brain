@@ -791,3 +791,23 @@ Monvi Brain v1.0 consolidado documentalmente, navegável no Obsidian, governado,
 - `00_SYSTEM/architecture/Plano-testes-pos-consolidacao-Monvi-Brain-v1.md`;
 - `00_SYSTEM/templates/Checklist-prontidao-Monvi-Brain-v1.md`;
 - `00_SYSTEM/templates/Matriz-testes-finais-Monvi-Brain-v1.md`.
+
+## Fase 6 — Auditoria de conectividade e notas órfãs
+
+- data: 2026-07-22;
+- conectividade do vault analisada;
+- notas totalmente isoladas identificadas;
+- notas críticas isoladas priorizadas;
+- links quebrados e ambíguos identificados;
+- exceções legítimas modeladas;
+- plano de correção por lotes criado;
+- nenhuma conexão artificial foi criada;
+- nenhuma correção em massa foi executada;
+- testes finais permanecem não executados;
+- documentos permanecem em review.
+
+### Entregáveis da fase 6
+
+- `00_SYSTEM/registries/Auditoria-conectividade-e-notas-orfas-Monvi-Brain-v1.md`;
+- `00_SYSTEM/registries/Registro-excecoes-conectividade-Monvi-Brain-v1.md`;
+- `00_SYSTEM/architecture/Plano-correcao-conectividade-Monvi-Brain-v1.md`.
