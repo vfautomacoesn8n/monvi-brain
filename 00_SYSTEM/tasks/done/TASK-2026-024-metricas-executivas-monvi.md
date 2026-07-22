@@ -2,16 +2,16 @@
 id: task-2026-024
 title: Métricas executivas da Monvi
 type: task
-status: review
-task_state: review
+status: approved
+task_state: done
 priority: high
 owner: ceo-monvi
 reviewer: ceo-monvi
 active_client: null
-requires_review: true
+requires_review: false
 created_at: "2026-07-21"
 updated_at: "2026-07-21"
-reviewed_at: null
+reviewed_at: "2026-07-21"
 allowed_paths:
   - 00_SYSTEM/tasks/review/TASK-2026-024-metricas-executivas-monvi.md
   - 00_SYSTEM/tasks/done/TASK-2026-024-metricas-executivas-monvi.md
@@ -217,3 +217,23 @@ Criar, em `review`:
 - nenhuma fonte foi presumida como disponível;
 - nenhuma automação ou dashboard externo foi implantado;
 - próxima decisão humana: revisar conjunto mínimo, fórmulas, responsáveis e frequências.
+
+## Encerramento humano
+
+- decisão: aprovada;
+- aprovador: ceo-monvi;
+- data: 2026-07-21;
+- materiais aprovados: métricas executivas, painel executivo e dicionário de métricas;
+- movimento final: `review` para `done`;
+- padrões aprovados:
+  1. revisão semanal de pipeline, próximas ações, projetos ativos, bloqueios e riscos;
+  2. revisão mensal de receita, recorrência, conversão, ticket, prazo, retrabalho e satisfação;
+  3. revisão trimestral de margem, canais, churn, concentração e estratégia;
+  4. ausência de dado não pode ser registrada como zero;
+  5. toda métrica deve ter fórmula, fonte, responsável e frequência;
+  6. dados devem ser classificados como confirmados, não validados, estimados, indisponíveis ou não aplicáveis;
+  7. nenhuma meta numérica deve ser criada sem aprovação do CEO;
+  8. nenhuma automação ou dashboard deve ser implantado antes do teste manual;
+  9. variações relevantes devem gerar explicação, decisão, responsável e prazo;
+  10. o painel é interno e não deve ser apresentado externamente sem revisão;
+- limite: esta task aprova o desenho de medição, mas não comprova coleta ativa, qualidade atual dos dados, resultado, meta, integração, dashboard implementado, conformidade contábil, jurídica, de LGPD ou de segurança.
