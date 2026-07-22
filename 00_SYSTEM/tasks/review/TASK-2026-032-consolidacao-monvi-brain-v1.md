@@ -723,3 +723,28 @@ Monvi Brain v1.0 consolidado documentalmente, navegável no Obsidian, governado,
 - `00_SYSTEM/policies/Politica-metadados-taxonomia-links-e-versionamento-Monvi-Brain.md`;
 - `00_SYSTEM/registries/Classificacao-achados-auditoria-Monvi-Brain-v1.md`;
 - `00_SYSTEM/templates/Checklist-correcao-estrutural-controlada-Monvi-Brain.md`.
+
+## Fase 3 — Navegação e dashboards
+
+- data: 2026-07-22;
+- arquitetura de navegação do Obsidian criada;
+- mapa executivo criado;
+- mapa institucional criado;
+- mapa técnico criado;
+- mapa operacional criado;
+- dashboard executivo criado;
+- dashboard operacional criado;
+- links gerados apenas para documentos existentes;
+- plugins permanecem opcionais;
+- testes finais permanecem não executados;
+- documentos permanecem em review.
+
+### Entregáveis da fase 3
+
+- `00_SYSTEM/architecture/Arquitetura-navegacao-Obsidian-Monvi-Brain-v1.md`;
+- `02_WIKI/Mapa-executivo-Monvi-Brain.md`;
+- `02_WIKI/Mapa-institucional-Monvi-Brain.md`;
+- `02_WIKI/Mapa-tecnico-Monvi-Brain.md`;
+- `02_WIKI/Mapa-operacional-Monvi-Brain.md`;
+- `02_WIKI/Dashboard-executivo-Monvi.md`;
+- `02_WIKI/Dashboard-operacional-Monvi.md`.
