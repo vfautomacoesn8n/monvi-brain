@@ -823,3 +823,21 @@ Monvi Brain v1.0 consolidado documentalmente, navegável no Obsidian, governado,
 - nenhuma conexão foi alterada;
 - testes finais permanecem não executados;
 - documentos permanecem em review.
+
+## Fase 7 — Correção de conectividade por lotes
+
+### Lote 1 — arquitetura e governança técnica
+
+- data: 2026-07-22;
+- 23 documentos críticos conectados ao mapa técnico;
+- relações organizadas por ecossistema, identidade, Helpper, agentes e consolidação;
+- nenhuma conexão artificial com o index foi criada;
+- RAW e canonical não foram alterados;
+- tasks históricas não foram alteradas;
+- status documentais não foram promovidos;
+- testes finais permanecem não executados;
+- documentos da task 032 permanecem em review.
+
+#### Entregável
+
+- `00_SYSTEM/registries/Registro-correcoes-conectividade-lote-1-Monvi-Brain-v1.md`.
