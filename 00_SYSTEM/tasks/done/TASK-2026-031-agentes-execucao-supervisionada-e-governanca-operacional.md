@@ -2,15 +2,15 @@
 id: task-2026-031
 title: Agentes, execução supervisionada e governança operacional
 type: task
-status: review
-task_state: review
+status: approved
+task_state: done
 owner: ceo-monvi
 reviewer: ceo-monvi
 active_client: null
-requires_review: true
+requires_review: false
 created_at: "2026-07-22"
 updated_at: "2026-07-22"
-reviewed_at: null
+reviewed_at: "2026-07-22"
 classification: internal
 priority: high
 depends_on:
@@ -498,3 +498,40 @@ A primeira versão cobria os oito entregáveis, mas precisava tornar verificáve
 ### Estado
 
 Os documentos continuam em `review`. A task ainda não está aprovada.
+
+## Aprovação final
+
+### Decisão
+
+A task 031 está aprovada.
+
+### Escopo aprovado
+
+- ciclo de vida de agentes;
+- estados normais e excepcionais;
+- ambientes;
+- execução supervisionada;
+- filas;
+- concorrência;
+- locks;
+- retry;
+- timeout;
+- fallback;
+- idempotência;
+- aprovação;
+- separação de funções;
+- logs;
+- evidências;
+- custos;
+- rollback;
+- compensação;
+- monitoramento;
+- incidentes;
+- piloto;
+- produção;
+- suspensão;
+- reativação.
+
+### Limite
+
+A aprovação cobre documentação e governança operacional. Não comprova criação ou execução de agentes, implementação de filas, autenticação, monitoramento, ambientes, piloto, produção, conformidade ou segurança operacional.

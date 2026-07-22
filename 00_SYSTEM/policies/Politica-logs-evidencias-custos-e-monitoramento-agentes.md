@@ -1,13 +1,13 @@
 ---
 type: policy
-status: review
+status: approved
 owner: ceo-monvi
 reviewer: ceo-monvi
 active_client: null
-requires_review: true
+requires_review: false
 created_at: "2026-07-22"
 updated_at: "2026-07-22"
-reviewed_at: null
+reviewed_at: "2026-07-22"
 source_task: task-2026-031
 classification: internal
 ---# Política de logs, evidências, custos e monitoramento de agentes
@@ -90,3 +90,11 @@ Cada agente deve possuir metas e limites para:
 - aprovações expiradas.
 
 Ultrapassar limite deve gerar alerta, suspensão ou revisão conforme risco.
+
+## Aprovação documental da task 031
+
+- data: 2026-07-22;
+- aprovador: ceo-monvi;
+- origem: task-2026-031;
+- status: approved;
+- observação: governança operacional aprovada; implementação real permanece fora do escopo.

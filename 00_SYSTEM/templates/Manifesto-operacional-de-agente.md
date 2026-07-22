@@ -1,13 +1,13 @@
 ---
 type: template
-status: review
+status: approved
 owner: ceo-monvi
 reviewer: ceo-monvi
 active_client: null
-requires_review: true
+requires_review: false
 created_at: "2026-07-22"
 updated_at: "2026-07-22"
-reviewed_at: null
+reviewed_at: "2026-07-22"
 source_task: task-2026-031
 classification: internal
 ---# Manifesto operacional de agente
@@ -64,3 +64,11 @@ pilot_success_criteria:
 production_entry_criteria:
 decommission_plan:
 ```
+
+## Aprovação documental da task 031
+
+- data: 2026-07-22;
+- aprovador: ceo-monvi;
+- origem: task-2026-031;
+- status: approved;
+- observação: governança operacional aprovada; implementação real permanece fora do escopo.

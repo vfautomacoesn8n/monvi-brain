@@ -1,13 +1,13 @@
 ---
 type: architecture
-status: review
+status: approved
 owner: ceo-monvi
 reviewer: ceo-monvi
 active_client: null
-requires_review: true
+requires_review: false
 created_at: "2026-07-22"
 updated_at: "2026-07-22"
-reviewed_at: null
+reviewed_at: "2026-07-22"
 source_task: task-2026-031
 classification: internal
 ---# Modelo de execução supervisionada, filas, retry, timeout e idempotência
@@ -135,3 +135,11 @@ status:
 | custo excedido | Não automático | nova aprovação |
 | resposta inválida de ferramenta | Limitado | fallback disponível |
 | incidente de segurança | Não | suspender e investigar |
+
+## Aprovação documental da task 031
+
+- data: 2026-07-22;
+- aprovador: ceo-monvi;
+- origem: task-2026-031;
+- status: approved;
+- observação: governança operacional aprovada; implementação real permanece fora do escopo.
