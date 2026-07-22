@@ -2,16 +2,16 @@
 id: task-2026-023
 title: Operação e entrega padrão da Monvi
 type: task
-status: review
-task_state: review
+status: approved
+task_state: done
 priority: high
 owner: ceo-monvi
 reviewer: ceo-monvi
 active_client: null
-requires_review: true
+requires_review: false
 created_at: "2026-07-21"
 updated_at: "2026-07-21"
-reviewed_at: null
+reviewed_at: "2026-07-21"
 allowed_paths:
   - 00_SYSTEM/tasks/review/TASK-2026-023-operacao-e-entrega-padrao-monvi.md
   - 00_SYSTEM/tasks/done/TASK-2026-023-operacao-e-entrega-padrao-monvi.md
@@ -238,3 +238,13 @@ Mudanças devem registrar:
 - nenhuma ferramenta de gestão foi presumida;
 - nenhuma implantação foi afirmada;
 - próxima decisão humana: revisar fluxo, prontidão, controle de escopo, aceite e encerramento.
+
+## Encerramento humano
+
+- decisão: aprovada;
+- aprovador: ceo-monvi;
+- data: 2026-07-21;
+- materiais aprovados: operação padrão, kickoff, checklist de entrega e handoff comercial para operação;
+- movimento final: `review` para `done`;
+- padrões aprovados: fluxo em 12 etapas, prontidão mínima, prazo condicionado, controle de escopo, revisão interna, aceite formal, publicação controlada e encerramento documentado;
+- limite: esta task aprova o desenho operacional, mas não comprova implantação real, execução, SLA, preço, ferramenta, conformidade ou resultado.
