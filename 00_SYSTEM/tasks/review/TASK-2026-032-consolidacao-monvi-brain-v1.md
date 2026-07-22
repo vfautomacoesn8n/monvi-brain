@@ -857,3 +857,19 @@ Monvi Brain v1.0 consolidado documentalmente, navegável no Obsidian, governado,
 #### Entregável
 
 - `00_SYSTEM/registries/Matriz-rastreabilidade-tasks-028-031-Monvi.md`.
+
+### Lote 3 — jurídico, segurança e operação
+
+- data: 2026-07-22;
+- 21 documentos conectados aos mapas institucional e operacional;
+- jurídico e segurança conectados ao mapa institucional;
+- processos, comercial e marketing conectados ao mapa operacional;
+- conteúdo interno dos documentos não foi alterado;
+- nenhum status foi promovido;
+- RAW e canonical não foram alterados;
+- testes finais permanecem não executados;
+- documentos da task 032 permanecem em review.
+
+#### Entregável
+
+- `00_SYSTEM/registries/Registro-correcoes-conectividade-lote-3-Monvi-Brain-v1.md`.

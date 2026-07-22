@@ -118,3 +118,24 @@ tags:
 - [[00_SYSTEM/tasks/done/TASK-2026-029-identidade-funcoes-permissoes-e-acesso-funcionarios.]]
 - [[00_SYSTEM/tasks/done/TASK-2026-030-especificacao-funcional-e-seguranca-helpper.]]
 - [[00_SYSTEM/tasks/done/TASK-2026-031-agentes-execucao-supervisionada-e-governanca-operacional.]]
+
+## Processos operacionais por área
+
+### Processos institucionais
+
+- [[02_WIKI/processos/Indicadores-operacionais]]
+- [[02_WIKI/processos/Modelo-operacional]]
+- [[02_WIKI/processos/Papeis-e-responsabilidades]]
+- [[02_WIKI/processos/README]]
+
+### Comercial
+
+- [[02_WIKI/comercial/Diagnostico-comercial]]
+- [[02_WIKI/comercial/Handoff-comercial]]
+
+### Marketing
+
+- [[02_WIKI/marketing/Calendario-editorial]]
+- [[02_WIKI/marketing/Producao-de-conteudo]]
+
+> Este bloco organiza navegação e descoberta. Ele não substitui processos aprovados, responsáveis operacionais nem critérios de revisão.

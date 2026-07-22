@@ -34,3 +34,26 @@ tags:
 - [[00_SYSTEM/policies/Politica-memoria-e-promocao-de-conhecimento-Helpper.]]
 - [[00_SYSTEM/policies/Politica-metadados-taxonomia-links-e-versionamento-Monvi-Brain.]]
 - [[00_SYSTEM/policies/Politica-seguranca-supervisao-e-limites-Helpper.]]
+
+## Jurídico e segurança institucional
+
+### Jurídico
+
+- [[02_WIKI/juridico/Contrato-de-freelancer]]
+- [[02_WIKI/juridico/Contrato-de-parceiro]]
+- [[02_WIKI/juridico/Contrato-de-prestacao]]
+- [[02_WIKI/juridico/NDA]]
+- [[02_WIKI/juridico/Termo-de-manutencao]]
+
+### Segurança, privacidade e LGPD
+
+- [[02_WIKI/seguranca/Checklist-LGPD-por-projeto]]
+- [[02_WIKI/seguranca/Classificacao-da-informacao]]
+- [[02_WIKI/seguranca/DPA]]
+- [[02_WIKI/seguranca/Politica-de-privacidade]]
+- [[02_WIKI/seguranca/Politica-de-seguranca]]
+- [[02_WIKI/seguranca/Resposta-a-incidentes]]
+- [[02_WIKI/seguranca/Retencao-de-dados]]
+- [[02_WIKI/seguranca/Termos-de-uso]]
+
+> Os documentos permanecem em seus status atuais. A conexão ao mapa não representa aprovação jurídica, validação legal ou promoção documental.
