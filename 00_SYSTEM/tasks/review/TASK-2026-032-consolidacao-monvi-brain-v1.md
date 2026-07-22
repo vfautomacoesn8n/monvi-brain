@@ -771,3 +771,23 @@ Monvi Brain v1.0 consolidado documentalmente, navegável no Obsidian, governado,
 - `00_SYSTEM/registries/Registro-pendencias-riscos-e-limitacoes-v1.md`;
 - `00_SYSTEM/templates/Template-registro-decisao-institucional.md`;
 - `00_SYSTEM/templates/Template-evidencia-documental.md`.
+
+## Fase 5 — Corte v1.0 e preparação dos testes
+
+- data: 2026-07-22;
+- plano de corte v1.0 criado;
+- plano de testes pós-consolidação criado;
+- checklist de prontidão criado;
+- matriz de testes finais criada;
+- gates de corte definidos;
+- critérios de bloqueio definidos;
+- critérios de aprovação e reprovação definidos;
+- testes finais permanecem não executados;
+- documentos permanecem em review.
+
+### Entregáveis da fase 5
+
+- `00_SYSTEM/architecture/Plano-corte-Monvi-Brain-v1.md`;
+- `00_SYSTEM/architecture/Plano-testes-pos-consolidacao-Monvi-Brain-v1.md`;
+- `00_SYSTEM/templates/Checklist-prontidao-Monvi-Brain-v1.md`;
+- `00_SYSTEM/templates/Matriz-testes-finais-Monvi-Brain-v1.md`.
