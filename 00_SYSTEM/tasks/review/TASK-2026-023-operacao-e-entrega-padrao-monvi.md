@@ -225,3 +225,16 @@ Mudanças devem registrar:
 - task em `review`;
 - `changes.jsonl` válido;
 - nenhum caminho protegido alterado.
+
+## Execução inicial
+
+- data: 2026-07-21;
+- operação criada: `03_OPERATIONS/operations/Operacao-e-entrega-padrao-Monvi.md`;
+- kickoff criado: `03_OPERATIONS/templates/Kickoff-de-projeto-Monvi.md`;
+- checklist de entrega criado: `03_OPERATIONS/templates/Checklist-de-entrega-Monvi.md`;
+- handoff criado: `03_OPERATIONS/templates/Handoff-comercial-para-operacao-Monvi.md`;
+- todos os materiais permanecem em `review`;
+- task mantida em `review`;
+- nenhuma ferramenta de gestão foi presumida;
+- nenhuma implantação foi afirmada;
+- próxima decisão humana: revisar fluxo, prontidão, controle de escopo, aceite e encerramento.
