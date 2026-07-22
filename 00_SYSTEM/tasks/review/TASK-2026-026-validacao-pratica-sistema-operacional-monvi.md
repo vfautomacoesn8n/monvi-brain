@@ -281,3 +281,17 @@ A auditoria deve concluir:
 - task em `review`;
 - `changes.jsonl` válido;
 - nenhum caminho protegido alterado.
+
+## Execução inicial
+
+- data: 2026-07-21;
+- tipo de validação: simulação documental com dados fictícios;
+- auditoria criada: `00_SYSTEM/audits/Validacao-pratica-sistema-operacional-Monvi.md`;
+- cenário criado: `03_OPERATIONS/templates/Cenario-de-teste-operacional-Monvi.md`;
+- registro criado: `03_OPERATIONS/templates/Registro-de-evidencias-operacionais-Monvi.md`;
+- todos os materiais permanecem em `review`;
+- task mantida em `review`;
+- documentos aprovados não foram alterados;
+- implantação real não foi afirmada;
+- publicação permaneceu bloqueada por ausência de ambiente, acessos, backup e rollback reais;
+- próxima decisão humana: revisar conclusão, lacunas obrigatórias e recomendação de piloto real.
