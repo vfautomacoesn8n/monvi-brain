@@ -3,14 +3,14 @@ id: task-2026-027
 title: Piloto real de baixo risco do sistema operacional da Monvi
 type: task
 status: review
-task_state: review
+task_state: paused
 priority: high
 owner: ceo-monvi
 reviewer: ceo-monvi
 active_client: null
 requires_review: true
 created_at: "2026-07-21"
-updated_at: "2026-07-21"
+updated_at: "2026-07-22"
 reviewed_at: null
 allowed_paths:
   - 00_SYSTEM/tasks/review/TASK-2026-027-piloto-real-baixo-risco-monvi.md
@@ -252,3 +252,22 @@ O piloto falha quando:
 - contratação: não;
 - execução real concluída: não;
 - próxima ação: registrar o primeiro lead real da Monvi.
+
+## Pausa operacional
+
+- decisão: aprovada;
+- aprovador: ceo-monvi;
+- data: 2026-07-22;
+- motivo: o piloto está estruturado, mas ainda não existe lead real autorizado para iniciar a execução;
+- estado preservado: task, piloto, template e relatório inicial permanecem intactos;
+- execução real iniciada: não;
+- condição de retomada: existir pelo menos um lead real autorizado da Monvi;
+- próxima ação na retomada: registrar o lead real no template do piloto;
+- restrições durante a pausa:
+  - não inventar lead;
+  - não tratar preparação como execução;
+  - não automatizar;
+  - não contratar CRM ou ferramenta;
+  - não iniciar integração;
+  - não reabrir a task 021 sem acessos e evidências;
+- encerramento: não aplicável; a task permanece em `review` com `task_state: paused`.
