@@ -2,14 +2,14 @@
 id: policy-access-lifecycle
 title: Política de ciclo de vida de acesso da Monvi
 type: policy
-status: review
+status: approved
 owner: ceo-monvi
 reviewer: ceo-monvi
 active_client: null
-requires_review: true
+requires_review: false
 created_at: "2026-07-22"
 updated_at: "2026-07-22"
-reviewed_at: null
+reviewed_at: "2026-07-22"
 source_task: task-2026-029
 classification: internal
 ---
@@ -206,3 +206,14 @@ Ela não implementa:
 - RBAC;
 - ABAC;
 - provedor de identidade.
+
+## Aprovação humana
+
+- aprovado por: CEO da Monvi;
+- data: 2026-07-22;
+- decisão: aprovados os 34 pontos da task 029;
+- escopo: identidade, papéis, permissões, acesso, autenticação, autorização e ciclo de vida;
+- natureza: modelo conceitual e operacional;
+- implementação técnica: não comprovada;
+- contas, sessões, MFA, RBAC, ABAC, DLP e integrações: não implementados por esta task;
+- evolução: futura implementação no Monvi Core Brain.

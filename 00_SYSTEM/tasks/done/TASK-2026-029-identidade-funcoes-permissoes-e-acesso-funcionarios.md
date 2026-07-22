@@ -2,15 +2,15 @@
 id: task-2026-029
 title: Identidade, funções, permissões e acesso de funcionários
 type: task
-status: review
-task_state: review
+status: approved
+task_state: done
 owner: ceo-monvi
 reviewer: ceo-monvi
 active_client: null
-requires_review: true
+requires_review: false
 created_at: "2026-07-22"
 updated_at: "2026-07-22"
-reviewed_at: null
+reviewed_at: "2026-07-22"
 classification: internal
 priority: high
 depends_on:
@@ -325,3 +325,58 @@ Um modelo claro, auditável e progressivo para adicionar, alterar, suspender e r
 - exportação deve validar destino, volume, classificação e finalidade;
 - a implementação técnica será futura e pertence ao Monvi Core Brain;
 - a task permanece em review.
+
+## Aprovação humana final
+
+- aprovado por: CEO da Monvi;
+- data: 2026-07-22;
+- decisão: aprovados os 34 pontos da task 029;
+- resultado: modelo conceitual aprovado;
+- implementação: permanece futura e progressiva no Monvi Core Brain;
+- ressalvas:
+  - nenhuma conta real foi criada;
+  - nenhuma permissão real foi concedida;
+  - autenticação e autorização ainda não foram implementadas;
+  - MFA, sessões, RBAC, ABAC, DLP e alertas ainda não foram implementados;
+  - Git e nomes de usuário não constituem prova forte de identidade;
+  - secrets permanecem fora do Monvi Brain;
+  - ações críticas continuam exigindo supervisão humana.
+
+## Resultado concluído
+
+A task 029 definiu e aprovou:
+
+1. Victor e Filipe como founders e CEOs;
+2. espaços e Helppers individuais;
+3. autoridade executiva máxima com controles;
+4. modelo de identidade;
+5. tipos de identidade;
+6. papéis e permissões separados por ação;
+7. escopos de acesso;
+8. menor privilégio e negação por padrão;
+9. isolamento entre clientes;
+10. Helpper vinculado à identidade;
+11. Helpper sem autoridade superior ao usuário;
+12. skill sem ampliação de permissão;
+13. espaço individual conceitual;
+14. onboarding;
+15. mudança de função;
+16. suspensão;
+17. offboarding;
+18. preservação de histórico;
+19. contas de serviço;
+20. exceções formais;
+21. dupla aprovação em ações críticas;
+22. manual operacional;
+23. identidade baseada em sessão autenticada;
+24. actor_id, session_id e request_id;
+25. texto sem poder para redefinir identidade;
+26. personificação negada e registrada;
+27. isolamento antes do contexto;
+28. reautenticação para ações críticas;
+29. controle de exportação;
+30. controle de exclusão;
+31. quarentena antes da exclusão definitiva;
+32. executor_id, approver_id e on_behalf_of;
+33. alerta e possível suspensão por comportamento suspeito;
+34. responsabilidade futura do Monvi Core Brain.
