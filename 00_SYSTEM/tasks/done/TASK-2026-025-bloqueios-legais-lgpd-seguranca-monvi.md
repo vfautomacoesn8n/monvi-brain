@@ -2,16 +2,16 @@
 id: task-2026-025
 title: Bloqueios legais, LGPD e segurança da Monvi
 type: task
-status: review
-task_state: review
+status: approved
+task_state: done
 priority: high
 owner: ceo-monvi
 reviewer: ceo-monvi
 active_client: null
-requires_review: true
+requires_review: false
 created_at: "2026-07-21"
 updated_at: "2026-07-21"
-reviewed_at: null
+reviewed_at: "2026-07-21"
 allowed_paths:
   - 00_SYSTEM/tasks/review/TASK-2026-025-bloqueios-legais-lgpd-seguranca-monvi.md
   - 00_SYSTEM/tasks/done/TASK-2026-025-bloqueios-legais-lgpd-seguranca-monvi.md
@@ -219,3 +219,23 @@ Toda exceção deve registrar:
 - nenhuma conformidade foi afirmada;
 - nenhuma implementação técnica foi afirmada;
 - próxima decisão humana: revisar severidade, bloqueios, decisões, responsabilidades e exceções.
+
+## Encerramento humano
+
+- decisão: aprovada;
+- aprovador: ceo-monvi;
+- data: 2026-07-21;
+- materiais aprovados: matriz de bloqueios, checklist de liberação e registro de risco e exceção;
+- movimento final: `review` para `done`;
+- padrões aprovados:
+  1. risco crítico bloqueia qualquer avanço até existir tratamento, evidência e decisão humana;
+  2. risco alto exige plano e aprovação antes do avanço;
+  3. risco médio pode avançar apenas com responsável, prazo e controle temporário;
+  4. nenhuma liberação pode ocorrer sem escopo, responsáveis e evidências mínimas aplicáveis;
+  5. ausência de base legal, finalidade, autorização ou transparência aplicável exige bloqueio ou escalonamento;
+  6. credenciais expostas, segredos em arquivos, acessos sem responsável ou privilégio excessivo impedem avanço;
+  7. exceções devem ter justificativa, severidade, responsável, prazo, aprovador e condição de encerramento;
+  8. nenhuma exceção pode ser verbal, implícita ou sem prazo;
+  9. o checklist não comprova conformidade, não substitui parecer jurídico e não certifica segurança;
+  10. decisões jurídicas críticas devem ser encaminhadas a profissional qualificado, e decisões técnicas críticas devem ser revisadas por responsável técnico;
+- limite: esta task aprova o desenho operacional de bloqueios, mas não comprova conformidade, parecer jurídico, implementação técnica, auditoria, certificação, base legal validada, canal de titular, encarregado, controle implantado ou ausência de risco.

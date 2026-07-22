@@ -2,14 +2,14 @@
 id: governance-legal-lgpd-security-blocks-monvi
 title: Bloqueios legais, LGPD e segurança da Monvi
 type: operation
-status: review
+status: approved
 owner: ceo-monvi
 reviewer: ceo-monvi
 active_client: null
-requires_review: true
+requires_review: false
 created_at: "2026-07-21"
 updated_at: "2026-07-21"
-reviewed_at: null
+reviewed_at: "2026-07-21"
 source_task: task-2026-025
 classification: internal
 ---
