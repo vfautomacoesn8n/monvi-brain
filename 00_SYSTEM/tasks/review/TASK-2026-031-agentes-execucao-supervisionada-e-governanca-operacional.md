@@ -450,3 +450,17 @@ A task só pode ser aprovada quando:
 ## Resultado esperado
 
 Um modelo operacional completo para orientar a futura implementação controlada de agentes no Monvi Core Brain.
+
+## Execução inicial
+
+- data: 2026-07-22;
+- oito entregáveis criados;
+- ciclo de vida e estados definidos;
+- execução supervisionada definida;
+- ambientes, piloto e produção definidos;
+- aprovação e separação de funções definidas;
+- logs, evidências, custos e monitoramento definidos;
+- manifesto, checklist e playbook criados;
+- nenhum agente real criado;
+- nenhuma execução real iniciada;
+- todos os documentos permanecem em review.
