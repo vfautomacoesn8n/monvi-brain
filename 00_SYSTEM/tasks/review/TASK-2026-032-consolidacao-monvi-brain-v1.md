@@ -841,3 +841,19 @@ Monvi Brain v1.0 consolidado documentalmente, navegável no Obsidian, governado,
 #### Entregável
 
 - `00_SYSTEM/registries/Registro-correcoes-conectividade-lote-1-Monvi-Brain-v1.md`.
+
+### Lote 2 — rastreabilidade das tasks 028 a 031
+
+- data: 2026-07-22;
+- tasks 028, 029, 030 e 031 conectadas aos respectivos entregáveis;
+- matriz de rastreabilidade criada;
+- matriz conectada ao mapa técnico;
+- nenhuma task histórica foi alterada;
+- nenhum status foi promovido;
+- RAW e canonical não foram alterados;
+- testes finais permanecem não executados;
+- documentos da task 032 permanecem em review.
+
+#### Entregável
+
+- `00_SYSTEM/registries/Matriz-rastreabilidade-tasks-028-031-Monvi.md`.

@@ -85,3 +85,9 @@ tags:
 - [[00_SYSTEM/policies/Politica-seguranca-documental-e-isolamento-Monvi-Brain]]
 
 > Este mapa conecta documentos por função real. Ele não substitui as relações específicas entre tasks, decisões, políticas e entregáveis.
+
+## Rastreabilidade entre tasks e entregáveis
+
+- [[00_SYSTEM/registries/Matriz-rastreabilidade-tasks-028-031-Monvi]]
+
+> A matriz registra a relação entre as tasks 028 a 031 e os documentos institucionais resultantes, sem reabrir ou alterar as tasks aprovadas.
