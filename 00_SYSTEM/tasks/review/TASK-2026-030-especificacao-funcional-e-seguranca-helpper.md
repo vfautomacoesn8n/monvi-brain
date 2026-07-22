@@ -452,3 +452,12 @@ A task só pode ser aprovada quando:
 ## Resultado esperado
 
 Uma especificação conceitual completa, segura e progressiva para orientar a futura implementação do Helpper no Monvi Core Brain.
+## Execução inicial
+
+- data: 2026-07-22;
+- oito entregáveis criados;
+- especificação funcional, contrato, políticas e templates criados;
+- nenhum agente real criado;
+- nenhuma integração ativada;
+- nenhuma permissão concedida;
+- todos os documentos permanecem em review.
