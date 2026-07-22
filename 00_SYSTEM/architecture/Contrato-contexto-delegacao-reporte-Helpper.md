@@ -38,3 +38,37 @@ Não delegar sem contexto, fora do escopo, com secret ou com ampliação de perm
 
 ## Reporte
 Registrar tarefa, escopo, fontes, skills, ferramentas, fatos, hipóteses, decisões, evidências, resultado, erros, limitações, custo, aprovação necessária, conhecimento proposto e risco residual.
+
+## Validação obrigatória antes da execução
+
+Antes de iniciar, o sistema deve confirmar:
+
+- identidade autenticada;
+- sessão válida;
+- papel ativo;
+- cliente correto;
+- projeto correto;
+- recurso permitido;
+- ferramenta permitida;
+- skill permitida;
+- classificação do dado;
+- risco;
+- necessidade de revisão;
+- orçamento disponível.
+
+Na ausência de qualquer item obrigatório, o resultado deve ser `blocked`.
+
+## Cadeia de responsabilidade
+
+Toda execução deve permitir responder:
+
+- quem solicitou;
+- em nome de quem;
+- quem executou;
+- quem revisou;
+- quem aprovou;
+- qual cliente estava ativo;
+- qual projeto estava ativo;
+- quais recursos foram acessados;
+- quais ferramentas foram usadas;
+- qual resultado foi produzido.

@@ -22,3 +22,16 @@ Memória não entra automaticamente no Brain. Cliente não cruza cliente. Conte�
 captured → classified → proposed → reviewed → approved → published
 
 Alternativos: rejected, archived, quarantined.
+
+## Contaminação e conflito de memória
+
+Quando houver conflito:
+
+- não sobrescrever silenciosamente;
+- manter versões;
+- identificar fonte;
+- marcar confiança;
+- sinalizar cliente;
+- enviar para revisão;
+- impedir promoção automática;
+- registrar decisão final.

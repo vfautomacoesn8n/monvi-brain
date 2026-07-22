@@ -461,3 +461,35 @@ Uma especificação conceitual completa, segura e progressiva para orientar a fu
 - nenhuma integração ativada;
 - nenhuma permissão concedida;
 - todos os documentos permanecem em review.
+
+## Revisão estruturada
+
+### Diagnóstico
+
+A primeira versão cobria os oito entregáveis, mas ainda precisava tornar explícitos:
+
+- a fronteira entre Helpper Core e Monvi Core Brain;
+- a matriz entre Helpper Core, especialista e individual;
+- a validação obrigatória antes da execução;
+- a cadeia completa de responsabilidade;
+- controles contra prompt injection e exfiltração;
+- controles de custo;
+- tratamento de conflito de memória;
+- severidade de incidentes;
+- critérios formais de reprovação.
+
+### Ajustes realizados
+
+- separação de responsabilidades adicionada;
+- matriz mínima por tipo de Helpper adicionada;
+- validação prévia adicionada;
+- cadeia de responsabilidade adicionada;
+- controles de segurança reforçados;
+- custos e limites reforçados;
+- memória conflitante tratada;
+- severidade de incidente definida;
+- templates ampliados.
+
+### Estado
+
+Os documentos continuam em `review`. A task ainda não está aprovada.

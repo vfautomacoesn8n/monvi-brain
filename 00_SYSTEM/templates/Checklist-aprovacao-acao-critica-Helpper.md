@@ -24,3 +24,17 @@ classification: internal
 - [ ] aprovação humana
 - [ ] dupla aprovação quando exigida
 - [ ] log e monitoramento
+
+## Critérios de reprovação
+
+A ação deve ser reprovada quando:
+
+- identidade ou sessão não puder ser validada;
+- cliente estiver incorreto;
+- autorização for insuficiente;
+- reversão não existir em ação destrutiva;
+- evidência for insuficiente;
+- custo não estiver autorizado;
+- dado sensível estiver fora do escopo;
+- houver conflito de interesse;
+- o mesmo agente tentar executar e aprovar ação crítica.

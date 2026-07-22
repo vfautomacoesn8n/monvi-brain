@@ -30,3 +30,53 @@ Alternativos: failed, blocked, cancelled.
 
 ## Qualidade
 Distinguir fato, hipótese, recomendação e decisão; declarar limitações; não inventar; citar fontes autorizadas; registrar evidências e riscos.
+
+## Separação de responsabilidades
+
+### Monvi Core Brain
+
+Responsável por:
+
+- autenticação;
+- identidade;
+- sessão;
+- autorização;
+- políticas;
+- isolamento;
+- secrets;
+- auditoria;
+- persistência;
+- integrações;
+- aprovação técnica;
+- execução controlada.
+
+### Helpper Core
+
+Responsável por:
+
+- interpretar a solicitação;
+- estruturar o trabalho;
+- selecionar Helppers;
+- delegar;
+- consolidar;
+- explicar;
+- solicitar aprovação;
+- propor ações;
+- reportar.
+
+### Regra de fronteira
+
+O Helpper Core não substitui o Monvi Core Brain. O Helpper propõe e coordena; o Monvi Core Brain valida, restringe, registra e executa quando autorizado.
+
+## Matriz mínima por tipo de Helpper
+
+| Critério | Helpper Core | Helpper especialista | Helpper individual |
+|---|---|---|---|
+| Função principal | Orquestrar | Executar por especialidade | Apoiar uma pessoa |
+| Autoridade própria | Nenhuma | Nenhuma | Nenhuma |
+| Fonte de permissão | Monvi Core Brain | Monvi Core Brain | Identidade vinculada |
+| Pode ampliar permissão | Não | Não | Não |
+| Pode aprovar ação crítica | Não sozinho | Não sozinho | Não sozinho |
+| Pode publicar externamente | Somente após aprovação | Somente após aprovação | Somente após aprovação |
+| Memória | Institucional controlada | Técnica e de domínio | Individual e de trabalho |
+| Suspensão | Central | Por agente | Junto da identidade |

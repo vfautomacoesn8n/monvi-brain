@@ -27,3 +27,12 @@ Escalada, mistura de clientes, exfiltração, ferramenta não autorizada, custo 
 
 ## Recuperação
 Corrigir, revisar permissões, testar, aprovar, reativar gradualmente e monitorar.
+
+## Classificação de severidade
+
+- SEV-1: risco crítico, vazamento, execução não autorizada ou comprometimento;
+- SEV-2: impacto alto, mistura de clientes ou falha relevante de controle;
+- SEV-3: impacto moderado, falha recuperável ou custo excedido;
+- SEV-4: impacto baixo, erro operacional sem exposição.
+
+SEV-1 e SEV-2 exigem suspensão imediata e revisão humana.

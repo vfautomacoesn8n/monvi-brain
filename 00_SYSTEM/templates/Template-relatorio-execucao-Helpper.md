@@ -40,3 +40,16 @@ requires_approval:
 risk_residual:
 output_reference:
 ```
+
+## Resultado padronizado
+
+```yaml
+result:
+  summary:
+  deliverables: []
+  unresolved_items: []
+  next_action:
+  owner:
+  due_date:
+  approval_status:
+```

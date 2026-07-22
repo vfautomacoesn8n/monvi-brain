@@ -34,3 +34,17 @@ requires_human_review: true
 cost_limit:
 version:
 ```
+
+## Campos de governança adicionais
+
+```yaml
+permission_source:
+policy_version:
+data_retention:
+fallback_agent:
+kill_switch_owner:
+incident_contact:
+approval_matrix:
+test_status:
+last_reviewed_at:
+```
