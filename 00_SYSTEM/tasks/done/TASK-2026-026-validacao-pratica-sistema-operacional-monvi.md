@@ -2,16 +2,16 @@
 id: task-2026-026
 title: Validação prática do sistema operacional da Monvi
 type: task
-status: review
-task_state: review
+status: approved
+task_state: done
 priority: high
 owner: ceo-monvi
 reviewer: ceo-monvi
 active_client: null
-requires_review: true
+requires_review: false
 created_at: "2026-07-21"
 updated_at: "2026-07-21"
-reviewed_at: null
+reviewed_at: "2026-07-21"
 allowed_paths:
   - 00_SYSTEM/tasks/review/TASK-2026-026-validacao-pratica-sistema-operacional-monvi.md
   - 00_SYSTEM/tasks/done/TASK-2026-026-validacao-pratica-sistema-operacional-monvi.md
@@ -295,3 +295,23 @@ A auditoria deve concluir:
 - implantação real não foi afirmada;
 - publicação permaneceu bloqueada por ausência de ambiente, acessos, backup e rollback reais;
 - próxima decisão humana: revisar conclusão, lacunas obrigatórias e recomendação de piloto real.
+
+## Encerramento humano
+
+- decisão: aprovada;
+- aprovador: ceo-monvi;
+- data: 2026-07-21;
+- materiais aprovados: auditoria prática, cenário de teste e registro de evidências operacionais;
+- movimento final: `review` para `done`;
+- pontos aprovados:
+  1. a prontidão documental está aprovada;
+  2. a utilizabilidade simulada está aprovada com ressalvas;
+  3. a implantação real ainda não está comprovada;
+  4. a publicação permanece bloqueada sem ambiente, acessos, backup e rollback reais;
+  5. a task 021 continua pausada até existirem acessos e evidências;
+  6. o próximo passo deve ser um piloto real de baixo risco;
+  7. o piloto deve usar dados mínimos, autorizados e rastreáveis;
+  8. documentos aprovados não devem ser alterados antes de surgir lacuna comprovada;
+  9. novas tasks devem nascer apenas de falhas ou bloqueios observados;
+  10. nenhuma automação ou contratação de ferramenta deve ocorrer antes do primeiro ciclo real;
+- limite: esta task aprova a validação simulada e os aprendizados documentais, mas não comprova implantação real, resultado, conformidade, segurança, publicação, integração, operação recorrente, aceite jurídico ou prontidão de infraestrutura.

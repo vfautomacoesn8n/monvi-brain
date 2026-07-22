@@ -2,14 +2,14 @@
 id: audit-practical-operating-system-validation-monvi
 title: Validação prática do sistema operacional da Monvi
 type: output
-status: review
+status: approved
 owner: ceo-monvi
 reviewer: ceo-monvi
 active_client: null
-requires_review: true
+requires_review: false
 created_at: "2026-07-21"
 updated_at: "2026-07-21"
-reviewed_at: null
+reviewed_at: "2026-07-21"
 source_task: task-2026-026
 classification: internal
 ---
