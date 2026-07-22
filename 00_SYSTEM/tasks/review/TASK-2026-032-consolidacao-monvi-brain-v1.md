@@ -873,3 +873,21 @@ Monvi Brain v1.0 consolidado documentalmente, navegável no Obsidian, governado,
 #### Entregável
 
 - `00_SYSTEM/registries/Registro-correcoes-conectividade-lote-3-Monvi-Brain-v1.md`.
+
+### Lote 4 — templates estruturais e operacionais
+
+- data: 2026-07-22;
+- 26 templates conectados por função;
+- mapa específico de templates criado;
+- mapa de templates conectado ao mapa operacional;
+- conteúdo interno dos templates não foi alterado;
+- nenhum status foi promovido;
+- owners e reviewers não foram inferidos;
+- RAW e canonical não foram alterados;
+- testes finais permanecem não executados;
+- documentos da task 032 permanecem em review.
+
+#### Entregáveis
+
+- `02_WIKI/Mapa-templates-Monvi-Brain.md`;
+- `00_SYSTEM/registries/Registro-correcoes-conectividade-lote-4-Monvi-Brain-v1.md`.

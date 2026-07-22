@@ -139,3 +139,9 @@ tags:
 - [[02_WIKI/marketing/Producao-de-conteudo]]
 
 > Este bloco organiza navegação e descoberta. Ele não substitui processos aprovados, responsáveis operacionais nem critérios de revisão.
+
+## Templates e modelos reutilizáveis
+
+- [[02_WIKI/Mapa-templates-Monvi-Brain]]
+
+> O mapa de templates centraliza modelos estruturais e operacionais. A presença no mapa não altera status, responsável ou nível de aprovação.
