@@ -690,3 +690,19 @@ A task só pode ser aprovada quando:
 ## Resultado esperado
 
 Monvi Brain v1.0 consolidado documentalmente, navegável no Obsidian, governado, auditável, com limitações explícitas e com os testes finais preparados para execução posterior.
+
+## Fase 1 — Auditoria executada
+
+- data: 2026-07-22;
+- inventário documental criado;
+- auditoria global criada;
+- metadados, links, owners, reviewers, source tasks e IDs analisados;
+- anomalias Git conhecidas registradas;
+- nenhuma correção estrutural massiva executada;
+- testes finais não executados;
+- documentos permanecem em review.
+
+### Entregáveis da fase 1
+
+- `00_SYSTEM/registries/Auditoria-global-Monvi-Brain-v1.md`;
+- `00_SYSTEM/registries/Inventario-documental-Monvi-Brain-v1.md`.
