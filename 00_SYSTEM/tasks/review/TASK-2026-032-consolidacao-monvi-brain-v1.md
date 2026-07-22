@@ -891,3 +891,20 @@ Monvi Brain v1.0 consolidado documentalmente, navegável no Obsidian, governado,
 
 - `02_WIKI/Mapa-templates-Monvi-Brain.md`;
 - `00_SYSTEM/registries/Registro-correcoes-conectividade-lote-4-Monvi-Brain-v1.md`.
+
+### Lote 5 — correção de wikilinks com ponto final
+
+- data: 2026-07-22;
+- pontos finais removidos de wikilinks do mapa operacional;
+- todos os destinos corrigidos foram validados como arquivos existentes;
+- conteúdo dos documentos de destino não foi alterado;
+- resultados da auditoria V2 não foram promovidos;
+- links ambíguos permanecem pendentes;
+- nenhum status foi promovido;
+- RAW e canonical não foram alterados;
+- testes finais permanecem não executados;
+- documentos da task 032 permanecem em review.
+
+#### Entregável
+
+- `00_SYSTEM/registries/Registro-correcao-links-com-ponto-mapa-operacional-Monvi-Brain-v1.md`.
