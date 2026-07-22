@@ -73,3 +73,72 @@ classification: internal
 - mudança de política de segurança;
 - acesso excepcional a dados sensíveis;
 - compartilhamento externo de informação restrita.
+
+## Matriz de controles por cenário real
+
+| Cenário | Identidade | Ação | Resultado |
+|---|---|---|---|
+| funcionário diz "sou Victor" | sessão do funcionário | personificação | negar e registrar |
+| funcionário tenta outro cliente | sessão do funcionário | leitura fora do escopo | negar antes de carregar contexto |
+| funcionário tenta excluir canônico | sessão do funcionário | delete | negar |
+| funcionário tenta exportar tudo | sessão do funcionário | export-global | negar e alertar |
+| agente tenta ampliar acesso | identidade do agente | escalada | negar |
+| founder altera papel crítico | sessão do founder | mudança crítica | exigir MFA recente e aprovação |
+| conta comprometida tenta exclusão em massa | sessão válida | ação anômala | bloquear, reautenticar e alertar |
+
+## Campos de auditoria obrigatórios
+
+- actor_id;
+- actor_role;
+- session_id;
+- request_id;
+- executor_id;
+- approver_id;
+- on_behalf_of;
+- active_client;
+- active_project;
+- action;
+- resource;
+- result;
+- reason;
+- timestamp;
+- mfa_verified;
+- source_device;
+- destination;
+- data_classification.
+
+## Controles para exclusão
+
+```text
+active
+→ deletion-requested
+→ approved-for-deletion
+→ quarantined
+→ permanently-deleted
+```
+
+Regras:
+
+- sem exclusão física imediata por padrão;
+- prazo de recuperação;
+- aprovação proporcional ao risco;
+- evidência;
+- retenção;
+- log.
+
+## Controles para exportação
+
+Toda exportação deve validar:
+
+- escopo;
+- volume;
+- classificação;
+- destino;
+- finalidade;
+- validade;
+- aprovação;
+- marcação;
+- expiração;
+- log.
+
+Destino pessoal ou não autorizado deve ser negado.

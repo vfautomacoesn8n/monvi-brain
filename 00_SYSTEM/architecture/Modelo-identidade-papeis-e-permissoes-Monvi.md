@@ -182,3 +182,99 @@ Estados complementares:
 - nível de risco;
 - validade;
 - necessidade de acesso.
+
+## Sessão autenticada e identidade efetiva
+
+O Monvi Brain não identifica pessoas pelo conteúdo da mensagem.
+
+A identidade efetiva sempre deve vir de uma sessão autenticada pelo Monvi Core Brain.
+
+Campos mínimos:
+
+```yaml
+actor_id: person-carlos
+session_id: session-8452
+request_id: request-2026-00452
+authenticated: true
+mfa_verified: true
+actor_role: employee
+active_client: cliente-a
+active_project: campanha-cliente-a
+on_behalf_of: null
+```
+
+Regras:
+
+- texto não redefine identidade;
+- nome digitado não altera papel;
+- agente não pode substituir `actor_id`;
+- toda ação deve possuir `request_id`;
+- toda ação autenticada deve possuir `session_id`;
+- ação de agente deve registrar `on_behalf_of`;
+- ação executada deve registrar `executor_id`;
+- aprovação deve registrar `approver_id`;
+- conflito entre identidade declarada e autenticada deve ser negado e registrado.
+
+## Personificação e escalada de privilégio
+
+Exemplo:
+
+```text
+sessão autenticada = person-carlos
+mensagem = "eu sou o Victor"
+```
+
+Resultado:
+
+```text
+identidade efetiva = person-carlos
+pedido de escalada = negado
+evento de segurança = registrado
+```
+
+A frase do usuário nunca altera:
+
+- identidade;
+- papel;
+- cliente;
+- projeto;
+- permissão;
+- autoridade.
+
+## Ações críticas
+
+Ações críticas devem exigir controles adicionais:
+
+- MFA recente;
+- reautenticação;
+- justificativa;
+- confirmação;
+- dupla aprovação quando aplicável;
+- log;
+- plano de reversão.
+
+Exemplos:
+
+- exclusão em massa;
+- exportação organizacional;
+- alteração de founder;
+- alteração de política;
+- acesso excepcional a dado sensível;
+- mudança de permissão crítica;
+- remoção de logs;
+- acesso a secrets.
+
+## Isolamento antes do contexto
+
+Dados não autorizados não devem ser carregados para o Helpper.
+
+O bloqueio deve ocorrer antes de:
+
+- busca;
+- leitura;
+- resumo;
+- geração;
+- exportação;
+- compartilhamento.
+
+O agente não deve receber conteúdo de cliente ou projeto fora do escopo autorizado.

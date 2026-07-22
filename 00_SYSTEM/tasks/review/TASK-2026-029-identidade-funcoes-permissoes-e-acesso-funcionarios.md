@@ -308,3 +308,20 @@ Um modelo claro, auditável e progressivo para adicionar, alterar, suspender e r
 - nenhuma permissão real concedida;
 - nenhuma integração implementada;
 - todos os documentos permanecem em review.
+
+## Ampliação de autenticação e segurança prática
+
+- data: 2026-07-22;
+- decisão: identidade não pode ser inferida pela mensagem;
+- identidade efetiva deve vir de sessão autenticada pelo Monvi Core Brain;
+- `actor_id`, `session_id` e `request_id` são obrigatórios;
+- `executor_id`, `approver_id` e `on_behalf_of` devem ser registrados quando aplicáveis;
+- tentativa de personificação deve ser negada e registrada;
+- isolamento deve ocorrer antes de carregar contexto;
+- leitura não concede exportação;
+- edição não concede exclusão;
+- ações críticas exigem reautenticação e aprovação proporcional ao risco;
+- exclusão deve usar quarentena e retenção;
+- exportação deve validar destino, volume, classificação e finalidade;
+- a implementação técnica será futura e pertence ao Monvi Core Brain;
+- a task permanece em review.
