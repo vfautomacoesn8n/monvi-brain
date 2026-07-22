@@ -2,14 +2,14 @@
 id: matrix-monvi-ecosystem-boundaries
 title: Matriz de fronteiras e responsabilidades do ecossistema Monvi
 type: architecture
-status: review
+status: approved
 owner: ceo-monvi
 reviewer: ceo-monvi
 active_client: null
-requires_review: true
+requires_review: false
 created_at: "2026-07-22"
 updated_at: "2026-07-22"
-reviewed_at: null
+reviewed_at: "2026-07-22"
 source_task: task-2026-028
 classification: internal
 ---
@@ -200,3 +200,13 @@ A arquitetura-alvo completa deve permanecer documentada.
 A implementação inicial deve usar o menor número de componentes suficiente para operar com segurança.
 
 Nenhum Helpper especialista dedicado deve ser criado apenas por antecipação organizacional.
+
+## Aprovação humana
+
+- aprovado por: CEO da Monvi;
+- data: 2026-07-22;
+- decisão: arquitetura conceitual aprovada;
+- escopo: 20 pontos da arquitetura ampliada da task 028;
+- implementação técnica: não comprovada;
+- segurança, conformidade e disponibilidade: não comprovadas;
+- evolução: progressiva, conforme necessidade, risco, owner e custo justificável.

@@ -2,14 +2,14 @@
 id: architecture-helpper-hierarchy
 title: Arquitetura do Helpper Core, especialistas e agentes individuais
 type: architecture
-status: review
+status: approved
 owner: ceo-monvi
 reviewer: ceo-monvi
 active_client: null
-requires_review: true
+requires_review: false
 created_at: "2026-07-22"
 updated_at: "2026-07-22"
-reviewed_at: null
+reviewed_at: "2026-07-22"
 source_task: task-2026-028
 classification: internal
 ---
@@ -127,3 +127,13 @@ O Helpper individual pode reportar diretamente ao Helpper Core quando não houve
 ## Limite
 
 Este documento define arquitetura, não implementação.
+
+## Aprovação humana
+
+- aprovado por: CEO da Monvi;
+- data: 2026-07-22;
+- decisão: arquitetura conceitual aprovada;
+- escopo: 20 pontos da arquitetura ampliada da task 028;
+- implementação técnica: não comprovada;
+- segurança, conformidade e disponibilidade: não comprovadas;
+- evolução: progressiva, conforme necessidade, risco, owner e custo justificável.

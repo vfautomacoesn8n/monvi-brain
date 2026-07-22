@@ -2,22 +2,24 @@
 id: task-2026-028
 title: Arquitetura do ecossistema Monvi Brain, Monvi Core Brain e Helpper
 type: task
-status: review
-task_state: review
+status: approved
+task_state: done
 priority: critical
 owner: ceo-monvi
 reviewer: ceo-monvi
 active_client: null
-requires_review: true
+requires_review: false
 created_at: "2026-07-22"
 updated_at: "2026-07-22"
-reviewed_at: null
+reviewed_at: "2026-07-22"
 allowed_paths:
   - 00_SYSTEM/tasks/review/TASK-2026-028-arquitetura-ecossistema-monvi-brain-core-brain-helpper.md
   - 00_SYSTEM/tasks/done/TASK-2026-028-arquitetura-ecossistema-monvi-brain-core-brain-helpper.md
   - 00_SYSTEM/architecture/Arquitetura-ecossistema-Monvi-Brain-Core-Brain-Helpper.md
   - 00_SYSTEM/architecture/Matriz-fronteiras-responsabilidades-ecossistema-Monvi.md
   - 00_SYSTEM/architecture/Requisitos-nao-funcionais-ecossistema-Monvi.md
+  - 00_SYSTEM/architecture/Modelo-biblioteca-skills-ferramentas-e-promocao-conhecimento.md
+  - 00_SYSTEM/architecture/Arquitetura-Helpper-Core-Especialistas-e-Agentes-Individuais.md
   - 00_SYSTEM/logs/changes.jsonl
 read_only_paths:
   - 00_SYSTEM/canonical/
@@ -400,3 +402,50 @@ Após aprovação desta arquitetura:
 - regra de implementação: desenhar para escala e implementar somente por necessidade comprovada;
 - status: permanece em review;
 - implementação técnica: não iniciada.
+
+## Aprovação humana final
+
+- aprovado por: CEO da Monvi;
+- data: 2026-07-22;
+- decisão: aprovados os 20 pontos da arquitetura ampliada;
+- resultado: arquitetura conceitual aprovada;
+- implementação: permanece futura e progressiva;
+- ressalvas:
+  - não comprova implementação técnica;
+  - não comprova segurança;
+  - não comprova conformidade;
+  - não concede permissões reais;
+  - não ativa agentes;
+  - não cria acesso a ferramentas ou repositórios;
+  - não promove automaticamente conhecimento;
+  - não substitui supervisão humana;
+- próximos desdobramentos:
+  - task 029: identidade, funções, permissões e acesso de funcionários;
+  - task 030: especificação funcional e de segurança do Helpper;
+  - task 031: agentes e execução supervisionada;
+  - task 032: consolidação do Monvi Brain v1.0.
+
+## Resultado concluído
+
+A task 028 definiu e aprovou:
+
+1. Monvi Brain como fonte de verdade;
+2. Monvi Core Brain como camada de identidade, política, autorização, auditoria e persistência;
+3. Helpper Core como gerente dos Helppers;
+4. Helpper individual vinculado ao funcionário;
+5. Helpper especialista configurável;
+6. Helpper Library única;
+7. criação local de skills;
+8. promoção por utilidade, segurança e manutenção;
+9. skill sem ampliação de permissão;
+10. registros próprios para ferramentas e repositórios;
+11. captura automática possível;
+12. publicação no Brain não automática por padrão;
+13. separação dos tipos de memória;
+14. arquitetura-alvo documentada;
+15. implementação progressiva;
+16. Helpper Core sem aprovação canônica isolada;
+17. Monvi Core Brain sem substituição de decisão humana crítica;
+18. consolidação formal das decisões de conversa;
+19. secrets fora do Monvi Brain;
+20. aprovação conceitual sem alegação de implementação.

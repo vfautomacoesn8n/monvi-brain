@@ -2,14 +2,14 @@
 id: architecture-monvi-ecosystem
 title: Arquitetura do ecossistema Monvi Brain, Monvi Core Brain e Helpper
 type: architecture
-status: review
+status: approved
 owner: ceo-monvi
 reviewer: ceo-monvi
 active_client: null
-requires_review: true
+requires_review: false
 created_at: "2026-07-22"
 updated_at: "2026-07-22"
-reviewed_at: null
+reviewed_at: "2026-07-22"
 source_task: task-2026-028
 classification: internal
 ---
@@ -956,3 +956,13 @@ Antes do fechamento do Monvi Brain v1.0, deve existir uma etapa específica para
 - produzir um índice de decisões arquiteturais e operacionais.
 
 O chat não é a fonte oficial. O Monvi Brain deve receber somente o que for formalmente consolidado.
+
+## Aprovação humana
+
+- aprovado por: CEO da Monvi;
+- data: 2026-07-22;
+- decisão: arquitetura conceitual aprovada;
+- escopo: 20 pontos da arquitetura ampliada da task 028;
+- implementação técnica: não comprovada;
+- segurança, conformidade e disponibilidade: não comprovadas;
+- evolução: progressiva, conforme necessidade, risco, owner e custo justificável.
