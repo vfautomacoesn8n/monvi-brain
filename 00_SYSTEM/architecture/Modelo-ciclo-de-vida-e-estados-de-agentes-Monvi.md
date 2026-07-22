@@ -74,3 +74,40 @@ Sem novas execuções e com plano de encerramento.
 
 ### archived
 Histórico preservado conforme retenção.
+
+## Matriz de transição de estados
+
+| De | Para | Condição mínima | Aprovação |
+|---|---|---|---|
+| draft | configured | manifesto e owner definidos | owner |
+| configured | validated | políticas, limites e riscos revisados | reviewer |
+| validated | simulated | cenário e dados de teste definidos | reviewer |
+| simulated | pilot | checklist, rollback e kill switch validados | executivo |
+| pilot | active | resultados, custos e risco residual aceitos | executivo |
+| active | suspended | incidente, anomalia ou decisão humana | owner ou segurança |
+| suspended | active | causa tratada, teste concluído e reaprovação | executivo |
+| active | retired | encerramento planejado | owner |
+| retired | archived | retenção e evidências concluídas | owner |
+
+Transições não previstas devem ser negadas por padrão.
+
+## Regras de suspensão e reativação
+
+Suspensão deve:
+
+- bloquear novas execuções;
+- interromper fila quando seguro;
+- revogar sessões aplicáveis;
+- preservar evidências;
+- registrar motivo;
+- notificar owner;
+- impedir promoção de estado.
+
+Reativação exige:
+
+- causa identificada;
+- correção validada;
+- teste controlado;
+- risco reavaliado;
+- aprovação registrada;
+- monitoramento reforçado.

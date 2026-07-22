@@ -464,3 +464,37 @@ Um modelo operacional completo para orientar a futura implementação controlada
 - nenhum agente real criado;
 - nenhuma execução real iniciada;
 - todos os documentos permanecem em review.
+
+## Revisão estruturada
+
+### Diagnóstico
+
+A primeira versão cobria os oito entregáveis, mas precisava tornar verificáveis:
+
+- transições entre estados;
+- suspensão e reativação;
+- contrato de execução;
+- concorrência e locks;
+- retry por tipo de falha;
+- gates de promoção;
+- validade e revogação de aprovação;
+- alertas e indicadores;
+- critérios de reprovação de piloto;
+- compensação quando rollback não for possível.
+
+### Ajustes realizados
+
+- matriz de transições adicionada;
+- regras de suspensão e reativação adicionadas;
+- contrato mínimo de execução adicionado;
+- concorrência, lock e duplicidade reforçados;
+- tabela de retry adicionada;
+- gates de promoção adicionados;
+- validade de aprovação adicionada;
+- alertas operacionais adicionados;
+- critérios de reprovação do piloto adicionados;
+- estratégia de compensação adicionada.
+
+### Estado
+
+Os documentos continuam em `review`. A task ainda não está aprovada.

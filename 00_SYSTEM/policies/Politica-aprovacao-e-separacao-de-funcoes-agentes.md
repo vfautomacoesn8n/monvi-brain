@@ -43,3 +43,29 @@ Exigir aprovação:
 - rejected;
 - expired;
 - revoked.
+
+## Validade e revogação de aprovação
+
+Toda aprovação deve registrar:
+
+- aprovador;
+- escopo;
+- recurso;
+- cliente;
+- projeto;
+- ambiente;
+- ação;
+- limite de custo;
+- validade;
+- condição de revogação;
+- evidência.
+
+Aprovação perde validade quando houver:
+
+- mudança de versão;
+- mudança de ambiente;
+- mudança de escopo;
+- mudança de cliente;
+- mudança material de custo;
+- incidente;
+- revogação humana.

@@ -48,3 +48,19 @@ rollback_plan:
 monitoring:
 retention:
 ```
+
+## Campos adicionais obrigatórios
+
+```yaml
+state_transition_policy:
+approval_validity:
+lock_strategy:
+duplicate_detection:
+starvation_prevention:
+compensation_strategy:
+evidence_retention:
+alert_thresholds:
+pilot_success_criteria:
+production_entry_criteria:
+decommission_plan:
+```

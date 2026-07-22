@@ -54,3 +54,18 @@ Somente após:
 - risco reavaliado;
 - aprovação registrada;
 - monitoramento reforçado.
+
+## Estratégias de compensação
+
+Quando reversão direta não for possível, definir:
+
+- ação compensatória;
+- owner;
+- prazo;
+- validação;
+- evidência;
+- comunicação;
+- risco residual;
+- aprovação.
+
+A ausência de rollback ou compensação aumenta o risco e pode impedir piloto ou produção.

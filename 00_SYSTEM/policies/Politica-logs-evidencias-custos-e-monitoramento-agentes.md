@@ -71,3 +71,22 @@ Definir limite por:
 - incidentes;
 - aprovações;
 - anomalias.
+
+## Indicadores e limites de alerta
+
+Cada agente deve possuir metas e limites para:
+
+- taxa de sucesso;
+- taxa de falha;
+- taxa de retry;
+- tempo médio;
+- custo médio;
+- custo máximo;
+- volume;
+- bloqueios;
+- rollback;
+- incidentes;
+- anomalias;
+- aprovações expiradas.
+
+Ultrapassar limite deve gerar alerta, suspensão ou revisão conforme risco.

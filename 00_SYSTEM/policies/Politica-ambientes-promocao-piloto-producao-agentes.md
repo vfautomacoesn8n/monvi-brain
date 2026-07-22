@@ -63,3 +63,19 @@ classification: internal
 - rollback validado;
 - owner disponível;
 - aprovação executiva.
+
+## Gates de promoção
+
+Cada promoção exige:
+
+- evidência do estado anterior;
+- checklist concluído;
+- risco residual;
+- custo observado;
+- incidentes conhecidos;
+- owner disponível;
+- plano de rollback;
+- aprovação com validade;
+- ambiente de destino preparado.
+
+Promoção automática para produção é proibida.

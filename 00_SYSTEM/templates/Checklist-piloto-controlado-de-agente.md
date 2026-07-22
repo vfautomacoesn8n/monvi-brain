@@ -33,3 +33,18 @@ classification: internal
 - [ ] aprovação registrada;
 - [ ] métrica de sucesso;
 - [ ] critério de encerramento.
+
+## Critérios de reprovação do piloto
+
+O piloto deve ser reprovado quando:
+
+- houver ação não autorizada;
+- ocorrer mistura de clientes;
+- rollback falhar;
+- kill switch não funcionar;
+- logs forem insuficientes;
+- custo exceder limite sem aprovação;
+- retry gerar duplicidade;
+- owner estiver indisponível;
+- incidente crítico permanecer aberto;
+- métrica de sucesso não for atingida.
