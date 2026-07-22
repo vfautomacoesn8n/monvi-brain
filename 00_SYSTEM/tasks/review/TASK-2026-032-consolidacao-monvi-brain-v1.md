@@ -811,3 +811,15 @@ Monvi Brain v1.0 consolidado documentalmente, navegável no Obsidian, governado,
 - `00_SYSTEM/registries/Auditoria-conectividade-e-notas-orfas-Monvi-Brain-v1.md`;
 - `00_SYSTEM/registries/Registro-excecoes-conectividade-Monvi-Brain-v1.md`;
 - `00_SYSTEM/architecture/Plano-correcao-conectividade-Monvi-Brain-v1.md`.
+
+## Fase 6.1 — Correção da auditoria de conectividade
+
+- data: 2026-07-22;
+- falha de interpolação da auditoria inicial corrigida;
+- leitura UTF-8 preservada;
+- wikilinks e links Markdown internos analisados;
+- caminhos reais gravados no relatório;
+- medição inicial da fase 6 substituída;
+- nenhuma conexão foi alterada;
+- testes finais permanecem não executados;
+- documentos permanecem em review.
