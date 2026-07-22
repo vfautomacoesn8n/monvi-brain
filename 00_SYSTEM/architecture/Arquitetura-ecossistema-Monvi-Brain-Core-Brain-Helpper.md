@@ -603,3 +603,356 @@ Ainda precisam de decisão futura:
 - roadmap definido;
 - compatibilidade com Brain v1.0 registrada;
 - nenhuma implementação tratada como concluída.
+
+## 29. Arquitetura-alvo e arquitetura inicial
+
+A arquitetura deve distinguir duas realidades.
+
+### 29.1 Arquitetura-alvo
+
+A arquitetura-alvo completa prevê:
+
+```text
+Funcionários
+→ Helppers individuais
+→ Helppers especialistas
+→ Helpper Core
+→ Monvi Core Brain
+→ Monvi Brain
+```
+
+Com uma camada transversal:
+
+```text
+Helpper Library
+→ skills
+→ ferramentas
+→ repositórios
+→ prompts
+→ playbooks
+→ políticas
+→ manifests
+→ registros de uso
+```
+
+A arquitetura-alvo serve como referência de longo prazo e não deve ser tratada como implementação concluída.
+
+### 29.2 Arquitetura inicial
+
+A implementação inicial recomendada é enxuta:
+
+```text
+Funcionário
+→ Helpper individual
+→ Helpper Core
+→ Monvi Core Brain
+→ Monvi Brain
+```
+
+Com:
+
+- um modelo de Helpper especialista configurável;
+- uma biblioteca única com visibilidade por escopo;
+- promoção simples de skills;
+- promoção simples de conhecimento;
+- aprovação humana proporcional ao risco;
+- nenhuma camada adicional sem necessidade comprovada.
+
+### 29.3 Critério de evolução
+
+Uma camada só deve ser implementada quando houver:
+
+- demanda recorrente;
+- volume suficiente;
+- risco específico;
+- ganho operacional claro;
+- owner definido;
+- custo justificável;
+- necessidade comprovada.
+
+## 30. Hierarquia dos Helppers
+
+### 30.1 Helpper Core
+
+O Helpper Core funciona como gerente e orquestrador dos Helppers.
+
+Responsabilidades:
+
+- receber demandas;
+- classificar;
+- escolher especialista;
+- distribuir contexto mínimo;
+- acompanhar execução;
+- consolidar respostas;
+- detectar conflitos;
+- cobrar evidências;
+- propor promoção de conhecimento;
+- reportar ao CEO;
+- encaminhar conteúdo ao Monvi Core Brain.
+
+O Helpper Core não decide sozinho o que vira conhecimento oficial.
+
+### 30.2 Helpper especialista
+
+O Helpper especialista é um modelo configurável por especialidade.
+
+Exemplos:
+
+- desenvolvimento;
+- marketing;
+- comercial;
+- projetos;
+- automação;
+- segurança;
+- financeiro;
+- jurídico assistivo.
+
+Cada especialista deve possuir:
+
+- missão;
+- escopo;
+- skills;
+- ferramentas autorizadas;
+- fontes;
+- repositórios;
+- limites;
+- riscos;
+- critérios de revisão;
+- formato de reporte;
+- responsável humano.
+
+### 30.3 Helpper individual
+
+Cada funcionário pode ter um Helpper individual com:
+
+- identidade vinculada;
+- função;
+- projetos atribuídos;
+- clientes atribuídos;
+- memória de trabalho;
+- skills locais;
+- ferramentas permitidas;
+- repositórios autorizados;
+- histórico;
+- canal de reporte.
+
+O Helpper individual nunca pode ultrapassar as permissões do funcionário.
+
+## 31. Helpper Library
+
+A Helpper Library deve ser uma biblioteca única, com escopos de visibilidade.
+
+Estrutura conceitual:
+
+```text
+Helpper Library/
+├── skills/
+├── tools/
+├── repositories/
+├── prompts/
+├── playbooks/
+├── policies/
+├── registry/
+└── archive/
+```
+
+Cada item deve possuir:
+
+- visibilidade individual, departamental ou global;
+- owner;
+- versão;
+- risco;
+- status;
+- allowed_users;
+- allowed_roles;
+- allowed_helpers;
+- allowed_clients;
+- entradas;
+- saídas;
+- restrições;
+- validade;
+- evidências;
+- plano de descontinuação.
+
+A promoção pode ocorrer por mudança de status e visibilidade, sem duplicação física obrigatória.
+
+## 32. Governança de skills
+
+### 32.1 Regra central
+
+Skill não concede permissão.
+
+Uma skill só pode atuar dentro das permissões já concedidas ao usuário, agente, projeto, cliente, ferramenta e repositório.
+
+### 32.2 Ciclo de vida simplificado
+
+```text
+draft
+→ active-local
+→ proposed
+→ approved
+→ deprecated
+```
+
+Estados complementares podem ser registrados como atributos ou eventos:
+
+- testing;
+- reviewed;
+- rejected;
+- blocked;
+- archived;
+- replaced;
+- expired.
+
+### 32.3 Gate de promoção
+
+Toda promoção deve passar por três gates:
+
+1. utilidade;
+2. segurança;
+3. manutenção.
+
+### 32.4 Fluxo de promoção
+
+```text
+Funcionário cria skill
+→ Helpper individual registra
+→ uso local controlado
+→ Helpper especialista revisa
+→ Helpper Core avalia reutilização
+→ Monvi Core Brain aplica política
+→ aprovação humana quando necessária
+→ escopo departamental ou global
+```
+
+## 33. Governança de ferramentas e repositórios
+
+Ferramentas e repositórios devem ter registros próprios.
+
+Repositórios precisam informar:
+
+- ID;
+- proprietário;
+- cliente;
+- projeto;
+- finalidade;
+- visibilidade;
+- leitura;
+- escrita;
+- branch;
+- ambiente;
+- criticidade;
+- agentes autorizados;
+- responsável;
+- aprovação;
+- status.
+
+Skills referenciam IDs de ferramentas e repositórios, sem armazenar credenciais.
+
+## 34. Promoção de conhecimento
+
+A captura pode ser automática.
+
+A promoção ao Monvi Brain não deve ser automática por padrão.
+
+Fluxo:
+
+```text
+Trabalho do funcionário
+→ Helpper individual captura
+→ classifica
+→ Helpper especialista revisa
+→ Helpper Core consolida
+→ Monvi Core Brain aplica política
+→ aprovação humana quando necessária
+→ Monvi Brain recebe conteúdo aprovado
+```
+
+Ciclo de vida simplificado:
+
+```text
+captured
+→ proposed
+→ approved
+→ published
+```
+
+Resultados alternativos:
+
+- rejected;
+- archived.
+
+Classificações obrigatórias:
+
+- fato;
+- hipótese;
+- recomendação;
+- decisão;
+- evidência;
+- aprendizado;
+- padrão;
+- risco;
+- dado de cliente;
+- conteúdo temporário.
+
+## 35. Tipos de memória
+
+A arquitetura deve separar:
+
+- memória individual;
+- memória de projeto;
+- memória de cliente;
+- memória departamental;
+- memória institucional;
+- conhecimento canônico.
+
+Regras:
+
+- memória de cliente não cruza clientes;
+- memória individual não vira institucional automaticamente;
+- memória de projeto não vira padrão sem revisão;
+- conhecimento canônico exige aprovação;
+- conteúdo temporário deve possuir retenção.
+
+## 36. Métricas e descontinuação
+
+Podem ser registradas:
+
+- quantidade de usos;
+- taxa de sucesso;
+- falhas;
+- incidentes;
+- tempo economizado;
+- avaliações;
+- usuários;
+- versões;
+- data da última revisão;
+- custo;
+- taxa de reutilização.
+
+Essas métricas não promovem automaticamente.
+
+Todo recurso deve possuir:
+
+- owner;
+- validade;
+- revisão periódica;
+- condição de descontinuação;
+- substituto;
+- histórico;
+- plano de remoção.
+
+## 37. Consolidação de decisões de conversa
+
+Antes do fechamento do Monvi Brain v1.0, deve existir uma etapa específica para:
+
+- revisar decisões relevantes tomadas nas conversas;
+- separar decisão, hipótese, recomendação e ideia futura;
+- identificar o que já está registrado;
+- identificar o que permanece apenas no chat;
+- criar tasks ou documentos faltantes;
+- eliminar contradições;
+- registrar pendências;
+- produzir um índice de decisões arquiteturais e operacionais.
+
+O chat não é a fonte oficial. O Monvi Brain deve receber somente o que for formalmente consolidado.

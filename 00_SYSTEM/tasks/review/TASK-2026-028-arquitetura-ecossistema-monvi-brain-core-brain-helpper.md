@@ -374,3 +374,29 @@ Após aprovação desta arquitetura:
 - Helpper implementado como sistema: não;
 - Core Brain implementado: não;
 - próxima etapa: revisão humana dos documentos arquiteturais.
+
+## Revisão arquitetural ampliada
+
+- data: 2026-07-22;
+- decisão: não aprovar a arquitetura anterior sem ampliação;
+- motivo: necessidade de registrar a hierarquia de Helppers, biblioteca de capacidades, promoção de skills e promoção de conhecimento;
+- arquitetura-alvo: completa e conceitual;
+- arquitetura inicial: mínima e progressiva;
+- novos componentes:
+  - Helpper Core;
+  - Helpper especialista configurável;
+  - Helpper individual;
+  - Helpper Library única;
+  - visibilidade individual, departamental e global;
+  - governança de skills;
+  - governança de ferramentas e repositórios;
+  - promoção de conhecimento;
+  - tipos de memória;
+  - consolidação de decisões de conversa;
+- novos entregáveis:
+  - `00_SYSTEM/architecture/Arquitetura-Helpper-Core-Especialistas-e-Agentes-Individuais.md`;
+  - `00_SYSTEM/architecture/Modelo-biblioteca-skills-ferramentas-e-promocao-conhecimento.md`;
+- regra central: skill não concede permissão;
+- regra de implementação: desenhar para escala e implementar somente por necessidade comprovada;
+- status: permanece em review;
+- implementação técnica: não iniciada.

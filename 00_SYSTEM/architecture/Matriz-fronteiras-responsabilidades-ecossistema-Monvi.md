@@ -147,3 +147,56 @@ Exceção verbal, implícita ou sem prazo não é válida.
 Esta matriz não concede acesso real.
 
 Ela define o modelo que deverá orientar as tasks de identidade, permissões e implementação.
+
+## 10. Matriz da hierarquia Helpper
+
+| Componente | Papel | Pode | Não pode |
+|---|---|---|---|
+| Funcionário | executar trabalho autorizado | criar recurso local e propor promoção | ampliar o próprio acesso |
+| Helpper individual | apoiar e capturar contexto local | usar skills locais autorizadas | compartilhar cliente ou promover sozinho |
+| Helpper especialista | revisar tecnicamente por área | recomendar e validar tecnicamente | conceder permissão |
+| Helpper Core | gerenciar e consolidar | coordenar, priorizar e propor promoção | aprovar conhecimento oficial sozinho |
+| Monvi Core Brain | aplicar política e autorização | bloquear, autorizar e persistir conforme regra | substituir aprovação humana crítica |
+| Monvi Brain | armazenar conhecimento aprovado | registrar histórico e fonte de verdade | executar ou autenticar |
+| Biblioteca única | organizar capacidades | controlar visibilidade e versão | conceder acesso por si |
+| Cofre de secrets | proteger credenciais | fornecer uso controlado | expor segredo bruto |
+
+## 11. Matriz de promoção de skills
+
+| Etapa | Responsável | Evidência |
+|---|---|---|
+| criação local | funcionário + Helpper individual | manifesto |
+| uso controlado | Helpper individual | registro de uso |
+| revisão técnica | Helpper especialista | parecer |
+| curadoria | Helpper Core | recomendação |
+| política e segurança | Monvi Core Brain | validação |
+| aprovação | humano conforme risco | decisão |
+| publicação | sistema autorizado | versão e log |
+
+## 12. Matriz de promoção de conhecimento
+
+| Etapa | Responsável | Resultado |
+|---|---|---|
+| captura | Helpper individual | conteúdo capturado |
+| classificação | Helpper individual | tipo de conhecimento |
+| revisão técnica | Helpper especialista | parecer |
+| consolidação | Helpper Core | proposta |
+| política | Monvi Core Brain | aprovado, bloqueado ou escalado |
+| decisão humana | responsável | decisão |
+| persistência | Monvi Brain | operacional ou canônico |
+
+## 13. Visibilidade da biblioteca
+
+| Visibilidade | Uso | Aprovação mínima |
+|---|---|---|
+| individual | um funcionário e seu Helpper | owner local |
+| departamental | área ou especialidade | responsável da área |
+| global | múltiplas áreas | Helpper Core + política + humano conforme risco |
+
+## 14. Regra de implementação progressiva
+
+A arquitetura-alvo completa deve permanecer documentada.
+
+A implementação inicial deve usar o menor número de componentes suficiente para operar com segurança.
+
+Nenhum Helpper especialista dedicado deve ser criado apenas por antecipação organizacional.

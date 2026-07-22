@@ -261,3 +261,108 @@ Cada requisito deve ser classificado futuramente como:
 Este documento define requisitos.
 
 Ele não comprova implementação, segurança, conformidade, disponibilidade ou desempenho.
+
+## 22. Governança de supply chain interno
+
+- validar origem de skills e ferramentas;
+- registrar versão;
+- registrar owner;
+- impedir recurso sem manifesto;
+- revisar dependências;
+- impedir código ou prompt desconhecido em produção;
+- manter histórico de promoção;
+- suportar rollback;
+- suspender recurso com incidente;
+- impedir que skill amplie permissão.
+
+## 23. Isolamento de bibliotecas
+
+- visibilidade explícita;
+- escopo por usuário;
+- escopo por função;
+- escopo por agente;
+- escopo por cliente;
+- escopo por projeto;
+- negação por padrão;
+- testes de isolamento;
+- logs de acesso;
+- exportação controlada.
+
+## 24. Versionamento de skills e ferramentas
+
+- versão explícita;
+- changelog;
+- compatibilidade;
+- dependências;
+- status;
+- validade;
+- responsável;
+- data da última revisão;
+- rollback;
+- substituição;
+- descontinuação.
+
+## 25. Observabilidade de agentes
+
+- tarefas recebidas;
+- tarefas concluídas;
+- falhas;
+- latência;
+- custo;
+- uso de ferramenta;
+- uso de skill;
+- escalonamentos;
+- aprovações;
+- incidentes;
+- contexto acessado;
+- cliente associado.
+
+## 26. Controle de custo por Helpper
+
+- consumo por agente;
+- consumo por usuário;
+- consumo por cliente;
+- consumo por ferramenta;
+- limites;
+- alertas;
+- orçamento;
+- relatórios;
+- suspensão de uso excessivo;
+- justificativa para expansão.
+
+## 27. Promoção de conhecimento
+
+- captura não implica aprovação;
+- classificação obrigatória;
+- revisão técnica quando aplicável;
+- detecção de duplicidade;
+- detecção de conflito;
+- verificação de cliente;
+- verificação de sensibilidade;
+- retenção;
+- aprovação proporcional ao risco;
+- rastreabilidade até a origem.
+
+## 28. Arquitetura progressiva
+
+- arquitetura-alvo documentada;
+- arquitetura inicial mínima;
+- critérios de ativação;
+- implementação por evidência;
+- nenhum componente sem owner;
+- nenhuma camada sem necessidade comprovada;
+- revisão periódica da maturidade;
+- possibilidade de simplificação;
+- compatibilidade com expansão futura.
+
+## 29. Critérios para especialista dedicado
+
+Um Helpper especialista dedicado só deve ser ativado quando houver:
+
+- volume recorrente;
+- contexto próprio;
+- risco específico;
+- conjunto próprio de skills;
+- ferramentas exclusivas;
+- necessidade de revisão especializada;
+- demanda de mais de um funcionário.
