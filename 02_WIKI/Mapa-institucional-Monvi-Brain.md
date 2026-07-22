@@ -23,17 +23,17 @@ tags:
 
 ## Empresa
 
-- [[02_WIKI/empresa/Apresentacao-institucional.]]
-- [[02_WIKI/empresa/Monvi.]]
+- [[02_WIKI/empresa/Apresentacao-institucional]]
+- [[02_WIKI/empresa/Monvi]]
 ## Políticas
 
-- [[00_SYSTEM/policies/Politica-ambientes-promocao-piloto-producao-agentes.]]
-- [[00_SYSTEM/policies/Politica-aprovacao-e-separacao-de-funcoes-agentes.]]
-- [[00_SYSTEM/policies/Politica-ciclo-de-vida-de-acesso-Monvi.]]
-- [[00_SYSTEM/policies/Politica-logs-evidencias-custos-e-monitoramento-agentes.]]
-- [[00_SYSTEM/policies/Politica-memoria-e-promocao-de-conhecimento-Helpper.]]
-- [[00_SYSTEM/policies/Politica-metadados-taxonomia-links-e-versionamento-Monvi-Brain.]]
-- [[00_SYSTEM/policies/Politica-seguranca-supervisao-e-limites-Helpper.]]
+- [[00_SYSTEM/policies/Politica-ambientes-promocao-piloto-producao-agentes]]
+- [[00_SYSTEM/policies/Politica-aprovacao-e-separacao-de-funcoes-agentes]]
+- [[00_SYSTEM/policies/Politica-ciclo-de-vida-de-acesso-Monvi]]
+- [[00_SYSTEM/policies/Politica-logs-evidencias-custos-e-monitoramento-agentes]]
+- [[00_SYSTEM/policies/Politica-memoria-e-promocao-de-conhecimento-Helpper]]
+- [[00_SYSTEM/policies/Politica-metadados-taxonomia-links-e-versionamento-Monvi-Brain]]
+- [[00_SYSTEM/policies/Politica-seguranca-supervisao-e-limites-Helpper]]
 
 ## Jurídico e segurança institucional
 
