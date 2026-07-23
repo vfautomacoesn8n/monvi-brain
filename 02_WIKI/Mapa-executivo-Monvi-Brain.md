@@ -31,7 +31,7 @@ tags:
 
 ## Governança atual
 
-- [[00_SYSTEM/tasks/review/TASK-2026-032-consolidacao-monvi-brain-v1]]
+- [[00_SYSTEM/tasks/done/TASK-2026-032-consolidacao-monvi-brain-v1]]
 - [[00_SYSTEM/registries/Auditoria-global-Monvi-Brain-v1]]
 - [[00_SYSTEM/registries/Inventario-documental-Monvi-Brain-v1]]
 - [[00_SYSTEM/registries/Classificacao-achados-auditoria-Monvi-Brain-v1]]
