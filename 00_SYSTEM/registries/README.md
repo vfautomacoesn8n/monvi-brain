@@ -57,6 +57,7 @@ tags:
 ## Operação e onboarding
 
 - [[Registro-consolidacao-onboarding-humano-agentes-Monvi-Brain-v1]]
+- [[Registro-estrutura-padrao-clientes-projetos-Monvi-Brain-v1]]
 
 ## Regra de uso
 

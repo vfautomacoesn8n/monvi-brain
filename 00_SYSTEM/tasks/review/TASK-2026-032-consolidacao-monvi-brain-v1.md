@@ -1052,3 +1052,24 @@ Monvi Brain v1.0 consolidado documentalmente, navegável no Obsidian, governado,
 #### Entregável
 
 - `00_SYSTEM/registries/Registro-consolidacao-onboarding-humano-agentes-Monvi-Brain-v1.md`.
+
+### Lote 11 — estrutura padrão de clientes e projetos
+
+- data: 2026-07-22;
+- padrão de cliente criado;
+- padrão de projeto criado;
+- convenções de IDs e slugs definidas;
+- vínculo obrigatório cliente → projeto registrado;
+- regras de isolamento e paths reforçadas;
+- nenhum cliente real foi criado;
+- nenhum projeto real foi criado;
+- templates-base existentes foram reutilizados;
+- alinhamento futuro de `client.md` e `project.md` registrado como pendência;
+- RAW e canonical não foram alterados;
+- nenhum status foi promovido;
+- testes finais permanecem não executados;
+- documentos do lote permanecem em review.
+
+#### Entregável
+
+- `00_SYSTEM/registries/Registro-estrutura-padrao-clientes-projetos-Monvi-Brain-v1.md`.
