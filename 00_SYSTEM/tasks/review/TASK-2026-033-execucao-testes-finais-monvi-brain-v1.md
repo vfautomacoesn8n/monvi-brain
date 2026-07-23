@@ -3,7 +3,7 @@ id: task-2026-033
 title: Execução dos testes finais do Monvi Brain v1
 type: task
 status: review
-task_state: planned
+task_state: active
 owner: ceo-monvi
 reviewer: ceo-monvi
 active_client: null
@@ -169,3 +169,20 @@ A task deve permanecer bloqueada se houver:
 ## Resultado esperado
 
 Bateria final executada com evidências auditáveis, riscos residuais classificados e recomendação de `go/no-go` pronta para decisão humana.
+
+## Execução — lote 1 — preflight e estrutura
+
+- data: 2026-07-23;
+- `test-struct-001`: pass;
+- `test-struct-002`: pass;
+- preflight JSONL: pass;
+- resultado consolidado: pass;
+- correções automáticas executadas: não;
+- RAW alterado: não;
+- canonical alterado: não;
+- corte v1.0: permanece `no-go`;
+- testes restantes: pendentes.
+
+### Evidência
+
+- `00_SYSTEM/audits/Execucao-testes-finais-lote-1-preflight-estrutura-Monvi-Brain-v1.md`.
