@@ -74,6 +74,13 @@ tags:
 - [[00_SYSTEM/templates/Template-perfil-usuario-e-Helpper-individual]]
 - [[00_SYSTEM/templates/Template-relatorio-execucao-Helpper]]
 - [[00_SYSTEM/templates/wiki-page]]
+
+## Onboarding
+
+- [[00_SYSTEM/onboarding/README]]
+
+> Integração humana e de agentes permanece documental e supervisionada. Nenhuma conta, credencial ou runtime é criado por esta camada.
+
 ## Registros
 
 - [[00_SYSTEM/registries/README]]

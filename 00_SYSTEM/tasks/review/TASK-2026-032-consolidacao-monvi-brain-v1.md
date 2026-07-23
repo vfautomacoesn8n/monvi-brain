@@ -1034,3 +1034,21 @@ Monvi Brain v1.0 consolidado documentalmente, navegável no Obsidian, governado,
 #### Entregável atualizado
 
 - `00_SYSTEM/registries/Registro-excecoes-conectividade-Monvi-Brain-v1.md`.
+
+### Lote 10 — onboarding humano e de agentes
+
+- data: 2026-07-22;
+- `00_SYSTEM/onboarding/README.md` criado;
+- onboarding humano consolidado;
+- onboarding de Helppers e agentes consolidado;
+- templates e políticas aprovados foram reutilizados;
+- onboarding conectado ao mapa operacional;
+- nenhuma conta, credencial, sessão, integração ou runtime foi criado;
+- RAW e canonical não foram alterados;
+- nenhum status foi promovido;
+- testes finais permanecem não executados;
+- documentos do lote permanecem em review.
+
+#### Entregável
+
+- `00_SYSTEM/registries/Registro-consolidacao-onboarding-humano-agentes-Monvi-Brain-v1.md`.

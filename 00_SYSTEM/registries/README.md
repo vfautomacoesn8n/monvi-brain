@@ -53,6 +53,11 @@ tags:
 ## Organização da navegação
 
 - [[Registro-organizacao-indices-auditorias-registros-historico-tecnico-Monvi-Brain-v1]]
+
+## Operação e onboarding
+
+- [[Registro-consolidacao-onboarding-humano-agentes-Monvi-Brain-v1]]
+
 ## Regra de uso
 
 - novos registros devem ser adicionados ao grupo funcional correspondente;
