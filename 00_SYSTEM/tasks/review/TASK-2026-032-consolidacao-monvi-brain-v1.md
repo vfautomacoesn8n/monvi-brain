@@ -979,3 +979,22 @@ Monvi Brain v1.0 consolidado documentalmente, navegável no Obsidian, governado,
 #### Entregável
 
 - `00_SYSTEM/registries/Registro-resolucao-ambiguidades-links-Monvi-Brain-v1.md`.
+
+### Auditoria oficial pós-lote 8
+
+- data: 2026-07-22;
+- documentos Markdown: 278;
+- notas isoladas: 39;
+- críticas isoladas: 0;
+- links quebrados reais: 0;
+- ambiguidades únicas: 0;
+- possíveis exceções: 16;
+- referências válidas não Markdown: 20;
+- caminhos relativos explícitos validados;
+- linha de base de conectividade consolidada;
+- testes finais permanecem não executados;
+- documentos da task 032 permanecem em review.
+
+#### Entregável
+
+- `00_SYSTEM/registries/Auditoria-conectividade-pos-lote-8-Monvi-Brain-v1.md`.
