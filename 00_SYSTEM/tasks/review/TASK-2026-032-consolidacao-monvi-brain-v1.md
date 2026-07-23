@@ -1016,3 +1016,21 @@ Monvi Brain v1.0 consolidado documentalmente, navegável no Obsidian, governado,
 #### Entregável
 
 - `00_SYSTEM/registries/Registro-organizacao-indices-auditorias-registros-historico-tecnico-Monvi-Brain-v1.md`.
+
+### Classificação das exceções estruturais de conectividade
+
+- data: 2026-07-22;
+- 15 READMEs estruturais classificados como exceções em review;
+- relatórios de auditoria removidos da lista de candidatos porque agora estão conectados por índice;
+- críticas isoladas: 0;
+- links quebrados: 0;
+- ambiguidades: 0;
+- nenhuma conexão artificial foi criada;
+- RAW e canonical não foram alterados;
+- nenhum status foi promovido;
+- aprovação humana das exceções permanece pendente;
+- testes finais permanecem não executados.
+
+#### Entregável atualizado
+
+- `00_SYSTEM/registries/Registro-excecoes-conectividade-Monvi-Brain-v1.md`.
