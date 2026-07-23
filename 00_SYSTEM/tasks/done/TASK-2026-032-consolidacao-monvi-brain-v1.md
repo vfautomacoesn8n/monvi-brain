@@ -2,15 +2,15 @@
 id: task-2026-032
 title: Consolidação do Monvi Brain v1.0
 type: task
-status: review
-task_state: review
+status: approved
+task_state: done
 owner: ceo-monvi
 reviewer: ceo-monvi
 active_client: null
-requires_review: true
+requires_review: false
 created_at: "2026-07-22"
 updated_at: "2026-07-22"
-reviewed_at: null
+reviewed_at: "2026-07-23"
 classification: internal
 priority: critical
 depends_on:
@@ -1136,3 +1136,16 @@ Monvi Brain v1.0 consolidado documentalmente, navegável no Obsidian, governado,
 - `00_SYSTEM/audits/Checklist-prontidao-executado-Monvi-Brain-v1.md`;
 - `00_SYSTEM/audits/Avaliacao-pre-final-task-032-e-corte-documental-Monvi-Brain-v1.md`;
 - `00_SYSTEM/registries/Registro-decisao-pre-final-task-032-e-corte-documental-Monvi-Brain-v1.md`.
+
+## Aprovação humana da consolidação documental
+
+- decisão: aprovada;
+- aprovado por: `ceo-monvi`;
+- data: 2026-07-23;
+- escopo aprovado: consolidação documental da task 032;
+- corte v1.0: permanece `no-go`;
+- testes finais: não executados;
+- riscos residuais: permanecem pendentes de teste, tratamento ou aceite;
+- próxima etapa: abrir task separada para executar a bateria final de validação.
+
+A aprovação desta task não equivale à aprovação do corte v1.0.

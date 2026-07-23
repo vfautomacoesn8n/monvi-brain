@@ -55,9 +55,11 @@ related:
 
 ### pending-2026-005 — Revisão humana da task 032
 
-- status: open;
-- dependência: decisão do reviewer;
-- regra: não promover a task sem manifestação humana.
+- status: resolved;
+- decisão: consolidação documental aprovada;
+- aprovado por: ceo-monvi;
+- data: 2026-07-23;
+- observação: o corte v1.0 permanece `no-go`.
 
 ### pending-2026-006 — Aceite de riscos residuais
 

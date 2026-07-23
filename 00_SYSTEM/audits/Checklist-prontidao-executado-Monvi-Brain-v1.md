@@ -113,14 +113,14 @@ Ela não substitui a matriz de testes finais e não aprova o corte v1.0.
 
 | Item | Resultado | Evidência resumida |
 |---|---|---|
-| Reviewer concluiu a revisão | pendente-de-decisão | requer manifestação humana |
+| Reviewer concluiu a revisão | atendido | aprovação humana registrada em 2026-07-23 |
 | Riscos residuais foram aceitos ou tratados | pendente-de-decisão | requer decisão humana e/ou testes |
 | Corte v1.0 foi aprovado formalmente | pendente-de-decisão | não aprovado |
 
 ## Resultado resumido
 
-- consolidação documental da task 032: pronta para revisão humana;
-- aprovação da task 032: recomendada, desde que o reviewer confirme o escopo;
+- consolidação documental da task 032: aprovada pelo reviewer;
+- aprovação da task 032: concluída para o escopo documental;
 - corte v1.0: `no-go` neste momento;
 - motivo do `no-go`: testes pós-consolidação, aceite de riscos residuais e decisão formal ainda pendentes;
 - nenhuma promoção de status foi executada.
