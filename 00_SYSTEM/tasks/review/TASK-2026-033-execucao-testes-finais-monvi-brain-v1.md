@@ -186,3 +186,19 @@ Bateria final executada com evidências auditáveis, riscos residuais classifica
 ### Evidência
 
 - `00_SYSTEM/audits/Execucao-testes-finais-lote-1-preflight-estrutura-Monvi-Brain-v1.md`.
+
+## Execução — lote 2 — navegação
+
+- data: 2026-07-23;
+- `test-nav-001`: pass;
+- `test-nav-002`: pass;
+- resultado consolidado: pass;
+- correções automáticas durante os testes: não;
+- RAW alterado: não;
+- canonical alterado: não;
+- corte v1.0: permanece `no-go`;
+- testes restantes: pendentes.
+
+### Evidência
+
+- `00_SYSTEM/audits/Execucao-testes-finais-lote-2-navegacao-Monvi-Brain-v1.md`.
