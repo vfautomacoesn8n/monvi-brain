@@ -12,3 +12,9 @@ Procedimentos canônicos para operações recorrentes. Escolha o fluxo mais espe
 - [Isolamento de cliente](client-isolation.md): restringir tarefas vinculadas a clientes.
 
 Todos os workflows subordinam-se ao [`AI-CONTRACT.md`](../canonical/AI-CONTRACT.md).
+
+## Governança documental
+
+- [Arquivamento documental](archive.md)
+- [Revisão periódica documental](periodic-review.md)
+- [Escrita controlada por agentes](agent-writing.md)

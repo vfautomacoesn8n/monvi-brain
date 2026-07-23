@@ -1095,3 +1095,24 @@ Monvi Brain v1.0 consolidado documentalmente, navegável no Obsidian, governado,
 #### Entregável
 
 - `00_SYSTEM/registries/Registro-consolidacao-skills-ferramentas-repositorios-Monvi-Brain-v1.md`.
+
+### Lote 13 — arquivamento, revisão periódica e escrita por agentes
+
+- data: 2026-07-22;
+- workflow de arquivamento criado;
+- workflow de revisão periódica criado;
+- workflow de escrita controlada por agentes criado;
+- índice de workflows atualizado;
+- índice de arquivo expandido;
+- arquivamento diferenciado de exclusão;
+- retenção jurídica permaneceu pendente de validação;
+- escrita por agentes vinculada a paths explícitos, revisão, staging controlado e rollback;
+- nenhum documento real foi arquivado;
+- RAW e canonical não foram alterados;
+- nenhum status foi promovido;
+- testes finais permanecem não executados;
+- documentos do lote permanecem em review.
+
+#### Entregável
+
+- `00_SYSTEM/registries/Registro-consolidacao-arquivamento-revisao-escrita-agentes-Monvi-Brain-v1.md`.

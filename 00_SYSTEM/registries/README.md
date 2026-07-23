@@ -66,6 +66,10 @@ tags:
 - [[Registro-operacional-repositorios-Monvi]]
 - [[Registro-consolidacao-skills-ferramentas-repositorios-Monvi-Brain-v1]]
 
+## Arquivamento, revisão e escrita por agentes
+
+- [[Registro-consolidacao-arquivamento-revisao-escrita-agentes-Monvi-Brain-v1]]
+
 ## Regra de uso
 
 - novos registros devem ser adicionados ao grupo funcional correspondente;
