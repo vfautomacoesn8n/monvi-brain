@@ -998,3 +998,21 @@ Monvi Brain v1.0 consolidado documentalmente, navegável no Obsidian, governado,
 #### Entregável
 
 - `00_SYSTEM/registries/Auditoria-conectividade-pos-lote-8-Monvi-Brain-v1.md`.
+
+### Lote 9 — índices de auditorias, registros e histórico técnico
+
+- data: 2026-07-22;
+- `00_SYSTEM/audits/README.md` ampliado;
+- `00_SYSTEM/registries/README.md` criado;
+- `docs/superpowers/README.md` criado;
+- índices conectados aos mapas operacional e técnico;
+- `99_ARCHIVE/README.md` tratado como índice estrutural;
+- nenhum documento histórico foi movido;
+- RAW e canonical não foram alterados;
+- nenhum status foi promovido;
+- testes finais permanecem não executados;
+- documentos da task 032 permanecem em review.
+
+#### Entregável
+
+- `00_SYSTEM/registries/Registro-organizacao-indices-auditorias-registros-historico-tecnico-Monvi-Brain-v1.md`.

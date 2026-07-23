@@ -76,10 +76,9 @@ tags:
 - [[00_SYSTEM/templates/wiki-page]]
 ## Registros
 
-- [[00_SYSTEM/registries/Auditoria-global-Monvi-Brain-v1]]
-- [[00_SYSTEM/registries/Classificacao-achados-auditoria-Monvi-Brain-v1]]
-- [[00_SYSTEM/registries/Inventario-documental-Monvi-Brain-v1]]
-- [[00_SYSTEM/registries/source-manifest]]
+- [[00_SYSTEM/registries/README]]
+- [[00_SYSTEM/audits/README]]
+
 ## Tasks ativas
 
 - [[00_SYSTEM/tasks/active/README]]

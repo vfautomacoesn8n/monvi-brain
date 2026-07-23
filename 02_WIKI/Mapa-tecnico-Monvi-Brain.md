@@ -91,3 +91,10 @@ tags:
 - [[00_SYSTEM/registries/Matriz-rastreabilidade-tasks-028-031-Monvi]]
 
 > A matriz registra a relação entre as tasks 028 a 031 e os documentos institucionais resultantes, sem reabrir ou alterar as tasks aprovadas.
+
+## Histórico técnico e arquivo
+
+- [[docs/superpowers/README]]
+- [[99_ARCHIVE/README]]
+
+> O histórico técnico preserva a proveniência da implementação inicial. O arquivo mantém materiais retirados do uso corrente sem perder rastreabilidade.
