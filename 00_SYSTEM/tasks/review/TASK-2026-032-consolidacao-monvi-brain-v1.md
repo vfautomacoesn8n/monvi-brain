@@ -943,3 +943,22 @@ Monvi Brain v1.0 consolidado documentalmente, navegável no Obsidian, governado,
 #### Entregável
 
 - `00_SYSTEM/registries/Registro-correcao-conectividade-task-active-readme-Monvi-Brain-v1.md`.
+
+### Auditoria oficial pós-lote 7
+
+- data: 2026-07-22;
+- documentos Markdown: 276;
+- notas isoladas: 37;
+- críticas isoladas: 0;
+- links quebrados reais: 0;
+- ambiguidades únicas: 5;
+- possíveis exceções: 16;
+- referências válidas não Markdown: 20;
+- resultados registrados como linha de base confiável;
+- ambiguidades permanecem pendentes;
+- testes finais permanecem não executados;
+- documentos da task 032 permanecem em review.
+
+#### Entregável
+
+- `00_SYSTEM/registries/Auditoria-conectividade-pos-lote-7-Monvi-Brain-v1.md`.
