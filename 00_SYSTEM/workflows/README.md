@@ -5,7 +5,7 @@ Procedimentos canônicos para operações recorrentes. Escolha o fluxo mais espe
 - [Ingestão](ingest.md): registrar e transformar uma fonte autorizada.
 - [Consulta](query.md): responder usando evidências do cofre.
 - [Atualização](update.md): alterar conhecimento existente.
-- [Decisão](decision.md): propor, revisar e registrar decisões.
+- [Decisão](./decision.md): propor, revisar e registrar decisões.
 - [Auditoria](audit.md): verificar integridade, governança e isolamento.
 - [Pesquisa](research.md): coletar evidências externas sem antecipar conclusões.
 - [Retrospectiva](retro.md): aprender com trabalho concluído.

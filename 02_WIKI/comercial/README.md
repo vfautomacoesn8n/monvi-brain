@@ -12,7 +12,7 @@ review_cycle: on-change
 sources:
   - "../../01_RAW/monvi/04_Comercial_e_Vendas_Monvi.pdf"
   - "task-2026-007"
-related: ["Comercial-e-vendas.md", "ICP-e-segmentos.md", "Qualificacao-de-leads.md", "Diagnostico-comercial.md", "Funil-comercial.md", "Proposta-comercial.md", "Follow-up-e-negociacao.md", "Objecoes.md", "Metricas-comerciais.md", "Handoff-comercial.md"]
+related: ["Comercial-e-vendas.md", "ICP-e-segmentos.md", "Qualificacao-de-leads.md", "Diagnostico-comercial.md", "Funil-comercial.md", "./Proposta-comercial.md", "Follow-up-e-negociacao.md", "Objecoes.md", "Metricas-comerciais.md", "Handoff-comercial.md"]
 aliases: ["Comercial"]
 tags: [comercial, index]
 active_client: null
@@ -32,7 +32,7 @@ As páginas abaixo registram o Playbook Comercial V1.0 como modelos em revisão,
 - [Qualificação de leads](Qualificacao-de-leads.md)
 - [Diagnóstico comercial](Diagnostico-comercial.md)
 - [Funil comercial](Funil-comercial.md)
-- [Proposta comercial](Proposta-comercial.md)
+- [Proposta comercial](./Proposta-comercial.md)
 - [Follow-up e negociação](Follow-up-e-negociacao.md)
 - [Objeções](Objecoes.md)
 - [Métricas comerciais](Metricas-comerciais.md)

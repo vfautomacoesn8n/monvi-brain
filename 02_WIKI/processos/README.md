@@ -46,4 +46,4 @@ Manual de Processos V2.0, páginas 2–16. Este índice apenas organiza páginas
 
 > As páginas acima complementam o Manual de Processos com templates, campos e checklists em revisão. Não comprovam operação implantada, execução concluída, cronograma ativo, SLA, contrato vigente ou responsável atribuído.
 
-- [Relatório de cliente](Relatorio-de-cliente.md)
+- [Relatório de cliente](./Relatorio-de-cliente.md)

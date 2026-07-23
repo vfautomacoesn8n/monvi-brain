@@ -17,7 +17,7 @@ related:
   - "Qualificacao-de-leads.md"
   - "Diagnostico-comercial.md"
   - "Funil-comercial.md"
-  - "Proposta-comercial.md"
+  - "./Proposta-comercial.md"
   - "Follow-up-e-negociacao.md"
   - "Objecoes.md"
   - "Metricas-comerciais.md"
@@ -36,7 +36,7 @@ requires_review: true
 
 O PDF *Comercial e Vendas — Playbook Comercial V1.0 (2026)* organiza uma base institucional para abordar, diagnosticar e conduzir conversas comerciais. Nesta Wiki, ele é registrado como **modelo comercial proposto** e **playbook institucional em revisão**, não como comprovação de processo implantado.
 
-O fluxo proposto conecta: [ICP e segmentos](ICP-e-segmentos.md) → [qualificação](Qualificacao-de-leads.md) → [diagnóstico](Diagnostico-comercial.md) → [proposta](Proposta-comercial.md) → [follow-up e negociação](Follow-up-e-negociacao.md) → fechamento → [handoff](Handoff-comercial.md). O [funil](Funil-comercial.md) apresenta essa sequência como estrutura sugerida.
+O fluxo proposto conecta: [ICP e segmentos](ICP-e-segmentos.md) → [qualificação](Qualificacao-de-leads.md) → [diagnóstico](Diagnostico-comercial.md) → [proposta](./Proposta-comercial.md) → [follow-up e negociação](Follow-up-e-negociacao.md) → fechamento → [handoff](Handoff-comercial.md). O [funil](Funil-comercial.md) apresenta essa sequência como estrutura sugerida.
 
 ## Limite entre Wiki e operação
 
@@ -66,7 +66,7 @@ Atualizações devem se basear em decisão formal, registros operacionais autori
 - [Qualificação de leads](Qualificacao-de-leads.md)
 - [Diagnóstico comercial](Diagnostico-comercial.md)
 - [Funil comercial](Funil-comercial.md)
-- [Proposta comercial](Proposta-comercial.md)
+- [Proposta comercial](./Proposta-comercial.md)
 - [Follow-up e negociação](Follow-up-e-negociacao.md)
 - [Objeções](Objecoes.md)
 - [Métricas comerciais](Metricas-comerciais.md)
