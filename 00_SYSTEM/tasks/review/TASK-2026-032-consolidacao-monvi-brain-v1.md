@@ -927,3 +927,19 @@ Monvi Brain v1.0 consolidado documentalmente, navegável no Obsidian, governado,
 #### Entregável
 
 - `00_SYSTEM/registries/Registro-correcao-links-com-ponto-mapas-institucional-tecnico-Monvi-Brain-v1.md`.
+
+### Lote 7 — conexão do índice de tasks ativas
+
+- data: 2026-07-22;
+- `00_SYSTEM/tasks/active/README.md` conectado ao mapa operacional;
+- conteúdo do índice não foi alterado;
+- nenhuma task foi criada ou movida;
+- nenhum status foi promovido;
+- RAW e canonical não foram alterados;
+- testes finais permanecem não executados;
+- nova auditoria deverá ignorar wikilinks dentro de código inline;
+- documentos da task 032 permanecem em review.
+
+#### Entregável
+
+- `00_SYSTEM/registries/Registro-correcao-conectividade-task-active-readme-Monvi-Brain-v1.md`.

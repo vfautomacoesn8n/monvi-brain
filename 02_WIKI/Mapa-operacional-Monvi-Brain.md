@@ -80,6 +80,12 @@ tags:
 - [[00_SYSTEM/registries/Classificacao-achados-auditoria-Monvi-Brain-v1]]
 - [[00_SYSTEM/registries/Inventario-documental-Monvi-Brain-v1]]
 - [[00_SYSTEM/registries/source-manifest]]
+## Tasks ativas
+
+- [[00_SYSTEM/tasks/active/README]]
+
+> Este índice permanece válido mesmo quando não há tasks ativas. Ele documenta a estrutura operacional da fila ativa e seus critérios de uso.
+
 ## Tasks em review
 
 - [[00_SYSTEM/tasks/review/README]]
