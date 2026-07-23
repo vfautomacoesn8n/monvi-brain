@@ -1073,3 +1073,25 @@ Monvi Brain v1.0 consolidado documentalmente, navegável no Obsidian, governado,
 #### Entregável
 
 - `00_SYSTEM/registries/Registro-estrutura-padrao-clientes-projetos-Monvi-Brain-v1.md`.
+
+### Lote 12 — registros de skills, ferramentas e repositórios
+
+- data: 2026-07-22;
+- registro operacional de skills criado;
+- registro operacional de ferramentas criado;
+- registro operacional de repositórios criado;
+- schemas mínimos e estados operacionais definidos;
+- decisão institucional de stack separada de comprovação operacional;
+- ferramentas conhecidas registradas como `unverified`;
+- nenhuma skill foi ativada;
+- nenhuma conta, licença ou repositório real foi confirmado;
+- nenhum acesso foi concedido;
+- secrets permanecem fora do Monvi Brain;
+- RAW e canonical não foram alterados;
+- nenhum status foi promovido;
+- testes finais permanecem não executados;
+- documentos do lote permanecem em review.
+
+#### Entregável
+
+- `00_SYSTEM/registries/Registro-consolidacao-skills-ferramentas-repositorios-Monvi-Brain-v1.md`.

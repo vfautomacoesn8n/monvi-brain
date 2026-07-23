@@ -59,6 +59,13 @@ tags:
 - [[Registro-consolidacao-onboarding-humano-agentes-Monvi-Brain-v1]]
 - [[Registro-estrutura-padrao-clientes-projetos-Monvi-Brain-v1]]
 
+## Skills, ferramentas e repositórios
+
+- [[Registro-operacional-skills-Monvi]]
+- [[Registro-operacional-ferramentas-Monvi]]
+- [[Registro-operacional-repositorios-Monvi]]
+- [[Registro-consolidacao-skills-ferramentas-repositorios-Monvi-Brain-v1]]
+
 ## Regra de uso
 
 - novos registros devem ser adicionados ao grupo funcional correspondente;
