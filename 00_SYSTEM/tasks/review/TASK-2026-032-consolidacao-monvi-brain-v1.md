@@ -1116,3 +1116,23 @@ Monvi Brain v1.0 consolidado documentalmente, navegável no Obsidian, governado,
 #### Entregável
 
 - `00_SYSTEM/registries/Registro-consolidacao-arquivamento-revisao-escrita-agentes-Monvi-Brain-v1.md`.
+
+### Pacote pré-final de evidências e decisão
+
+- data: 2026-07-22;
+- instância executada do checklist criada;
+- avaliação pré-final da task 032 e do corte criada;
+- decisão sobre task e corte explicitamente separada;
+- recomendação para a task 032: aprovar consolidação documental;
+- recomendação para o corte v1.0: `no-go`;
+- pendências 002 e 003 encerradas documentalmente;
+- revisão humana, aceite de riscos e decisão do corte permanecem pendentes;
+- testes finais permanecem não executados;
+- nenhum status foi promovido;
+- task permanece em review.
+
+#### Entregáveis
+
+- `00_SYSTEM/audits/Checklist-prontidao-executado-Monvi-Brain-v1.md`;
+- `00_SYSTEM/audits/Avaliacao-pre-final-task-032-e-corte-documental-Monvi-Brain-v1.md`;
+- `00_SYSTEM/registries/Registro-decisao-pre-final-task-032-e-corte-documental-Monvi-Brain-v1.md`.

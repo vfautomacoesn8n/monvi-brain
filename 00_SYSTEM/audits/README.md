@@ -28,3 +28,8 @@ Armazena relatórios produzidos pelo [workflow de auditoria](../workflows/audit.
 - relatórios históricos permanecem rastreáveis;
 - novos relatórios devem ser conectados a este índice;
 - aprovação e status continuam definidos no próprio documento.
+
+## Preparação pré-final
+
+- [[Checklist-prontidao-executado-Monvi-Brain-v1]]
+- [[Avaliacao-pre-final-task-032-e-corte-documental-Monvi-Brain-v1]]

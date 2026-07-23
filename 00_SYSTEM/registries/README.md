@@ -70,6 +70,10 @@ tags:
 
 - [[Registro-consolidacao-arquivamento-revisao-escrita-agentes-Monvi-Brain-v1]]
 
+## Decisão pré-final
+
+- [[Registro-decisao-pre-final-task-032-e-corte-documental-Monvi-Brain-v1]]
+
 ## Regra de uso
 
 - novos registros devem ser adicionados ao grupo funcional correspondente;

@@ -13,7 +13,7 @@ source_task: task-2026-032
 created_at: "2026-07-22"
 updated_at: "2026-07-22"
 reviewed_at: null
-version: "0.1.0"
+version: "0.2.0"
 tags:
   - monvi-brain
   - riscos
@@ -36,19 +36,40 @@ related:
 
 ### pending-2026-002 — Correção progressiva dos achados
 
-- status: open;
+- status: resolved-documentary;
 - origem: auditoria global;
-- regra: executar em lotes pequenos.
+- evidência: lotes de conectividade e consolidação concluídos;
+- observação: testes finais permanecem separados.
 
 ### pending-2026-003 — Critérios finais de corte v1.0
 
-- status: open;
-- dependência: conclusão das fases documentais.
+- status: resolved-documentary;
+- evidência: plano de corte, checklist e matriz criados;
+- observação: decisão formal do corte permanece pendente.
 
 ### pending-2026-004 — Testes finais
 
 - status: deferred;
 - regra: executar depois da consolidação completa.
+
+
+### pending-2026-005 — Revisão humana da task 032
+
+- status: open;
+- dependência: decisão do reviewer;
+- regra: não promover a task sem manifestação humana.
+
+### pending-2026-006 — Aceite de riscos residuais
+
+- status: open;
+- dependência: resultados dos testes pós-consolidação;
+- regra: riscos devem ser tratados ou aceitos formalmente.
+
+### pending-2026-007 — Decisão formal do corte v1.0
+
+- status: blocked;
+- dependência: testes finais e aceite de riscos;
+- recomendação pré-final: no-go.
 
 ## Riscos
 
