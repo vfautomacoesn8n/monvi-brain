@@ -3,7 +3,7 @@ id: task-2026-034
 title: Harmonização do modelo de precedência em dois eixos do Monvi Brain
 type: task
 status: review
-task_state: planned
+task_state: active
 owner: ceo-monvi
 reviewer: ceo-monvi
 active_client: null
@@ -11,9 +11,9 @@ active_project: null
 requires_review: true
 classification: internal
 created_at: "2026-07-23"
-updated_at: "2026-07-23"
+updated_at: "2026-07-24"
 reviewed_at: null
-version: "0.1.0"
+version: "0.2.0"
 tags:
   - monvi-brain
   - governanca
@@ -143,4 +143,37 @@ Harmonizar a política, a arquitetura e o registro institucional para eliminar a
 - harmonização documental: não executada;
 - `test-consistency-001`: bloqueado até a harmonização;
 - lote 3 da task 033: não executado;
+- corte v1.0: `no-go`.
+
+## Execução documental — 2026-07-24
+
+### Alterações realizadas
+
+- `decision-2026-007` registrada como aprovada pelo CEO;
+- política atualizada com autoridade documental e maturidade como eixos distintos;
+- arquitetura atualizada para referenciar o mesmo modelo;
+- decisões humanas condicionadas à formalização no nível documental adequado;
+- arquitetura movida de `approved` para `review` por ter recebido alteração material;
+- política mantida em `review`;
+- task mantida em `active` até revisão humana dos textos.
+
+### Validações locais
+
+- arquivos-alvo localizados;
+- substituições aplicadas uma única vez;
+- política e arquitetura contêm os dois eixos;
+- registro contém `decision-2026-007`;
+- JSONL validado;
+- RAW não alterado;
+- canonical não alterado;
+- lote 3 da task 033 não executado;
+- corte v1.0 mantido em `no-go`.
+
+### Resultado
+
+- harmonização documental: executada;
+- revisão humana: pendente;
+- `test-consistency-001`: ainda não reexecutado;
+- task 033: permanece sem execução adicional;
+- task 034: `active`;
 - corte v1.0: `no-go`.

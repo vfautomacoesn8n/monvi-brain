@@ -11,9 +11,9 @@ requires_review: true
 classification: internal
 source_task: task-2026-032
 created_at: "2026-07-22"
-updated_at: "2026-07-22"
+updated_at: "2026-07-24"
 reviewed_at: null
-version: "0.1.0"
+version: "0.2.0"
 tags:
   - monvi
   - decisoes
@@ -74,9 +74,21 @@ Somente decisões formalizadas neste registro ou em documento de decisão aprova
 - limite: validações locais de Git e estrutura continuam permitidas;
 - origem: task 032.
 
+### decision-2026-007 — Modelo de precedência em dois eixos
+
+- status: approved;
+- contexto: divergência entre a hierarquia por tipo documental da política e a sequência de maturidade apresentada na arquitetura;
+- decisão: a precedência será avaliada primeiro por autoridade documental e, dentro do mesmo nível, por maturidade;
+- eixo 1: canonical → policies → architecture → processes → procedures → templates → tasks → outputs → raw;
+- eixo 2: approved → verified → review → hypothesis → raw/generated;
+- regra: decisão humana não substitui automaticamente canonical ou policy e deve ser formalizada no nível documental adequado;
+- aprovado por: CEO da Monvi;
+- aprovado em: 2026-07-23;
+- origem: task 034.
+
 ## Pendências
 
-- aprovação formal das decisões;
+- aprovação formal das decisões 001 a 006;
 - confirmação do corte v1.0;
 - definição de revisão periódica;
 - futura migração para o Monvi Core Brain.

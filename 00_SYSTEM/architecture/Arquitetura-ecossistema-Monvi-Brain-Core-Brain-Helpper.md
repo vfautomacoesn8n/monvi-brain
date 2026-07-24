@@ -2,14 +2,14 @@
 id: architecture-monvi-ecosystem
 title: Arquitetura do ecossistema Monvi Brain, Monvi Core Brain e Helpper
 type: architecture
-status: approved
+status: review
 owner: ceo-monvi
 reviewer: ceo-monvi
 active_client: null
-requires_review: false
+requires_review: true
 created_at: "2026-07-22"
-updated_at: "2026-07-22"
-reviewed_at: "2026-07-22"
+updated_at: "2026-07-24"
+reviewed_at: null
 source_task: task-2026-028
 classification: internal
 ---
@@ -186,16 +186,39 @@ A interface não define permissão. A permissão é aplicada pelo Core Brain.
 
 ## 6. Fonte de verdade
 
-A ordem de precedência deve ser:
+O Monvi Brain é a fonte institucional do conhecimento aprovado.
 
-1. documentos canônicos aprovados;
-2. decisões humanas aprovadas;
-3. processos operacionais aprovados;
-4. evidências verificadas;
-5. registros em review;
-6. hipóteses;
-7. conteúdo bruto;
-8. saídas geradas.
+A precedência segue dois eixos, aplicados nesta ordem.
+
+### Eixo 1 — autoridade documental
+
+```text
+canonical
+→ policies
+→ architecture
+→ processes
+→ procedures
+→ templates
+→ tasks
+→ outputs
+→ raw
+```
+
+### Eixo 2 — maturidade dentro do mesmo nível
+
+```text
+approved
+→ verified
+→ review
+→ hypothesis
+→ raw/generated
+```
+
+Primeiro prevalece o nível de autoridade documental.
+
+Quando os documentos estiverem no mesmo nível, devem ser avaliados maturidade, aprovação, versão, escopo, evidência, cliente, projeto e decisão formalmente registrada.
+
+Uma decisão humana não substitui automaticamente canonical ou policy. A decisão deve ser formalizada no nível documental adequado.
 
 Conflitos devem ser escalados, não resolvidos silenciosamente.
 

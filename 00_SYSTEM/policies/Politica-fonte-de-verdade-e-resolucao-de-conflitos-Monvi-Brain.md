@@ -11,9 +11,9 @@ requires_review: true
 classification: internal
 source_task: task-2026-032
 created_at: "2026-07-22"
-updated_at: "2026-07-22"
+updated_at: "2026-07-24"
 reviewed_at: null
-version: "0.1.0"
+version: "0.2.0"
 tags:
   - monvi-brain
   - fonte-de-verdade
@@ -28,7 +28,11 @@ related:
 
 Definir qual documento prevalece quando existirem versões, interpretações ou registros conflitantes no Monvi Brain.
 
-## Ordem de autoridade
+## Modelo de precedência em dois eixos
+
+A precedência deve ser avaliada em dois eixos, nesta ordem.
+
+### Eixo 1 — autoridade documental
 
 ```text
 canonical
@@ -41,6 +45,18 @@ canonical
 → outputs
 → raw
 ```
+
+### Eixo 2 — maturidade dentro do mesmo nível
+
+```text
+approved
+→ verified
+→ review
+→ hypothesis
+→ raw/generated
+```
+
+O eixo de maturidade não permite que um documento de menor autoridade substitua automaticamente um documento de maior autoridade.
 
 ## Interpretação da ordem
 
@@ -86,14 +102,19 @@ Preserva material de origem e não é automaticamente verdade institucional.
 
 Quando dois documentos conflitarem:
 
-1. verificar status;
-2. verificar versão;
-3. verificar data de aprovação;
-4. verificar autoridade documental;
-5. verificar escopo;
-6. verificar cliente e projeto;
-7. verificar decisão registrada;
-8. suspender uso quando o conflito for crítico.
+1. identificar o nível de autoridade documental;
+2. aplicar primeiro o eixo de autoridade documental;
+3. quando estiverem no mesmo nível, verificar maturidade;
+4. verificar aprovação;
+5. verificar versão;
+6. verificar data de aprovação;
+7. verificar escopo;
+8. verificar cliente e projeto;
+9. verificar evidência;
+10. verificar decisão formalmente registrada;
+11. suspender uso quando o conflito for crítico.
+
+Uma decisão humana não substitui automaticamente canonical ou policy. A decisão deve ser formalizada no nível documental adequado.
 
 Documento mais recente não prevalece automaticamente.
 
