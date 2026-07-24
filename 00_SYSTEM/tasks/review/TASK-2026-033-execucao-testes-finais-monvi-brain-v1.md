@@ -11,7 +11,7 @@ active_project: null
 requires_review: true
 classification: internal
 created_at: "2026-07-23"
-updated_at: "2026-07-23"
+updated_at: "2026-07-24"
 reviewed_at: null
 version: "0.1.0"
 allowed_paths:
@@ -202,3 +202,20 @@ Bateria final executada com evidências auditáveis, riscos residuais classifica
 ### Evidência
 
 - `00_SYSTEM/audits/Execucao-testes-finais-lote-2-navegacao-Monvi-Brain-v1.md`.
+## Execução — lote 3 — recuperação e consistência
+
+- data: 2026-07-24;
+- `test-retrieval-001`: pass;
+- `test-retrieval-002`: pass;
+- `test-consistency-001`: pass;
+- `test-consistency-002`: pass;
+- resultado consolidado: pass;
+- correções automáticas durante os testes: não;
+- RAW alterado: não;
+- canonical alterado: não;
+- corte v1.0: permanece `no-go`;
+- testes restantes: segurança, agente e incidente.
+
+### Evidência
+
+- `00_SYSTEM/audits/Execucao-testes-finais-lote-3-recuperacao-consistencia-Monvi-Brain-v1.md`.
