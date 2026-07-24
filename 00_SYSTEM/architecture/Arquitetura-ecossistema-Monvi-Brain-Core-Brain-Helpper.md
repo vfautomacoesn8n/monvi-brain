@@ -2,14 +2,14 @@
 id: architecture-monvi-ecosystem
 title: Arquitetura do ecossistema Monvi Brain, Monvi Core Brain e Helpper
 type: architecture
-status: review
+status: approved
 owner: ceo-monvi
 reviewer: ceo-monvi
 active_client: null
-requires_review: true
+requires_review: false
 created_at: "2026-07-22"
 updated_at: "2026-07-24"
-reviewed_at: null
+reviewed_at: "2026-07-24"
 source_task: task-2026-028
 classification: internal
 ---

@@ -2,18 +2,18 @@
 id: task-2026-034
 title: Harmonização do modelo de precedência em dois eixos do Monvi Brain
 type: task
-status: review
-task_state: active
+status: approved
+task_state: done
 owner: ceo-monvi
 reviewer: ceo-monvi
 active_client: null
 active_project: null
-requires_review: true
+requires_review: false
 classification: internal
 created_at: "2026-07-23"
 updated_at: "2026-07-24"
-reviewed_at: null
-version: "0.2.0"
+reviewed_at: "2026-07-24"
+version: "1.0.0"
 tags:
   - monvi-brain
   - governanca
@@ -177,3 +177,23 @@ Harmonizar a política, a arquitetura e o registro institucional para eliminar a
 - task 033: permanece sem execução adicional;
 - task 034: `active`;
 - corte v1.0: `no-go`.
+
+## Aprovação executiva — 2026-07-24
+
+O CEO da Monvi aprovou:
+
+- a política harmonizada pelo modelo de precedência em dois eixos;
+- a arquitetura harmonizada pelo mesmo modelo;
+- a conclusão da task 034.
+
+### Estado final
+
+- política: `approved`;
+- arquitetura: `approved`;
+- task 034: `done`;
+- revisão humana: concluída;
+- `decision-2026-007`: permanece `approved`;
+- lote 3 da task 033: não executado nesta task;
+- `test-consistency-001`: ainda não reexecutado;
+- corte v1.0: `no-go`;
+- RAW e canonical: inalterados.

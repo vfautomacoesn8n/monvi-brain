@@ -2,18 +2,18 @@
 id: policy-monvi-brain-source-of-truth-conflict-resolution
 title: Política de fonte de verdade e resolução de conflitos do Monvi Brain
 type: policy
-status: review
+status: approved
 owner: ceo-monvi
 reviewer: ceo-monvi
 active_client: null
 active_project: null
-requires_review: true
+requires_review: false
 classification: internal
 source_task: task-2026-032
 created_at: "2026-07-22"
 updated_at: "2026-07-24"
-reviewed_at: null
-version: "0.2.0"
+reviewed_at: "2026-07-24"
+version: "1.0.0"
 tags:
   - monvi-brain
   - fonte-de-verdade
