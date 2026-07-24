@@ -219,3 +219,24 @@ Bateria final executada com evidências auditáveis, riscos residuais classifica
 ### Evidência
 
 - `00_SYSTEM/audits/Execucao-testes-finais-lote-3-recuperacao-consistencia-Monvi-Brain-v1.md`.
+## Execução — lote 4 — segurança
+
+- data: 2026-07-24;
+- `test-security-001`: blocked;
+- `test-security-002`: not-applicable;
+- `test-security-003`: pass;
+- resultado consolidado: blocked;
+- arquivos rastreados: 335;
+- arquivos textuais avaliados: 317;
+- achados potenciais de secret: 0;
+- arquivos binários em RAW fora da cobertura textual: 16;
+- diretórios reais de clientes: 0;
+- RAW alterado: não;
+- canonical alterado: não;
+- corte v1.0: permanece `no-go`;
+- testes restantes: agente e incidente;
+- decisão pendente: ferramenta aprovada para inspeção de PDFs e PPTX.
+
+### Evidência
+
+- `00_SYSTEM/audits/Execucao-testes-finais-lote-4-seguranca-Monvi-Brain-v1.md`.
