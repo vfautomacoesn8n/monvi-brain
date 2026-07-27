@@ -11,7 +11,7 @@ active_project: null
 requires_review: true
 classification: internal
 created_at: "2026-07-23"
-updated_at: "2026-07-24"
+updated_at: "2026-07-27"
 reviewed_at: null
 version: "0.1.0"
 allowed_paths:
@@ -276,3 +276,38 @@ Bateria final executada com evidências auditáveis, riscos residuais classifica
 ### Evidência
 
 - `00_SYSTEM/audits/Execucao-testes-finais-lote-6-consolidacao-Monvi-Brain-v1.md`.
+## Lote 7 — atualização do resultado de segurança
+
+- data: 2026-07-27;
+- evidência de origem: task 036 aprovada e concluída;
+- `test-security-001`: atualizado de `blocked` para `pass`;
+- arquivos binários RAW inspecionados: 16;
+- cobertura útil confirmada: 16;
+- achados automáticos: 0;
+- secrets reais identificados: 0;
+- divergências de hash RAW: 0;
+- total de testes previstos: 15;
+- pass: 14;
+- blocked: 0;
+- not-applicable: 1;
+- fail: 0;
+- task_state: permanece `active`;
+- corte v1.0: permanece `no-go`;
+- motivo: decisão humana final da task 033 ainda pendente.
+
+### Evidências
+
+- `00_SYSTEM/tasks/done/TASK-2026-036-inspecao-binarios-raw-seguranca.md`;
+- `00_SYSTEM/audits/Execucao-task-2026-036-inspecao-binarios-raw-seguranca.md`;
+- `00_SYSTEM/audits/Execucao-testes-finais-lote-7-atualizacao-seguranca-Monvi-Brain-v1.md`.
+
+### Próxima decisão
+
+A matriz final não possui testes em `fail` ou `blocked`.
+
+Permanece necessária decisão humana sobre:
+
+1. aceitar `test-security-002: not-applicable` nesta versão;
+2. aceitar os riscos residuais documentais;
+3. declarar `go` ou manter `no-go`;
+4. aprovar e concluir a task 033 em atividade separada.
