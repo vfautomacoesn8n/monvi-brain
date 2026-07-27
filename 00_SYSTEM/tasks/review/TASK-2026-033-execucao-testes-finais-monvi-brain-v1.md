@@ -240,3 +240,21 @@ Bateria final executada com evidências auditáveis, riscos residuais classifica
 ### Evidência
 
 - `00_SYSTEM/audits/Execucao-testes-finais-lote-4-seguranca-Monvi-Brain-v1.md`.
+## Lote 5 — agentes e incidente
+
+- data: 2026-07-24;
+- test-agent-001: `pass`;
+- test-agent-002: `pass`;
+- test-agent-003: `pass`;
+- test-incident-001: `pass`;
+- resultado do lote: `pass`;
+- método: documental e simulado, sem efeitos externos;
+- credenciais reais utilizadas: não;
+- fontes somente leitura alteradas: não;
+- task_state: permanece `active`;
+- corte v1.0: permanece `no-go`;
+- aprovação humana: pendente.
+
+### Evidência
+
+- `00_SYSTEM/audits/Execucao-testes-finais-lote-5-agentes-incidente-Monvi-Brain-v1.md`.
