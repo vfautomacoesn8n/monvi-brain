@@ -2,18 +2,18 @@
 id: task-2026-036
 title: Inspeção de binários RAW para validação de segurança
 type: task
-status: review
-task_state: active
+status: approved
+task_state: done
 owner: ceo-monvi
 reviewer: ceo-monvi
 active_client: null
 active_project: null
-requires_review: true
+requires_review: false
 classification: internal
 created_at: "2026-07-24"
 updated_at: "2026-07-27"
-reviewed_at: null
-version: "0.1.0"
+reviewed_at: "2026-07-27"
+version: "1.0.0"
 tags:
   - monvi-brain
   - seguranca
@@ -172,10 +172,25 @@ Relatório:
 
 Estado:
 
-- execução técnica concluída;
-- task permanece `active`;
-- `status: review`;
-- `requires_review: true`;
-- aprovação humana pendente;
+- execução técnica concluída e aprovada;
+- task concluída com `task_state: done`;
+- `status: approved`;
+- `requires_review: false`;
+- aprovação humana registrada;
 - task 033 não alterada;
 - corte v1.0 permanece `no-go`.
+
+## Aprovação e encerramento
+
+Data: 2026-07-27.
+
+Decisão humana:
+
+- execução aprovada;
+- `test-security-001: pass` confirmado;
+- task 036 concluída;
+- relatório aprovado;
+- nenhum secret real identificado;
+- RAW preservado;
+- task 033 permanece ativa;
+- corte v1.0 permanece `no-go` até consolidação final.

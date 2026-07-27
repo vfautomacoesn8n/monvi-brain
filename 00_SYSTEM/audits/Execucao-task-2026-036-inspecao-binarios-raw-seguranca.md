@@ -2,18 +2,18 @@
 id: audit-task-2026-036
 title: Execução da task 036 — inspeção de binários RAW para segurança
 type: output
-status: review
-task_state: active
+status: approved
+task_state: done
 owner: helpper
 reviewer: ceo-monvi
 active_client: null
 active_project: null
-requires_review: true
+requires_review: false
 classification: internal
 created_at: "2026-07-27"
 updated_at: "2026-07-27"
-reviewed_at: null
-version: "0.1.0"
+reviewed_at: "2026-07-27"
+version: "1.0.0"
 tags:
   - monvi-brain
   - seguranca
@@ -29,13 +29,13 @@ tags:
 
 A inspeção local dos 16 arquivos binários RAW foi concluída sem alteração dos arquivos de origem.
 
-Resultado recomendado:
+Resultado aprovado:
 
 - `test-security-001: pass`;
 - nenhum secret real identificado;
 - nenhuma divergência de hash RAW;
 - cobertura textual útil obtida para os 16 arquivos;
-- revisão humana ainda obrigatória antes da aprovação e do encerramento da task 036.
+- revisão humana concluída e aprovação registrada.
 
 ## Escopo executado
 
@@ -130,7 +130,7 @@ Também aparece o telefone fictício `+55 00 00000-0000`, sem valor operacional.
 
 ### `test-security-001`
 
-**Recomendação: `pass`.**
+**Resultado aprovado: `pass`.**
 
 Justificativa:
 
@@ -155,14 +155,28 @@ Limitações residuais:
 
 Essas limitações não impedem o `pass` dentro do escopo definido para o `test-security-001`.
 
-## Decisão pendente
+## Decisão registrada
 
-A execução técnica está concluída.
+A execução técnica e a revisão humana foram concluídas.
 
-Ainda depende de decisão humana:
+Decisão:
 
-1. aprovar ou rejeitar este relatório;
-2. confirmar `test-security-001: pass`;
-3. concluir a task 036;
-4. atualizar a task 033 em atividade separada;
-5. manter o corte v1.0 em `no-go` até a consolidação final da task 033.
+1. relatório aprovado;
+2. `test-security-001: pass` confirmado;
+3. task 036 concluída;
+4. task 033 será atualizada em atividade separada;
+5. corte v1.0 permanece `no-go` até a consolidação final da task 033.
+
+## Aprovação humana
+
+Data: 2026-07-27.
+
+Decisão:
+
+- relatório aprovado;
+- `test-security-001: pass` confirmado;
+- nenhuma ação de incidente necessária;
+- limitações residuais aceitas dentro do escopo documental;
+- task 036 autorizada para conclusão;
+- task 033 deverá ser atualizada em atividade separada;
+- corte v1.0 permanece `no-go` até a decisão final da task 033.
