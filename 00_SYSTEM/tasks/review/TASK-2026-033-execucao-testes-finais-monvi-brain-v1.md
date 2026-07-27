@@ -258,3 +258,21 @@ Bateria final executada com evidências auditáveis, riscos residuais classifica
 ### Evidência
 
 - `00_SYSTEM/audits/Execucao-testes-finais-lote-5-agentes-incidente-Monvi-Brain-v1.md`.
+## Lote 6 — consolidação final
+
+- data: 2026-07-24;
+- testes previstos: 15;
+- pass: 13;
+- blocked: 1;
+- not-applicable: 1;
+- fail: 0;
+- bloqueio principal: inspeção de conteúdo de 16 binários RAW;
+- teste não aplicável: isolamento prático entre dois clientes reais;
+- riscos residuais aceitos: não;
+- task_state: permanece `active`;
+- corte v1.0: permanece `no-go`;
+- decisão humana final: pendente.
+
+### Evidência
+
+- `00_SYSTEM/audits/Execucao-testes-finais-lote-6-consolidacao-Monvi-Brain-v1.md`.
