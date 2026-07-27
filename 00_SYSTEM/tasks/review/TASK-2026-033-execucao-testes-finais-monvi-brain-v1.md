@@ -311,3 +311,28 @@ Permanece necessária decisão humana sobre:
 2. aceitar os riscos residuais documentais;
 3. declarar `go` ou manter `no-go`;
 4. aprovar e concluir a task 033 em atividade separada.
+## Lote 8 — validação complementar final
+
+- data: 2026-07-27;
+- verificações complementares executadas: 7;
+- verificações com `pass`: 7;
+- verificações com `fail`: 0;
+- matriz final: 14 `pass`, 0 `blocked`, 1 `not-applicable`, 0 `fail`;
+- risco residual principal: isolamento prático entre dois clientes reais ainda não aplicável;
+- recomendação técnica: `go` condicionado à aceitação humana dos riscos residuais;
+- task_state: permanece `active`;
+- status: permanece `review`;
+- requires_review: permanece `true`;
+- corte v1.0: permanece `no-go`;
+- decisão humana final: pendente.
+
+### Evidência
+
+- `00_SYSTEM/audits/Execucao-testes-finais-lote-8-validacao-complementar-final-Monvi-Brain-v1.md`.
+
+### Decisão requerida
+
+O CEO deve registrar uma das opções:
+
+1. `go` — aceitar os riscos residuais, aprovar o corte v1.0 e concluir a task 033;
+2. `no-go` — manter a task ativa e definir condições adicionais objetivas.
