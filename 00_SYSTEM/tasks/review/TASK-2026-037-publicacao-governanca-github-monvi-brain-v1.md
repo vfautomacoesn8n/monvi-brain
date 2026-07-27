@@ -14,7 +14,7 @@ classification: internal
 created_at: "2026-07-27"
 updated_at: "2026-07-27"
 reviewed_at: null
-version: "0.1.0"
+version: "0.2.0"
 allowed_paths:
   - 00_SYSTEM/audits/Execucao-task-2026-037-publicacao-governanca-github-Monvi-Brain-v1.md
   - 00_SYSTEM/logs/changes.jsonl
@@ -172,3 +172,37 @@ A task deve ser bloqueada se ocorrer:
 ## Resultado esperado
 
 Publicação e governança inicial do GitHub registradas com evidências, limitação técnica declarada e controles processuais compensatórios formalizados, prontas para revisão humana.
+
+## Execução técnica registrada
+
+- data: 2026-07-27;
+- executor: Helpper;
+- repositório privado: confirmado;
+- branch padrão `main`: confirmada;
+- commit oficial remoto: confirmado;
+- tag anotada `v1.0.0`: confirmada;
+- Release `Monvi Brain v1.0.0`: confirmado;
+- merge commit: desativado;
+- squash merge: ativado;
+- rebase merge: desativado;
+- exclusão automática de branch após merge: ativada;
+- proteção técnica da `main`: indisponível no plano atual;
+- credenciais registradas: não;
+- RAW alterado: não;
+- canonical alterado: não;
+- resultado técnico: `pass-with-residual-risk`;
+- status da task: permanece `review`;
+- task_state: permanece `active`;
+- decisão humana: pendente.
+
+### Evidência
+
+- `00_SYSTEM/audits/Execucao-task-2026-037-publicacao-governanca-github-Monvi-Brain-v1.md`.
+
+### Próximas ações da task
+
+1. atualizar o registro de riscos e limitações;
+2. registrar a execução em `changes.jsonl`;
+3. validar os entregáveis;
+4. submeter o risco residual para decisão do CEO;
+5. somente depois aprovar e mover a task para `done`.
