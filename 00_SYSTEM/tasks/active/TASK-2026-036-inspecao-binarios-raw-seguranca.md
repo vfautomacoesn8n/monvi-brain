@@ -11,7 +11,7 @@ active_project: null
 requires_review: true
 classification: internal
 created_at: "2026-07-24"
-updated_at: "2026-07-24"
+updated_at: "2026-07-27"
 reviewed_at: null
 version: "0.1.0"
 tags:
@@ -139,3 +139,43 @@ Após a conclusão da task 036:
 1. executar validação complementar de segurança;
 2. atualizar o consolidado da task 033;
 3. submeter o corte v1.0 à decisão humana final.
+
+## Execução técnica concluída
+
+Data da execução: 2026-07-27.
+
+Resultado:
+
+- 16 binários inventariados;
+- 16 processados sem erro;
+- 16 com cobertura textual útil;
+- 15 PDFs processados;
+- 1 PPTX processado;
+- OCR local aplicado ao manual da marca baseado em imagens;
+- 0 achados de alta confiança;
+- 0 achados de média confiança;
+- 0 divergências de hash RAW;
+- nenhum secret real identificado.
+
+Revisão contextual:
+
+- única ocorrência ampliada: `contato@monvi.com`;
+- classificação: endereço institucional, não secret.
+
+Recomendação técnica:
+
+- reclassificar `test-security-001` de `blocked` para `pass`.
+
+Relatório:
+
+- `00_SYSTEM/audits/Execucao-task-2026-036-inspecao-binarios-raw-seguranca.md`.
+
+Estado:
+
+- execução técnica concluída;
+- task permanece `active`;
+- `status: review`;
+- `requires_review: true`;
+- aprovação humana pendente;
+- task 033 não alterada;
+- corte v1.0 permanece `no-go`.
