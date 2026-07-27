@@ -2,18 +2,18 @@
 id: audit-task-2026-033-lote-7
 title: Execução dos testes finais — lote 7 — atualização do resultado de segurança
 type: output
-status: review
-task_state: active
+status: approved
+task_state: done
 owner: helpper
 reviewer: ceo-monvi
 active_client: null
 active_project: null
-requires_review: true
+requires_review: false
 classification: internal
 created_at: "2026-07-27"
 updated_at: "2026-07-27"
-reviewed_at: null
-version: "0.1.0"
+reviewed_at: "2026-07-27"
+version: "1.0.0"
 tags:
   - monvi-brain
   - testes-finais
@@ -105,3 +105,13 @@ Submeter a task 033 à decisão final de corte com os seguintes dados:
 - 0 `fail`;
 - bloqueio técnico anterior resolvido;
 - risco residual de isolamento multi-cliente explicitamente registrado.
+## Aprovação e encerramento
+
+- data da decisão: 2026-07-27;
+- decisão do CEO: `go`;
+- riscos residuais documentados: aceitos;
+- task 033: aprovada e concluída;
+- corte documental Monvi Brain v1: aprovado;
+- decisão final pendente: não;
+- status final deste relatório: `approved`;
+- task_state final deste relatório: `done`.

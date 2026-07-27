@@ -2,23 +2,23 @@
 id: task-2026-033
 title: Execução dos testes finais do Monvi Brain v1
 type: task
-status: review
-task_state: active
+status: approved
+task_state: done
 owner: ceo-monvi
 reviewer: ceo-monvi
 active_client: null
 active_project: null
-requires_review: true
+requires_review: false
 classification: internal
 created_at: "2026-07-23"
 updated_at: "2026-07-27"
-reviewed_at: null
-version: "0.1.0"
+reviewed_at: "2026-07-27"
+version: "1.0.0"
 allowed_paths:
   - 00_SYSTEM/audits/
   - 00_SYSTEM/logs/changes.jsonl
   - 00_SYSTEM/registries/
-  - 00_SYSTEM/tasks/review/TASK-2026-033-execucao-testes-finais-monvi-brain-v1.md
+  - 00_SYSTEM/tasks/done/TASK-2026-033-execucao-testes-finais-monvi-brain-v1.md
   - 04_OUTPUTS/relatorios/
 read_only_paths:
   - 00_SYSTEM/canonical/
@@ -336,3 +336,30 @@ O CEO deve registrar uma das opções:
 
 1. `go` — aceitar os riscos residuais, aprovar o corte v1.0 e concluir a task 033;
 2. `no-go` — manter a task ativa e definir condições adicionais objetivas.
+## Decisão executiva final
+
+- data: 2026-07-27;
+- decisão do CEO: `go`;
+- declaração aprovada: “Aprovo o go do Monvi Brain v1 e aceito os riscos residuais documentados.”;
+- riscos residuais documentados: aceitos;
+- `test-security-002: not-applicable`: aceito para esta versão;
+- matriz final: 14 `pass`, 0 `blocked`, 1 `not-applicable`, 0 `fail`;
+- corte documental Monvi Brain v1: aprovado;
+- status final: `approved`;
+- task_state final: `done`;
+- requires_review final: `false`;
+- decisão humana final pendente: não.
+
+### Riscos residuais aceitos
+
+- isolamento prático entre dois clientes reais ainda não validado;
+- task 021 pausada por falta de evidência de acesso;
+- task 027 pendente de lead real autorizado;
+- Monvi Brain v1 reconhecido como base documental, não como implementação do Monvi Core Brain;
+- novos binários RAW sujeitos a nova inspeção;
+- isolamento multi-cliente sujeito a teste futuro quando houver condição real autorizada.
+
+### Evidência da decisão
+
+- `00_SYSTEM/audits/Decisao-final-go-Monvi-Brain-v1.md`;
+- `00_SYSTEM/audits/Execucao-testes-finais-lote-8-validacao-complementar-final-Monvi-Brain-v1.md`.
