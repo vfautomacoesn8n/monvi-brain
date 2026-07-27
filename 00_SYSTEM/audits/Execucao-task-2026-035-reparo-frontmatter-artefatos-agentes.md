@@ -2,18 +2,18 @@
 id: audit-task-2026-035-frontmatter-repair
 title: Execução da task 035 — reparo de frontmatter em artefatos de agentes
 type: output
-status: review
+status: approved
 owner: ceo-monvi
 reviewer: ceo-monvi
 active_client: null
 active_project: null
-requires_review: true
+requires_review: false
 classification: internal
 source_task: task-2026-035
 created_at: "2026-07-24"
 updated_at: "2026-07-24"
-reviewed_at: null
-version: "0.1.0"
+reviewed_at: "2026-07-24"
+version: "1.0.0"
 tags:
   - monvi-brain
   - frontmatter
@@ -34,7 +34,7 @@ tags:
 - RAW alterado: não;
 - canonical alterado: não;
 - resultado: `pass`;
-- aprovação humana: pendente.
+- aprovação humana: concedida pelo CEO em 2026-07-24.
 
 ## Alteração executada
 
@@ -74,4 +74,4 @@ Nenhum status, aprovação, versão, regra operacional ou título foi alterado.
 
 O reparo estrutural foi concluído nos 16 documentos.
 
-A task 035 permanece `active` e `requires_review: true` até revisão e aprovação humana. O lote 5 da task 033 ainda não foi executado.
+A task 035 foi aprovada pelo CEO em 2026-07-24 e encerrada como `done`. O lote 5 da task 033 está autorizado a ser retomado.

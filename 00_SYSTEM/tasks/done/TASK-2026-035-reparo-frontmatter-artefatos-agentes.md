@@ -2,18 +2,18 @@
 id: task-2026-035
 title: Reparo de frontmatter em artefatos de agentes
 type: task
-status: review
-task_state: active
+status: approved
+task_state: done
 owner: ceo-monvi
 reviewer: ceo-monvi
 active_client: null
 active_project: null
-requires_review: true
+requires_review: false
 classification: internal
 created_at: "2026-07-24"
 updated_at: "2026-07-24"
-reviewed_at: null
-version: "0.1.0"
+reviewed_at: "2026-07-24"
+version: "1.0.0"
 tags:
   - monvi-brain
   - frontmatter
@@ -125,10 +125,23 @@ A task 033 permanece ativa. O lote 5 só deve ser retomado após execução, val
 - RAW alterado: não;
 - canonical alterado: não;
 - resultado técnico: `pass`;
-- aprovação humana: pendente;
-- task_state: permanece `active`;
+- aprovação humana: concedida pelo CEO em 2026-07-24;
+- task_state: `done`;
 - lote 5 da task 033: ainda não executado.
 
 ### Evidência
 
 - `00_SYSTEM/audits/Execucao-task-2026-035-reparo-frontmatter-artefatos-agentes.md`.
+## Aprovação humana
+
+- decisão: aprovada;
+- aprovador: CEO da Monvi;
+- data: 2026-07-24;
+- fundamento: reparo exato confirmado por hash nos 16 documentos;
+- resultado técnico: `pass`;
+- documentos reparados: 16;
+- frontmatters válidos: 16;
+- títulos preservados: 16;
+- alteração semântica: não;
+- task_state final: `done`;
+- próximo passo autorizado: retomada do lote 5 da task 033.
