@@ -10,7 +10,8 @@ updated_at: "2026-07-22"
 reviewed_at: "2026-07-22"
 source_task: task-2026-030
 classification: internal
----# Playbook de incidente e suspensão
+---
+# Playbook de incidente e suspensão
 
 ## Gatilhos
 Escalada, mistura de clientes, exfiltração, ferramenta não autorizada, custo excessivo, prompt injection, conta comprometida ou ação crítica sem aprovação.

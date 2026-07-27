@@ -10,7 +10,8 @@ updated_at: "2026-07-22"
 reviewed_at: "2026-07-22"
 source_task: task-2026-030
 classification: internal
----# Política de segurança, supervisão e limites do Helpper
+---
+# Política de segurança, supervisão e limites do Helpper
 
 ## Princípios
 Negação por padrão, menor privilégio, isolamento antes do contexto, secrets fora do Brain, supervisão proporcional ao risco e interrupção segura.

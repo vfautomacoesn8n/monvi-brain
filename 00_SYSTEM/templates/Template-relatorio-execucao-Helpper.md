@@ -10,7 +10,8 @@ updated_at: "2026-07-22"
 reviewed_at: "2026-07-22"
 source_task: task-2026-030
 classification: internal
----# Template de relatório de execução
+---
+# Template de relatório de execução
 ```yaml
 event_id:
 task_id:

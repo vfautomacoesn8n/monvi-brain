@@ -10,7 +10,8 @@ updated_at: "2026-07-22"
 reviewed_at: "2026-07-22"
 source_task: task-2026-030
 classification: internal
----# Checklist de aprovação de ação crítica
+---
+# Checklist de aprovação de ação crítica
 - [ ] identidade autenticada
 - [ ] sessão válida
 - [ ] MFA recente

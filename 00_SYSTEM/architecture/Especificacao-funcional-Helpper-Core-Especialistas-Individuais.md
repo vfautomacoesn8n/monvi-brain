@@ -10,7 +10,8 @@ updated_at: "2026-07-22"
 reviewed_at: "2026-07-22"
 source_task: task-2026-030
 classification: internal
----# Especificação funcional do Helpper
+---
+# Especificação funcional do Helpper
 
 ## Helpper Core
 Recebe, valida contexto, classifica, delega, acompanha, consolida, solicita aprovação, reporta e registra.

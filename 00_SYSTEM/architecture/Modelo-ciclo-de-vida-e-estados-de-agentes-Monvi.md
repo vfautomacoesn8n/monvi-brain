@@ -10,7 +10,8 @@ updated_at: "2026-07-22"
 reviewed_at: "2026-07-22"
 source_task: task-2026-031
 classification: internal
----# Modelo de ciclo de vida e estados de agentes
+---
+# Modelo de ciclo de vida e estados de agentes
 
 ## Estados principais
 

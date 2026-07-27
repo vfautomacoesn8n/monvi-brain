@@ -10,7 +10,8 @@ updated_at: "2026-07-22"
 reviewed_at: "2026-07-22"
 source_task: task-2026-030
 classification: internal
----# Política de memória e promoção de conhecimento
+---
+# Política de memória e promoção de conhecimento
 
 ## Memórias
 Sessão, individual, projeto, cliente, departamental, institucional e canônica.

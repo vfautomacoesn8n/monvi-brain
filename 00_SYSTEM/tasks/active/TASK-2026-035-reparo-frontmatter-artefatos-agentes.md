@@ -114,3 +114,21 @@ Nenhuma outra alteração textual ou semântica está autorizada.
 ## Relação com a task 033
 
 A task 033 permanece ativa. O lote 5 só deve ser retomado após execução, validação, aprovação humana e registro desta task.
+## Execução do reparo
+
+- data: 2026-07-24;
+- documentos reparados: 16;
+- frontmatters válidos após reparo: 16;
+- títulos preservados: 16;
+- separadores `---#` restantes no escopo: 0;
+- alteração semântica identificada: não;
+- RAW alterado: não;
+- canonical alterado: não;
+- resultado técnico: `pass`;
+- aprovação humana: pendente;
+- task_state: permanece `active`;
+- lote 5 da task 033: ainda não executado.
+
+### Evidência
+
+- `00_SYSTEM/audits/Execucao-task-2026-035-reparo-frontmatter-artefatos-agentes.md`.

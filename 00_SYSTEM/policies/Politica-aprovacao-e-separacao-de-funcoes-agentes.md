@@ -10,7 +10,8 @@ updated_at: "2026-07-22"
 reviewed_at: "2026-07-22"
 source_task: task-2026-031
 classification: internal
----# Política de aprovação e separação de funções de agentes
+---
+# Política de aprovação e separação de funções de agentes
 
 ## Aprovação obrigatória
 

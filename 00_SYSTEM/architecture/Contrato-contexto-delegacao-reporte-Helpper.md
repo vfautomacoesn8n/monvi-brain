@@ -10,7 +10,8 @@ updated_at: "2026-07-22"
 reviewed_at: "2026-07-22"
 source_task: task-2026-030
 classification: internal
----# Contrato de contexto, delegação e reporte
+---
+# Contrato de contexto, delegação e reporte
 
 ## Contexto mínimo
 ```yaml

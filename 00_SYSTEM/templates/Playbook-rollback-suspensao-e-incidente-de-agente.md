@@ -10,7 +10,8 @@ updated_at: "2026-07-22"
 reviewed_at: "2026-07-22"
 source_task: task-2026-031
 classification: internal
----# Playbook de rollback, suspensão e incidente de agente
+---
+# Playbook de rollback, suspensão e incidente de agente
 
 ## Gatilhos
 
