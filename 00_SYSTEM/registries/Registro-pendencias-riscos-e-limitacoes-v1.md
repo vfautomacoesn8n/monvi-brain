@@ -134,7 +134,7 @@ Uma pendência só pode ser encerrada com:
 
 ### risk-2026-007 — Ausência de proteção técnica da branch main
 
-- status: pending-acceptance;
+- status: accepted;
 - classificação: risco residual operacional;
 - impacto: alto;
 - probabilidade: média;
@@ -150,7 +150,7 @@ Uma pendência só pode ser encerrada com:
 - owner: ceo-monvi;
 - reviewer: ceo-monvi;
 - source_task: task-2026-037;
-- decisão humana final: pendente.
+- decisão humana final: risco aceito pelo CEO em 2026-07-27.
 
 #### Controles compensatórios
 
@@ -182,3 +182,15 @@ Reavaliar proteção técnica quando ocorrer pelo menos uma destas condições:
 - repositório: `vfautomacoesn8n/monvi-brain`;
 - commit oficial: `32bc347fee1e4ee121503f22b0ea00220e506883`;
 - tag e Release: `v1.0.0`.
+#### Condição do aceite
+
+O aceite é temporário e não declara a existência de proteção técnica da branch `main`.
+
+O risco deverá ser reavaliado antes de:
+
+- conceder acesso de escrita a novos colaboradores;
+- conectar agentes, automações ou integrações com permissão de escrita;
+- ativar CI/CD;
+- permitir acesso de terceiros;
+- ampliar significativamente a frequência de alterações;
+- continuar a operação após incidente relacionado ao Git.

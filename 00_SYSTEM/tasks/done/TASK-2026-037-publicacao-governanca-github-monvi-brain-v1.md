@@ -2,19 +2,19 @@
 id: task-2026-037
 title: Registro da publicação e governança GitHub do Monvi Brain v1
 type: task
-status: review
-task_state: active
+status: approved
+task_state: done
 owner: ceo-monvi
 agent: helpper
 reviewer: ceo-monvi
 active_client: null
 active_project: null
-requires_review: true
+requires_review: false
 classification: internal
 created_at: "2026-07-27"
 updated_at: "2026-07-27"
-reviewed_at: null
-version: "0.3.0"
+reviewed_at: "2026-07-27"
+version: "1.0.0"
 allowed_paths:
   - 00_SYSTEM/audits/Execucao-task-2026-037-publicacao-governanca-github-Monvi-Brain-v1.md
   - 00_SYSTEM/logs/changes.jsonl
@@ -230,3 +230,28 @@ A task 037 depende exclusivamente de revisão humana para:
 2. aprovar o relatório de execução;
 3. aprovar a task;
 4. mover a task de `review/` para `done/`.
+## Decisão executiva final
+
+- data: 2026-07-27;
+- decisor: CEO da Monvi;
+- execução técnica: aprovada;
+- relatório de execução: aprovado;
+- risco `risk-2026-007`: aceito temporariamente;
+- controles processuais: mantidos;
+- reavaliação futura: obrigatória nos gatilhos registrados;
+- status final: `approved`;
+- task_state final: `done`;
+- requires_review final: `false`;
+- pendência de revisão humana: não.
+
+### Declaração aprovada
+
+Aprovo a execução da task 037, aceito temporariamente o risco residual `risk-2026-007` relacionado à ausência de proteção técnica da branch `main` e autorizo a conclusão da tarefa.
+
+O risco deverá ser reavaliado antes da concessão de acesso de escrita a novos colaboradores, agentes, automações ou integrações.
+
+### Resultado
+
+A publicação e a governança inicial do Monvi Brain v1 estão registradas e aprovadas.
+
+A conclusão desta task não declara que a branch `main` possui proteção técnica.
