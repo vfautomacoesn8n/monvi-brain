@@ -129,3 +129,56 @@ Uma pendência só pode ser encerrada com:
 - decisão;
 - atualização do registro;
 - referência ao commit ou task correspondente.
+
+## Atualização pós-publicação — task 037
+
+### risk-2026-007 — Ausência de proteção técnica da branch main
+
+- status: pending-acceptance;
+- classificação: risco residual operacional;
+- impacto: alto;
+- probabilidade: média;
+- ativo afetado: repositório privado `vfautomacoesn8n/monvi-brain`;
+- branch afetada: `main`;
+- condição observada: proteção clássica de branch e rulesets indisponíveis no plano atual;
+- evidência técnica: API do GitHub retornou `HTTP 403`;
+- mensagem da plataforma: recurso depende de upgrade do plano ou de tornar o repositório público;
+- alternativa pública: rejeitada por incompatibilidade com a classificação interna do Monvi Brain;
+- consequência possível: push direto, force push, reescrita ou exclusão por usuário com permissão administrativa;
+- proteção técnica ativa: não;
+- controle compensatório: processual;
+- owner: ceo-monvi;
+- reviewer: ceo-monvi;
+- source_task: task-2026-037;
+- decisão humana final: pendente.
+
+#### Controles compensatórios
+
+1. trabalhar em branch específica por tarefa;
+2. não trabalhar diretamente na `main`;
+3. revisar alterações antes do merge;
+4. utilizar somente squash merge;
+5. não executar force push na `main`;
+6. não excluir a `main`;
+7. preservar tags publicadas;
+8. publicar releases somente após validação;
+9. manter commits pequenos e rastreáveis;
+10. registrar exceções e incidentes.
+
+#### Critério de reavaliação
+
+Reavaliar proteção técnica quando ocorrer pelo menos uma destas condições:
+
+- entrada de novos colaboradores com acesso ao repositório;
+- aumento da frequência de mudanças;
+- ativação de automações ou CI/CD;
+- aumento da criticidade operacional;
+- disponibilidade de plano compatível;
+- incidente envolvendo a branch `main`.
+
+#### Evidência
+
+- `00_SYSTEM/audits/Execucao-task-2026-037-publicacao-governanca-github-Monvi-Brain-v1.md`;
+- repositório: `vfautomacoesn8n/monvi-brain`;
+- commit oficial: `32bc347fee1e4ee121503f22b0ea00220e506883`;
+- tag e Release: `v1.0.0`.

@@ -14,7 +14,7 @@ classification: internal
 created_at: "2026-07-27"
 updated_at: "2026-07-27"
 reviewed_at: null
-version: "0.2.0"
+version: "0.3.0"
 allowed_paths:
   - 00_SYSTEM/audits/Execucao-task-2026-037-publicacao-governanca-github-Monvi-Brain-v1.md
   - 00_SYSTEM/logs/changes.jsonl
@@ -206,3 +206,27 @@ Publicação e governança inicial do GitHub registradas com evidências, limita
 3. validar os entregáveis;
 4. submeter o risco residual para decisão do CEO;
 5. somente depois aprovar e mover a task para `done`.
+
+## Registro de risco e log concluído
+
+- data: 2026-07-27;
+- risco registrado: `risk-2026-007`;
+- risco: ausência de proteção técnica da branch `main`;
+- impacto: alto;
+- probabilidade: média;
+- controle atual: processual;
+- aceite final do risco: pendente de decisão do CEO;
+- evento registrado em `changes.jsonl`: sim;
+- JSONL validado: sim;
+- status da task: permanece `review`;
+- task_state: permanece `active`;
+- requires_review: permanece `true`.
+
+### Pendência restante
+
+A task 037 depende exclusivamente de revisão humana para:
+
+1. aceitar formalmente o risco residual;
+2. aprovar o relatório de execução;
+3. aprovar a task;
+4. mover a task de `review/` para `done/`.
