@@ -2,18 +2,18 @@
 id: template-individual-helpper
 title: Template de Helpper individual
 type: template
-status: review
+status: approved
 owner: ceo-monvi
 reviewer: ceo-monvi
 active_client: null
 active_project: null
-requires_review: true
+requires_review: false
 classification: internal
 source_task: task-2026-038
 created_at: "2026-07-28"
 updated_at: "2026-07-28"
-reviewed_at: null
-version: "0.1.0"
+reviewed_at: "2026-07-28"
+version: "1.0.0"
 tags:
   - helpper-individual
   - identidade

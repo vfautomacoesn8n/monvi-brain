@@ -2,20 +2,20 @@
 id: audit-task-2026-038-identity-profiles-individual-helppers
 title: Execução da task 2026-038 — identidade, perfis e Helppers individuais
 type: record
-status: review
-task_state: active
+status: approved
+task_state: done
 owner: ceo-monvi
 agent: helpper
 reviewer: ceo-monvi
 active_client: null
 active_project: null
-requires_review: true
+requires_review: false
 classification: internal
 source_task: task-2026-038
 created_at: "2026-07-28"
 updated_at: "2026-07-28"
-reviewed_at: null
-version: "0.1.0"
+reviewed_at: "2026-07-28"
+version: "1.0.0"
 tags:
   - identidade
   - colaboradores
@@ -379,3 +379,28 @@ A task não deverá ser considerada concluída até que o relatório, o registro
 - aprovação humana: pendente;
 - registro em changes.jsonl: pendente;
 - conclusão formal da Task 038: pendente.
+
+## Decisão executiva final
+
+- data: 2026-07-28;
+- decisor: CEO da Monvi;
+- decisão: execução documental aprovada;
+- status final do relatório: `approved`;
+- task_state final: `done`;
+- requires_review final: `false`;
+- pessoas reais cadastradas: nenhuma;
+- contas ou acessos criados: nenhum;
+- Helppers individuais reais criados: nenhum;
+- credenciais armazenadas: nenhuma;
+- alteração técnica do `risk-2026-007`: nenhuma;
+- risco mantido: accepted.
+
+### Declaração aprovada
+
+Aprovo a Task 038 e autorizo o encerramento documental.
+
+A aprovação reconhece que os entregáveis constituem um modelo documental de identidade, perfis de colaboradores e Helppers individuais.
+
+A aprovação não autoriza automaticamente cadastro de pessoas reais, criação de contas, concessão de acessos, ativação de agentes, conexão de automações ou armazenamento de credenciais.
+
+Qualquer implementação real deverá ocorrer em task específica, com validação individual, menor privilégio, segregação de contexto, revisão humana e evidências.

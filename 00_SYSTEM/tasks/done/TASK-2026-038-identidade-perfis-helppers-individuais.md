@@ -2,19 +2,19 @@
 id: task-2026-038
 title: Modelo de identidade, perfis de colaboradores e Helppers individuais
 type: task
-status: review
-task_state: active
+status: approved
+task_state: done
 owner: ceo-monvi
 agent: helpper
 reviewer: ceo-monvi
 active_client: null
 active_project: null
-requires_review: true
+requires_review: false
 classification: internal
 created_at: "2026-07-28"
 updated_at: "2026-07-28"
-reviewed_at: null
-version: "0.3.0"
+reviewed_at: "2026-07-28"
+version: "1.0.0"
 allowed_paths:
   - 00_SYSTEM/tasks/review/TASK-2026-038-identidade-perfis-helppers-individuais.md
   - 00_SYSTEM/tasks/done/TASK-2026-038-identidade-perfis-helppers-individuais.md
@@ -546,3 +546,38 @@ Ela não implementa:
 - agentes reais;
 - integrações;
 - contas de produção.
+
+## Decisão humana final
+
+- data: 2026-07-28;
+- decisor: CEO da Monvi;
+- decisão: aprovada;
+- encerramento documental: autorizado;
+- status final: approved;
+- task_state final: done;
+- requires_review final: false.
+
+### Declaração
+
+Aprovo a Task 038 e autorizo o encerramento documental.
+
+## Resultado final
+
+- política de identidade, acesso e Helpper individual: aprovada;
+- registro de identidades e perfis: aprovado;
+- template de perfil de colaborador: aprovado;
+- template de Helpper individual: aprovado;
+- estrutura documental de pessoas: aprovada;
+- relatório de execução: aprovado;
+- avaliação do `risk-2026-007`: registrada;
+- pessoas reais cadastradas: nenhuma;
+- Helppers reais criados: nenhum;
+- credenciais armazenadas: nenhuma;
+- alterações em RAW ou canonical: nenhuma;
+- implementação técnica de identidade ou acesso: não realizada.
+
+## Encerramento
+
+A Task 038 foi concluída documentalmente.
+
+O primeiro cadastro real de pessoa, conta, acesso ou Helpper individual deverá ocorrer em nova task específica e autorizada.
