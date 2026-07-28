@@ -14,7 +14,7 @@ classification: internal
 created_at: "2026-07-28"
 updated_at: "2026-07-28"
 reviewed_at: null
-version: "0.2.0"
+version: "0.3.0"
 allowed_paths:
   - 00_SYSTEM/tasks/review/TASK-2026-038-identidade-perfis-helppers-individuais.md
   - 00_SYSTEM/tasks/done/TASK-2026-038-identidade-perfis-helppers-individuais.md
@@ -384,3 +384,165 @@ Esta autorização não permite:
 - ampliar escrita para outros caminhos de `03_OPERATIONS`.
 
 Os perfis reais dependerão de template aprovado, validação individual e decisão humana específica.
+
+## Decisão de coexistência e precedência documental
+
+A task 038 complementa a documentação aprovada pelas tasks 029 e 030.
+
+Ela não deve recriar, invalidar ou substituir silenciosamente os seguintes documentos:
+
+- `00_SYSTEM/architecture/Modelo-identidade-papeis-e-permissoes-Monvi.md`;
+- `00_SYSTEM/architecture/Arquitetura-Helpper-Core-Especialistas-e-Agentes-Individuais.md`;
+- `00_SYSTEM/architecture/Especificacao-funcional-Helpper-Core-Especialistas-Individuais.md`;
+- `00_SYSTEM/policies/Politica-ciclo-de-vida-de-acesso-Monvi.md`;
+- `00_SYSTEM/policies/Politica-memoria-e-promocao-de-conhecimento-Helpper.md`;
+- `00_SYSTEM/policies/Politica-seguranca-supervisao-e-limites-Helpper.md`;
+- `00_SYSTEM/templates/Template-perfil-usuario-e-Helpper-individual.md`;
+- `00_SYSTEM/templates/Manual-criacao-alteracao-remocao-usuarios-Helppers.md`;
+- `00_SYSTEM/templates/Checklist-onboarding-alteracao-offboarding.md`.
+
+### Função dos novos entregáveis
+
+#### Política integradora
+
+`Politica-identidade-acesso-e-helpper-individual-v1.md` deverá:
+
+- organizar as regras já aprovadas;
+- explicitar vínculos entre pessoa, identidade, conta, papel, sessão e Helpper;
+- referenciar políticas e arquiteturas anteriores;
+- evitar duplicação normativa;
+- registrar limites documentais da estrutura de pessoas;
+- não declarar implementação técnica inexistente.
+
+#### Registro institucional
+
+`Registro-identidades-e-perfis-v1.md` deverá:
+
+- definir categorias;
+- definir estados;
+- definir identificadores;
+- definir campos mínimos;
+- definir regras de unicidade;
+- definir relações entre registros;
+- não cadastrar pessoas reais nesta task;
+- não conceder acesso técnico.
+
+#### Template de perfil de colaborador
+
+`Template-perfil-colaborador.md` deverá especializar a parte humana e organizacional do template combinado existente.
+
+Deverá conter:
+
+- identificador institucional;
+- vínculo;
+- função;
+- responsabilidades;
+- gestor ou aprovador;
+- departamento;
+- clientes e projetos autorizados;
+- estado do vínculo;
+- validade;
+- classificação;
+- referências a acessos aprovados;
+- vínculo com Helpper individual quando aplicável.
+
+Não deverá conter:
+
+- senha;
+- token;
+- chave;
+- segredo;
+- documento pessoal sensível desnecessário;
+- credencial de provedor.
+
+#### Template de Helpper individual
+
+`Template-helpper-individual.md` deverá especializar a configuração documental do Helpper vinculada a uma identidade validada.
+
+Deverá conter:
+
+- identificador do Helpper;
+- identidade humana vinculada;
+- propósito;
+- escopo;
+- memórias permitidas;
+- skills permitidas;
+- ferramentas permitidas;
+- ações permitidas;
+- ações proibidas;
+- necessidade de revisão;
+- aprovador;
+- regras de suspensão;
+- regras de offboarding;
+- referências de auditoria.
+
+O template não ativa agentes, não concede permissões e não comprova autenticação.
+
+### Situação do template combinado existente
+
+`Template-perfil-usuario-e-Helpper-individual.md` permanece aprovado e válido.
+
+Os dois novos templates representam uma especialização documental mais granular.
+
+Esta task não declara o template combinado como:
+
+- obsoleto;
+- revogado;
+- substituído;
+- arquivado;
+- incompatível.
+
+Qualquer descontinuação futura dependerá de decisão explícita do CEO e task própria.
+
+### Compatibilidade entre `people/` e `03_OPERATIONS/pessoas/`
+
+O caminho conceitual `people/` presente em documentos anteriores representa o modelo lógico de espaço individual.
+
+O caminho `03_OPERATIONS/pessoas/` representa a estrutura documental adotada no Monvi Brain.
+
+A relação será interpretada assim:
+
+```text
+people/
+→ conceito arquitetural
+
+03_OPERATIONS/pessoas/
+→ implementação documental no Monvi Brain
+```
+
+Essa equivalência não significa que o Monvi Core Brain deverá usar a mesma estrutura física.
+
+### Precedência
+
+Em caso de conflito documental, aplicar a seguinte ordem:
+
+1. canonical aprovado;
+2. arquitetura aprovada;
+3. políticas aprovadas;
+4. decisões institucionais aprovadas;
+5. documentos da task 038 enquanto estiverem em revisão;
+6. templates;
+7. exemplos e registros operacionais.
+
+Os entregáveis da task 038 deverão citar a documentação anterior relevante.
+
+Nenhuma regra aprovada pelas tasks 029 e 030 poderá ser reduzida, removida ou reinterpretada sem aprovação explícita do CEO.
+
+### Limite de implementação
+
+A task 038 permanece documental.
+
+Ela não implementa:
+
+- autenticação;
+- autorização;
+- sessões;
+- MFA;
+- RBAC;
+- ABAC;
+- banco de dados;
+- provedor de identidade;
+- auditoria técnica;
+- agentes reais;
+- integrações;
+- contas de produção.
