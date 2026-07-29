@@ -14,7 +14,7 @@ classification: internal
 created_at: "2026-07-29"
 updated_at: "2026-07-29"
 reviewed_at: null
-version: "0.3.0"
+version: "0.4.0"
 allowed_paths:
   - 00_SYSTEM/architecture/Contrato-Identity-Gateway-Google-Workspace-Monvi.md
   - 00_SYSTEM/architecture/Matriz-autenticacao-autorizacao-sessao-Monvi.md
@@ -50,9 +50,9 @@ tags:
   - seguranca
 acceptance_criteria:
   - Estado documental das identidades reconciliado
-  - Domínio corporativo e padrão de e-mail confirmados antes do piloto técnico
-  - Conta Google Workspace individual definida para cada participante
-  - Identificador estável do provedor vinculado ao person_id
+  - Domínio corporativo e padrão de e-mail registrados como dependências da implementação futura
+  - Contas Google Workspace individuais registradas como dependências ainda não provisionadas
+  - Modelo de vínculo entre provider_subject e person_id documentado
   - Fluxo de autenticação separado do fluxo de autorização
   - Contrato de validação de token no backend documentado
   - email_verified obrigatório
@@ -62,14 +62,14 @@ acceptance_criteria:
   - Modelo documental de sessão, validade e revogação definido
   - Seleção do Helpper subordinada à identidade autenticada
   - Helpper impedido de exceder permissões do owner
-  - Contexto mínimo enviado ao modelo de IA
+  - Contrato de contexto mínimo para futura integração com IA documentado
   - Nenhuma credencial ou token persistido no Monvi Brain
   - Nenhum acesso a cliente concedido
   - Nenhuma memória persistente ou indexação ativada
   - Nenhuma ferramenta executora liberada
   - Catálogo documental de eventos de autenticação e autorização definido
   - Fluxos de erro, bloqueio e revogação documentados
-  - Risk-2026-007 reavaliado antes da ativação técnica
+  - Risk-2026-007 avaliado quanto aos gatilhos da Task 040 e risco específico do Identity Gateway registrado
   - Revisão humana concluída antes da aprovação
 blocked_reason: "Implementação técnica bloqueada até definição do domínio, contas Google Workspace, stack, ambiente, armazenamento de sessão, callbacks e matriz mínima de autorização."
 ---

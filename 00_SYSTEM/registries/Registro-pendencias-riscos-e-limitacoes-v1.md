@@ -13,7 +13,7 @@ source_task: task-2026-032
 created_at: "2026-07-22"
 updated_at: "2026-07-22"
 reviewed_at: null
-version: "0.2.0"
+version: "0.3.0"
 tags:
   - monvi-brain
   - riscos
@@ -267,3 +267,61 @@ Evidências complementares:
 - `03_OPERATIONS/pessoas/onboarding/person-0002/Perfil-colaborador.md`;
 - `03_OPERATIONS/pessoas/onboarding/person-0002/Helpper-individual.md`;
 - branch de execução: `task/2026-039-implementacao-piloto-identidades-helppers-ceos`.
+
+#### Avaliação complementar da Task 040
+
+- task avaliada: `task-2026-040`;
+- data da avaliação: 2026-07-29;
+- escopo avaliado: arquitetura e preparação documental do Identity Gateway;
+- resultado: `risk-2026-007` mantido sem alteração técnica;
+- status mantido: accepted;
+- impacto mantido: alto;
+- probabilidade mantida: média;
+- controle compensatório mantido: processual;
+- gatilho de reavaliação técnica acionado: não;
+- acesso de escrita novo ao GitHub: não;
+- agente, Helpper ou integração conectado ao GitHub: não;
+- automação ou CI/CD ativado: não;
+- alteração da proteção da branch `main`: não.
+
+A Task 040 produz somente arquitetura, contratos, matriz e plano de testes. A futura implementação técnica deverá reavaliar o `risk-2026-007` caso envolva acesso de escrita ao repositório, automação, integração ou CI/CD.
+
+### risk-2026-008 — Vínculo incorreto ou insuficientemente segregado no Identity Gateway
+
+- status: review;
+- classificação: risco de identidade, autorização e segregação;
+- impacto: alto;
+- probabilidade atual: baixa, pois não existe implementação técnica;
+- probabilidade futura estimada: média sem controles;
+- ativos afetados: identidades, sessões, Helppers, bibliotecas pessoais e contextos institucionais;
+- condição atual: arquitetura documental criada e implementação técnica bloqueada;
+- consequência possível: associação de conta à pessoa incorreta, seleção indevida de Helpper, acesso cruzado ou carregamento de contexto não autorizado;
+- owner: ceo-monvi;
+- reviewer: ceo-monvi;
+- source_task: task-2026-040;
+- decisão humana final: pendente.
+
+#### Controles preventivos documentados
+
+1. validar token no backend;
+2. exigir emissor, audiência, assinatura, expiração e `email_verified`;
+3. usar `sub` como identificador externo estável;
+4. validar domínio autorizado quando aplicável;
+5. manter vínculo explícito entre `provider_subject`, conta, identidade e `person_id`;
+6. negar por padrão na ausência de vínculo ou autorização;
+7. separar autenticação, identificação, autorização e seleção do Helpper;
+8. impedir que o prompt redefina identidade;
+9. impedir acesso cruzado entre bibliotecas pessoais;
+10. registrar eventos sanitizados e permitir revogação de sessão.
+
+#### Critério de reavaliação
+
+Reavaliar antes de criar contas, configurar OAuth/OIDC, armazenar sessões, ativar login, vincular `sub` real, selecionar Helpper operacional, carregar biblioteca pessoal, conceder acesso a clientes ou realizar deploy.
+
+#### Estado
+
+- implementação técnica: não iniciada;
+- exposição técnica atual: inexistente;
+- risco documental: identificado;
+- tratamento proposto: mitigar antes da implementação;
+- aceite humano: pendente.
