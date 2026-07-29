@@ -1,6 +1,6 @@
 ---
 id: task-2026-040
-title: Autenticação Google Workspace e Identity Gateway
+title: Arquitetura e preparação do Identity Gateway com Google Workspace
 type: task
 status: review
 task_state: active
@@ -14,7 +14,7 @@ classification: internal
 created_at: "2026-07-29"
 updated_at: "2026-07-29"
 reviewed_at: null
-version: "0.1.0"
+version: "0.2.0"
 allowed_paths:
   - 00_SYSTEM/audits/Execucao-task-2026-040-autenticacao-google-workspace-identity-gateway.md
   - 00_SYSTEM/logs/changes.jsonl
@@ -51,12 +51,12 @@ acceptance_criteria:
   - Conta Google Workspace individual definida para cada participante
   - Identificador estável do provedor vinculado ao person_id
   - Fluxo de autenticação separado do fluxo de autorização
-  - Identity Gateway validando token no backend
+  - Contrato de validação de token no backend documentado
   - email_verified obrigatório
   - hosted domain validado quando aplicável
   - Google subject utilizado como identificador externo estável
   - E-mail textual não utilizado como única prova de identidade
-  - Sessões com validade e mecanismo de revogação definidos
+  - Modelo documental de sessão, validade e revogação definido
   - Seleção do Helpper subordinada à identidade autenticada
   - Helpper impedido de exceder permissões do owner
   - Contexto mínimo enviado ao modelo de IA
@@ -64,14 +64,14 @@ acceptance_criteria:
   - Nenhum acesso a cliente concedido
   - Nenhuma memória persistente ou indexação ativada
   - Nenhuma ferramenta executora liberada
-  - Eventos de autenticação e autorização auditáveis
+  - Catálogo documental de eventos de autenticação e autorização definido
   - Fluxos de erro, bloqueio e revogação documentados
   - Risk-2026-007 reavaliado antes da ativação técnica
   - Revisão humana concluída antes da aprovação
-blocked_reason: null
+blocked_reason: "Implementação técnica bloqueada até definição do domínio, contas Google Workspace, stack, ambiente, armazenamento de sessão, callbacks e matriz mínima de autorização."
 ---
 
-# Task 040 — autenticação Google Workspace e Identity Gateway
+# Task 040 — arquitetura e preparação do Identity Gateway com Google Workspace
 
 ## Contexto
 
@@ -106,7 +106,7 @@ Sem autenticação e vínculo técnico confiável entre conta e identidade insti
 
 ## Objetivo
 
-Projetar e implementar de forma controlada um Identity Gateway capaz de autenticar usuários por meio do Google Workspace, vincular a conta autenticada ao `person_id` institucional e produzir um contexto mínimo e confiável para autorização e seleção do Helpper individual.
+Definir e aprovar a arquitetura, os contratos, os vínculos institucionais, as regras de autorização, o modelo de sessão, os eventos de auditoria, os riscos, os bloqueios e o plano de testes necessários para uma futura implementação controlada do Identity Gateway com Google Workspace.
 
 ## Princípio arquitetural
 
@@ -170,13 +170,11 @@ A primeira fase deverá:
 
 A fase 1 não autoriza login real.
 
-## Escopo da fase 2 — piloto técnico condicionado
+## Implementação técnica futura — fora desta task
 
-O piloto técnico somente poderá começar após aprovação explícita da fase 1 e confirmação de que as contas Google Workspace existem.
+A implementação real deverá ocorrer em nova task específica, somente após a aprovação da arquitetura e a resolução das dependências obrigatórias.
 
-O piloto deverá ser restrito a Victor e Filipe.
-
-A fase 2 poderá implementar:
+A task futura poderá propor, de forma controlada:
 
 - login com Google;
 - validação de token no backend;
@@ -186,6 +184,8 @@ A fase 2 poderá implementar:
 - seleção do Helpper correto;
 - auditoria técnica mínima;
 - testes de segregação.
+
+A aprovação da Task 040 não autoriza login real, criação de conta, persistência de sessão, deploy, integração externa ou ativação de Helpper.
 
 ## Claims mínimas esperadas
 
@@ -351,7 +351,7 @@ Esta task não autoriza:
 
 ## Dependências
 
-Antes do piloto técnico, deverão estar definidos:
+Antes da abertura da task de implementação técnica, deverão estar definidos:
 
 - domínio Google Workspace da Monvi;
 - padrão de e-mail corporativo;
@@ -445,11 +445,15 @@ A fase técnica deverá permanecer bloqueada enquanto não existirem:
 
 A Task 040 somente poderá ser considerada concluída após:
 
-1. fase documental aprovada;
-2. dependências obrigatórias resolvidas ou formalmente bloqueadas;
-3. implementação técnica limitada ao escopo aprovado;
-4. testes de autenticação e segregação executados;
-5. evidências registradas;
-6. revisão de segurança concluída;
-7. aprovação humana final;
-8. nenhum acesso a cliente ou memória persistente ativado indevidamente.
+1. arquitetura e contratos documentados;
+2. dependências obrigatórias identificadas;
+3. bloqueios técnicos registrados;
+4. matriz inicial de autenticação e autorização definida;
+5. modelo de sessão e revogação definido;
+6. catálogo de eventos, erros e testes produzido;
+7. `risk-2026-007` reavaliado documentalmente;
+8. revisão de segurança documental concluída;
+9. aprovação humana final;
+10. nenhuma autenticação, conta, sessão, acesso, memória persistente ou integração real ativada.
+
+A implementação técnica deverá ser executada em nova task, com caminhos de código, stack, ambiente, testes e critérios próprios.
