@@ -9,11 +9,11 @@ active_client: null
 active_project: null
 requires_review: false
 classification: internal
-source_task: task-2026-038
+source_task: task-2026-039
 created_at: "2026-07-28"
-updated_at: "2026-07-28"
-reviewed_at: "2026-07-28"
-version: "1.0.0"
+updated_at: "2026-07-29"
+reviewed_at: "2026-07-29"
+version: "1.4.0"
 tags:
   - identidade
   - perfis
@@ -23,6 +23,8 @@ tags:
 related:
   - policy-identity-access-individual-helpper-v1
   - policy-access-lifecycle
+  - task-2026-038
+  - task-2026-039
 ---
 
 # Registro de identidades e perfis v1
@@ -471,22 +473,184 @@ Este registro não deverá:
 - substituir logs de sistemas;
 - cadastrar pessoas reais sem aprovação específica.
 
-## Ausência de registros reais nesta versão
+## Registros reais documentais desta versão
 
-Esta versão contém somente o modelo institucional.
+A versão 1.1.0 inicia o primeiro cadastro documental real autorizado pela `task-2026-039`.
 
-Não foram cadastrados:
+Foram cadastrados em estado de onboarding:
 
-- Victor;
-- Filipe;
-- colaboradores;
-- prestadores;
-- terceiros;
-- contas administrativas;
+- `person-0001` — Victor Lopes da Silva Saad;
+- `person-0002` — Filipe Costa Monteiro;
+- `helpper-person-0001` — Helpper Victor;
+- `helpper-person-0002` — Helpper Filipe.
+
+Esses registros permanecem documentais e não comprovam provisionamento técnico, autenticação, autorização, conta externa, sessão, credencial ou agente ativo.
+
+Não foram cadastrados ou ativados:
+
+- e-mails corporativos;
+- contas GitHub corporativas;
+- contas Google Workspace;
+- contas administrativas adicionais;
 - identidades de serviço;
-- Helppers individuais.
+- credenciais;
+- sessões;
+- integrações externas;
+- automações;
+- acessos a clientes;
+- Helppers tecnicamente executáveis.
 
-A inclusão futura de qualquer registro real dependerá de validação individual, template aprovado, solicitação formal e decisão humana específica.
+Qualquer ativação futura dependerá de validação individual, menor privilégio, aprovação aplicável, evidência técnica e manutenção de segredos fora do Monvi Brain.
+
+## Cadastros documentais do piloto dos CEOs
+
+### person-0001 — Victor Lopes da Silva Saad
+
+- tipo de pessoa: colaborador;
+- vínculo institucional: CEO;
+- estado do vínculo: onboarding;
+- estado do perfil: review;
+- identidade corporativa: pending;
+- e-mail corporativo: pendente de criação;
+- responsabilidade principal: pendente de definição;
+- áreas sob decisão final: pendentes de definição;
+- aprovador de acessos sensíveis: `person-0002`;
+- perfil operacional: `03_OPERATIONS/pessoas/onboarding/person-0001/Perfil-colaborador.md`;
+- Helpper relacionado: `helpper-person-0001`;
+- biblioteca pessoal: `personal-library-person-0001`;
+- caminho da biblioteca: `03_OPERATIONS/pessoas/onboarding/person-0001/biblioteca-pessoal/README.md`;
+- acesso técnico concedido pela Task 039: nenhum;
+- acesso a clientes concedido pela Task 039: nenhum;
+- credencial armazenada: nenhuma.
+
+### person-0002 — Filipe Costa Monteiro
+
+- tipo de pessoa: colaborador;
+- vínculo institucional: CEO;
+- estado do vínculo: onboarding;
+- estado do perfil: review;
+- identidade corporativa: pending;
+- e-mail corporativo: pendente de criação;
+- responsabilidade principal: pendente de definição;
+- áreas sob decisão final: pendentes de definição;
+- aprovador de acessos sensíveis: `person-0001`;
+- perfil operacional: `03_OPERATIONS/pessoas/onboarding/person-0002/Perfil-colaborador.md`;
+- Helpper relacionado: `helpper-person-0002`;
+- biblioteca pessoal: `personal-library-person-0002`;
+- caminho da biblioteca: `03_OPERATIONS/pessoas/onboarding/person-0002/biblioteca-pessoal/README.md`;
+- acesso técnico concedido pela Task 039: nenhum;
+- acesso a clientes concedido pela Task 039: nenhum;
+- credencial armazenada: nenhuma.
+
+### helpper-person-0001 — Helpper Victor
+
+- identidade humana vinculada: `person-0001`;
+- owner: `person-0001`;
+- reviewer: `person-0002`;
+- estado documental: planned;
+- vínculo exclusivo: sim;
+- ambiente técnico: não selecionado;
+- agente configurado: não;
+- agente publicado: não;
+- ferramentas externas: nenhuma;
+- credenciais: nenhuma;
+- acesso de escrita: nenhum;
+- acesso a clientes: nenhum;
+- execução autônoma: desativada;
+- supervisão humana: obrigatória;
+- documento operacional: `03_OPERATIONS/pessoas/onboarding/person-0001/Helpper-individual.md`;
+- biblioteca pessoal vinculada: `personal-library-person-0001`;
+- acesso técnico à biblioteca: não concedido;
+- bibliotecas gerais: somente fontes autorizadas;
+- promoção automática: proibida.
+
+### helpper-person-0002 — Helpper Filipe
+
+- identidade humana vinculada: `person-0002`;
+- owner: `person-0002`;
+- reviewer: `person-0001`;
+- estado documental: planned;
+- vínculo exclusivo: sim;
+- ambiente técnico: não selecionado;
+- agente configurado: não;
+- agente publicado: não;
+- ferramentas externas: nenhuma;
+- credenciais: nenhuma;
+- acesso de escrita: nenhum;
+- acesso a clientes: nenhum;
+- execução autônoma: desativada;
+- supervisão humana: obrigatória;
+- documento operacional: `03_OPERATIONS/pessoas/onboarding/person-0002/Helpper-individual.md`;
+- biblioteca pessoal vinculada: `personal-library-person-0002`;
+- acesso técnico à biblioteca: não concedido;
+- bibliotecas gerais: somente fontes autorizadas;
+- promoção automática: proibida.
+
+## Matriz consolidada inicial de acessos
+
+Esta matriz expressa somente o estado documental conhecido na Task 039. Ela não concede permissões.
+
+| Sistema ou recurso | Victor | Filipe | Helpper Victor | Helpper Filipe | Estado técnico |
+|---|---|---|---|---|---|
+| E-mail corporativo | inexistente | inexistente | não aplicável | não aplicável | não provisionado |
+| Google Workspace | inexistente | inexistente | sem acesso | sem acesso | não provisionado |
+| GitHub corporativo | inexistente | inexistente | sem acesso | sem acesso | não provisionado |
+| Repositório Monvi Brain | não concedido pela Task 039 | não concedido pela Task 039 | sem acesso | sem acesso | nenhuma nova permissão |
+| Biblioteca pessoal de Victor | owner documental | sem acesso | vínculo planejado, sem acesso técnico | proibido | documental |
+| Biblioteca pessoal de Filipe | sem acesso | owner documental | proibido | vínculo planejado, sem acesso técnico | documental |
+| Bibliotecas gerais | conforme autorização | conforme autorização | consulta planejada | consulta planejada | sem nova permissão |
+| Vercel | não inventariado | não inventariado | sem acesso | sem acesso | não definido |
+| Cloudflare | não inventariado | não inventariado | sem acesso | sem acesso | não definido |
+| n8n | não inventariado | não inventariado | sem acesso | sem acesso | não definido |
+| WhatsApp Business Platform | não inventariado | não inventariado | sem acesso | sem acesso | não definido |
+| Dados de clientes | nenhum | nenhum | nenhum | nenhum | bloqueado por padrão |
+| Automações externas | desativadas | desativadas | desativadas | desativadas | não implementado |
+| Execução crítica | desativada | desativada | proibida | proibida | não implementado |
+
+### Regras da matriz
+
+1. `não inventariado` não significa acesso permitido;
+2. `não concedido pela Task 039` não afirma a inexistência de uso pessoal anterior;
+3. nenhum acesso será inferido a partir do cargo de CEO;
+4. acessos sensíveis de Victor exigirão aprovação de Filipe;
+5. acessos sensíveis de Filipe exigirão aprovação de Victor;
+6. nenhum Helpper poderá exceder as permissões da pessoa vinculada;
+7. dados e contextos dos dois Helppers permanecerão segregados;
+8. qualquer mudança exigirá registro, justificativa, aprovação e evidência;
+9. credenciais e segredos permanecerão fora do Monvi Brain;
+10. o `risk-2026-007` deverá ser reavaliado antes de qualquer acesso de escrita ou integração com o GitHub;
+11. cada biblioteca pessoal pertence exclusivamente à pessoa vinculada;
+12. o Helpper do outro CEO não poderá consultar a biblioteca pessoal;
+13. bibliotecas gerais não concedem acesso a contextos de cliente ou projeto;
+14. promoção para biblioteca geral exige revisão, aprovação e publicação humanas;
+15. conversa não representa autorização automática para retenção;
+16. candidato a memória individual exige confirmação explícita do owner;
+17. reporte entre Helppers não concede acesso à biblioteca pessoal do outro;
+18. reportes devem possuir origem, destinatário, classificação, finalidade, fontes e evidências;
+19. reportes relacionados devem usar `correlation_id`;
+20. respostas devem indicar `parent_report_id`;
+21. recebimento deve ser confirmado;
+22. `report_id` não pode ser processado duas vezes;
+23. loops de reporte devem ser interrompidos e escalados;
+24. implementação técnica do protocolo permanece pendente.
+
+## Pendências do piloto
+
+- definir responsabilidade principal de Victor;
+- definir responsabilidade principal de Filipe;
+- definir áreas de decisão final de Victor;
+- definir áreas de decisão final de Filipe;
+- definir limites de autoridade;
+- definir padrão de e-mail corporativo;
+- criar identidades corporativas individuais;
+- inventariar contas e acessos existentes;
+- definir periodicidade de revisão;
+- selecionar ambiente técnico futuro dos Helppers;
+- definir implementação técnica futura da memória individual;
+- definir categorias e retenção das bibliotecas pessoais;
+- aprovar acesso técnico dos Helppers antes de qualquer leitura automatizada;
+- executar teste técnico de segregação antes da ativação;
+- aprovar capacidades individualmente.
 
 ## Responsabilidades pelo registro
 
@@ -565,17 +729,40 @@ Este registro poderá ser aprovado quando:
 
 ## Estado de implementação
 
-- modelo documental: em revisão;
+- modelo documental institucional: aprovado na versão 1.0.0;
+- atualização com registros reais: em revisão na versão 1.1.0;
 - registro técnico em banco de dados: não implementado;
 - autenticação: não implementada por esta task;
 - autorização: não implementada por esta task;
 - sincronização com provedores: não implementada;
-- perfis reais: nenhum;
-- contas reais: nenhuma;
-- Helppers individuais reais: nenhum.
+- perfis humanos documentais reais: dois em onboarding;
+- contas corporativas reais: nenhuma criada;
+- perfis de acesso técnico: nenhum concedido;
+- Helppers individuais documentais reais: dois em estado `planned`;
+- bibliotecas pessoais documentais reais: duas em estado `review`;
+- vínculo pessoa–biblioteca–Helpper: documentado;
+- acesso técnico às bibliotecas pessoais: nenhum concedido;
+- promoção automática de conhecimento: não implementada;
+- protocolo documental de aprendizado por conversa: documentado;
+- confirmação técnica do owner: não implementada;
+- protocolo documental de reporte entre Helppers: documentado;
+- transporte técnico de reportes: não implementado;
+- deduplicação e prevenção técnica de loops: não implementadas;
+- Helppers configurados tecnicamente: nenhum;
+- credenciais registradas: nenhuma;
+- acesso a clientes: nenhum.
 
 ## Próxima utilização permitida
 
 Após aprovação deste registro e dos templates especializados, uma task específica poderá propor o primeiro cadastro real.
 
 Essa task futura deverá identificar a pessoa, justificar o vínculo, definir o escopo, validar a aprovação e manter credenciais fora do Monvi Brain.
+
+## Aprovação documental da Task 039
+
+- data: 2026-07-29;
+- aprovador: CEO da Monvi;
+- decisão: registro do piloto aprovado;
+- status final: approved;
+- revisão humana: concluída;
+- implementação técnica de identidade, conta, acesso ou memória: não realizada.
