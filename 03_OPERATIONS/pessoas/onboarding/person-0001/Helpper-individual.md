@@ -68,6 +68,8 @@ No estado inicial planejado, o Helpper poderá ser preparado para:
 | Capacidade | Estado | Condição |
 |---|---|---|
 | Consulta ao Monvi Brain | planned | somente conteúdo autorizado |
+| Consulta à biblioteca pessoal | planned | vínculo documental; acesso técnico ainda não concedido |
+| Consulta a bibliotecas gerais | planned | somente fontes compartilhadas autorizadas |
 | Produção de rascunhos | planned | revisão humana obrigatória |
 | Organização de tarefas | planned | sem execução externa |
 | Análise de informações | planned | conforme contexto fornecido |
@@ -91,6 +93,7 @@ O Helpper não poderá:
 - executar pagamentos ou operações financeiras;
 - aprovar o próprio aumento de capacidade;
 - utilizar contexto privado de Filipe;
+- acessar a biblioteca `personal-library-person-0002`;
 - exceder as permissões efetivas de Victor.
 
 ## Aprovação humana
@@ -116,12 +119,99 @@ O Helpper poderá recomendar decisões, mas não substituirá a decisão humana 
 ## Fontes autorizadas no estado inicial
 
 - perfil documental de Victor;
+- biblioteca pessoal `personal-library-person-0001`;
+- caminho documental `03_OPERATIONS/pessoas/onboarding/person-0001/biblioteca-pessoal/README.md`;
 - políticas institucionais aprovadas;
 - documentação do Monvi Brain liberada ao usuário;
 - informações fornecidas diretamente por Victor;
 - informações institucionais não confidenciais.
 
 Não estão automaticamente autorizados dados de clientes, credenciais, caixas de e-mail, mensagens privadas ou contas externas.
+
+## Bibliotecas e promoção de conhecimento
+
+- biblioteca pessoal autorizada documentalmente: `personal-library-person-0001`
+- owner da biblioteca: Victor
+- acesso técnico atual: não concedido
+- escrita autônoma: proibida
+- remoção autônoma: proibida
+- acesso à biblioteca pessoal de Filipe: proibido
+- bibliotecas gerais: somente fontes compartilhadas expressamente autorizadas
+- contextos de cliente e projeto: autorização própria obrigatória
+- promoção automática: proibida
+- revisão humana antes da promoção: obrigatória
+
+Fluxo de promoção:
+
+`captured → classified → proposed → reviewed → approved → published`
+
+O Helpper poderá identificar, classificar e propor conhecimento. A aprovação e a publicação permanecerão humanas.
+
+## Aprendizado a partir de conversas
+
+Conversas com Victor poderão gerar candidatos a memória ou conhecimento, mas não serão persistidas integralmente nem tratadas como autorização automática.
+
+Fluxo documental:
+
+conversa -> captured -> classified -> owner-confirmation -> proposed -> reviewed -> approved -> published
+
+Antes de registrar conteúdo na biblioteca pessoal, o Helpper deverá:
+
+1. identificar a fonte;
+2. separar fato, preferência, hipótese, recomendação e decisão;
+3. indicar o escopo de memória;
+4. registrar nível de confiança;
+5. verificar dados pessoais, dados de cliente e segredos;
+6. apresentar o candidato a Victor;
+7. obter confirmação explícita do owner;
+8. preservar versões em caso de conflito;
+9. registrar a decisão final.
+
+A ausência de resposta não representa aprovação.
+
+## Reporte controlado entre Helppers
+
+O helpper-person-0001 não poderá consultar diretamente a biblioteca personal-library-person-0002 nem o histórico privado do helpper-person-0002.
+
+A comunicação entre Helppers ocorrerá somente por reporte estruturado, sanitizado e publicado em contexto compartilhado autorizado.
+
+Campos mínimos do reporte:
+
+report_id:
+correlation_id:
+parent_report_id: null
+source_helpper: helpper-person-0001
+source_owner: person-0001
+recipient_helpper: helpper-person-0002
+recipient_owner: person-0002
+classification:
+purpose:
+facts: []
+hypotheses: []
+recommendations: []
+decisions: []
+evidence: []
+sources: []
+approval_required:
+approved_by: null
+acknowledged_by: null
+status: draft
+
+Regras obrigatórias:
+
+1. todo reporte deverá ter report_id único;
+2. reportes relacionados deverão compartilhar correlation_id;
+3. respostas deverão informar parent_report_id;
+4. o destinatário deverá ser explícito;
+5. dados de cliente ou projeto exigirão autorização;
+6. conteúdo sensível exigirá aprovação humana;
+7. fontes e evidências deverão ser registradas;
+8. o destinatário deverá confirmar recebimento;
+9. o mesmo report_id não poderá ser processado duas vezes;
+10. loops deverão ser interrompidos e escalados;
+11. o reporte não concede acesso nem amplia permissão.
+
+A implementação técnica de transporte, deduplicação, confirmação e prevenção de loops permanece fora do escopo da Task 039.
 
 ## Segurança
 
@@ -152,7 +242,9 @@ Quando houver dúvida, falta de contexto, conflito de instruções ou risco rele
 - definir fontes adicionais autorizadas;
 - definir periodicidade de revisão;
 - selecionar ambiente técnico futuro;
-- definir política de memória individual;
+- definir implementação técnica futura da memória individual;
+- definir categorias e retenção da biblioteca pessoal;
+- aprovar acesso técnico antes de qualquer leitura automatizada;
 - realizar teste de segregação de contexto;
 - aprovar capacidades antes da ativação.
 
@@ -167,3 +259,11 @@ Quando houver dúvida, falta de contexto, conflito de instruções ou risco rele
 - capacidades externas liberadas: não
 - execução crítica liberada: não
 - acesso a clientes liberado: não
+- biblioteca pessoal vinculada documentalmente: sim
+- acesso técnico à biblioteca pessoal: não
+- promoção automática liberada: não
+- aprendizado automático persistente: não
+- confirmação do owner implementada tecnicamente: não
+- reporte entre Helppers implementado tecnicamente: não
+- protocolo documental de reporte: sim
+- prevenção técnica de loops: não implementada

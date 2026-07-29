@@ -15,7 +15,7 @@ source_task: task-2026-039
 created_at: "2026-07-29"
 updated_at: "2026-07-29"
 reviewed_at: null
-version: "0.1.0"
+version: "0.3.0"
 tags:
   - identidade
   - pessoas
@@ -65,7 +65,18 @@ A execução realizou:
 8. criação da matriz consolidada inicial de acessos;
 9. atualização do registro central de identidades para a versão 1.1.0;
 10. avaliação complementar do `risk-2026-007`;
-11. validações de integridade, segregação e formato.
+11. validações de integridade, segregação e formato;
+12. criação das bibliotecas pessoais documentais dos CEOs;
+13. vinculação exclusiva entre pessoa, biblioteca e Helpper;
+14. reconhecimento das bibliotecas gerais como fontes compartilhadas governadas;
+15. documentação do fluxo de promoção com revisão humana;
+16. manutenção de memória técnica, indexação e promoção automática desativadas;
+17. definição do protocolo documental de aprendizado a partir de conversas;
+18. exigência de confirmação explícita do owner antes da memória individual;
+19. definição do reporte estruturado e sanitizado entre Helppers;
+20. definição de `report_id`, `correlation_id` e `parent_report_id`;
+21. definição de confirmação de recebimento, deduplicação e prevenção de loops;
+22. manutenção da implementação técnica dos protocolos fora do escopo.
 
 ## Pessoas cadastradas
 
@@ -80,6 +91,9 @@ A execução realizou:
 - responsabilidade principal: pendente de definição;
 - áreas sob decisão final: pendentes de definição;
 - aprovador de acessos sensíveis: person-0002;
+- biblioteca pessoal: personal-library-person-0001;
+- estado da biblioteca: review;
+- acesso técnico do Helpper à biblioteca: não concedido;
 - acesso técnico concedido: nenhum;
 - acesso a clientes concedido: nenhum.
 
@@ -94,6 +108,9 @@ A execução realizou:
 - responsabilidade principal: pendente de definição;
 - áreas sob decisão final: pendentes de definição;
 - aprovador de acessos sensíveis: person-0001;
+- biblioteca pessoal: personal-library-person-0002;
+- estado da biblioteca: review;
+- acesso técnico do Helpper à biblioteca: não concedido;
 - acesso técnico concedido: nenhum;
 - acesso a clientes concedido: nenhum.
 
@@ -114,6 +131,9 @@ A execução realizou:
 - acesso de escrita: nenhum;
 - acesso a clientes: nenhum;
 - execução autônoma: desativada.
+- biblioteca pessoal vinculada: personal-library-person-0001;
+- bibliotecas gerais: consulta planejada conforme autorização;
+- promoção automática: proibida.
 
 ### Helpper Filipe
 
@@ -130,6 +150,9 @@ A execução realizou:
 - acesso de escrita: nenhum;
 - acesso a clientes: nenhum;
 - execução autônoma: desativada.
+- biblioteca pessoal vinculada: personal-library-person-0002;
+- bibliotecas gerais: consulta planejada conforme autorização;
+- promoção automática: proibida.
 
 ## Entregáveis produzidos
 
@@ -142,6 +165,8 @@ A execução realizou:
 | Helpper Filipe | `03_OPERATIONS/pessoas/onboarding/person-0002/Helpper-individual.md` | `71c365d` | review e planned |
 | Registro central 1.1.0 | `00_SYSTEM/registries/Registro-identidades-e-perfis-v1.md` | `68ecce7` | review |
 | Avaliação do risco | `00_SYSTEM/registries/Registro-pendencias-riscos-e-limitacoes-v1.md` | `68ecce7` | accepted mantido |
+| Biblioteca pessoal de Victor | `03_OPERATIONS/pessoas/onboarding/person-0001/biblioteca-pessoal/README.md` | `9665541` | review e sem ativação técnica |
+| Biblioteca pessoal de Filipe | `03_OPERATIONS/pessoas/onboarding/person-0002/biblioteca-pessoal/README.md` | `9665541` | review e sem ativação técnica |
 
 ## Matriz inicial de acessos
 
@@ -153,6 +178,9 @@ A matriz consolidada documenta o estado conhecido sem conceder permissões.
 | Google Workspace | inexistente | inexistente | sem acesso | sem acesso |
 | GitHub corporativo | inexistente | inexistente | sem acesso | sem acesso |
 | Monvi Brain | não concedido pela Task 039 | não concedido pela Task 039 | sem acesso | sem acesso |
+| Biblioteca pessoal de Victor | owner documental | sem acesso | vínculo planejado, sem acesso técnico | proibido |
+| Biblioteca pessoal de Filipe | sem acesso | owner documental | proibido | vínculo planejado, sem acesso técnico |
+| Bibliotecas gerais | conforme autorização | conforme autorização | consulta planejada | consulta planejada |
 | Dados de clientes | nenhum | nenhum | nenhum | nenhum |
 | Automações externas | desativadas | desativadas | desativadas | desativadas |
 | Execução crítica | desativada | desativada | proibida | proibida |
@@ -170,7 +198,11 @@ Foram documentados os seguintes controles:
 - o Helpper de Victor não poderá utilizar o contexto privado de Filipe;
 - o Helpper de Filipe não poderá utilizar o contexto privado de Victor;
 - nenhum Helpper poderá exceder as permissões da pessoa vinculada;
-- dados de clientes exigirão autorização específica por projeto.
+- dados de clientes exigirão autorização específica por projeto;
+- o Helpper de Victor não poderá acessar a biblioteca pessoal de Filipe;
+- o Helpper de Filipe não poderá acessar a biblioteca pessoal de Victor;
+- bibliotecas gerais não substituem autorização de cliente ou projeto;
+- promoção para biblioteca geral exigirá revisão e aprovação humanas.
 
 A aprovação cruzada é um controle de segregação de funções e não representa relação hierárquica entre os CEOs.
 
@@ -194,7 +226,10 @@ Durante os lotes foram verificadas:
 - `git diff --check`;
 - conteúdo exato do staging;
 - commits isolados por lote;
-- validade JSON das linhas existentes do `changes.jsonl`.
+- validade JSON das linhas existentes do `changes.jsonl`;
+- vínculo exclusivo entre pessoa, biblioteca e Helpper;
+- ausência de acesso cruzado entre bibliotecas pessoais;
+- ausência de memória técnica, indexação ou promoção automática.
 
 ## Histórico de commits
 
@@ -265,7 +300,9 @@ A Task 039 não implementou:
 - inventariar contas e acessos existentes;
 - definir periodicidade de revisão;
 - selecionar ambiente técnico dos Helppers;
-- definir política de memória individual;
+- definir implementação técnica futura da memória individual;
+- definir categorias e retenção das bibliotecas pessoais;
+- aprovar acesso técnico antes de qualquer leitura automatizada;
 - testar tecnicamente a segregação antes da ativação;
 - aprovar capacidades individualmente.
 
@@ -283,6 +320,22 @@ A Task 039 não implementou:
 | Risk-2026-007 avaliado | atendido, sem gatilho técnico |
 | Relatório de execução produzido | atendido por este documento |
 | changes.jsonl atualizado | atendido com evento JSONL válido |
+| Biblioteca pessoal documental de Victor criada | atendido |
+| Biblioteca pessoal documental de Filipe criada | atendido |
+| Vínculo exclusivo pessoa–biblioteca–Helpper | atendido |
+| Bibliotecas gerais reconhecidas | atendido |
+| Acesso cruzado entre bibliotecas pessoais | proibido documentalmente |
+| Promoção automática | não implementada |
+| Memória técnica, indexação e banco vetorial | não implementados |
+| Aprendizado por conversa documentado | atendido |
+| Persistência automática de conversa | proibida |
+| Confirmação do owner antes da memória individual | obrigatória documentalmente |
+| Reporte estruturado entre Helppers | documentado |
+| Acesso direto à biblioteca pessoal do outro | proibido |
+| `report_id`, `correlation_id` e `parent_report_id` | definidos |
+| Confirmação de recebimento | obrigatória documentalmente |
+| Deduplicação e prevenção de loops | definidas documentalmente |
+| Implementação técnica dos protocolos | não realizada |
 | Revisão humana concluída | pendente |
 
 ## Recomendação
@@ -303,6 +356,15 @@ A aprovação somente deverá ocorrer após o CEO confirmar:
 
 - relatório produzido: sim;
 - evento de execução no changes.jsonl: criado e validado;
+- bibliotecas pessoais documentais criadas: duas;
+- vínculos das bibliotecas propagados: sim;
+- evento complementar do Lote 6B: criado e validado;
+- memória técnica ou indexação ativada: não;
+- protocolo documental de aprendizado: criado;
+- protocolo documental de reporte entre Helppers: criado;
+- persistência automática de conversas: não;
+- transporte técnico de reportes: não;
+- prevenção técnica de loops: não implementada;
 - execução documental recomendada para revisão: sim;
 - revisão humana concluída: não;
 - aprovação final concedida: não;

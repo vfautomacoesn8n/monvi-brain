@@ -98,6 +98,35 @@ A aprovação cruzada constitui controle de segregação de funções e não rep
 - credenciais vinculadas: nenhuma
 - acesso a clientes: nenhum
 - execução crítica: desativada
+## Biblioteca pessoal
+
+- identificador: personal-library-person-0001
+- caminho documental: `03_OPERATIONS/pessoas/onboarding/person-0001/biblioteca-pessoal/README.md`
+- owner exclusivo: `person-0001`
+- Helpper vinculado: `helpper-person-0001`
+- classificação: restricted
+- estado: review
+- acesso técnico do Helpper: não concedido
+- memória persistente: não implementada
+- promoção automática: desativada
+- acesso do Helpper de Filipe: proibido
+
+A biblioteca pessoal organiza contexto individual autorizado. Bibliotecas gerais permanecem fontes compartilhadas governadas, enquanto contextos de cliente e projeto exigem autorização própria.
+
+### Aprendizado e reporte
+
+- conversas poderão gerar candidatos a memória: sim;
+- persistência automática da conversa: não;
+- confirmação de Victor antes do registro individual: obrigatória;
+- classificação do candidato: obrigatória;
+- fonte e confiança: obrigatórias;
+- promoção automática para biblioteca geral: proibida;
+- reporte direto de memória pessoal ao outro Helpper: proibido;
+- reporte estruturado e sanitizado: permitido somente conforme autorização;
+- confirmação de recebimento: obrigatória;
+- prevenção técnica de loops: ainda não implementada.
+
+O Helpper Victor poderá preparar candidatos a aprendizado e reportes, mas não poderá persistir, compartilhar ou promover conteúdo sem o fluxo de revisão aplicável.
 
 ## Aprovações
 
@@ -125,6 +154,8 @@ A aprovação cruzada constitui controle de segregação de funções e não rep
 - criar identidade corporativa individual;
 - inventariar contas e acessos existentes;
 - modelar e revisar o Helpper individual;
+- definir categorias e retenção da biblioteca pessoal;
+- aprovar qualquer acesso técnico do Helpper à biblioteca;
 - definir data de revisão periódica de acessos.
 
 ## Estado final deste lote
@@ -135,4 +166,6 @@ A aprovação cruzada constitui controle de segregação de funções e não rep
 - acesso concedido: não
 - credencial armazenada: não
 - Helpper ativado: não
+- biblioteca pessoal documental criada: sim
+- acesso técnico à biblioteca ativado: não
 - acesso a cliente concedido: não

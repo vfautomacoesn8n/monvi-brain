@@ -13,7 +13,7 @@ source_task: task-2026-039
 created_at: "2026-07-28"
 updated_at: "2026-07-29"
 reviewed_at: null
-version: "1.1.0"
+version: "1.3.0"
 tags:
   - identidade
   - perfis
@@ -517,6 +517,8 @@ Qualquer ativação futura dependerá de validação individual, menor privilég
 - aprovador de acessos sensíveis: `person-0002`;
 - perfil operacional: `03_OPERATIONS/pessoas/onboarding/person-0001/Perfil-colaborador.md`;
 - Helpper relacionado: `helpper-person-0001`;
+- biblioteca pessoal: `personal-library-person-0001`;
+- caminho da biblioteca: `03_OPERATIONS/pessoas/onboarding/person-0001/biblioteca-pessoal/README.md`;
 - acesso técnico concedido pela Task 039: nenhum;
 - acesso a clientes concedido pela Task 039: nenhum;
 - credencial armazenada: nenhuma.
@@ -534,6 +536,8 @@ Qualquer ativação futura dependerá de validação individual, menor privilég
 - aprovador de acessos sensíveis: `person-0001`;
 - perfil operacional: `03_OPERATIONS/pessoas/onboarding/person-0002/Perfil-colaborador.md`;
 - Helpper relacionado: `helpper-person-0002`;
+- biblioteca pessoal: `personal-library-person-0002`;
+- caminho da biblioteca: `03_OPERATIONS/pessoas/onboarding/person-0002/biblioteca-pessoal/README.md`;
 - acesso técnico concedido pela Task 039: nenhum;
 - acesso a clientes concedido pela Task 039: nenhum;
 - credencial armazenada: nenhuma.
@@ -554,7 +558,11 @@ Qualquer ativação futura dependerá de validação individual, menor privilég
 - acesso a clientes: nenhum;
 - execução autônoma: desativada;
 - supervisão humana: obrigatória;
-- documento operacional: `03_OPERATIONS/pessoas/onboarding/person-0001/Helpper-individual.md`.
+- documento operacional: `03_OPERATIONS/pessoas/onboarding/person-0001/Helpper-individual.md`;
+- biblioteca pessoal vinculada: `personal-library-person-0001`;
+- acesso técnico à biblioteca: não concedido;
+- bibliotecas gerais: somente fontes autorizadas;
+- promoção automática: proibida.
 
 ### helpper-person-0002 — Helpper Filipe
 
@@ -572,7 +580,11 @@ Qualquer ativação futura dependerá de validação individual, menor privilég
 - acesso a clientes: nenhum;
 - execução autônoma: desativada;
 - supervisão humana: obrigatória;
-- documento operacional: `03_OPERATIONS/pessoas/onboarding/person-0002/Helpper-individual.md`.
+- documento operacional: `03_OPERATIONS/pessoas/onboarding/person-0002/Helpper-individual.md`;
+- biblioteca pessoal vinculada: `personal-library-person-0002`;
+- acesso técnico à biblioteca: não concedido;
+- bibliotecas gerais: somente fontes autorizadas;
+- promoção automática: proibida.
 
 ## Matriz consolidada inicial de acessos
 
@@ -584,6 +596,9 @@ Esta matriz expressa somente o estado documental conhecido na Task 039. Ela não
 | Google Workspace | inexistente | inexistente | sem acesso | sem acesso | não provisionado |
 | GitHub corporativo | inexistente | inexistente | sem acesso | sem acesso | não provisionado |
 | Repositório Monvi Brain | não concedido pela Task 039 | não concedido pela Task 039 | sem acesso | sem acesso | nenhuma nova permissão |
+| Biblioteca pessoal de Victor | owner documental | sem acesso | vínculo planejado, sem acesso técnico | proibido | documental |
+| Biblioteca pessoal de Filipe | sem acesso | owner documental | proibido | vínculo planejado, sem acesso técnico | documental |
+| Bibliotecas gerais | conforme autorização | conforme autorização | consulta planejada | consulta planejada | sem nova permissão |
 | Vercel | não inventariado | não inventariado | sem acesso | sem acesso | não definido |
 | Cloudflare | não inventariado | não inventariado | sem acesso | sem acesso | não definido |
 | n8n | não inventariado | não inventariado | sem acesso | sem acesso | não definido |
@@ -603,7 +618,21 @@ Esta matriz expressa somente o estado documental conhecido na Task 039. Ela não
 7. dados e contextos dos dois Helppers permanecerão segregados;
 8. qualquer mudança exigirá registro, justificativa, aprovação e evidência;
 9. credenciais e segredos permanecerão fora do Monvi Brain;
-10. o `risk-2026-007` deverá ser reavaliado antes de qualquer acesso de escrita ou integração com o GitHub.
+10. o `risk-2026-007` deverá ser reavaliado antes de qualquer acesso de escrita ou integração com o GitHub;
+11. cada biblioteca pessoal pertence exclusivamente à pessoa vinculada;
+12. o Helpper do outro CEO não poderá consultar a biblioteca pessoal;
+13. bibliotecas gerais não concedem acesso a contextos de cliente ou projeto;
+14. promoção para biblioteca geral exige revisão, aprovação e publicação humanas;
+15. conversa não representa autorização automática para retenção;
+16. candidato a memória individual exige confirmação explícita do owner;
+17. reporte entre Helppers não concede acesso à biblioteca pessoal do outro;
+18. reportes devem possuir origem, destinatário, classificação, finalidade, fontes e evidências;
+19. reportes relacionados devem usar `correlation_id`;
+20. respostas devem indicar `parent_report_id`;
+21. recebimento deve ser confirmado;
+22. `report_id` não pode ser processado duas vezes;
+23. loops de reporte devem ser interrompidos e escalados;
+24. implementação técnica do protocolo permanece pendente.
 
 ## Pendências do piloto
 
@@ -617,7 +646,9 @@ Esta matriz expressa somente o estado documental conhecido na Task 039. Ela não
 - inventariar contas e acessos existentes;
 - definir periodicidade de revisão;
 - selecionar ambiente técnico futuro dos Helppers;
-- definir política de memória individual;
+- definir implementação técnica futura da memória individual;
+- definir categorias e retenção das bibliotecas pessoais;
+- aprovar acesso técnico dos Helppers antes de qualquer leitura automatizada;
 - executar teste técnico de segregação antes da ativação;
 - aprovar capacidades individualmente.
 
@@ -708,6 +739,15 @@ Este registro poderá ser aprovado quando:
 - contas corporativas reais: nenhuma criada;
 - perfis de acesso técnico: nenhum concedido;
 - Helppers individuais documentais reais: dois em estado `planned`;
+- bibliotecas pessoais documentais reais: duas em estado `review`;
+- vínculo pessoa–biblioteca–Helpper: documentado;
+- acesso técnico às bibliotecas pessoais: nenhum concedido;
+- promoção automática de conhecimento: não implementada;
+- protocolo documental de aprendizado por conversa: documentado;
+- confirmação técnica do owner: não implementada;
+- protocolo documental de reporte entre Helppers: documentado;
+- transporte técnico de reportes: não implementado;
+- deduplicação e prevenção técnica de loops: não implementadas;
 - Helppers configurados tecnicamente: nenhum;
 - credenciais registradas: nenhuma;
 - acesso a clientes: nenhum.
