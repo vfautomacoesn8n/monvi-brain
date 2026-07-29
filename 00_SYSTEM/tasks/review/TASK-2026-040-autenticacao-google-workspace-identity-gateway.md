@@ -14,8 +14,11 @@ classification: internal
 created_at: "2026-07-29"
 updated_at: "2026-07-29"
 reviewed_at: null
-version: "0.2.0"
+version: "0.3.0"
 allowed_paths:
+  - 00_SYSTEM/architecture/Contrato-Identity-Gateway-Google-Workspace-Monvi.md
+  - 00_SYSTEM/architecture/Matriz-autenticacao-autorizacao-sessao-Monvi.md
+  - 00_SYSTEM/architecture/Plano-testes-Identity-Gateway-Monvi.md
   - 00_SYSTEM/audits/Execucao-task-2026-040-autenticacao-google-workspace-identity-gateway.md
   - 00_SYSTEM/logs/changes.jsonl
   - 00_SYSTEM/registries/Registro-identidades-e-perfis-v1.md
