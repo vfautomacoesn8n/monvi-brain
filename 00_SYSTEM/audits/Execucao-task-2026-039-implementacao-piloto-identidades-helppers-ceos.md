@@ -2,20 +2,20 @@
 id: audit-task-2026-039-ceo-identities-helppers-pilot
 title: Execução da task 2026-039 — piloto de identidades e Helppers dos CEOs
 type: record
-status: review
-task_state: active
+status: approved
+task_state: done
 owner: ceo-monvi
 agent: helpper
 reviewer: ceo-monvi
 active_client: null
 active_project: null
-requires_review: true
+requires_review: false
 classification: internal
 source_task: task-2026-039
 created_at: "2026-07-29"
 updated_at: "2026-07-29"
-reviewed_at: null
-version: "0.3.0"
+reviewed_at: "2026-07-29"
+version: "1.0.0"
 tags:
   - identidade
   - pessoas
@@ -371,3 +371,23 @@ A aprovação somente deverá ocorrer após o CEO confirmar:
 - Task 039 movida para done: não;
 - push executado: não;
 - merge executado: não.
+
+## Decisão executiva final
+
+- data: 2026-07-29;
+- decisor: CEO da Monvi;
+- decisão: execução documental aprovada;
+- status final do relatório: `approved`;
+- task_state final: `done`;
+- requires_review final: `false`;
+- perfis de Victor e Filipe: permanecem em onboarding;
+- Helppers individuais: permanecem em planned;
+- contas institucionais criadas: nenhuma;
+- acessos técnicos concedidos: nenhum;
+- memória técnica persistente: não ativada;
+- integrações reais: não ativadas;
+- risco mantido: accepted.
+
+### Declaração aprovada
+
+Aprovo a Task 039 e autorizo o encerramento documental, mantendo os perfis em onboarding, os Helppers em planned e sem criação de contas, acessos, memória técnica ou integrações reais.

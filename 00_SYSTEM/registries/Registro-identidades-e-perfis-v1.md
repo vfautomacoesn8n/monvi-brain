@@ -2,18 +2,18 @@
 id: registry-identities-and-profiles-v1
 title: Registro de identidades e perfis v1
 type: record
-status: review
+status: approved
 owner: ceo-monvi
 reviewer: ceo-monvi
 active_client: null
 active_project: null
-requires_review: true
+requires_review: false
 classification: internal
 source_task: task-2026-039
 created_at: "2026-07-28"
 updated_at: "2026-07-29"
-reviewed_at: null
-version: "1.3.0"
+reviewed_at: "2026-07-29"
+version: "1.4.0"
 tags:
   - identidade
   - perfis
@@ -757,3 +757,12 @@ Este registro poderá ser aprovado quando:
 Após aprovação deste registro e dos templates especializados, uma task específica poderá propor o primeiro cadastro real.
 
 Essa task futura deverá identificar a pessoa, justificar o vínculo, definir o escopo, validar a aprovação e manter credenciais fora do Monvi Brain.
+
+## Aprovação documental da Task 039
+
+- data: 2026-07-29;
+- aprovador: CEO da Monvi;
+- decisão: registro do piloto aprovado;
+- status final: approved;
+- revisão humana: concluída;
+- implementação técnica de identidade, conta, acesso ou memória: não realizada.

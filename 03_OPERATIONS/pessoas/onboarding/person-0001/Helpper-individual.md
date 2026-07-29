@@ -2,19 +2,19 @@
 id: helpper-person-0001
 title: Helpper individual — Victor Lopes da Silva Saad
 type: agent-profile
-status: review
+status: approved
 owner: person-0001
 reviewer: person-0002
 active_client: null
 active_project: null
-requires_review: true
+requires_review: false
 classification: internal
 source_task: task-2026-039
 linked_person: person-0001
 created_at: "2026-07-29"
 updated_at: "2026-07-29"
-reviewed_at: null
-version: "0.1.0"
+reviewed_at: "2026-07-29"
+version: "1.0.0"
 tags:
   - helpper
   - individual
@@ -267,3 +267,14 @@ Quando houver dúvida, falta de contexto, conflito de instruções ou risco rele
 - reporte entre Helppers implementado tecnicamente: não
 - protocolo documental de reporte: sim
 - prevenção técnica de loops: não implementada
+
+## Aprovação documental da Task 039
+
+- data: 2026-07-29;
+- aprovador: CEO da Monvi;
+- status documental: approved;
+- estado do Helpper: planned;
+- Helpper real ativado: não;
+- memória técnica persistente: não;
+- integrações reais: não;
+- execução autônoma: não.

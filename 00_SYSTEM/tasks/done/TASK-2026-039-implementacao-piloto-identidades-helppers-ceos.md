@@ -2,19 +2,19 @@
 id: task-2026-039
 title: Implementação piloto das identidades e Helppers individuais dos CEOs
 type: task
-status: review
-task_state: active
+status: approved
+task_state: done
 owner: ceo-monvi
 agent: helpper
 reviewer: ceo-monvi
 active_client: null
 active_project: null
-requires_review: true
+requires_review: false
 classification: internal
 created_at: "2026-07-29"
 updated_at: "2026-07-29"
-reviewed_at: null
-version: "0.2.0"
+reviewed_at: "2026-07-29"
+version: "1.0.0"
 allowed_paths:
   - 00_SYSTEM/audits/Execucao-task-2026-039-implementacao-piloto-identidades-helppers-ceos.md
   - 00_SYSTEM/logs/changes.jsonl
@@ -258,3 +258,37 @@ Estados alternativos:
 - quarantined.
 
 Nenhum conteúdo pessoal será promovido automaticamente para uma biblioteca geral.
+
+## Decisão humana final
+
+- data: 2026-07-29;
+- decisor: CEO da Monvi;
+- decisão: aprovada;
+- encerramento documental: autorizado;
+- status final: approved;
+- task_state final: done;
+- requires_review final: false;
+- perfis: permanecem em onboarding;
+- Helppers: permanecem em planned.
+
+### Declaração
+
+Aprovo a Task 039 e autorizo o encerramento documental, mantendo os perfis em onboarding, os Helppers em planned e sem criação de contas, acessos, memória técnica ou integrações reais.
+
+## Resultado final
+
+- perfis documentais de Victor e Filipe: aprovados;
+- Helppers individuais documentais: aprovados e mantidos em planned;
+- bibliotecas pessoais documentais: aprovadas;
+- segregação entre bibliotecas pessoais: aprovada;
+- protocolo de aprendizado por conversa: aprovado documentalmente;
+- protocolo de reporte entre Helppers: aprovado documentalmente;
+- contas reais criadas: nenhuma;
+- acessos técnicos concedidos: nenhum;
+- memória persistente, indexação, embeddings ou banco vetorial: não ativados;
+- integrações reais: não ativadas;
+- promoção automática de conhecimento: não habilitada.
+
+## Encerramento
+
+A Task 039 foi concluída documentalmente. A futura autenticação via Google Workspace, o Identity Gateway, a criação de contas, a concessão de acessos e a ativação dos Helppers deverão ocorrer em nova task específica.

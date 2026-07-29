@@ -2,20 +2,20 @@
 id: personal-library-person-0002
 title: Biblioteca pessoal — Filipe Costa Monteiro
 type: record
-status: review
+status: approved
 owner: person-0002
 reviewer: person-0001
 active_client: null
 active_project: null
-requires_review: true
+requires_review: false
 classification: restricted
 source_task: task-2026-039
 linked_person: person-0002
 linked_helpper: helpper-person-0002
 created_at: "2026-07-29"
 updated_at: "2026-07-29"
-reviewed_at: null
-version: "0.1.0"
+reviewed_at: "2026-07-29"
+version: "1.0.0"
 tags:
   - biblioteca-pessoal
   - memoria-individual
@@ -145,3 +145,13 @@ A promoção exigirá revisão humana, sanitização, classificação, verifica�
 - definir processo técnico futuro de leitura;
 - testar segregação antes da ativação;
 - aprovar qualquer capacidade de escrita.
+
+## Aprovação documental da Task 039
+
+- data: 2026-07-29;
+- aprovador: CEO da Monvi;
+- status documental: approved;
+- vínculo exclusivo com person-0002: aprovado;
+- leitura automatizada autorizada: não;
+- indexação, embeddings ou banco vetorial: não;
+- promoção automática: não.

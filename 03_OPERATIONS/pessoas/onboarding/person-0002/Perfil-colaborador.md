@@ -2,18 +2,18 @@
 id: person-0002
 title: Perfil de colaborador — Filipe Costa Monteiro
 type: record
-status: review
+status: approved
 owner: ceo-monvi
 reviewer: ceo-monvi
 active_client: null
 active_project: null
-requires_review: true
+requires_review: false
 classification: internal
 source_task: task-2026-039
 created_at: "2026-07-29"
 updated_at: "2026-07-29"
-reviewed_at: null
-version: "0.1.0"
+reviewed_at: "2026-07-29"
+version: "1.0.0"
 tags:
   - pessoa
   - colaborador
@@ -169,3 +169,13 @@ O Helpper Filipe poderá preparar candidatos a aprendizado e reportes, mas não 
 - biblioteca pessoal documental criada: sim
 - acesso técnico à biblioteca ativado: não
 - acesso a cliente concedido: não
+
+## Aprovação documental da Task 039
+
+- data: 2026-07-29;
+- aprovador: CEO da Monvi;
+- status documental: approved;
+- estado operacional: onboarding;
+- conta institucional criada: não;
+- acesso técnico concedido: não;
+- ativação autorizada: não.
