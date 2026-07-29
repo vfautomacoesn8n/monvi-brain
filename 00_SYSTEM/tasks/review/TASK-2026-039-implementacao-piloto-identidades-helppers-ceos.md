@@ -14,7 +14,7 @@ classification: internal
 created_at: "2026-07-29"
 updated_at: "2026-07-29"
 reviewed_at: null
-version: "0.1.0"
+version: "0.2.0"
 allowed_paths:
   - 00_SYSTEM/audits/Execucao-task-2026-039-implementacao-piloto-identidades-helppers-ceos.md
   - 00_SYSTEM/logs/changes.jsonl
@@ -59,6 +59,14 @@ acceptance_criteria:
   - Relatório de execução produzido
   - changes.jsonl atualizado com JSONL válido
   - Revisão humana concluída antes da aprovação
+  - Biblioteca pessoal documental de Victor criada
+  - Biblioteca pessoal documental de Filipe criada
+  - Vínculo exclusivo entre pessoa, biblioteca e Helpper documentado
+  - Bibliotecas gerais reconhecidas como fontes compartilhadas governadas
+  - Acesso cruzado entre bibliotecas pessoais proibido
+  - Promoção de conhecimento sujeita a revisão humana
+  - Nenhuma promoção automática implementada
+  - Nenhuma memória técnica persistente, indexação ou banco vetorial ativado
 blocked_reason: null
 ---
 
@@ -125,7 +133,12 @@ Criar os perfis documentais iniciais dos dois CEOs, modelar seus Helppers indivi
 6. preparar matriz inicial de acessos sem conceder permissões;
 7. testar segregação documental entre os dois perfis;
 8. reavaliar o risk-2026-007 antes de qualquer acesso de escrita;
-9. produzir relatório de execução e atualizar changes.jsonl.
+9. produzir relatório de execução e atualizar changes.jsonl;
+10. criar uma biblioteca pessoal documental para cada CEO;
+11. vincular cada biblioteca pessoal exclusivamente à pessoa e ao respectivo Helpper;
+12. reconhecer bibliotecas gerais como fontes compartilhadas governadas;
+13. documentar o fluxo de promoção da biblioteca pessoal para uma biblioteca geral;
+14. impedir promoção automática, acesso cruzado e memória técnica não autorizada.
 
 ## Fora do escopo
 
@@ -210,3 +223,38 @@ A reavaliação será obrigatória antes de:
 ## Condição de encerramento
 
 A task somente poderá ser aprovada quando os perfis e Helppers planejados estiverem documentados, segregados, sem credenciais e sem concessão indevida de acesso.
+
+### Lote 6 — bibliotecas pessoais e gerais
+
+- criar uma biblioteca pessoal documental para Victor;
+- criar uma biblioteca pessoal documental para Filipe;
+- documentar propriedade, acesso, classificação e segregação;
+- vincular cada biblioteca ao respectivo perfil e Helpper;
+- reconhecer bibliotecas gerais como fontes compartilhadas governadas;
+- diferenciar bibliotecas gerais de contextos de cliente e projeto;
+- documentar promoção controlada de conhecimento;
+- manter revisão humana obrigatória;
+- impedir promoção automática;
+- não ativar memória persistente, embeddings, banco vetorial ou sincronização externa.
+
+#### Definições do Lote 6
+
+`Biblioteca pessoal` é o espaço documental vinculado exclusivamente a uma pessoa, destinado a preferências, referências, critérios, notas e aprendizados individuais autorizados.
+
+`Bibliotecas gerais` é o termo guarda-chuva para fontes compartilhadas e governadas da Monvi, incluindo conhecimento departamental, institucional, canônico e bibliotecas especializadas aprovadas.
+
+Bibliotecas de cliente e projeto permanecem escopos restritos próprios e não são classificadas automaticamente como bibliotecas gerais.
+
+A biblioteca pessoal pertence à pessoa. O Helpper atua somente como leitor, organizador e proponente de promoção dentro das autorizações documentadas.
+
+#### Fluxo de promoção
+
+`captured → classified → proposed → reviewed → approved → published`
+
+Estados alternativos:
+
+- rejected;
+- archived;
+- quarantined.
+
+Nenhum conteúdo pessoal será promovido automaticamente para uma biblioteca geral.
