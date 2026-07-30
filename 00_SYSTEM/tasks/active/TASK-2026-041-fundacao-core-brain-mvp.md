@@ -1,6 +1,6 @@
 ---
 id: task-2026-041
-title: Funda??o t?cnica do Monvi Core Brain MVP
+title: Fundação técnica do Monvi Core Brain MVP
 type: task
 status: draft
 task_state: active
@@ -53,90 +53,90 @@ tags:
   - auditoria
   - infraestrutura
 acceptance_criteria:
-  - Stack t?cnica do Core Brain MVP definida e justificada
+  - Stack técnica do Core Brain MVP definida e justificada
   - Estrutura inicial do backend criada
-  - Banco de dados escolhido e configura??o inicial documentada
-  - Modelo m?nimo de pessoas, identidades, perfis, clientes e projetos definido
-  - Fronteiras entre autentica??o, autoriza??o e dados de neg?cio preservadas
-  - Ambientes de desenvolvimento, homologa??o e produ??o especificados
-  - Estrat?gia de vari?veis de ambiente e secrets definida
-  - API interna m?nima especificada
-  - Endpoint de health check implementado ou preparado para implementa??o
-  - Estrat?gia de logs e auditoria t?cnica definida
-  - Leitura do Monvi Brain tratada como opera??o controlada
+  - Banco de dados escolhido e configuração inicial documentada
+  - Modelo mínimo de pessoas, identidades, perfis, clientes e projetos definido
+  - Fronteiras entre autenticação, autorização e dados de negócio preservadas
+  - Ambientes de desenvolvimento, homologação e produção especificados
+  - Estratégia de variáveis de ambiente e secrets definida
+  - API interna mínima especificada
+  - Endpoint de health check implementado ou preparado para implementação
+  - Estratégia de logs e auditoria técnica definida
+  - Leitura do Monvi Brain tratada como operação controlada
   - Nenhuma leitura ampla e irrestrita de arquivos autorizada
-  - Nenhum conte?do de cliente utilizado em testes sem autoriza??o
-  - Nenhuma mem?ria persistente ativada automaticamente
-  - Nenhuma indexa??o vetorial ativada automaticamente
-  - Nenhuma integra??o externa ativada sem aprova??o
-  - Nenhuma credencial persistida no reposit?rio
-  - Riscos t?cnicos, depend?ncias e decis?es pendentes registrados
-  - Pr?ximas tasks t?cnicas identificadas
-  - Revis?o humana conclu?da antes da aprova??o
-blocked_reason: "A ativa??o de login real, Google Workspace, Helppers individuais, mem?ria persistente, busca vetorial, interface completa, integra??es externas e produ??o permanece fora do escopo desta task."
+  - Nenhum conteúdo de cliente utilizado em testes sem autorização
+  - Nenhuma memória persistente ativada automaticamente
+  - Nenhuma indexação vetorial ativada automaticamente
+  - Nenhuma integração externa ativada sem aprovação
+  - Nenhuma credencial persistida no repositório
+  - Riscos técnicos, dependências e decisões pendentes registrados
+  - Próximas tasks técnicas identificadas
+  - Revisão humana concluída antes da aprovação
+blocked_reason: "A ativação de login real, Google Workspace, Helppers individuais, memória persistente, busca vetorial, interface completa, integrações externas e produção permanece fora do escopo desta task."
 ---
 
-# Task 041 ? Funda??o t?cnica do Monvi Core Brain MVP
+# Task 041 — Fundação técnica do Monvi Core Brain MVP
 
 ## Contexto
 
-A Monvi concluiu a arquitetura documental de identidade, autentica??o, autoriza??o e sele??o de Helppers na Task 040.
+A Monvi concluiu a arquitetura documental de identidade, autenticação, autorização e seleção de Helppers na Task 040.
 
-A implementa??o t?cnica permanece bloqueada at? que exista uma funda??o m?nima para o Monvi Core Brain, incluindo backend, banco de dados, modelo de dados, API interna, ambientes, logs e controles de acesso.
+A implementação técnica permanece bloqueada até que exista uma fundação mínima para o Monvi Core Brain, incluindo backend, banco de dados, modelo de dados, API interna, ambientes, logs e controles de acesso.
 
-Esta task inicia a Fase 2 do roadmap conceitual, mas n?o deve tentar entregar todo o Core Brain em uma ?nica execu??o.
+Esta task inicia a Fase 2 do roadmap conceitual, mas não deve tentar entregar todo o Core Brain em uma única execução.
 
 ## Objetivo
 
-Definir e preparar a funda??o t?cnica do Monvi Core Brain MVP de forma que as pr?ximas tasks possam implementar autentica??o real, leitura controlada do Brain, busca de conhecimento, Helppers individuais e opera??o supervisionada sem misturar responsabilidades.
+Definir e preparar a fundação técnica do Monvi Core Brain MVP de forma que as próximas tasks possam implementar autenticação real, leitura controlada do Brain, busca de conhecimento, Helppers individuais e operação supervisionada sem misturar responsabilidades.
 
-## Diagn?stico
+## Diagnóstico
 
-A documenta??o institucional, as pol?ticas e os modelos de governan?a est?o mais maduros do que a implementa??o.
+A documentação institucional, as políticas e os modelos de governança estão mais maduros do que a implementação.
 
-Ainda n?o existe evid?ncia t?cnica suficiente de:
+Ainda não existe evidência técnica suficiente de:
 
 - backend funcional do Core Brain;
 - banco de dados configurado;
 - modelo persistente de pessoas, identidades, perfis, clientes e projetos;
 - API interna;
-- controle t?cnico de autoriza??o;
-- logs e auditoria de aplica??o;
+- controle técnico de autorização;
+- logs e auditoria de aplicação;
 - ambientes separados;
-- estrat?gia operacional de secrets;
+- estratégia operacional de secrets;
 - leitura controlada do Monvi Brain.
 
-Sem essa funda??o, qualquer ativa??o de login ou Helpper individual criaria depend?ncias fr?geis e risco de acesso indevido.
+Sem essa fundação, qualquer ativação de login ou Helpper individual criaria dependências frágeis e risco de acesso indevido.
 
 ## Escopo
 
-### 1. Decis?es de arquitetura
+### 1. Decisões de arquitetura
 
 Definir:
 
 - linguagem e framework do backend;
-- estrat?gia de monorepo ou estrutura equivalente;
+- estratégia de monorepo ou estrutura equivalente;
 - banco de dados principal;
 - camada de acesso a dados;
-- valida??o de entrada;
-- estrutura de configura??o;
-- padr?o de erros;
-- estrat?gia de migra??es;
-- estrat?gia de testes.
+- validação de entrada;
+- estrutura de configuração;
+- padrão de erros;
+- estratégia de migrações;
+- estratégia de testes.
 
-Cada decis?o dever? registrar:
+Cada decisão deverá registrar:
 
 - contexto;
-- op??o escolhida;
+- opção escolhida;
 - alternativas consideradas;
 - justificativa;
 - riscos;
 - impacto operacional;
-- possibilidade de revers?o.
+- possibilidade de reversão.
 
-### 2. Modelo m?nimo de dados
+### 2. Modelo mínimo de dados
 
-Definir entidades e rela??es m?nimas para:
+Definir entidades e relações mínimas para:
 
 - `person`;
 - `identity`;
@@ -152,20 +152,20 @@ Definir entidades e rela??es m?nimas para:
 O modelo deve permitir:
 
 - uma pessoa possuir uma ou mais identidades externas;
-- identidade externa vinculada por identificador est?vel;
-- perfis e pap?is separados da identidade;
-- permiss?es avaliadas por a??o e escopo;
-- associa??o controlada entre pessoas, clientes e projetos;
-- sess?es revog?veis;
-- auditoria t?cnica rastre?vel.
+- identidade externa vinculada por identificador estável;
+- perfis e papéis separados da identidade;
+- permissões avaliadas por ação e escopo;
+- associação controlada entre pessoas, clientes e projetos;
+- sessões revogáveis;
+- auditoria técnica rastreável.
 
 ### 3. Backend inicial
 
-Preparar uma estrutura m?nima contendo:
+Preparar uma estrutura mínima contendo:
 
-- inicializa??o da aplica??o;
-- configura??o por ambiente;
-- valida??o de vari?veis obrigat?rias;
+- inicialização da aplicação;
+- configuração por ambiente;
+- validação de variáveis obrigatórias;
 - health check;
 - tratamento centralizado de erros;
 - logging estruturado;
@@ -177,213 +177,213 @@ Preparar uma estrutura m?nima contendo:
 Definir e preparar:
 
 - tecnologia selecionada;
-- configura??o local;
-- migra??es;
-- conven??es de nomes;
-- chaves prim?rias;
-- ?ndices;
+- configuração local;
+- migrações;
+- convenções de nomes;
+- chaves primárias;
+- índices;
 - integridade referencial;
 - campos de auditoria;
-- pol?tica inicial de exclus?o l?gica ou f?sica;
-- estrat?gia de backup futura.
+- política inicial de exclusão lógica ou física;
+- estratégia de backup futura.
 
 Nenhum dado real de cliente deve ser criado nesta task.
 
-### 5. API interna m?nima
+### 5. API interna mínima
 
 Especificar inicialmente:
 
 - `GET /health`;
 - `GET /ready`;
 - contrato de erros;
-- correla??o de requisi??es;
-- autentica??o futura;
-- autoriza??o futura;
+- correlação de requisições;
+- autenticação futura;
+- autorização futura;
 - versionamento da API.
 
-Endpoints de pessoas, clientes, projetos ou autentica??o s? poder?o ser implementados se permanecerem isolados, sem dados reais e dentro dos crit?rios desta task.
+Endpoints de pessoas, clientes, projetos ou autenticação só poderão ser implementados se permanecerem isolados, sem dados reais e dentro dos critérios desta task.
 
 ### 6. Ambientes
 
 Definir as fronteiras entre:
 
 - desenvolvimento;
-- homologa??o;
-- produ??o.
+- homologação;
+- produção.
 
-Cada ambiente dever? possuir:
+Cada ambiente deverá possuir:
 
-- configura??o pr?pria;
+- configuração própria;
 - banco separado;
 - secrets separados;
-- logs identific?veis;
+- logs identificáveis;
 - regras de acesso;
-- procedimento de promo??o;
+- procedimento de promoção;
 - procedimento de rollback.
 
-A cria??o real de produ??o n?o ? obrigat?ria nesta task.
+A criação real de produção não — obrigatória nesta task.
 
-### 7. Secrets e configura??o
+### 7. Secrets e configuração
 
 Definir:
 
-- quais valores s?o p?blicos;
-- quais valores s?o internos;
-- quais valores s?o secrets;
-- onde os secrets poder?o ser armazenados;
-- como ser?o injetados na aplica??o;
-- como ser?o rotacionados;
-- como vazamentos ser?o tratados.
+- quais valores são públicos;
+- quais valores são internos;
+- quais valores são secrets;
+- onde os secrets poderão ser armazenados;
+- como serão injetados na aplicação;
+- como serão rotacionados;
+- como vazamentos serão tratados.
 
-Credenciais reais n?o devem ser inclu?das no Monvi Brain nem no Git.
+Credenciais reais não devem ser incluídas no Monvi Brain nem no Git.
 
 ### 8. Logs e auditoria
 
-Definir eventos m?nimos para:
+Definir eventos mínimos para:
 
-- inicializa??o da aplica??o;
-- falha de configura??o;
-- requisi??o recebida;
-- resposta conclu?da;
-- erro de aplica??o;
-- falha de autentica??o futura;
-- nega??o de autoriza??o futura;
-- cria??o e revoga??o de sess?o futura;
+- inicialização da aplicação;
+- falha de configuração;
+- requisição recebida;
+- resposta concluída;
+- erro de aplicação;
+- falha de autenticação futura;
+- negação de autorização futura;
+- criação e revogação de sessão futura;
 - leitura futura do Brain;
 - acesso futuro a cliente e projeto.
 
-Logs n?o devem conter:
+Logs não devem conter:
 
 - tokens;
 - senhas;
 - cookies completos;
 - secrets;
-- conte?do confidencial desnecess?rio;
-- prompts completos sem necessidade e autoriza??o.
+- conteúdo confidencial desnecessário;
+- prompts completos sem necessidade e autorização.
 
 ### 9. Leitura controlada do Monvi Brain
 
-Definir a fronteira t?cnica para futura leitura do reposit?rio:
+Definir a fronteira técnica para futura leitura do repositório:
 
 - caminhos permitidos;
 - caminhos proibidos;
-- classifica??o dos documentos;
-- valida??o antes da leitura;
-- autoriza??o por pessoa e escopo;
+- classificação dos documentos;
+- validação antes da leitura;
+- autorização por pessoa e escopo;
 - registro da origem;
 - limites de tamanho;
-- tratamento de arquivos n?o suportados;
-- preven??o de travessia de diret?rios;
-- preven??o de contamina??o entre clientes.
+- tratamento de arquivos não suportados;
+- prevenção de travessia de diretórios;
+- prevenção de contaminação entre clientes.
 
-A implementa??o de busca vetorial e mem?ria persistente permanece fora desta task.
+A implementação de busca vetorial e memória persistente permanece fora desta task.
 
 ## Fora do escopo
 
-N?o fazem parte da Task 041:
+Não fazem parte da Task 041:
 
-- contrata??o ou ativa??o do Google Workspace;
-- cria??o das contas corporativas dos CEOs;
+- contratação ou ativação do Google Workspace;
+- criação das contas corporativas dos CEOs;
 - OAuth real;
 - login real;
-- sess?es reais de usu?rios;
-- ativa??o dos Helppers individuais;
+- sessões reais de usuários;
+- ativação dos Helppers individuais;
 - Helpper Core;
 - agentes especialistas;
-- mem?ria persistente;
+- memória persistente;
 - embeddings;
 - banco vetorial;
-- indexa??o autom?tica;
-- promo??o autom?tica de conhecimento;
+- indexação automática;
+- promoção automática de conhecimento;
 - interface completa;
 - WhatsApp;
 - CRM;
 - e-mail;
 - Figma;
 - n8n;
-- a??es externas;
-- produ??o p?blica;
+- ações externas;
+- produção pública;
 - dados reais de clientes.
 
-## Entreg?veis esperados
+## Entregáveis esperados
 
 1. `00_SYSTEM/architecture/Arquitetura-Core-Brain-MVP.md`
 2. `00_SYSTEM/architecture/Modelo-dados-Core-Brain-MVP.md`
 3. `00_SYSTEM/architecture/Contrato-API-Core-Brain-MVP.md`
 4. `00_SYSTEM/audits/Execucao-task-2026-041-fundacao-core-brain-mvp.md`
 5. Estrutura inicial do backend, quando tecnicamente autorizada
-6. Registro de riscos e depend?ncias atualizado
-7. Registro da cria??o e execu??o da task em `changes.jsonl`
+6. Registro de riscos e dependências atualizado
+7. Registro da criação e execução da task em `changes.jsonl`
 
-## Decis?es obrigat?rias
+## Decisões obrigatórias
 
-Antes de iniciar implementa??o relevante, dever?o ser definidos:
+Antes de iniciar implementação relevante, deverão ser definidos:
 
 - linguagem e framework;
 - banco de dados;
 - ORM ou camada de acesso;
-- estrutura do reposit?rio;
+- estrutura do repositório;
 - hospedagem prevista;
-- estrat?gia de autentica??o futura;
-- armazenamento futuro de sess?es;
-- solu??o de logs;
-- estrat?gia de secrets;
+- estratégia de autenticação futura;
+- armazenamento futuro de sessões;
+- solução de logs;
+- estratégia de secrets;
 - ferramenta de testes;
-- pol?tica inicial de migra??es.
+- política inicial de migrações.
 
-## Crit?rios de interrup??o
+## Critérios de interrupção
 
-A execu??o dever? ser interrompida e encaminhada para decis?o humana se ocorrer:
+A execução deverá ser interrompida e encaminhada para decisão humana se ocorrer:
 
 - necessidade de inserir credencial real;
-- necessidade de contratar servi?o;
+- necessidade de contratar serviço;
 - necessidade de usar dados reais de cliente;
-- altera??o de pol?tica aprovada;
-- altera??o de esquema can?nico;
-- mudan?a que autorize acesso real;
-- custo recorrente n?o aprovado;
+- alteração de política aprovada;
+- alteração de esquema canônico;
+- mudança que autorize acesso real;
+- custo recorrente não aprovado;
 - conflito entre documentos institucionais;
 - risco de vazamento ou acesso cruzado;
-- necessidade de produ??o p?blica.
+- necessidade de produção pública.
 
 ## Riscos iniciais
 
 - escolha prematura de stack;
 - arquitetura excessivamente complexa para o MVP;
-- mistura entre autentica??o e autoriza??o;
+- mistura entre autenticação e autorização;
 - modelo de dados insuficiente para isolamento;
-- leitura ampla e n?o controlada do Brain;
-- logs contendo dados sens?veis;
+- leitura ampla e não controlada do Brain;
+- logs contendo dados sensíveis;
 - secrets armazenados incorretamente;
-- depend?ncia excessiva de um fornecedor;
-- aus?ncia de testes de isolamento;
-- crescimento de escopo durante a execu??o.
+- dependência excessiva de um fornecedor;
+- ausência de testes de isolamento;
+- crescimento de escopo durante a execução.
 
-## Sequ?ncia recomendada de execu??o
+## Sequência recomendada de execução
 
-1. validar contexto e restri??es;
-2. inspecionar estrutura atual do reposit?rio;
-3. documentar decis?es t?cnicas;
-4. definir modelo m?nimo de dados;
+1. validar contexto e restrições;
+2. inspecionar estrutura atual do repositório;
+3. documentar decisões técnicas;
+4. definir modelo mínimo de dados;
 5. definir contrato inicial da API;
-6. preparar estrutura m?nima do backend;
-7. preparar estrat?gia de banco e migra??es;
+6. preparar estrutura mínima do backend;
+7. preparar estratégia de banco e migrações;
 8. implementar health check;
-9. preparar logging e configura??o;
-10. criar testes m?nimos;
-11. registrar riscos, evid?ncias e pend?ncias;
-12. encaminhar a task para revis?o humana.
+9. preparar logging e configuração;
+10. criar testes mínimos;
+11. registrar riscos, evidências e pendências;
+12. encaminhar a task para revisão humana.
 
 ## Estado inicial
 
-- backend do Core Brain: n?o comprovado;
-- banco de dados: n?o definido nesta task;
-- ambientes: n?o comprovados;
-- API interna: n?o comprovada;
-- autentica??o real: n?o implementada;
-- autoriza??o real: n?o implementada;
-- leitura controlada do Brain: n?o implementada;
-- logs t?cnicos: n?o comprovados;
-- secrets configurados: n?o comprovados;
-- dados reais utilizados: n?o;
-- revis?o humana: pendente.
+- backend do Core Brain: não comprovado;
+- banco de dados: não definido nesta task;
+- ambientes: não comprovados;
+- API interna: não comprovada;
+- autenticação real: não implementada;
+- autorização real: não implementada;
+- leitura controlada do Brain: não implementada;
+- logs técnicos: não comprovados;
+- secrets configurados: não comprovados;
+- dados reais utilizados: não;
+- revisão humana: pendente.
