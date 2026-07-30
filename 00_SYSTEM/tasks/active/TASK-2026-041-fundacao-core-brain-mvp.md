@@ -2,7 +2,7 @@
 id: task-2026-041
 title: Funda??o t?cnica do Monvi Core Brain MVP
 type: task
-status: review
+status: draft
 task_state: active
 owner: ceo-monvi
 agent: helpper
@@ -10,6 +10,7 @@ reviewer: ceo-monvi
 active_client: null
 active_project: null
 requires_review: true
+confidentiality: internal
 classification: internal
 created_at: "2026-07-30"
 updated_at: "2026-07-30"
@@ -22,7 +23,7 @@ allowed_paths:
   - 00_SYSTEM/audits/Execucao-task-2026-041-fundacao-core-brain-mvp.md
   - 00_SYSTEM/logs/changes.jsonl
   - 00_SYSTEM/registries/Registro-pendencias-riscos-e-limitacoes-v1.md
-  - 00_SYSTEM/tasks/review/TASK-2026-041-fundacao-core-brain-mvp.md
+  - 00_SYSTEM/tasks/active/TASK-2026-041-fundacao-core-brain-mvp.md
   - 00_SYSTEM/tasks/done/TASK-2026-041-fundacao-core-brain-mvp.md
   - apps/core-brain/
   - packages/
@@ -33,7 +34,7 @@ read_only_paths:
   - 00_SYSTEM/policies/
   - 00_SYSTEM/schemas/
   - 00_SYSTEM/templates/
-  - 00_SYSTEM/tasks/done/
+  - 00_SYSTEM/tasks/done/TASK-2026-040-autenticacao-google-workspace-identity-gateway.md
   - 01_RAW/
   - 02_WIKI/
   - 03_OPERATIONS/pessoas/
