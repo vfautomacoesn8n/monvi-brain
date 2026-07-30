@@ -2,19 +2,19 @@
 id: task-2026-040
 title: Arquitetura e preparação do Identity Gateway com Google Workspace
 type: task
-status: review
-task_state: active
+status: approved
+task_state: done
 owner: ceo-monvi
 agent: helpper
 reviewer: ceo-monvi
 active_client: null
 active_project: null
-requires_review: true
+requires_review: false
 classification: internal
 created_at: "2026-07-29"
 updated_at: "2026-07-29"
-reviewed_at: null
-version: "0.4.0"
+reviewed_at: "2026-07-30"
+version: "1.0.0"
 allowed_paths:
   - 00_SYSTEM/architecture/Contrato-Identity-Gateway-Google-Workspace-Monvi.md
   - 00_SYSTEM/architecture/Matriz-autenticacao-autorizacao-sessao-Monvi.md
@@ -71,7 +71,7 @@ acceptance_criteria:
   - Fluxos de erro, bloqueio e revogação documentados
   - Risk-2026-007 avaliado quanto aos gatilhos da Task 040 e risco específico do Identity Gateway registrado
   - Revisão humana concluída antes da aprovação
-blocked_reason: "Implementação técnica bloqueada até definição do domínio, contas Google Workspace, stack, ambiente, armazenamento de sessão, callbacks e matriz mínima de autorização."
+blocked_reason: "A implementação técnica permanece fora do escopo e exige nova task após definição do domínio, contas Google Workspace, stack, ambiente, armazenamento de sessão, callbacks e matriz mínima de autorização."
 ---
 
 # Task 040 — arquitetura e preparação do Identity Gateway com Google Workspace

@@ -13,7 +13,7 @@ source_task: task-2026-032
 created_at: "2026-07-22"
 updated_at: "2026-07-22"
 reviewed_at: null
-version: "0.3.0"
+version: "0.4.0"
 tags:
   - monvi-brain
   - riscos
@@ -288,7 +288,7 @@ A Task 040 produz somente arquitetura, contratos, matriz e plano de testes. A fu
 
 ### risk-2026-008 — Vínculo incorreto ou insuficientemente segregado no Identity Gateway
 
-- status: review;
+- status: accepted;
 - classificação: risco de identidade, autorização e segregação;
 - impacto: alto;
 - probabilidade atual: baixa, pois não existe implementação técnica;
@@ -299,7 +299,7 @@ A Task 040 produz somente arquitetura, contratos, matriz e plano de testes. A fu
 - owner: ceo-monvi;
 - reviewer: ceo-monvi;
 - source_task: task-2026-040;
-- decisão humana final: pendente.
+- decisão humana final: risco aceito pelo CEO em 2026-07-30 exclusivamente para a fase documental; mitigação obrigatória antes de qualquer implementação técnica.
 
 #### Controles preventivos documentados
 
@@ -324,4 +324,17 @@ Reavaliar antes de criar contas, configurar OAuth/OIDC, armazenar sessões, ativ
 - exposição técnica atual: inexistente;
 - risco documental: identificado;
 - tratamento proposto: mitigar antes da implementação;
-- aceite humano: pendente.
+- aceite humano: concedido para a fase documental em 2026-07-30; não autoriza implementação técnica.
+#### Condição do aceite da Task 040
+
+A aprovação da Task 040 valida a arquitetura, a matriz, o plano de testes, a reconciliação documental e o tratamento proposto.
+
+Este aceite:
+
+- não autoriza criação de contas;
+- não autoriza configuração de OAuth/OIDC;
+- não autoriza sessões, callbacks, APIs, deploys ou integrações;
+- não autoriza ativação de Helpper;
+- não autoriza acesso a clientes;
+- não elimina a obrigação de mitigar o risco antes da implementação técnica;
+- exige nova task técnica e nova revisão humana.

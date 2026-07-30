@@ -2,20 +2,20 @@
 id: audit-task-2026-040-identity-gateway-architecture
 title: Execução da Task 040 — arquitetura e preparação do Identity Gateway
 type: record
-status: review
-task_state: active
+status: approved
+task_state: done
 owner: ceo-monvi
 agent: helpper
 reviewer: ceo-monvi
 active_client: null
 active_project: null
-requires_review: true
+requires_review: false
 classification: internal
 source_task: task-2026-040
 created_at: "2026-07-29"
 updated_at: "2026-07-29"
-reviewed_at: null
-version: "0.1.0"
+reviewed_at: "2026-07-30"
+version: "1.0.0"
 tags:
   - identidade
   - autenticacao
@@ -48,7 +48,7 @@ Registrar a execução documental da arquitetura e da preparação do futuro Ide
 - registro de identidades reconciliado: sim;
 - `risk-2026-007` avaliado quanto aos gatilhos: sim;
 - risco específico do Identity Gateway: registrado como `risk-2026-008`;
-- revisão humana: pendente;
+- revisão humana: concluída pelo CEO em 2026-07-29;
 - implementação técnica: não iniciada.
 
 ## Entregáveis
@@ -123,7 +123,7 @@ O risco permanece em review e sem exposição técnica atual, pois não há impl
 | Acesso a clientes concedido | não |
 | Memória persistente ativada | não |
 | Ferramenta executora liberada | não |
-| Revisão humana concluída | pendente |
+| Revisão humana concluída | atendido |
 
 ## Limites preservados
 
@@ -152,10 +152,10 @@ A aprovação desta task não deverá autorizar implementação técnica. A impl
 ## Estado final deste relatório
 
 - execução documental: concluída;
-- revisão humana: pendente;
-- aprovação final: não concedida;
-- Task 040 em review: sim;
-- Task 040 em done: não;
+- revisão humana: concluída pelo CEO em 2026-07-29;
+- aprovação final: concedida pelo CEO em 2026-07-30;
+- Task 040 em review: não;
+- Task 040 em done: sim;
 - commit do Lote 2: não executado;
 - push: não executado;
 - merge: não executado.

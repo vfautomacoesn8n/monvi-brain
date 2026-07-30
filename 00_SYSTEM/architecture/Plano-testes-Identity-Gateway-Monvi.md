@@ -2,17 +2,17 @@
 id: test-plan-identity-gateway
 title: Plano de testes do Identity Gateway da Monvi
 type: architecture
-status: review
+status: approved
 owner: ceo-monvi
 reviewer: ceo-monvi
 active_client: null
-requires_review: true
+requires_review: false
 created_at: "2026-07-29"
 updated_at: "2026-07-29"
-reviewed_at: null
+reviewed_at: "2026-07-30"
 source_task: task-2026-040
 classification: internal
-version: "0.1.0"
+version: "1.0.0"
 related:
   - architecture-identity-gateway-google-workspace
   - matrix-authentication-authorization-session
@@ -170,4 +170,4 @@ A implementação somente poderá ser aprovada quando:
 - ambiente criado: não;
 - contas de teste criadas: não;
 - credenciais utilizadas: não;
-- revisão humana: pendente.
+- revisão humana: aprovada pelo CEO em 2026-07-30.

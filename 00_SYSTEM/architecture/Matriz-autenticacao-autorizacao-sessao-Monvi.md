@@ -2,17 +2,17 @@
 id: matrix-authentication-authorization-session
 title: Matriz de autenticação, autorização e sessão da Monvi
 type: architecture
-status: review
+status: approved
 owner: ceo-monvi
 reviewer: ceo-monvi
 active_client: null
-requires_review: true
+requires_review: false
 created_at: "2026-07-29"
 updated_at: "2026-07-29"
-reviewed_at: null
+reviewed_at: "2026-07-30"
 source_task: task-2026-040
 classification: internal
-version: "0.1.0"
+version: "1.0.0"
 related:
   - architecture-identity-gateway-google-workspace
   - architecture-identity-roles-permissions
@@ -169,4 +169,4 @@ Deverá ser exigida quando:
 - conta ativa: não;
 - Helpper ativo: não;
 - acesso a clientes: não;
-- revisão humana: pendente.
+- revisão humana: aprovada pelo CEO em 2026-07-30.
