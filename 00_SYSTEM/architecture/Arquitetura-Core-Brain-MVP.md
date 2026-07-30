@@ -2,16 +2,16 @@
 id: architecture-core-brain-mvp
 title: Proposta de arquitetura técnica do Monvi Core Brain MVP
 type: architecture_proposal
-status: draft
+status: approved
 owner: ceo-monvi
 reviewer: ceo-monvi
 confidentiality: internal
 classification: internal
 created_at: "2026-07-30"
 updated_at: "2026-07-30"
-reviewed_at: null
+reviewed_at: "2026-07-30"
 version: "0.1.0"
-decision_state: proposed
+decision_state: approved
 implementation_authorized: false
 task_id: task-2026-041
 sources:
@@ -153,6 +153,24 @@ Aprovar a stack com implantação incremental:
 4. modelo relacional;
 5. PostgreSQL e migrações;
 6. autenticação real e dados de clientes permanecem bloqueados.
+
+## Decisão humana
+
+Resultado: `APROVADA COM RESSALVAS`
+
+Decisor: `ceo-monvi`
+
+Data: `2026-07-30`
+
+Texto registrado:
+
+> APROVADA COM RESSALVAS, mantendo PostgreSQL, instalação de dependências, autenticação real, credenciais e produção sujeitos a etapas e autorizações separadas.
+
+Registro canônico:
+
+`../../03_OPERATIONS/decisoes/decision-20260730-stack-core-brain-mvp.md`
+
+A aprovação da stack não autoriza automaticamente instalação de dependências, PostgreSQL, autenticação real, credenciais, homologação ou produção.
 
 ## Decisão pendente
 
