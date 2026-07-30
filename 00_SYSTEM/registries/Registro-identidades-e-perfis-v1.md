@@ -13,7 +13,7 @@ source_task: task-2026-039
 created_at: "2026-07-28"
 updated_at: "2026-07-29"
 reviewed_at: "2026-07-29"
-version: "1.4.0"
+version: "1.5.0"
 tags:
   - identidade
   - perfis
@@ -35,12 +35,12 @@ Definir a estrutura institucional para registrar identidades, vínculos, funçõ
 
 Este documento define modelos e regras de registro.
 
-Ele não cadastra pessoas reais, não cria contas, não concede acesso e não ativa Helppers.
+Ele pode registrar pessoas reais em caráter documental, mas não cria contas, não concede acesso, não autentica usuários e não ativa Helppers.
 
 ## Estado do registro
 
-- modelo documental: em revisão;
-- registros reais de pessoas: nenhum;
+- modelo documental: aprovado;
+- registros reais de pessoas: dois perfis documentais em onboarding;
 - identidades técnicas reais: nenhuma;
 - contas autenticadas registradas: nenhuma;
 - Helppers individuais ativados: nenhum;
@@ -509,7 +509,7 @@ Qualquer ativação futura dependerá de validação individual, menor privilég
 - tipo de pessoa: colaborador;
 - vínculo institucional: CEO;
 - estado do vínculo: onboarding;
-- estado do perfil: review;
+- estado do perfil: approved;
 - identidade corporativa: pending;
 - e-mail corporativo: pendente de criação;
 - responsabilidade principal: pendente de definição;
@@ -528,7 +528,7 @@ Qualquer ativação futura dependerá de validação individual, menor privilég
 - tipo de pessoa: colaborador;
 - vínculo institucional: CEO;
 - estado do vínculo: onboarding;
-- estado do perfil: review;
+- estado do perfil: approved;
 - identidade corporativa: pending;
 - e-mail corporativo: pendente de criação;
 - responsabilidade principal: pendente de definição;
@@ -697,7 +697,7 @@ Em caso de conflito, aplicar a seguinte ordem:
 2. arquitetura aprovada;
 3. políticas aprovadas;
 4. decisões institucionais aprovadas;
-5. este registro enquanto estiver em revisão;
+5. este registro aprovado, observada sua versão vigente;
 6. templates;
 7. exemplos e registros operacionais.
 
@@ -723,14 +723,14 @@ Este registro poderá ser aprovado quando:
 - separar pessoa, identidade, conta, função, perfil e Helpper;
 - definir regras de cadastro, revisão, transição e evidência;
 - impedir armazenamento de credenciais e segredos;
-- deixar explícita a ausência de registros reais;
+- deixar explícita a natureza documental dos registros reais e a ausência de provisionamento técnico;
 - não conceder acesso por meio documental;
 - receber aprovação do CEO.
 
 ## Estado de implementação
 
 - modelo documental institucional: aprovado na versão 1.0.0;
-- atualização com registros reais: em revisão na versão 1.1.0;
+- atualização com registros reais: aprovada na versão 1.4.0;
 - registro técnico em banco de dados: não implementado;
 - autenticação: não implementada por esta task;
 - autorização: não implementada por esta task;
@@ -739,7 +739,7 @@ Este registro poderá ser aprovado quando:
 - contas corporativas reais: nenhuma criada;
 - perfis de acesso técnico: nenhum concedido;
 - Helppers individuais documentais reais: dois em estado `planned`;
-- bibliotecas pessoais documentais reais: duas em estado `review`;
+- bibliotecas pessoais documentais reais: duas em estado `approved`;
 - vínculo pessoa–biblioteca–Helpper: documentado;
 - acesso técnico às bibliotecas pessoais: nenhum concedido;
 - promoção automática de conhecimento: não implementada;
@@ -766,3 +766,22 @@ Essa task futura deverá identificar a pessoa, justificar o vínculo, definir o 
 - status final: approved;
 - revisão humana: concluída;
 - implementação técnica de identidade, conta, acesso ou memória: não realizada.
+
+## Preparação documental do Identity Gateway — Task 040
+
+- data: 2026-07-29;
+- source_task: `task-2026-040`;
+- natureza: arquitetura e preparação documental;
+- domínio Google Workspace: não confirmado;
+- padrão de e-mail corporativo: pendente;
+- contas individuais: não provisionadas;
+- `provider_subject` real: não registrado;
+- vínculo técnico entre conta e `person_id`: não implementado;
+- modelo documental de vínculo: produzido;
+- perfis humanos: permanecem approved e em onboarding;
+- identidades corporativas: permanecem pending;
+- Helppers: permanecem planned;
+- bibliotecas pessoais: permanecem approved documentalmente e sem leitura automática;
+- acesso a clientes: nenhum;
+- credenciais e tokens: nenhum armazenado;
+- implementação técnica: bloqueada para task futura.
