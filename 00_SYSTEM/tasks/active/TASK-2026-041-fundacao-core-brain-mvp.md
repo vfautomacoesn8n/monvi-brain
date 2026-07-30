@@ -22,6 +22,8 @@ allowed_paths:
   - 00_SYSTEM/architecture/Contrato-API-Core-Brain-MVP.md
   - 00_SYSTEM/audits/Execucao-task-2026-041-fundacao-core-brain-mvp.md
   - 00_SYSTEM/logs/changes.jsonl
+  - 00_SYSTEM/logs/decisions.jsonl
+  - 03_OPERATIONS/decisoes/decision-20260730-stack-core-brain-mvp.md
   - 00_SYSTEM/registries/Registro-pendencias-riscos-e-limitacoes-v1.md
   - 00_SYSTEM/tasks/active/TASK-2026-041-fundacao-core-brain-mvp.md
   - 00_SYSTEM/tasks/done/TASK-2026-041-fundacao-core-brain-mvp.md
