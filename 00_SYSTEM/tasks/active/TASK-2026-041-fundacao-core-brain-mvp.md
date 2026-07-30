@@ -24,6 +24,7 @@ allowed_paths:
   - 00_SYSTEM/logs/changes.jsonl
   - 00_SYSTEM/logs/decisions.jsonl
   - 03_OPERATIONS/decisoes/decision-20260730-stack-core-brain-mvp.md
+  - 03_OPERATIONS/decisoes/decision-20260730-etapa-1-tecnica-core-brain.md
   - 00_SYSTEM/registries/Registro-pendencias-riscos-e-limitacoes-v1.md
   - 00_SYSTEM/tasks/active/TASK-2026-041-fundacao-core-brain-mvp.md
   - 00_SYSTEM/tasks/done/TASK-2026-041-fundacao-core-brain-mvp.md
@@ -389,3 +390,32 @@ A execução deverá ser interrompida e encaminhada para decisão humana se ocor
 - secrets configurados: não comprovados;
 - dados reais utilizados: não;
 - revisão humana: pendente.
+
+## Autorização técnica parcial — Etapa 1
+
+Aprovada em `2026-07-30` pelo `ceo-monvi`.
+
+Escopo autorizado:
+
+- base TypeScript e Fastify;
+- configuração;
+- logs;
+- erros;
+- endpoints `/health` e `/ready`;
+- testes;
+- instalação somente das dependências necessárias para essa etapa.
+
+Permanecem bloqueados:
+
+- PostgreSQL;
+- Drizzle;
+- autenticação real;
+- credenciais;
+- dados reais;
+- integrações externas;
+- homologação;
+- produção.
+
+Registro canônico:
+
+`03_OPERATIONS/decisoes/decision-20260730-etapa-1-tecnica-core-brain.md`
