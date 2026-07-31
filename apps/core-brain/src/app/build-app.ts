@@ -2,6 +2,7 @@ import Fastify, { type FastifyInstance } from "fastify";
 import type { AppConfig } from "../config/environment.js";
 import { registerErrorHandler } from "../errors/error-handler.js";
 import { registerHealthRoutes } from "../http/routes/health.js";
+import { registerAuthRoutes } from "../http/routes/auth.js";
 import { createLoggerOptions } from "../logging/logger.js";
 
 export async function buildApp(
@@ -17,6 +18,10 @@ export async function buildApp(
   await app.register(registerHealthRoutes, {
     prefix: "/api/v1",
     config
+  });
+
+  await app.register(registerAuthRoutes, {
+    prefix: "/api/v1"
   });
 
   return app;
