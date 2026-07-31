@@ -48,11 +48,9 @@ describe("health endpoints", () => {
     });
 
     expect(response.statusCode).toBe(200);
-    expect(response.json()).toEqual({
-      status: "ready",
-      checks: {
-        configuration: "ok"
-      }
-    });
+    const body = response.json();
+    expect(body.status).toBe("ready");
+    expect(body.checks.configuration).toBe("ok");
+    expect(body.checks.database).toBeDefined();
   });
 });
