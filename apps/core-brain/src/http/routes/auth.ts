@@ -15,6 +15,14 @@ const devLoginSchema = z.object({
 export async function registerAuthRoutes(app: FastifyInstance): Promise<void> {
   // Dev Login Route
   app.post('/auth/dev-login', async (request, reply) => {
+    if (process.env.NODE_ENV === 'production') {
+      return reply.status(403).send({
+        statusCode: 403,
+        error: 'Forbidden',
+        message: 'Login dev desativado em ambiente de produção.',
+      });
+    }
+
     const parseResult = devLoginSchema.safeParse(request.body);
     if (!parseResult.success) {
       return reply.status(400).send({
