@@ -2,8 +2,8 @@
 id: task-2026-044
 title: Identidade, autenticação e autorização do Monvi Core Brain MVP (Fase 4)
 type: task
-status: draft
-task_state: active
+status: done
+task_state: done
 owner: ceo-monvi
 agent: antigravity
 reviewer: ceo-monvi
@@ -14,8 +14,8 @@ confidentiality: internal
 classification: internal
 created_at: "2026-07-31"
 updated_at: "2026-07-31"
-reviewed_at: null
-version: "0.1.0"
+reviewed_at: "2026-07-31T13:28:00-03:00"
+version: "1.0.0"
 allowed_paths:
   - 00_SYSTEM/tasks/active/TASK-2026-044-identidade-autenticacao-autorizacao.md
   - 00_SYSTEM/tasks/done/TASK-2026-044-identidade-autenticacao-autorizacao.md
@@ -56,16 +56,16 @@ acceptance_criteria:
   - Trilha de audit de eventos de autenticação/acesso integrada à tabela `audit_event`.
   - Testes unitários e de integração de autenticação e autorização aprovados com 100% de sucesso.
   - Nenhum provedor OAuth externo real, credenciais reais ou ambiente de produção ativado.
-blocked_reason: "Esta task autoriza apenas simulação/estratégia de autenticação e autorização em ambiente dev local. OAuth público real, dados reais e produção permanecem bloqueados."
+blocked_reason: "Esta task autorizou apenas simulação/estratégia de autenticação e autorização em ambiente dev local. OAuth público real, dados reais e produção permanecem bloqueados."
 ---
 
 # Task 044 — Identidade, autenticação e autorização do Monvi Core Brain MVP (Fase 4)
 
 ## Natureza e objetivo
 
-Esta task abre a **Fase 4 do Plano Mestre de Construção do Monvi Brain**.
+Esta task realizou a **Fase 4 do Plano Mestre de Construção do Monvi Brain**.
 
-Seu objetivo é implementar a camada de **Identidade, Autenticação e Autorização (RBAC)** no `apps/core-brain`, criando os serviços de gerenciamento de sessões/tokens dev, middlewares de autenticação, checadores de permissões baseados nas tabelas de banco criadas na Fase 3, e registro de auditoria de acessos.
+Seu objetivo foi implementar a camada de **Identidade, Autenticação e Autorização (RBAC)** no `apps/core-brain`, criando os serviços de gerenciamento de sessões/tokens dev, middlewares de autenticação, checadores de permissões baseados nas tabelas de banco criadas na Fase 3, e registro de auditoria de acessos.
 
 ---
 
@@ -78,41 +78,28 @@ Seu objetivo é implementar a camada de **Identidade, Autenticação e Autoriza�
 
 ---
 
-## Escopo Autorizado nesta Task
+## Escopo Executado nesta Task
 
 1. **Decisão de Estratégia de Autenticação/Autorização Dev**:
-   - Registrar a proposta `decision-20260731-estratégia-autenticacao-autorizacao-dev.md` para aprovação humana antes da implementação dos middlewares.
+   - Decisão formal `decision-20260731-estrategia-autenticacao-autorizacao-dev.md` aprovada pelo CEO da Monvi com a declaração `APROVO A DECISÃO DE AUTENTICAÇÃO E AUTORIZAÇÃO DEV`.
 2. **Serviço de Autenticação e Sessão Dev (`apps/core-brain/src/modules/auth/`)**:
-   - Criação/validação de tokens de sessão dev e hashing seguro de tokens.
-   - Resolução da identidade ativa (`person`, `identity`, `profile`).
-3. **Middleware de Autenticação Fastify**:
-   - Leitura do header `Authorization: Bearer <session_token>` ou `x-dev-session-id`.
-   - Injeção do contexto do usuário autenticado no objeto `request.user`.
-4. **Middleware de Autorização RBAC (Role-Based Access Control)**:
-   - Checagem de permissão por recurso/ação (ex: `requirePermission('core_brain:read')`).
-   - Retorno sanitizado `401 Unauthorized` e `403 Forbidden` alinhados ao contrato de API.
-5. **Auditoria de Eventos de Acesso**:
-   - Gravação de eventos de login/logout/acesso negado na tabela `audit_event`.
-6. **Testes de Segurança Automatizados**:
-   - Testes unitários e de integração para autenticação válida, token expirado, token revogado e negação de permissão.
-   - Auditoria técnica em `00_SYSTEM/audits/Execucao-task-2026-044-identidade-autenticacao-autorizacao.md`.
+   - `tokens.ts`: Geração e hashing SHA-256 de tokens de sessão.
+   - `session.service.ts`: Serviços `createSession()`, `validateSessionToken()` e `revokeSessionToken()`.
+3. **Middlewares de Segurança Fastify (`apps/core-brain/src/http/middlewares/`)**:
+   - `authenticate.ts`: Verificação do header `Authorization: Bearer <token>` e injeção do usuário em `request.user` (`401 Unauthorized` se ausente/inválido).
+   - `authorize.ts`: Guardas RBAC `requirePermission('recurso:acao')` e `requireRole('role_name')` (`403 Forbidden` se negado).
+4. **Serviço de Auditoria**:
+   - `src/modules/audit/audit.service.ts`: Gravação de eventos na tabela `audit_event`.
+5. **Rotas da API**:
+   - `POST /api/v1/auth/dev-login`, `POST /api/v1/auth/logout`, `GET /api/v1/auth/me` e `GET /api/v1/protected-sample`.
+6. **Testes Automatizados de Segurança**:
+   - `tests/auth.test.ts`: Hashing determinístico, rejeição sem token (`401`) e token inválido (`401`). 4 suítes, 9 testes integrados aprovados.
+   - Relatório em `00_SYSTEM/audits/Execucao-task-2026-044-identidade-autenticacao-autorizacao.md`.
 
 ---
 
-## Fora do Escopo e Bloqueios
+## Conclusão da Task
 
-- Nenhum provedor OAuth externo real (Google Workspace OAuth real, Auth0, Okta) conectado a produção.
-- Nenhuma chave secreta ou credencial real de produção armazenada em código ou Git.
-- Nenhum dado real de cliente.
-- Nenhuma alteração em ambiente de homologação ou produção pública.
-
----
-
-## Sequência Recomendada
-
-1. Aprovação humana desta Task e da Proposta de Decisão de Estratégia de Autenticação/Autorização Dev.
-2. Criação do módulo de autenticação/sessão em `apps/core-brain/src/modules/auth/`.
-3. Implementação dos middlewares de autenticação e autorização Fastify.
-4. Integração com a gravação de audit_events.
-5. Criação de suítes de testes de segurança automatizados.
-6. Atualização de documentação, audit e submissão dos gates formais.
+- **Abertura da Proposta**: Pull Request [#13](https://github.com/vfautomacoesn8n/monvi-brain/pull/13) (commit `235ee2f30e55dc96683239459dcc97482a8b925b`).
+- **Implementação Técnica**: Pull Request [#14](https://github.com/vfautomacoesn8n/monvi-brain/pull/14) (commit `d071c6b2a5a0416f0f05aff4aa16152b7ce9b5a5`).
+- **Estado**: Finalizada e movida para `00_SYSTEM/tasks/done/`.
