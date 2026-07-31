@@ -2,12 +2,14 @@
 id: "decision-20260731-estrategia-autenticacao-autorizacao-dev"
 type: decision
 title: "Decisão — estratégia de autenticação e autorização RBAC para ambiente dev (Fase 4)"
-status: draft
+status: approved
 owner: ceo-monvi
+reviewer: ceo-monvi
 confidentiality: internal
 created_at: "2026-07-31"
 updated_at: "2026-07-31"
-reviewed_at: null
+reviewed_at: "2026-07-31"
+decided_at: "2026-07-31"
 sources:
   - ../../00_SYSTEM/tasks/active/TASK-2026-044-identidade-autenticacao-autorizacao.md
   - ../../00_SYSTEM/roadmaps/Plano-Mestre-de-Construcao-Monvi-Brain.md
@@ -17,9 +19,9 @@ related:
   - ../../00_SYSTEM/logs/changes.jsonl
   - ../../00_SYSTEM/logs/decisions.jsonl
 tags: [decision, core-brain, auth, session, rbac, permissions, fase-4]
-decision_state: proposed
+decision_state: approved
 context: "Definir a arquitetura técnica de verificação de identidade, gerenciamento de sessões/tokens e controle de acesso RBAC para a Fase 4."
-decision: "PROPOSTA submetida ao CEO da Monvi para autorização da implementação dos serviços e middlewares de autenticação/autorização em ambiente de desenvolvimento local."
+decision: "APROVADA pelo CEO da Monvi para implementação dos serviços e middlewares de autenticação/autorização em ambiente de desenvolvimento local."
 ---
 
 # Decisão — estratégia de autenticação e autorização RBAC para ambiente dev (Fase 4)
@@ -32,9 +34,9 @@ A Fase 4 exige a implementação dos mecanismos executáveis de autenticação e
 
 ---
 
-## Proposta Arquitetural para Fase 4
+## Escopo Autorizado
 
-Submete-se ao CEO da Monvi a autorização para implementar:
+O CEO da Monvi aprovou a seguinte estratégia para a Fase 4 da Task 044:
 
 1. **Estratégia de Sessão e Token Dev**:
    - Autenticação baseada em tokens de sessão aleatórios e seguros (hash SHA-256 armazenado na tabela `session`).
@@ -59,6 +61,9 @@ Submete-se ao CEO da Monvi a autorização para implementar:
 
 ---
 
-## Estado da Decisão
+## Revisão e Aprovação Humana
 
-- Estado: `PROPOSTA` (Aguardando revisão e aprovação humana explícita do CEO da Monvi).
+- Decisão: `APROVADA`
+- Decisor: `ceo-monvi`
+- Declaração registrada: `APROVO A DECISÃO DE AUTENTICAÇÃO E AUTORIZAÇÃO DEV`
+- Data: `2026-07-31`
