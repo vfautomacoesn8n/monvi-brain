@@ -2,20 +2,20 @@
 id: task-2026-041
 title: Fundação técnica do Monvi Core Brain MVP
 type: task
-status: draft
-task_state: active
+status: done
+task_state: done
 owner: ceo-monvi
 agent: helpper
 reviewer: ceo-monvi
 active_client: null
 active_project: null
-requires_review: true
+requires_review: false
 confidentiality: internal
 classification: internal
 created_at: "2026-07-30"
-updated_at: "2026-07-30"
-reviewed_at: null
-version: "0.1.0"
+updated_at: "2026-07-31"
+reviewed_at: "2026-07-31T11:47:00-03:00"
+version: "1.0.0"
 allowed_paths:
   - 00_SYSTEM/architecture/Arquitetura-Core-Brain-MVP.md
   - 00_SYSTEM/architecture/Modelo-dados-Core-Brain-MVP.md
@@ -419,3 +419,17 @@ Permanecem bloqueados:
 Registro canônico:
 
 `03_OPERATIONS/decisoes/decision-20260730-etapa-1-tecnica-core-brain.md`
+
+## Encerramento Formal e Resultados Concluídos
+
+A Task 041 foi formalmente concluída em `2026-07-31` sob a **Opção A** aprovada pelo CEO da Monvi.
+
+Entregáveis validados e integrados à branch `main`:
+1. **Infraestrutura Técnica Mínima (Etapa 1)**: Aplicação Fastify/TypeScript em `apps/core-brain/` com Pino, Zod e Vitest, endpoints executáveis `GET /api/v1/health` e `GET /api/v1/ready`, 4 testes automatizados aprovados e build compilado com 0 vulnerabilidades npm.
+2. **Proposta de Arquitetura**: `00_SYSTEM/architecture/Arquitetura-Core-Brain-MVP.md` (aprovada com ressalvas em `decision-20260730-stack-core-brain-mvp.md`).
+3. **Modelo conceitual de dados**: `00_SYSTEM/architecture/Modelo-dados-Core-Brain-MVP.md` (especificação relacional de 11 entidades conceituais, cardinalidades, isolamento multi-tenant por cliente/projeto e requisitos LGPD).
+4. **Contrato conceitual de API**: `00_SYSTEM/architecture/Contrato-API-Core-Brain-MVP.md` (especificação de padrões HTTP/REST `/api/v1`, envelope de respostas/erros sanitizados, `request_id`, paginação e idempotência).
+5. **Auditoria Consolidada**: `00_SYSTEM/audits/Execucao-task-2026-041-fundacao-core-brain-mvp.md`.
+6. **PR de Integração**: [#8 — docs(architecture): add data model and API contract specs for Task 041](https://github.com/vfautomacoesn8n/monvi-brain/pull/8), integrada à `main` via squash merge no commit `09007ec645bc0e0910230895a220e14737848092`.
+
+A execução respeitou todas as restrições canônicas: PostgreSQL real, Drizzle ORM em código, migrations, schemas SQL, autenticação real, credenciais, dados reais de clientes, homologação e produção permanecem bloqueados.
