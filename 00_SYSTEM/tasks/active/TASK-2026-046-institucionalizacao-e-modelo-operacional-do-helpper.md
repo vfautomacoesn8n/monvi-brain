@@ -62,9 +62,9 @@ acceptance_criteria:
   - Links Markdown relativos e wikilinks conceituais válidos sem referências quebradas ou inclusão de backlinks nos Helppers individuais nesta task. (Atendido localmente — pendente de revisão de diff)
   - Codificação UTF-8 válida sem caracteres de substituição ou trailing whitespace inválido. (Atendido localmente)
   - Integridade de sintaxe JSONL e unicidade de IDs em `changes.jsonl` e `decisions.jsonl`. (Atendido localmente com `human_review_completed: false`)
-  - Revisão humana explícita do conteúdo e diff pelo CEO. (Atendida: conteúdo e diff documental aprovados pelo CEO; PR #18 revisado e mesclado. Os registros de verificação permanecem pendentes de integração pelo PR #19; encerramento não autorizado.)
+  - Revisão humana explícita do conteúdo e diff pelo CEO. (Atendida: conteúdo e diff documental aprovados pelo CEO; PR #18 revisado e mesclado; PR #19 revisado e mesclado. Os registros de verificação foram integrados na `main` pelo squash commit `4981c309c98eab3a62fca149db43715735ea2015`; encerramento pendente; próxima etapa não autorizada.)
   - Relatório final de audit factual baseado na execução real da task. (Atendido localmente — versão pré-commit)
-  - Verificação pós-merge na branch `main` sincronizada. (Atendida: executada com estado operacional `verified`. Os registros de verificação permanecem pendentes de integração pelo PR #19; encerramento não autorizado.)
+  - Verificação pós-merge na branch `main` sincronizada. (Atendida: executada com estado operacional `verified`; registros integrados na `main` pelo PR #19 via squash commit `4981c309c98eab3a62fca149db43715735ea2015`; encerramento pendente; próxima etapa não autorizada.)
   - Encerramento formal condicionado ao gate separado `AUTORIZADO ENCERRAMENTO`. (Pendente de encerramento)
 blocked_reason: "Esta task autoriza apenas a institucionalização documental e de governança do Helpper. Nenhuma alteração em código de software, banco de dados, infraestrutura ou Helppers individuais é autorizada."
 ---
