@@ -1,4 +1,4 @@
-# Audit de Execução e Verificação Pós-Merge — Pré-Encerramento (Task 046)
+# Audit de Execução, Verificação Pós-Merge e Encerramento Formal (Task 046)
 
 ## 1. Identificação e Objetivo
 
@@ -8,7 +8,7 @@
 - **Data da Execução**: 2026-07-31
 - **Branch**: `task/2026-046-institucionalizacao-e-modelo-operacional-do-helpper`
 - **Gate Autorizativo Recebido**: `AUTORIZADA SOMENTE A CORREÇÃO FINAL DO FLUXO DE PULL REQUEST E DO ESTADO REVIEW`
-- **Classificação do Relatório**: Audit de execução e verificação pós-merge — pré-encerramento
+- **Classificação do Relatório**: Audit de execução, verificação pós-merge e encerramento formal
 
 ---
 
@@ -94,7 +94,7 @@
 
 ## 8. Verificação pós-merge — 2026-08-03
 
-> As seções 1 a 7 preservam a fotografia histórica da execução local pré-commit. Esta seção registra exclusivamente a verificação posterior da versão integrada na `main`; ela não representa encerramento da task.
+> As seções 1 a 7 preservam a fotografia histórica da execução local pré-commit. Esta seção registra exclusivamente a verificação posterior da versão integrada na `main`; ela não representava encerramento da task naquele momento.
 
 - **Autorização recebida**: `AUTORIZADA VERIFICAÇÃO PÓS-MERGE DA TASK 046`.
 - **Pull Request e integração**: PR [#18](https://github.com/vfautomacoesn8n/monvi-brain/pull/18), commit original `5f563d3b960cc53c72f08cc3f84614e7ede37b60`, squash commit `8ff19501005188b781e3496b8602ee059b0ffd50`, mesclado em 2026-08-03.
@@ -105,4 +105,15 @@
 - **Hierarquia e escopo**: fontes canônicas permanecem normativas; o Plano Mestre não concede autorização automática; a task ativa delimita escopo; guias do Helpper não podem ampliá-lo; conflitos exigem parada e escalonamento. Os Helppers individuais foram preservados e `00_SYSTEM/helpper/` permanece camada operacional complementar.
 - **Checks e proteção**: não houve checks automatizados reportados para o PR e a API informou que `main` não possuía proteção de branch aplicável. Isso não substituiu a aprovação humana já concedida.
 - **Limitações e branches**: a branch remota da task foi removida automaticamente pelo GitHub após o squash merge conforme a configuração do repositório; ela não foi recriada. A branch local da task permanece preservada. `Sem título.canvas` permanece não rastreado, intocado e fora do escopo.
-- **Estado atual**: Task 046 permanece `active`, com estado operacional `verified` e `requires_review: true`. A branch de registro foi enviada; o PR #19 foi revisado e mesclado por squash no commit `4981c309c98eab3a62fca149db43715735ea2015`; os registros estão presentes na `main`. Encerramento, movimentação para `done` e próxima etapa continuam pendentes de gates separados.
+- **Estado antes do encerramento**: Task 046 permaneceu `active`, com estado operacional `verified` e `requires_review: true`, até o gate de encerramento. A branch de registro foi enviada; o PR #19 foi revisado e mesclado por squash no commit `4981c309c98eab3a62fca149db43715735ea2015`; os registros estão presentes na `main`.
+
+---
+
+## 9. Encerramento formal — 2026-08-03
+
+- **Gate recebido**: `AUTORIZADO ENCERRAMENTO DA TASK 046`, concedido pelo CEO da Monvi.
+- **Última integração verificada**: PR [#21](https://github.com/vfautomacoesn8n/monvi-brain/pull/21), com head aprovado `dd0121cfb4df0491ccf16f426b4f9cbdfa8b09e1`, foi mesclado por squash no commit `fe34ea9ff9584fb7478e878582333b5e9dbef574` da `main`.
+- **Verificação em `main`**: após fast-forward, `main` local e `origin/main` foram confirmadas no commit `fe34ea9ff9584fb7478e878582333b5e9dbef574`; o commit integrou exclusivamente a atualização documental final da Task 046.
+- **Estado encerrado**: a Task 046 foi movida de `00_SYSTEM/tasks/active/` para `00_SYSTEM/tasks/done/`, com `status: done`, `task_state: done` e `requires_review: false`.
+- **Escopo e preservações**: nenhum código, banco, infraestrutura, dependência, fonte canônica, Helper individual, decisão aprovada ou log de decisões foi alterado pelo encerramento.
+- **Próxima etapa**: a Task 047 não foi criada nem iniciada; nenhuma próxima etapa foi autorizada por este encerramento.
