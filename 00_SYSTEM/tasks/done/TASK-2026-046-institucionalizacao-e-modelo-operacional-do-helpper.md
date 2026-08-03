@@ -2,22 +2,23 @@
 id: task-2026-046
 title: Institucionalização e Modelo Operacional do Helpper
 type: task
-status: verified
-task_state: active
+status: done
+task_state: done
 owner: ceo-monvi
 agent: antigravity
 reviewer: ceo-monvi
 active_client: null
 active_project: null
-requires_review: true
+requires_review: false
 confidentiality: internal
 classification: internal
 created_at: "2026-07-31"
 updated_at: "2026-08-03"
-reviewed_at: null
-version: "0.1.0"
+reviewed_at: "2026-08-03T14:37:28-03:00"
+version: "1.0.0"
 allowed_paths:
   - 00_SYSTEM/tasks/active/TASK-2026-046-institucionalizacao-e-modelo-operacional-do-helpper.md
+  - 00_SYSTEM/tasks/done/TASK-2026-046-institucionalizacao-e-modelo-operacional-do-helpper.md
   - 03_OPERATIONS/decisoes/decision-20260731-institucionalizacao-e-modelo-operacional-do-helpper.md
   - 00_SYSTEM/audits/Execucao-task-2026-046-institucionalizacao-e-modelo-operacional-do-helpper.md
   - 00_SYSTEM/helpper/
@@ -31,7 +32,6 @@ read_only_paths:
   - 00_SYSTEM/templates/
   - 00_SYSTEM/roadmaps/Plano-Mestre-de-Construcao-Monvi-Brain.md
   - 00_SYSTEM/architecture/
-  - 00_SYSTEM/tasks/done/
   - 01_RAW/
   - 02_WIKI/
   - 03_OPERATIONS/pessoas/
@@ -62,10 +62,10 @@ acceptance_criteria:
   - Links Markdown relativos e wikilinks conceituais válidos sem referências quebradas ou inclusão de backlinks nos Helppers individuais nesta task. (Atendido inicialmente na execução local; posteriormente revisado, integrado em `main` e verificado.)
   - Codificação UTF-8 válida sem caracteres de substituição ou trailing whitespace inválido. (Atendido, revisado, integrado em `main` e verificado.)
   - Integridade de sintaxe JSONL e unicidade de IDs em `changes.jsonl` e `decisions.jsonl`. (Atendido. O campo `human_review_completed: false` pertence à fotografia histórica do evento de implementação local; as revisões humanas posteriores do conteúdo e dos PRs, bem como as verificações pós-merge, foram executadas e registradas no ciclo de integração.)
-  - Revisão humana explícita do conteúdo e diff pelo CEO. (Atendida: conteúdo e diff documental aprovados pelo CEO; PR #18 revisado e mesclado; PR #19 revisado e mesclado. Os registros de verificação foram integrados na `main` pelo squash commit `4981c309c98eab3a62fca149db43715735ea2015`; encerramento pendente; próxima etapa não autorizada.)
-  - Relatório de audit factual baseado na execução real da task. (Atendido: audit de execução e verificação pós-merge — pré-encerramento, com preservação da fotografia histórica pré-commit; encerramento final pendente.)
-  - Verificação pós-merge na branch `main` sincronizada. (Atendida: executada com estado operacional `verified`; registros integrados na `main` pelo PR #19 via squash commit `4981c309c98eab3a62fca149db43715735ea2015`; encerramento pendente; próxima etapa não autorizada.)
-  - Encerramento formal condicionado ao gate separado `AUTORIZADO ENCERRAMENTO`. (Pendente de encerramento)
+  - Revisão humana explícita do conteúdo e diff pelo CEO. (Atendida: conteúdo e diff documental aprovados pelo CEO; PR #18 revisado e mesclado; PR #19 revisado e mesclado. Os registros de verificação foram integrados na `main` pelo squash commit `4981c309c98eab3a62fca149db43715735ea2015`; encerramento formal posteriormente autorizado e registrado; próxima etapa não autorizada.)
+  - Relatório de audit factual baseado na execução real da Task. (Atendido: audit de execução, verificação pós-merge e encerramento formal, com preservação das fotografias históricas pré-commit e pré-encerramento. A integração deste encerramento em `main` permanece dependente do ciclo posterior de commit, Pull Request, merge e verificação.)
+  - Verificação pós-merge na branch `main` sincronizada. (Atendida: executada com estado operacional `verified`; registros integrados na `main` pelo PR #19 via squash commit `4981c309c98eab3a62fca149db43715735ea2015`; encerramento formal posteriormente autorizado e registrado; próxima etapa não autorizada.)
+  - Encerramento formal autorizado pelo gate `AUTORIZADO ENCERRAMENTO DA TASK 046`. (Atendido: Task movida para `00_SYSTEM/tasks/done/`; encerramento formal registrado; próxima etapa não autorizada.)
 blocked_reason: "Esta task autoriza apenas a institucionalização documental e de governança do Helpper. Nenhuma alteração em código de software, banco de dados, infraestrutura ou Helppers individuais é autorizada."
 ---
 
@@ -150,20 +150,30 @@ Os níveis de evidência serão exigidos proporcionalmente à classificação de
 
 - **Decisão Formal**: O arquivo `decision-20260731-institucionalizacao-e-modelo-operacional-do-helpper.md` foi aprovado formalmente com `status: approved` (gate `APROVADA DECISÃO DA TASK 046 — REGISTRO CONTROLADO`).
 - **Logs de Governança**: Os registros de criação, aprovação da decisão, implementação local e verificação pós-merge foram anotados em `changes.jsonl` e `decisions.jsonl`. O campo `human_review_completed: false` pertence à fotografia histórica do evento de implementação local; as revisões humanas posteriores foram executadas e registradas no ciclo de integração.
-- **Audit Atual**: O relatório `Execucao-task-2026-046-institucionalizacao-e-modelo-operacional-do-helpper.md` é um audit de execução e verificação pós-merge — pré-encerramento, com preservação da fotografia histórica pré-commit; ele não é audit de encerramento final.
+- **Audit Final**: O relatório `Execucao-task-2026-046-institucionalizacao-e-modelo-operacional-do-helpper.md` foi atualizado como audit de execução, verificação pós-merge e encerramento formal, preservando a fotografia histórica pré-commit.
 
 ---
 
 ## Verificação pós-merge — 2026-08-03
 
-- **Estado operacional atual**: `verified`; a localização permanece em `00_SYSTEM/tasks/active/` e `task_state: active` permanece inalterado.
-- **Revisão e encerramento**: `requires_review: true` permanece preservado. A aprovação do conteúdo/diff e do Pull Request foi concedida pelo CEO, mas o encerramento, a movimentação para `done` e a próxima etapa continuam pendentes de gates separados.
+- **Estado pós-merge antes do encerramento**: `verified`; a localização permanecia em `00_SYSTEM/tasks/active/` e `task_state: active` permanecia inalterado até o gate de encerramento.
+- **Revisão e encerramento antes do gate**: `requires_review: true` permaneceu preservado durante a revisão e a integração. A aprovação do conteúdo/diff e do Pull Request foi concedida pelo CEO; o encerramento permanecia dependente de gate separado.
 - **Integração Git**: o commit local original `5f563d3b960cc53c72f08cc3f84614e7ede37b60` foi integrado pelo PR [#18](https://github.com/vfautomacoesn8n/monvi-brain/pull/18) via squash merge no commit `8ff19501005188b781e3496b8602ee059b0ffd50` da `main`, em 2026-08-03.
 - **Ajuste final pré-encerramento**: o PR #20 foi revisado e mesclado por squash no commit `17b96b32d4938171f1bcd77d56d5bd1801f9a851` da `main`, corrigindo as referências temporais da Task e do audit sem autorizar encerramento ou próxima etapa.
 - **Verificação executada**: a `main` local foi sincronizada por fast-forward com `origin/main`; foram verificados os dez arquivos integrados, os quatro documentos operacionais, os 21 templates e as travas literais, a integridade UTF-8/JSONL, os IDs, o frontmatter, os links relativos, a hierarquia e o escopo documental.
 - **Preservações confirmadas**: fontes canônicas, Helppers individuais, código, banco, infraestrutura e dependências não foram integrados pela Task 046.
 - **Branches**: a branch local da task permanece preservada. A branch remota foi removida automaticamente pelo GitHub conforme a configuração do repositório; ela não foi recriada neste ciclo.
 - **Arquivo externo**: `Sem título.canvas` permanece não rastreado, intocado e fora do escopo.
+
+---
+
+## Encerramento formal — 2026-08-03
+
+- **Gate de encerramento**: `AUTORIZADO ENCERRAMENTO DA TASK 046`, concedido pelo CEO da Monvi.
+- **Evidências de integração e verificação**: PR [#21](https://github.com/vfautomacoesn8n/monvi-brain/pull/21) foi mesclado por squash; o commit de head aprovado foi `dd0121cfb4df0491ccf16f426b4f9cbdfa8b09e1` e o commit integrado na `main` foi `fe34ea9ff9584fb7478e878582333b5e9dbef574`.
+- **Estado final da task**: `status: done`, `task_state: done` e `requires_review: false`; a Task foi movida para `00_SYSTEM/tasks/done/` conforme o ciclo canônico.
+- **Escopo preservado**: o encerramento não autoriza alteração em fontes canônicas, Helppers individuais, código, banco, infraestrutura, dependências ou decisões; a Task 047 não foi criada nem iniciada.
+- **Próxima etapa**: permanece não autorizada e exige novo gate humano explícito.
 
 ---
 ## Plano Factual de Rollback
