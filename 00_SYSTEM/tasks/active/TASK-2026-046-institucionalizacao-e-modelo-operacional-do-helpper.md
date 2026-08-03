@@ -2,7 +2,7 @@
 id: task-2026-046
 title: Institucionalização e Modelo Operacional do Helpper
 type: task
-status: review
+status: verified
 task_state: active
 owner: ceo-monvi
 agent: antigravity
@@ -13,7 +13,7 @@ requires_review: true
 confidentiality: internal
 classification: internal
 created_at: "2026-07-31"
-updated_at: "2026-07-31"
+updated_at: "2026-08-03"
 reviewed_at: null
 version: "0.1.0"
 allowed_paths:
@@ -62,9 +62,9 @@ acceptance_criteria:
   - Links Markdown relativos e wikilinks conceituais válidos sem referências quebradas ou inclusão de backlinks nos Helppers individuais nesta task. (Atendido localmente — pendente de revisão de diff)
   - Codificação UTF-8 válida sem caracteres de substituição ou trailing whitespace inválido. (Atendido localmente)
   - Integridade de sintaxe JSONL e unicidade de IDs em `changes.jsonl` e `decisions.jsonl`. (Atendido localmente com `human_review_completed: false`)
-  - Revisão humana explícita do conteúdo e diff pelo CEO. (Pendente de aprovação do diff)
+  - Revisão humana explícita do conteúdo e diff pelo CEO. (Atendida: conteúdo e diff documental aprovados pelo CEO; PR #18 revisado e mesclado. Os registros de verificação permanecem pendentes de integração pelo PR #19; encerramento não autorizado.)
   - Relatório final de audit factual baseado na execução real da task. (Atendido localmente — versão pré-commit)
-  - Verificação pós-merge na branch `main` sincronizada. (Pendente de merge e verificação)
+  - Verificação pós-merge na branch `main` sincronizada. (Atendida: executada com estado operacional `verified`. Os registros de verificação permanecem pendentes de integração pelo PR #19; encerramento não autorizado.)
   - Encerramento formal condicionado ao gate separado `AUTORIZADO ENCERRAMENTO`. (Pendente de encerramento)
 blocked_reason: "Esta task autoriza apenas a institucionalização documental e de governança do Helpper. Nenhuma alteração em código de software, banco de dados, infraestrutura ou Helppers individuais é autorizada."
 ---
@@ -154,6 +154,17 @@ Os níveis de evidência serão exigidos proporcionalmente à classificação de
 
 ---
 
+## Verificação pós-merge — 2026-08-03
+
+- **Estado operacional atual**: `verified`; a localização permanece em `00_SYSTEM/tasks/active/` e `task_state: active` permanece inalterado.
+- **Revisão e encerramento**: `requires_review: true` permanece preservado. A aprovação do conteúdo/diff e do Pull Request foi concedida pelo CEO, mas o encerramento, a movimentação para `done` e a próxima etapa continuam pendentes de gates separados.
+- **Integração Git**: o commit local original `5f563d3b960cc53c72f08cc3f84614e7ede37b60` foi integrado pelo PR [#18](https://github.com/vfautomacoesn8n/monvi-brain/pull/18) via squash merge no commit `8ff19501005188b781e3496b8602ee059b0ffd50` da `main`, em 2026-08-03.
+- **Verificação executada**: a `main` local foi sincronizada por fast-forward com `origin/main`; foram verificados os dez arquivos integrados, os quatro documentos operacionais, os 21 templates e as travas literais, a integridade UTF-8/JSONL, os IDs, o frontmatter, os links relativos, a hierarquia e o escopo documental.
+- **Preservações confirmadas**: fontes canônicas, Helppers individuais, código, banco, infraestrutura e dependências não foram integrados pela Task 046.
+- **Branches**: a branch local da task permanece preservada. A branch remota foi removida automaticamente pelo GitHub conforme a configuração do repositório; ela não foi recriada neste ciclo.
+- **Arquivo externo**: `Sem título.canvas` permanece não rastreado, intocado e fora do escopo.
+
+---
 ## Plano Factual de Rollback
 
 O rollback não está pré-autorizado. Qualquer descarte de alterações exigirá autorização humana específica.
