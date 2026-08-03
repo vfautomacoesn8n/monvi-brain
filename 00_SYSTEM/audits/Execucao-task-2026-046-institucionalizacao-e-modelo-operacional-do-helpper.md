@@ -1,4 +1,4 @@
-# Relatório de Audit de Execução Local — Versão Pré-Commit (Task 046)
+# Audit de Execução e Verificação Pós-Merge — Pré-Encerramento (Task 046)
 
 ## 1. Identificação e Objetivo
 
@@ -8,7 +8,7 @@
 - **Data da Execução**: 2026-07-31
 - **Branch**: `task/2026-046-institucionalizacao-e-modelo-operacional-do-helpper`
 - **Gate Autorizativo Recebido**: `AUTORIZADA SOMENTE A CORREÇÃO FINAL DO FLUXO DE PULL REQUEST E DO ESTADO REVIEW`
-- **Classificação do Relatório**: Audit de execução local — versão pré-commit (revisão pendente)
+- **Classificação do Relatório**: Audit de execução e verificação pós-merge — pré-encerramento
 
 ---
 
@@ -89,3 +89,20 @@
 - **Merge**: Pendente de autorização separada (`AUTORIZADO MERGE`);
 - **Verificação Pós-Merge**: Pendente de autorização separada (`AUTORIZADA VERIFICAÇÃO PÓS-MERGE`);
 - **Encerramento da Task**: A tarefa permanece em `active` / `review`. O encerramento depende do gate `AUTORIZADO ENCERRAMENTO`.
+
+---
+
+## 8. Verificação pós-merge — 2026-08-03
+
+> As seções 1 a 7 preservam a fotografia histórica da execução local pré-commit. Esta seção registra exclusivamente a verificação posterior da versão integrada na `main`; ela não representa encerramento da task.
+
+- **Autorização recebida**: `AUTORIZADA VERIFICAÇÃO PÓS-MERGE DA TASK 046`.
+- **Pull Request e integração**: PR [#18](https://github.com/vfautomacoesn8n/monvi-brain/pull/18), commit original `5f563d3b960cc53c72f08cc3f84614e7ede37b60`, squash commit `8ff19501005188b781e3496b8602ee059b0ffd50`, mesclado em 2026-08-03.
+- **Sincronização**: `main` local e `origin/main` foram confirmadas no hash `8ff19501005188b781e3496b8602ee059b0ffd50` após fast-forward. Não houve merge local, rebase, reset, stash ou clean.
+- **Inventário integrado**: exatamente dez arquivos da Task 046 foram confirmados no commit squash: quatro documentos em `00_SYSTEM/helpper/`, Task 046, audit, decisão, `AGENTS.md`, `changes.jsonl` e `decisions.jsonl`.
+- **Validações documentais**: os quatro documentos do Helpper existem e têm conteúdo acessível; UTF-8 estrito, ausência de U+FFFD, ausência de trailing whitespace, newline final, ausência de URIs de arquivo locais e de caminhos absolutos locais foram verificados. Os links relativos e os destinos internos aplicáveis, o frontmatter da task, o JSONL e a unicidade de IDs foram verificados.
+- **Gates e separações**: foram confirmados 21 templates e 22 travas literais. Os Templates 15, 16 e 17 mantêm correção local, aprovação de diff, commit, push e nova revisão como gates separados; `authorized` depende de gate explícito; integração funcional não é merge Git; verificação pós-merge não é encerramento; encerramento não é próxima etapa.
+- **Hierarquia e escopo**: fontes canônicas permanecem normativas; o Plano Mestre não concede autorização automática; a task ativa delimita escopo; guias do Helpper não podem ampliá-lo; conflitos exigem parada e escalonamento. Os Helppers individuais foram preservados e `00_SYSTEM/helpper/` permanece camada operacional complementar.
+- **Checks e proteção**: não houve checks automatizados reportados para o PR e a API informou que `main` não possuía proteção de branch aplicável. Isso não substituiu a aprovação humana já concedida.
+- **Limitações e branches**: a branch remota da task foi removida automaticamente pelo GitHub após o squash merge conforme a configuração do repositório; ela não foi recriada. A branch local da task permanece preservada. `Sem título.canvas` permanece não rastreado, intocado e fora do escopo.
+- **Estado atual**: Task 046 permanece `active`, com estado operacional `verified` e `requires_review: true`. Encerramento, movimentação para `done`, push deste registro e próxima etapa continuam pendentes de gates separados.
