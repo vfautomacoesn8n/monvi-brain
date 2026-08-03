@@ -116,4 +116,5 @@
 - **Verificação em `main`**: após fast-forward, `main` local e `origin/main` foram confirmadas no commit `fe34ea9ff9584fb7478e878582333b5e9dbef574`; o commit integrou exclusivamente a atualização documental final da Task 046.
 - **Estado encerrado**: a Task 046 foi movida de `00_SYSTEM/tasks/active/` para `00_SYSTEM/tasks/done/`, com `status: done`, `task_state: done` e `requires_review: false`.
 - **Escopo e preservações**: nenhum código, banco, infraestrutura, dependência, fonte canônica, Helper individual, decisão aprovada ou log de decisões foi alterado pelo encerramento.
+- **Integração pendente**: o encerramento formal está implementado na branch `task/2026-046-encerramento-formal`. Sua integração em `main` permanece pendente de aprovação deste novo diff, commit corretivo, push, atualização do PR #22, nova revisão, merge e verificação pós-merge.
 - **Próxima etapa**: a Task 047 não foi criada nem iniciada; nenhuma próxima etapa foi autorizada por este encerramento.

@@ -32,7 +32,6 @@ read_only_paths:
   - 00_SYSTEM/templates/
   - 00_SYSTEM/roadmaps/Plano-Mestre-de-Construcao-Monvi-Brain.md
   - 00_SYSTEM/architecture/
-  - 00_SYSTEM/tasks/done/
   - 01_RAW/
   - 02_WIKI/
   - 03_OPERATIONS/pessoas/
