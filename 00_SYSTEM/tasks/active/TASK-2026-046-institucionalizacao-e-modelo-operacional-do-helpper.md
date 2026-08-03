@@ -49,21 +49,21 @@ tags:
   - task-lifecycle
   - evidence-standard
 acceptance_criteria:
-  - Criação de 4 documentos operacionais enxutos em `00_SYSTEM/helpper/` (`README.md`, `TASK-LIFECYCLE.md`, `EVIDENCE-STANDARD.md`, `PROMPT-TEMPLATES.md`), sem duplicar normas canônicas existentes. (Atendido localmente — pendente de revisão de diff)
-  - Atualização mínima do arquivo `AGENTS.md` na raiz para atuar como guia de entrada inicial e direcionar para `00_SYSTEM/helpper/README.md`. (Atendido localmente — pendente de revisão de diff)
-  - Hierarquia normativa em 8 níveis explícita estabelecendo a primazia de `AI-CONTRACT.md`, `PERMISSIONS.md` e `SECURITY.md`. (Atendido localmente — pendente de revisão de diff)
-  - Ausência de duplicação normativa relevante entre o guia do Helpper e as fontes canônicas. (Atendido localmente — pendente de revisão de diff)
-  - Separação explícita de cinco dimensões de governança (Localização da Task, Estado Operacional, Estado Git, Nível de Evidência e Gate Humano Vigente). (Atendido localmente — pendente de revisão de diff)
-  - Definição dos oito níveis de evidência e matriz completa de transições de 14 estados operacionais. (Atendido localmente — pendente de revisão de diff)
-  - Critérios de evidência específicos por tipo de tarefa e definição precisa de integração funcional comprovada. (Atendido localmente — pendente de revisão de diff)
-  - Catálogo de 21 prompts com trava literal de autorização em cada bloco individual e fluxo obrigatório de revisão de PR. (Atendido localmente — pendente de revisão de diff)
+  - Criação de 4 documentos operacionais enxutos em `00_SYSTEM/helpper/` (`README.md`, `TASK-LIFECYCLE.md`, `EVIDENCE-STANDARD.md`, `PROMPT-TEMPLATES.md`), sem duplicar normas canônicas existentes. (Atendido inicialmente na execução local; posteriormente revisado, integrado em `main` e verificado.)
+  - Atualização mínima do arquivo `AGENTS.md` na raiz para atuar como guia de entrada inicial e direcionar para `00_SYSTEM/helpper/README.md`. (Atendido inicialmente na execução local; posteriormente revisado, integrado em `main` e verificado.)
+  - Hierarquia normativa em 8 níveis explícita estabelecendo a primazia de `AI-CONTRACT.md`, `PERMISSIONS.md` e `SECURITY.md`. (Atendido inicialmente na execução local; posteriormente revisado, integrado em `main` e verificado.)
+  - Ausência de duplicação normativa relevante entre o guia do Helpper e as fontes canônicas. (Atendido inicialmente na execução local; posteriormente revisado, integrado em `main` e verificado.)
+  - Separação explícita de cinco dimensões de governança (Localização da Task, Estado Operacional, Estado Git, Nível de Evidência e Gate Humano Vigente). (Atendido inicialmente na execução local; posteriormente revisado, integrado em `main` e verificado.)
+  - Definição dos oito níveis de evidência e matriz completa de transições de 14 estados operacionais. (Atendido inicialmente na execução local; posteriormente revisado, integrado em `main` e verificado.)
+  - Critérios de evidência específicos por tipo de tarefa e definição precisa de integração funcional comprovada. (Atendido inicialmente na execução local; posteriormente revisado, integrado em `main` e verificado.)
+  - Catálogo de 21 prompts com trava literal de autorização em cada bloco individual e fluxo obrigatório de revisão de PR. (Atendido inicialmente na execução local; posteriormente revisado, integrado em `main` e verificado.)
   - Preservação rigorosa de todas as fontes canônicas (`AI-CONTRACT.md`, `PERMISSIONS.md`, `SECURITY.md`) e dos Helppers individuais em `03_OPERATIONS/pessoas/`. (Atendido)
   - Nenhuma alteração em código de software (`apps/core-brain/`), banco de dados, infraestrutura (`infrastructure/`), pacotes (`packages/`) ou dependências. (Atendido)
-  - Links Markdown relativos e wikilinks conceituais válidos sem referências quebradas ou inclusão de backlinks nos Helppers individuais nesta task. (Atendido localmente — pendente de revisão de diff)
-  - Codificação UTF-8 válida sem caracteres de substituição ou trailing whitespace inválido. (Atendido localmente)
-  - Integridade de sintaxe JSONL e unicidade de IDs em `changes.jsonl` e `decisions.jsonl`. (Atendido localmente com `human_review_completed: false`)
+  - Links Markdown relativos e wikilinks conceituais válidos sem referências quebradas ou inclusão de backlinks nos Helppers individuais nesta task. (Atendido inicialmente na execução local; posteriormente revisado, integrado em `main` e verificado.)
+  - Codificação UTF-8 válida sem caracteres de substituição ou trailing whitespace inválido. (Atendido, revisado, integrado em `main` e verificado.)
+  - Integridade de sintaxe JSONL e unicidade de IDs em `changes.jsonl` e `decisions.jsonl`. (Atendido. O campo `human_review_completed: false` pertence à fotografia histórica do evento de implementação local; as revisões humanas posteriores do conteúdo e dos PRs, bem como as verificações pós-merge, foram executadas e registradas no ciclo de integração.)
   - Revisão humana explícita do conteúdo e diff pelo CEO. (Atendida: conteúdo e diff documental aprovados pelo CEO; PR #18 revisado e mesclado; PR #19 revisado e mesclado. Os registros de verificação foram integrados na `main` pelo squash commit `4981c309c98eab3a62fca149db43715735ea2015`; encerramento pendente; próxima etapa não autorizada.)
-  - Relatório final de audit factual baseado na execução real da task. (Atendido localmente — versão pré-commit)
+  - Relatório de audit factual baseado na execução real da task. (Atendido: audit de execução e verificação pós-merge — pré-encerramento, com preservação da fotografia histórica pré-commit; encerramento final pendente.)
   - Verificação pós-merge na branch `main` sincronizada. (Atendida: executada com estado operacional `verified`; registros integrados na `main` pelo PR #19 via squash commit `4981c309c98eab3a62fca149db43715735ea2015`; encerramento pendente; próxima etapa não autorizada.)
   - Encerramento formal condicionado ao gate separado `AUTORIZADO ENCERRAMENTO`. (Pendente de encerramento)
 blocked_reason: "Esta task autoriza apenas a institucionalização documental e de governança do Helpper. Nenhuma alteração em código de software, banco de dados, infraestrutura ou Helppers individuais é autorizada."
@@ -149,8 +149,8 @@ Os níveis de evidência serão exigidos proporcionalmente à classificação de
 ## Governança de Decisão, Audit e Logs
 
 - **Decisão Formal**: O arquivo `decision-20260731-institucionalizacao-e-modelo-operacional-do-helpper.md` foi aprovado formalmente com `status: approved` (gate `APROVADA DECISÃO DA TASK 046 — REGISTRO CONTROLADO`).
-- **Logs de Governança**: Os registros de criação, aprovação da decisão e implementação local foram anotados em `changes.jsonl` e `decisions.jsonl` (linha 156 atualizada para `human_review_completed: false`).
-- **Audit Final**: O relatório `Execucao-task-2026-046-institucionalizacao-e-modelo-operacional-do-helpper.md` foi criado em `00_SYSTEM/audits/` como versão pré-commit.
+- **Logs de Governança**: Os registros de criação, aprovação da decisão, implementação local e verificação pós-merge foram anotados em `changes.jsonl` e `decisions.jsonl`. O campo `human_review_completed: false` pertence à fotografia histórica do evento de implementação local; as revisões humanas posteriores foram executadas e registradas no ciclo de integração.
+- **Audit Atual**: O relatório `Execucao-task-2026-046-institucionalizacao-e-modelo-operacional-do-helpper.md` é um audit de execução e verificação pós-merge — pré-encerramento, com preservação da fotografia histórica pré-commit; ele não é audit de encerramento final.
 
 ---
 
@@ -159,6 +159,7 @@ Os níveis de evidência serão exigidos proporcionalmente à classificação de
 - **Estado operacional atual**: `verified`; a localização permanece em `00_SYSTEM/tasks/active/` e `task_state: active` permanece inalterado.
 - **Revisão e encerramento**: `requires_review: true` permanece preservado. A aprovação do conteúdo/diff e do Pull Request foi concedida pelo CEO, mas o encerramento, a movimentação para `done` e a próxima etapa continuam pendentes de gates separados.
 - **Integração Git**: o commit local original `5f563d3b960cc53c72f08cc3f84614e7ede37b60` foi integrado pelo PR [#18](https://github.com/vfautomacoesn8n/monvi-brain/pull/18) via squash merge no commit `8ff19501005188b781e3496b8602ee059b0ffd50` da `main`, em 2026-08-03.
+- **Ajuste final pré-encerramento**: o PR #20 foi revisado e mesclado por squash no commit `17b96b32d4938171f1bcd77d56d5bd1801f9a851` da `main`, corrigindo as referências temporais da Task e do audit sem autorizar encerramento ou próxima etapa.
 - **Verificação executada**: a `main` local foi sincronizada por fast-forward com `origin/main`; foram verificados os dez arquivos integrados, os quatro documentos operacionais, os 21 templates e as travas literais, a integridade UTF-8/JSONL, os IDs, o frontmatter, os links relativos, a hierarquia e o escopo documental.
 - **Preservações confirmadas**: fontes canônicas, Helppers individuais, código, banco, infraestrutura e dependências não foram integrados pela Task 046.
 - **Branches**: a branch local da task permanece preservada. A branch remota foi removida automaticamente pelo GitHub conforme a configuração do repositório; ela não foi recriada neste ciclo.
