@@ -12,7 +12,7 @@ active_project: null
 confidentiality: internal
 classification: internal
 created_at: "2026-08-03"
-updated_at: "2026-08-03"
+updated_at: "2026-08-04"
 reviewed_at: null
 review_cycle: on-change
 sources:
@@ -25,6 +25,21 @@ sources:
   - 00_SYSTEM/helpper/TASK-LIFECYCLE.md
   - 00_SYSTEM/helpper/EVIDENCE-STANDARD.md
   - 00_SYSTEM/helpper/PROMPT-TEMPLATES.md
+  - 00_SYSTEM/architecture/Arquitetura-ecossistema-Monvi-Brain-Core-Brain-Helpper.md
+  - 00_SYSTEM/architecture/Arquitetura-Helpper-Core-Especialistas-e-Agentes-Individuais.md
+  - 00_SYSTEM/architecture/Especificacao-funcional-Helpper-Core-Especialistas-Individuais.md
+  - 00_SYSTEM/architecture/Contrato-contexto-delegacao-reporte-Helpper.md
+  - 00_SYSTEM/architecture/Modelo-execucao-supervisionada-filas-retry-timeout-idempotencia.md
+  - 00_SYSTEM/architecture/Matriz-fronteiras-responsabilidades-ecossistema-Monvi.md
+  - 00_SYSTEM/architecture/Arquitetura-Core-Brain-MVP.md
+  - 00_SYSTEM/architecture/Contrato-API-Core-Brain-MVP.md
+  - 00_SYSTEM/architecture/Modelo-dados-Core-Brain-MVP.md
+  - 00_SYSTEM/policies/Politica-fonte-de-verdade-e-resolucao-de-conflitos-Monvi-Brain.md
+  - 00_SYSTEM/policies/Politica-memoria-e-promocao-de-conhecimento-Helpper.md
+  - 00_SYSTEM/policies/Politica-seguranca-documental-e-isolamento-Monvi-Brain.md
+  - 00_SYSTEM/policies/Politica-seguranca-supervisao-e-limites-Helpper.md
+  - 00_SYSTEM/policies/Politica-aprovacao-e-separacao-de-funcoes-agentes.md
+  - 00_SYSTEM/registries/Registro-pendencias-riscos-e-limitacoes-v1.md
 related:
   - 00_SYSTEM/tasks/done/TASK-2026-046-institucionalizacao-e-modelo-operacional-do-helpper.md
   - 00_SYSTEM/roadmaps/Plano-Mestre-de-Construcao-Monvi-Brain.md
@@ -35,6 +50,10 @@ tags: [helpper, arquitetura, especificacao, operacao, governanca, fase-5-referen
 allowed_paths:
   - 00_SYSTEM/tasks/active/TASK-2026-047-arquitetura-e-especificacao-do-helpper-central.md
   - 00_SYSTEM/logs/changes.jsonl
+  - 00_SYSTEM/architecture/Fluxo-operacional-e-papel-Helpper-Central.md
+  - 00_SYSTEM/architecture/Contrato-executor-controlado-Helpper-Central.md
+  - 00_SYSTEM/architecture/Recomendacao-interface-e-arquitetura-tecnica-Helpper-Central-MVP.md
+  - 00_SYSTEM/architecture/Backlog-priorizado-Helpper-Central-e-criterios-Task-048.md
 read_only_paths:
   - 00_SYSTEM/canonical/
   - 00_SYSTEM/helpper/
@@ -43,6 +62,21 @@ read_only_paths:
   - 00_SYSTEM/roadmaps/Plano-Mestre-de-Construcao-Monvi-Brain.md
   - 00_SYSTEM/tasks/done/TASK-2026-046-institucionalizacao-e-modelo-operacional-do-helpper.md
   - 03_OPERATIONS/pessoas/
+  - 00_SYSTEM/architecture/Arquitetura-ecossistema-Monvi-Brain-Core-Brain-Helpper.md
+  - 00_SYSTEM/architecture/Arquitetura-Helpper-Core-Especialistas-e-Agentes-Individuais.md
+  - 00_SYSTEM/architecture/Especificacao-funcional-Helpper-Core-Especialistas-Individuais.md
+  - 00_SYSTEM/architecture/Contrato-contexto-delegacao-reporte-Helpper.md
+  - 00_SYSTEM/architecture/Modelo-execucao-supervisionada-filas-retry-timeout-idempotencia.md
+  - 00_SYSTEM/architecture/Matriz-fronteiras-responsabilidades-ecossistema-Monvi.md
+  - 00_SYSTEM/architecture/Arquitetura-Core-Brain-MVP.md
+  - 00_SYSTEM/architecture/Contrato-API-Core-Brain-MVP.md
+  - 00_SYSTEM/architecture/Modelo-dados-Core-Brain-MVP.md
+  - 00_SYSTEM/policies/Politica-fonte-de-verdade-e-resolucao-de-conflitos-Monvi-Brain.md
+  - 00_SYSTEM/policies/Politica-memoria-e-promocao-de-conhecimento-Helpper.md
+  - 00_SYSTEM/policies/Politica-seguranca-documental-e-isolamento-Monvi-Brain.md
+  - 00_SYSTEM/policies/Politica-seguranca-supervisao-e-limites-Helpper.md
+  - 00_SYSTEM/policies/Politica-aprovacao-e-separacao-de-funcoes-agentes.md
+  - 00_SYSTEM/registries/Registro-pendencias-riscos-e-limitacoes-v1.md
 forbidden_paths:
   - .git/
   - apps/core-brain/
@@ -104,6 +138,44 @@ A execução documental posterior desta task deverá definir, sem implementar:
 
 Estes entregáveis não são criados por este gate. Seus caminhos e qualquer autorização de escrita dependem de gate humano posterior.
 
+## Estrutura de implementação decidida (ajuste de escopo em 2026-08-04)
+
+Decisão do CEO no gate `AUTORIZADA CONTINUIDADE DO AJUSTE DE ESCOPO DOCUMENTAL DA TASK 047 COM PATHS NOMINAIS`: a implementação documental futura desta task segue estrutura modular restrita aos quatro gaps reais identificados no planejamento, evitando duplicar conteúdo já aprovado em `00_SYSTEM/architecture/` e `00_SYSTEM/policies/`.
+
+### Documentos novos autorizados para criação futura
+
+1. `00_SYSTEM/architecture/Fluxo-operacional-e-papel-Helpper-Central.md` — cobre integralmente os itens 2 (fluxo operacional ponta a ponta) e 8 (tratamento de erros) do escopo; desenvolve a aplicação específica ao Helpper Central dos itens 3 (hierarquia de contexto) e 4 (isolamento entre clientes), sem recriar as regras gerais já definidas nas fontes referenciadas; e complementa o item 1 (papel do Helpper Central) onde as fontes existentes não cobrem o caso específico do Central.
+2. `00_SYSTEM/architecture/Contrato-executor-controlado-Helpper-Central.md` — cobre o item 6 (relação com executores) sob o conceito genérico de `executor controlado`; referencia o item 7 (memória e fontes) apenas conceitualmente.
+3. `00_SYSTEM/architecture/Recomendacao-interface-e-arquitetura-tecnica-Helpper-Central-MVP.md` — cobre os itens 9 (interface do MVP) e 10 (arquitetura do MVP).
+4. `00_SYSTEM/architecture/Backlog-priorizado-Helpper-Central-e-criterios-Task-048.md` — cobre o backlog priorizado de implementação e os critérios para a futura Task 048.
+
+Estes quatro documentos não são criados por este gate. Sua escrita depende de gate humano próprio, posterior a este ajuste de escopo.
+
+### Itens do escopo atendidos por referência, sem novo documento
+
+- Item 1 (papel do Helpper Central): `Arquitetura-Helpper-Core-Especialistas-e-Agentes-Individuais.md`, `Especificacao-funcional-Helpper-Core-Especialistas-Individuais.md`.
+- Item 3 (hierarquia de contexto, regra geral): `Politica-fonte-de-verdade-e-resolucao-de-conflitos-Monvi-Brain.md`.
+- Item 4 (isolamento entre clientes, regra geral): `Politica-seguranca-documental-e-isolamento-Monvi-Brain.md`.
+- Item 5 (modelo de tasks e gates): `00_SYSTEM/helpper/TASK-LIFECYCLE.md` e `00_SYSTEM/helpper/PROMPT-TEMPLATES.md` — já institucionalizados pela Task 046; não serão recriados.
+- Item 7 (memória e fontes, conceitual): `Politica-memoria-e-promocao-de-conhecimento-Helpper.md`.
+- Matriz de responsabilidades (apoio aos itens 1 e 3): `Matriz-fronteiras-responsabilidades-ecossistema-Monvi.md`.
+
+Os itens 3 e 4 reutilizam as regras gerais já existentes e recebem no Documento 1 apenas sua aplicação específica ao fluxo conversacional e operacional do Helpper Central.
+
+Cinco dos dez itens do escopo autorizado — itens 1, 3, 4, 5 e 7 — são atendidos majoritariamente por referência a fontes existentes, com complementação específica nos novos documentos quando prevista nesta seção.
+
+### Independência de fornecedor
+
+O contrato de execução (documento 2 acima) adota o conceito genérico de `executor controlado`. Claude no Cursor, Codex e outros executores são tratados como implementações ou adaptadores específicos desse contrato; nenhum fornecedor constitui regra estrutural exclusiva da arquitetura.
+
+### Segurança e privacidade
+
+A fundamentação de segurança e privacidade dos quatro documentos futuros usa exclusivamente `00_SYSTEM/canonical/SECURITY.md` e as políticas nominais listadas em `read_only_paths`. `02_WIKI/` permanece integralmente em `forbidden_paths` e não é referenciado; `02_WIKI/seguranca/` não é fonte autorizada.
+
+### Estado mantido após este ajuste
+
+Este ajuste de escopo não inicia a implementação documental, não cria os quatro documentos, não altera `changes.jsonl`, não cria a Task 048 e não inicia a Fase 5. A task permanece `status: draft`, `task_state: active`, `requires_review: true`.
+
 ## Relação com a Fase 5
 
 A Fase 5 é apenas referência estratégica. Esta task deve identificar como o Helpper Central poderá apoiar futura operação de clientes e projetos e quais pré-requisitos serão necessários. Ela não inicia a Fase 5, não cria módulos de clientes/projetos e não autoriza implementação técnica.
@@ -140,7 +212,9 @@ A Fase 5 é apenas referência estratégica. Esta task deve identificar como o H
 
 Riscos: escopo implícito, início indevido da Fase 5, mistura de contexto de clientes, uso indevido de dados sensíveis, escolha tecnológica prematura e confusão entre especificação e implementação.
 
-Gate vigente: `AUTORIZADA CRIAÇÃO DA TASK 047`. Este gate cria somente esta task e seu evento de abertura. O próximo gate é a aprovação humana do conteúdo e diff desta criação; não autoriza staging, commit, push, Pull Request, merge, implementação ou a próxima task.
+Gate vigente: `AUTORIZADA CONTINUIDADE DO AJUSTE DE ESCOPO DOCUMENTAL DA TASK 047 COM PATHS NOMINAIS`. Este gate ajusta exclusivamente `allowed_paths`, `read_only_paths`, `sources` e a documentação de decisões de escopo desta task. Não autoriza staging, commit, push, Pull Request, merge, criação dos quatro documentos futuros, implementação, Task 048 ou início da Fase 5.
+
+Histórico de gates desta task: `AUTORIZADA CRIAÇÃO DA TASK 047` (criação; commit `0a6bf68`; integrado em `main` no commit `224cf77` via PR #23) → `AUTORIZADO AJUSTE DE ESCOPO DOCUMENTAL DA TASK 047` (planejamento e identificação do conflito de paths) → `AUTORIZADA CONTINUIDADE DO AJUSTE DE ESCOPO DOCUMENTAL DA TASK 047 COM PATHS NOMINAIS` (este gate).
 
 ## Revisão e entrega
 
