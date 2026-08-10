@@ -2,8 +2,8 @@
 id: task-2026-047
 type: task
 title: "Arquitetura e especificação do Helpper Central"
-status: draft
-task_state: active
+status: done
+task_state: done
 owner: ceo-monvi
 agent: codex
 reviewer: ceo-monvi
@@ -13,7 +13,7 @@ confidentiality: internal
 classification: internal
 created_at: "2026-08-03"
 updated_at: "2026-08-10"
-reviewed_at: null
+reviewed_at: "2026-08-10T11:14:01-03:00"
 review_cycle: on-change
 sources:
   - 00_SYSTEM/roadmaps/Plano-Mestre-de-Construcao-Monvi-Brain.md
@@ -90,7 +90,7 @@ forbidden_paths:
   - 02_WIKI/
   - 05_SHARED/
   - 03_OPERATIONS/decisoes/
-requires_review: true
+requires_review: false
 acceptance_criteria:
   - Papel, limites, responsabilidades e situações de decisão humana do Helpper Central documentados.
   - Fluxo operacional ponta a ponta, hierarquia de contexto e tratamento de conflitos documentados.
@@ -201,6 +201,20 @@ Gate `AUTORIZADA REVISÃO DO PR DO CONJUNTO FINAL DA TASK 047`: revisão técnic
 
 Aprovação humana final (2026-08-10): o CEO declarou `APROVO O CONTEÚDO DOCUMENTAL FINAL DA TASK 047`, registrando a revisão e aprovação direta do conteúdo integral dos quatro documentos.
 
+Gate `AUTORIZADO REGISTRO DA APROVAÇÃO FINAL DO CEO NA TASK 047 E NO LOG`: aprovação humana final registrada nesta task e no log; commit `12cdf44` criado e publicado em `origin/task/2026-047-documentos-helpper-central`.
+
+Gate `AUTORIZADA REVISÃO DO PR #25 APÓS REGISTRO DA APROVAÇÃO FINAL DO CEO`: revisão aprovada, PR #25 confirmado com o conjunto final completo.
+
+Gate `AUTORIZADA CONVERSÃO DO PR #25 PARA READY FOR REVIEW`: PR #25 convertido de draft para Ready for review.
+
+Gate `AUTORIZADA REVISÃO FINAL DO PR #25 ANTES DO MERGE`: revisão final concluída, resultado `PR #25 APROVADO PARA SQUASH MERGE`.
+
+Gate `AUTORIZADO SQUASH MERGE DO PR #25`: PR #25 integrado em `main` por squash merge no commit `25cfc7aff1cf0f16c604e5de2cb5cd40fdbbc686`, mesclado em 2026-08-10T14:05:05Z.
+
+Gate `AUTORIZADA VERIFICAÇÃO PÓS-MERGE DA TASK 047`: verificação pós-merge concluída sem achados bloqueantes; os quatro documentos e as atualizações desta task e do log confirmados íntegros em `main`.
+
+Gate `AUTORIZADA PREPARAÇÃO DO ENCERRAMENTO FORMAL DA TASK 047`: `main` local sincronizado por fast-forward, branch `task/2026-047-encerramento` criada, Task movida para `00_SYSTEM/tasks/done/` e evento final registrado em `changes.jsonl`.
+
 Estado preciso desta etapa (atualizado em 2026-08-10):
 
 - criação documental concluída;
@@ -208,8 +222,11 @@ Estado preciso desta etapa (atualizado em 2026-08-10):
 - commit, push e abertura do PR #25 (draft) concluídos;
 - revisão técnica do PR concluída e aprovada;
 - revisão e aprovação humana final do conteúdo pelo CEO concluída;
-- PR #25 permanece em modo draft; conversão para Ready for review ainda pendente;
-- merge, verificação pós-merge e encerramento formal da task ainda pendentes;
+- PR #25 convertido para Ready for review e revisado uma última vez antes do merge;
+- PR #25 integrado em `main` por squash merge (commit `25cfc7aff1cf0f16c604e5de2cb5cd40fdbbc686`);
+- verificação pós-merge concluída sem achados bloqueantes;
+- os 9 critérios de aceite satisfeitos;
+- encerramento formal sendo preparado nesta etapa: Task movida para `done`, evento final registrado no log; commit, push, PR e merge deste próprio encerramento ainda pendentes;
 - Task 048 continua não autorizada; Fase 5 continua não iniciada; nenhuma implementação técnica foi criada.
 
 ## Relação com a Fase 5
@@ -248,9 +265,9 @@ A Fase 5 é apenas referência estratégica. Esta task deve identificar como o H
 
 Riscos: escopo implícito, início indevido da Fase 5, mistura de contexto de clientes, uso indevido de dados sensíveis, escolha tecnológica prematura e confusão entre especificação e implementação.
 
-Gate vigente: `AUTORIZADO REGISTRO DA APROVAÇÃO FINAL DO CEO NA TASK 047 E NO LOG`. Este gate registra formalmente que o conteúdo do PR #25 foi tecnicamente aprovado e que o CEO aprovou diretamente o conteúdo integral dos quatro documentos (`APROVO O CONTEÚDO DOCUMENTAL FINAL DA TASK 047`). Não autoriza staging, commit, push, conversão do PR para Ready for review, merge, Task 048 ou início da Fase 5.
+Gate vigente: `AUTORIZADA PREPARAÇÃO DO ENCERRAMENTO FORMAL DA TASK 047`. Este gate autoriza exclusivamente a sincronização local de `main`, a criação da branch de encerramento, a movimentação e atualização desta task para `00_SYSTEM/tasks/done/` e o registro de um evento final em `00_SYSTEM/logs/changes.jsonl`. Não autoriza staging, commit, push, abertura de PR, merge, Task 048 ou início da Fase 5.
 
-Histórico de gates desta task: `AUTORIZADA CRIAÇÃO DA TASK 047` (criação; commit `0a6bf68`; integrado em `main` no commit `224cf77` via PR #23) → `AUTORIZADO AJUSTE DE ESCOPO DOCUMENTAL DA TASK 047` (planejamento e identificação do conflito de paths) → `AUTORIZADA CONTINUIDADE DO AJUSTE DE ESCOPO DOCUMENTAL DA TASK 047 COM PATHS NOMINAIS` (ajuste de escopo; commit `565a7cc`; integrado em `main` no commit `f9714e2` via PR #24) → `AUTORIZADA CRIAÇÃO DOS DOCUMENTOS DA TASK 047` (criação local dos quatro documentos, ainda não commitados) → `AUTORIZADA REVISÃO LOCAL DOS DOCUMENTOS DA TASK 047` (revisão local aprovada sem achados) → `AUTORIZADA ATUALIZAÇÃO DA TASK 047 E DO LOG DE IMPLEMENTAÇÃO DOCUMENTAL` (registro da criação e revisão local dos quatro documentos) → `AUTORIZADO COMMIT DO CONJUNTO FINAL DA TASK 047` (commit `26005b8`) → `AUTORIZADO PUSH DO CONJUNTO FINAL DA TASK 047` (push para `origin/task/2026-047-documentos-helpper-central`) → `AUTORIZADA ABERTURA DO PR DO CONJUNTO FINAL DA TASK 047` (PR #25 aberto como draft) → `AUTORIZADA REVISÃO DO PR DO CONJUNTO FINAL DA TASK 047` (revisão técnica concluída e aprovada) → aprovação humana final do conteúdo pelo CEO (`APROVO O CONTEÚDO DOCUMENTAL FINAL DA TASK 047`) → `AUTORIZADO REGISTRO DA APROVAÇÃO FINAL DO CEO NA TASK 047 E NO LOG` (este gate).
+Histórico de gates desta task: `AUTORIZADA CRIAÇÃO DA TASK 047` (criação; commit `0a6bf68`; integrado em `main` no commit `224cf77` via PR #23) → `AUTORIZADO AJUSTE DE ESCOPO DOCUMENTAL DA TASK 047` (planejamento e identificação do conflito de paths) → `AUTORIZADA CONTINUIDADE DO AJUSTE DE ESCOPO DOCUMENTAL DA TASK 047 COM PATHS NOMINAIS` (ajuste de escopo; commit `565a7cc`; integrado em `main` no commit `f9714e2` via PR #24) → `AUTORIZADA CRIAÇÃO DOS DOCUMENTOS DA TASK 047` (criação local dos quatro documentos, ainda não commitados) → `AUTORIZADA REVISÃO LOCAL DOS DOCUMENTOS DA TASK 047` (revisão local aprovada sem achados) → `AUTORIZADA ATUALIZAÇÃO DA TASK 047 E DO LOG DE IMPLEMENTAÇÃO DOCUMENTAL` (registro da criação e revisão local dos quatro documentos) → `AUTORIZADO COMMIT DO CONJUNTO FINAL DA TASK 047` (commit `26005b8`) → `AUTORIZADO PUSH DO CONJUNTO FINAL DA TASK 047` (push para `origin/task/2026-047-documentos-helpper-central`) → `AUTORIZADA ABERTURA DO PR DO CONJUNTO FINAL DA TASK 047` (PR #25 aberto como draft) → `AUTORIZADA REVISÃO DO PR DO CONJUNTO FINAL DA TASK 047` (revisão técnica concluída e aprovada) → aprovação humana final do conteúdo pelo CEO (`APROVO O CONTEÚDO DOCUMENTAL FINAL DA TASK 047`) → `AUTORIZADO REGISTRO DA APROVAÇÃO FINAL DO CEO NA TASK 047 E NO LOG` (commit `12cdf44`; push para `origin/task/2026-047-documentos-helpper-central`) → `AUTORIZADA REVISÃO DO PR #25 APÓS REGISTRO DA APROVAÇÃO FINAL DO CEO` (revisão aprovada) → `AUTORIZADA CONVERSÃO DO PR #25 PARA READY FOR REVIEW` (PR #25 convertido para Ready for review) → `AUTORIZADA REVISÃO FINAL DO PR #25 ANTES DO MERGE` (revisão final concluída, resultado `PR #25 APROVADO PARA SQUASH MERGE`) → `AUTORIZADO SQUASH MERGE DO PR #25` (squash merge concluído; squash commit `25cfc7aff1cf0f16c604e5de2cb5cd40fdbbc686` integrado em `main`) → `AUTORIZADA VERIFICAÇÃO PÓS-MERGE DA TASK 047` (verificação pós-merge concluída sem achados bloqueantes) → `AUTORIZADA PREPARAÇÃO DO ENCERRAMENTO FORMAL DA TASK 047` (este gate).
 
 ## Revisão e entrega
 
