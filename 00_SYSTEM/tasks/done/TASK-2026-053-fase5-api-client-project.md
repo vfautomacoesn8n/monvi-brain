@@ -2,8 +2,8 @@
 id: task-2026-053
 type: task
 title: "Fase 5 — primeira fatia operacional: API real de clientes e projetos"
-status: draft
-task_state: active
+status: done
+task_state: done
 owner: ceo-monvi
 agent: claude-cursor
 reviewer: ceo-monvi
@@ -13,7 +13,7 @@ confidentiality: internal
 classification: internal
 created_at: "2026-08-10"
 updated_at: "2026-08-10"
-reviewed_at: null
+reviewed_at: "2026-08-10T17:22:12-03:00"
 review_cycle: on-change
 sources:
   - 00_SYSTEM/roadmaps/Plano-Mestre-de-Construcao-Monvi-Brain.md
@@ -72,7 +72,7 @@ forbidden_paths:
   - apps/core-brain/node_modules/
   - apps/core-brain/dist/
   - 00_SYSTEM/architecture/Backlog-priorizado-Helpper-Central-e-criterios-Task-048.md
-requires_review: true
+requires_review: false
 acceptance_criteria:
   - Rotas CRUD (criar, listar, obter, atualizar, exclusão lógica) para client e project criadas em apps/core-brain/src/http/routes/, registradas em build-app.ts.
   - Todas as rotas exigem autenticação (authenticateRequest) e permissão (requirePermission), reaproveitando o middleware já existente da Fase 4, sem alteração nele.
@@ -116,24 +116,38 @@ Subir `infrastructure/local/docker-compose.yml`, rodar `npm run db:migrate` e `n
 
 ## Critérios de aceite
 
-- [ ] Rotas CRUD para `client` e `project` criadas e registradas.
-- [ ] Todas as rotas exigem autenticação e permissão, reaproveitando o middleware existente.
-- [ ] Nenhuma alteração em `src/db/`, `src/modules/` ou `src/http/middlewares/`.
-- [ ] Testes de bloqueio de acesso (401) passando sem banco real.
-- [ ] Teste de integração real do ciclo completo criado, isolado da suíte padrão.
-- [ ] `typecheck`, `test` e `build` continuam passando (24/24 testes).
-- [ ] `README.md` e Plano Mestre atualizados.
-- [ ] Nenhuma credencial, dado real, dependência nova ou decisão de multi-organização.
-- [ ] Conteúdo revisado e aprovado pelo CEO antes do merge.
+- [x] Rotas CRUD para `client` e `project` criadas e registradas. Evidência: `apps/core-brain/src/http/routes/client.ts` e `project.ts`, registrados em `build-app.ts`, integrados em `main` no commit `66d1797840fc582f3d1b2739d8fcf41aafed1140`.
+- [x] Todas as rotas exigem autenticação e permissão, reaproveitando o middleware existente. Evidência: `preHandler: [authenticateRequest, requirePermission(...)]` em cada rota; `src/http/middlewares/` não foi alterado.
+- [x] Nenhuma alteração em `src/db/`, `src/modules/` ou `src/http/middlewares/`. Evidência: `git show --name-status --format= origin/main` confirmou apenas os 9 arquivos previstos em `allowed_paths`.
+- [x] Testes de bloqueio de acesso (401) passando sem banco real. Evidência: `tests/client.test.ts` e `tests/project.test.ts`, 10 testes, parte dos 24/24 da suíte padrão.
+- [x] Teste de integração real do ciclo completo criado, isolado da suíte padrão. Evidência: `tests/client-project.integration.test.ts`.
+- [x] `typecheck`, `test` e `build` continuam passando (24/24 testes). Evidência: reexecutados após o merge, contra `main` sincronizado (`66d1797`): typecheck limpo, 24/24 testes em 6 arquivos, build sem erros.
+- [x] `README.md` e Plano Mestre atualizados. Evidência: seção "Escopo implementado"/"Endpoints" do README e seção 19 do Plano Mestre, ambos integrados em `main`.
+- [x] Nenhuma credencial, dado real, dependência nova ou decisão de multi-organização. Evidência: diff do PR #35 restrito aos 9 arquivos previstos; nenhuma alteração em `package.json`; suposição single-tenant documentada explicitamente, sem decidir o modelo real.
+- [x] Conteúdo revisado e aprovado pelo CEO antes do merge. Evidência: gate explícito "Autorizo" concedido para o merge do PR #35.
 
 ## Riscos e gates humanos
 
 Riscos: a suposição single-tenant pode exigir retrabalho real quando o modelo de multi-organização for decidido (risco aceito explicitamente pelo CEO ao adiar a decisão); a Parte B pendente pode se acumular com a da Task 052 se o ambiente com Docker não for disponibilizado; ausência de Docker neste ambiente segue sendo uma limitação estrutural para toda validação de persistência.
 
-Gate vigente: `Autorizo` (em resposta à proposta de escopo da Task 053 — API CRUD de client/project, single-tenant explícito). Este gate autoriza a execução completa do escopo técnico e a condução do ciclo de governança (commit, push, PR) até o ponto em que a revisão final e o merge, que dependem de decisão do CEO, sejam solicitados. Não autoriza os demais entregáveis da Fase 5, o modelo de multi-organização, nem autenticação de produção real.
+Gate vigente: encerrado. O merge do PR #35 foi autorizado (`Autorizo`) e executado por squash em `66d1797840fc582f3d1b2739d8fcf41aafed1140`. Esta task está formalmente concluída. Os demais entregáveis da Fase 5, o modelo de multi-organização e a Parte B (validação real contra Postgres) permanecem fora deste encerramento.
 
-Histórico de gates desta task: proposta de continuar a construção do Core Brain → CEO autoriza sem especificar caminho → eu identifico que os dois caminhos óbvios (autenticação de produção, Fase 5) dependem de decisões formais pendentes e pergunto qual delas resolver → investigação revela que "multi-organização" pode ter significados distintos, pergunto ao CEO qual é o correto → CEO decide adiar essa decisão e seguir com a Fase 5 mesmo assim → proponho o escopo desta task (primeira fatia: API de client/project, single-tenant explícito) → `Autorizo` (este gate: execução completa do escopo, criação da task, branch, commit, push e PR).
+Histórico de gates desta task: proposta de continuar a construção do Core Brain → CEO autoriza sem especificar caminho → eu identifico que os dois caminhos óbvios (autenticação de produção, Fase 5) dependem de decisões formais pendentes e pergunto qual delas resolver → investigação revela que "multi-organização" pode ter significados distintos, pergunto ao CEO qual é o correto → CEO decide adiar essa decisão e seguir com a Fase 5 mesmo assim → proponho o escopo desta task (primeira fatia: API de client/project, single-tenant explícito) → `Autorizo` (execução completa do escopo, criação da task, branch, commit, push e PR) → `Autorizo` (merge do PR #35, integrado em `66d1797840fc582f3d1b2739d8fcf41aafed1140`).
 
 ## Revisão e entrega
 
 Apresentarei o diff completo, as validações locais (`typecheck`, `test`, `build`, `test:integration` com falha esperada e documentada) e o estado Git, e solicitarei explicitamente o gate de merge antes de integrar esta mudança em `main`.
+
+## Encerramento — 2026-08-10
+
+**Gate de encerramento**: o CEO autorizou (`Autorizo`) o squash merge do PR #35.
+
+**Integração**: PR #35 integrado em `main` via squash merge, commit `66d1797840fc582f3d1b2739d8fcf41aafed1140`, em 2026-08-10T20:21:18Z. Escopo integrado: exatamente os 9 arquivos previstos em `allowed_paths` — criação de `src/http/routes/client.ts`, `src/http/routes/project.ts`, `tests/client.test.ts`, `tests/project.test.ts` e `tests/client-project.integration.test.ts`; edição de `src/app/build-app.ts`, `README.md`, o Plano Mestre e `changes.jsonl`. Nenhuma alteração em `src/db/`, `src/modules/` ou `src/http/middlewares/`.
+
+**Verificação pós-merge**: sincronizei `main` local via fast-forward (`git pull --ff-only`, `f44a391..66d1797`) e reexecutei `npm run typecheck`, `npm test` e `npm run build` diretamente contra o `main` já integrado — typecheck limpo, 24/24 testes passando em 6 arquivos, build sem erros. Confirma que a integração não quebrou o comportamento da suíte padrão nem o build de produção.
+
+**Estado final**: a primeira fatia operacional da Fase 5 (API real de `client`/`project`, com autenticação e RBAC) está concluída e integrada em `main`, sob suposição explícita de single-tenant. Os demais entregáveis da Fase 5 (tarefas, entregáveis, aprovações, dependências, riscos, comentários, histórico de mudanças, dashboards), o modelo de multi-organização e a autenticação de produção real permanecem pendentes e fora deste encerramento. A Parte B (validação real da API contra Postgres via Docker) permanece explicitamente pendente, acumulando com a mesma pendência já registrada na Task 052.
+
+**Escopo preservado**: nenhuma alteração fora de `allowed_paths` foi feita; nenhum código de identidade/autenticação/autorização já existente foi tocado; nenhuma credencial, dado real ou dependência nova foi introduzida; nenhuma decisão de multi-organização foi tomada ou presumida além da suposição single-tenant explicitamente documentada.
+
+**Integração deste próprio encerramento**: ainda pendente. Este documento de encerramento, ao ser commitado, seguirá o mesmo ciclo de governança (branch → commit → push → PR → gate de merge explícito) antes de ser integrado em `main`.
