@@ -12,7 +12,7 @@ active_project: null
 confidentiality: internal
 classification: internal
 created_at: "2026-08-03"
-updated_at: "2026-08-05"
+updated_at: "2026-08-10"
 reviewed_at: null
 review_cycle: on-change
 sources:
@@ -191,12 +191,25 @@ Gate `AUTORIZADA CRIAÇÃO DOS DOCUMENTOS DA TASK 047`: os quatro documentos aut
 
 Gate `AUTORIZADA REVISÃO LOCAL DOS DOCUMENTOS DA TASK 047`: revisão local concluída sem achados, com resultado `DOCUMENTOS DA TASK 047 APROVADOS PARA ATUALIZAÇÃO DA TASK E LOG`.
 
-Estado preciso desta etapa:
+Gate `AUTORIZADO COMMIT DO CONJUNTO FINAL DA TASK 047`: commit `26005b8` criado, contendo os quatro documentos e as atualizações desta task e do log.
+
+Gate `AUTORIZADO PUSH DO CONJUNTO FINAL DA TASK 047`: commit publicado em `origin/task/2026-047-documentos-helpper-central`.
+
+Gate `AUTORIZADA ABERTURA DO PR DO CONJUNTO FINAL DA TASK 047`: PR #25 aberto em modo draft.
+
+Gate `AUTORIZADA REVISÃO DO PR DO CONJUNTO FINAL DA TASK 047`: revisão técnica concluída, resultado `PR DO CONJUNTO FINAL DA TASK 047 TECNICAMENTE APROVADO PARA REVISÃO HUMANA FINAL`.
+
+Aprovação humana final (2026-08-10): o CEO declarou `APROVO O CONTEÚDO DOCUMENTAL FINAL DA TASK 047`, registrando a revisão e aprovação direta do conteúdo integral dos quatro documentos.
+
+Estado preciso desta etapa (atualizado em 2026-08-10):
 
 - criação documental concluída;
 - revisão local concluída sem achados;
-- integração no repositório ainda pendente (staging, commit, push, abertura de PR);
-- revisão de PR, merge, verificação pós-merge e encerramento formal da task ainda pendentes;
+- commit, push e abertura do PR #25 (draft) concluídos;
+- revisão técnica do PR concluída e aprovada;
+- revisão e aprovação humana final do conteúdo pelo CEO concluída;
+- PR #25 permanece em modo draft; conversão para Ready for review ainda pendente;
+- merge, verificação pós-merge e encerramento formal da task ainda pendentes;
 - Task 048 continua não autorizada; Fase 5 continua não iniciada; nenhuma implementação técnica foi criada.
 
 ## Relação com a Fase 5
@@ -222,7 +235,7 @@ A Fase 5 é apenas referência estratégica. Esta task deve identificar como o H
 - [x] Arquitetura proposta, backlog priorizado e critérios da futura Task 048 definidos. (Documento 3, seções 3 e 4; Documento 4, integral)
 - [x] Pré-requisitos para futura Fase 5 identificados sem iniciar a fase. (Documento 4, seções 3 a 5)
 - [x] Nenhuma implementação técnica criada. (Confirmado por validação local em cada gate)
-- [ ] Conteúdo revisado e aprovado pelo CEO. (Revisão local substantiva concluída pelo executor e fluxo autorizado pelo CEO com base no relatório apresentado; revisão direta e aprovação final do conteúdo integral pelo CEO permanecem pendentes.)
+- [x] Conteúdo revisado e aprovado pelo CEO. (Aprovação humana final registrada pelo CEO após revisão do conteúdo integral dos quatro documentos da Task 047.)
 
 ## Validações obrigatórias
 
@@ -235,9 +248,9 @@ A Fase 5 é apenas referência estratégica. Esta task deve identificar como o H
 
 Riscos: escopo implícito, início indevido da Fase 5, mistura de contexto de clientes, uso indevido de dados sensíveis, escolha tecnológica prematura e confusão entre especificação e implementação.
 
-Gate vigente: `AUTORIZADA ATUALIZAÇÃO DA TASK 047 E DO LOG DE IMPLEMENTAÇÃO DOCUMENTAL`. Este gate atualiza exclusivamente esta task e `00_SYSTEM/logs/changes.jsonl`, para registrar a conclusão da criação e da revisão local dos quatro documentos. Não autoriza staging, commit, push, Pull Request, merge, Task 048 ou início da Fase 5.
+Gate vigente: `AUTORIZADO REGISTRO DA APROVAÇÃO FINAL DO CEO NA TASK 047 E NO LOG`. Este gate registra formalmente que o conteúdo do PR #25 foi tecnicamente aprovado e que o CEO aprovou diretamente o conteúdo integral dos quatro documentos (`APROVO O CONTEÚDO DOCUMENTAL FINAL DA TASK 047`). Não autoriza staging, commit, push, conversão do PR para Ready for review, merge, Task 048 ou início da Fase 5.
 
-Histórico de gates desta task: `AUTORIZADA CRIAÇÃO DA TASK 047` (criação; commit `0a6bf68`; integrado em `main` no commit `224cf77` via PR #23) → `AUTORIZADO AJUSTE DE ESCOPO DOCUMENTAL DA TASK 047` (planejamento e identificação do conflito de paths) → `AUTORIZADA CONTINUIDADE DO AJUSTE DE ESCOPO DOCUMENTAL DA TASK 047 COM PATHS NOMINAIS` (ajuste de escopo; commit `565a7cc`; integrado em `main` no commit `f9714e2` via PR #24) → `AUTORIZADA CRIAÇÃO DOS DOCUMENTOS DA TASK 047` (criação local dos quatro documentos, ainda não commitados) → `AUTORIZADA REVISÃO LOCAL DOS DOCUMENTOS DA TASK 047` (revisão local aprovada sem achados) → `AUTORIZADA ATUALIZAÇÃO DA TASK 047 E DO LOG DE IMPLEMENTAÇÃO DOCUMENTAL` (este gate).
+Histórico de gates desta task: `AUTORIZADA CRIAÇÃO DA TASK 047` (criação; commit `0a6bf68`; integrado em `main` no commit `224cf77` via PR #23) → `AUTORIZADO AJUSTE DE ESCOPO DOCUMENTAL DA TASK 047` (planejamento e identificação do conflito de paths) → `AUTORIZADA CONTINUIDADE DO AJUSTE DE ESCOPO DOCUMENTAL DA TASK 047 COM PATHS NOMINAIS` (ajuste de escopo; commit `565a7cc`; integrado em `main` no commit `f9714e2` via PR #24) → `AUTORIZADA CRIAÇÃO DOS DOCUMENTOS DA TASK 047` (criação local dos quatro documentos, ainda não commitados) → `AUTORIZADA REVISÃO LOCAL DOS DOCUMENTOS DA TASK 047` (revisão local aprovada sem achados) → `AUTORIZADA ATUALIZAÇÃO DA TASK 047 E DO LOG DE IMPLEMENTAÇÃO DOCUMENTAL` (registro da criação e revisão local dos quatro documentos) → `AUTORIZADO COMMIT DO CONJUNTO FINAL DA TASK 047` (commit `26005b8`) → `AUTORIZADO PUSH DO CONJUNTO FINAL DA TASK 047` (push para `origin/task/2026-047-documentos-helpper-central`) → `AUTORIZADA ABERTURA DO PR DO CONJUNTO FINAL DA TASK 047` (PR #25 aberto como draft) → `AUTORIZADA REVISÃO DO PR DO CONJUNTO FINAL DA TASK 047` (revisão técnica concluída e aprovada) → aprovação humana final do conteúdo pelo CEO (`APROVO O CONTEÚDO DOCUMENTAL FINAL DA TASK 047`) → `AUTORIZADO REGISTRO DA APROVAÇÃO FINAL DO CEO NA TASK 047 E NO LOG` (este gate).
 
 ## Revisão e entrega
 
