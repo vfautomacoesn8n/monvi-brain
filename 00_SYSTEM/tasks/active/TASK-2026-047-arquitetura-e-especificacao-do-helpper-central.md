@@ -12,7 +12,7 @@ active_project: null
 confidentiality: internal
 classification: internal
 created_at: "2026-08-03"
-updated_at: "2026-08-04"
+updated_at: "2026-08-05"
 reviewed_at: null
 review_cycle: on-change
 sources:
@@ -43,6 +43,10 @@ sources:
 related:
   - 00_SYSTEM/tasks/done/TASK-2026-046-institucionalizacao-e-modelo-operacional-do-helpper.md
   - 00_SYSTEM/roadmaps/Plano-Mestre-de-Construcao-Monvi-Brain.md
+  - 00_SYSTEM/architecture/Fluxo-operacional-e-papel-Helpper-Central.md
+  - 00_SYSTEM/architecture/Contrato-executor-controlado-Helpper-Central.md
+  - 00_SYSTEM/architecture/Recomendacao-interface-e-arquitetura-tecnica-Helpper-Central-MVP.md
+  - 00_SYSTEM/architecture/Backlog-priorizado-Helpper-Central-e-criterios-Task-048.md
 aliases:
   - Helpper Central
   - arquitetura do Helpper Central
@@ -176,6 +180,25 @@ A fundamentação de segurança e privacidade dos quatro documentos futuros usa 
 
 Este ajuste de escopo não inicia a implementação documental, não cria os quatro documentos, não altera `changes.jsonl`, não cria a Task 048 e não inicia a Fase 5. A task permanece `status: draft`, `task_state: active`, `requires_review: true`.
 
+## Implementação documental concluída (2026-08-05)
+
+Gate `AUTORIZADA CRIAÇÃO DOS DOCUMENTOS DA TASK 047`: os quatro documentos autorizados na seção anterior foram criados na branch `task/2026-047-documentos-helpper-central`, a partir do commit base `f9714e20d7ba1c4234257ed59e083cd5dd4bb596`:
+
+1. `00_SYSTEM/architecture/Fluxo-operacional-e-papel-Helpper-Central.md`
+2. `00_SYSTEM/architecture/Contrato-executor-controlado-Helpper-Central.md`
+3. `00_SYSTEM/architecture/Recomendacao-interface-e-arquitetura-tecnica-Helpper-Central-MVP.md`
+4. `00_SYSTEM/architecture/Backlog-priorizado-Helpper-Central-e-criterios-Task-048.md`
+
+Gate `AUTORIZADA REVISÃO LOCAL DOS DOCUMENTOS DA TASK 047`: revisão local concluída sem achados, com resultado `DOCUMENTOS DA TASK 047 APROVADOS PARA ATUALIZAÇÃO DA TASK E LOG`.
+
+Estado preciso desta etapa:
+
+- criação documental concluída;
+- revisão local concluída sem achados;
+- integração no repositório ainda pendente (staging, commit, push, abertura de PR);
+- revisão de PR, merge, verificação pós-merge e encerramento formal da task ainda pendentes;
+- Task 048 continua não autorizada; Fase 5 continua não iniciada; nenhuma implementação técnica foi criada.
+
 ## Relação com a Fase 5
 
 A Fase 5 é apenas referência estratégica. Esta task deve identificar como o Helpper Central poderá apoiar futura operação de clientes e projetos e quais pré-requisitos serão necessários. Ela não inicia a Fase 5, não cria módulos de clientes/projetos e não autoriza implementação técnica.
@@ -191,15 +214,15 @@ A Fase 5 é apenas referência estratégica. Esta task deve identificar como o H
 
 ## Critérios de aceite
 
-- [ ] Papel, limites e responsabilidades do Helpper Central definidos.
-- [ ] Fluxo operacional ponta a ponta e hierarquia de contexto documentados.
-- [ ] Isolamento entre clientes, memória conceitual e dados sensíveis especificados.
-- [ ] Tasks, gates, contrato com Codex, evidências e erros definidos.
-- [ ] Interface do MVP recomendada com justificativa.
-- [ ] Arquitetura proposta, backlog priorizado e critérios da futura Task 048 definidos.
-- [ ] Pré-requisitos para futura Fase 5 identificados sem iniciar a fase.
-- [ ] Nenhuma implementação técnica criada.
-- [ ] Conteúdo revisado e aprovado pelo CEO.
+- [x] Papel, limites e responsabilidades do Helpper Central definidos. (Documento 1, criado e revisado localmente sem achados)
+- [x] Fluxo operacional ponta a ponta e hierarquia de contexto documentados. (Documento 1, seções 2 e 3)
+- [x] Isolamento entre clientes, memória conceitual e dados sensíveis especificados. (Documento 1, seção 4; Documento 2, seção 5)
+- [x] Tasks, gates, contrato com Codex, evidências e erros definidos. (Documento 1, seção 5; Documento 2, integral)
+- [x] Interface do MVP recomendada com justificativa. (Documento 3, seções 1 e 2)
+- [x] Arquitetura proposta, backlog priorizado e critérios da futura Task 048 definidos. (Documento 3, seções 3 e 4; Documento 4, integral)
+- [x] Pré-requisitos para futura Fase 5 identificados sem iniciar a fase. (Documento 4, seções 3 a 5)
+- [x] Nenhuma implementação técnica criada. (Confirmado por validação local em cada gate)
+- [ ] Conteúdo revisado e aprovado pelo CEO. (Revisão local substantiva concluída pelo executor e fluxo autorizado pelo CEO com base no relatório apresentado; revisão direta e aprovação final do conteúdo integral pelo CEO permanecem pendentes.)
 
 ## Validações obrigatórias
 
@@ -212,9 +235,9 @@ A Fase 5 é apenas referência estratégica. Esta task deve identificar como o H
 
 Riscos: escopo implícito, início indevido da Fase 5, mistura de contexto de clientes, uso indevido de dados sensíveis, escolha tecnológica prematura e confusão entre especificação e implementação.
 
-Gate vigente: `AUTORIZADA CONTINUIDADE DO AJUSTE DE ESCOPO DOCUMENTAL DA TASK 047 COM PATHS NOMINAIS`. Este gate ajusta exclusivamente `allowed_paths`, `read_only_paths`, `sources` e a documentação de decisões de escopo desta task. Não autoriza staging, commit, push, Pull Request, merge, criação dos quatro documentos futuros, implementação, Task 048 ou início da Fase 5.
+Gate vigente: `AUTORIZADA ATUALIZAÇÃO DA TASK 047 E DO LOG DE IMPLEMENTAÇÃO DOCUMENTAL`. Este gate atualiza exclusivamente esta task e `00_SYSTEM/logs/changes.jsonl`, para registrar a conclusão da criação e da revisão local dos quatro documentos. Não autoriza staging, commit, push, Pull Request, merge, Task 048 ou início da Fase 5.
 
-Histórico de gates desta task: `AUTORIZADA CRIAÇÃO DA TASK 047` (criação; commit `0a6bf68`; integrado em `main` no commit `224cf77` via PR #23) → `AUTORIZADO AJUSTE DE ESCOPO DOCUMENTAL DA TASK 047` (planejamento e identificação do conflito de paths) → `AUTORIZADA CONTINUIDADE DO AJUSTE DE ESCOPO DOCUMENTAL DA TASK 047 COM PATHS NOMINAIS` (este gate).
+Histórico de gates desta task: `AUTORIZADA CRIAÇÃO DA TASK 047` (criação; commit `0a6bf68`; integrado em `main` no commit `224cf77` via PR #23) → `AUTORIZADO AJUSTE DE ESCOPO DOCUMENTAL DA TASK 047` (planejamento e identificação do conflito de paths) → `AUTORIZADA CONTINUIDADE DO AJUSTE DE ESCOPO DOCUMENTAL DA TASK 047 COM PATHS NOMINAIS` (ajuste de escopo; commit `565a7cc`; integrado em `main` no commit `f9714e2` via PR #24) → `AUTORIZADA CRIAÇÃO DOS DOCUMENTOS DA TASK 047` (criação local dos quatro documentos, ainda não commitados) → `AUTORIZADA REVISÃO LOCAL DOS DOCUMENTOS DA TASK 047` (revisão local aprovada sem achados) → `AUTORIZADA ATUALIZAÇÃO DA TASK 047 E DO LOG DE IMPLEMENTAÇÃO DOCUMENTAL` (este gate).
 
 ## Revisão e entrega
 
