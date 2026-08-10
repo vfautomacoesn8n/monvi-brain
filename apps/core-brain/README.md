@@ -1,6 +1,6 @@
 # Monvi Core Brain
 
-Fundação técnica do Monvi Core Brain MVP, autorizada pela Task 041 e evoluída pelas Tasks 043 (persistência), 044 (identidade/autenticação/autorização) e 045 (correção e validação factual).
+Fundação técnica do Monvi Core Brain MVP, autorizada pela Task 041 e evoluída pelas Tasks 043 (persistência), 044 (identidade/autenticação/autorização), 045 (correção e validação factual) e 053 (Fase 5 — API operacional de clientes e projetos).
 
 ## Escopo implementado
 
@@ -12,10 +12,11 @@ Fundação técnica do Monvi Core Brain MVP, autorizada pela Task 041 e evoluíd
 - `GET /api/v1/ready`;
 - schema de domínio via Drizzle (pessoa, identidade, perfil, papel, permissão, cliente, projeto, sessão);
 - persistência local via PostgreSQL e migrações Drizzle (Fase 3);
-- autenticação de desenvolvimento (`POST /auth/dev-login`, bloqueada quando `NODE_ENV=production`) e autorização RBAC (Fase 4);
-- testes automatizados unitários, de configuração e de autenticação/autorização.
+- autenticação de desenvolvimento (`POST /api/v1/auth/dev-login`, bloqueada quando `NODE_ENV=production`) e autorização RBAC (Fase 4);
+- API operacional de clientes e projetos (CRUD com autenticação e RBAC obrigatórios), sob suposição explícita de single-tenant — sem modelo de multi-organização, decisão ainda pendente (Fase 5, Task 053);
+- testes automatizados unitários, de configuração, de autenticação/autorização e de rotas de clientes e projetos.
 
-Autenticação de produção real (Google Workspace/OIDC), credenciais reais, dados reais de clientes, integrações externas, homologação e produção permanecem fora do escopo.
+Autenticação de produção real (Google Workspace/OIDC), modelo de multi-organização, credenciais reais, dados reais de clientes, integrações externas, homologação e produção permanecem fora do escopo. Os demais entregáveis da Fase 5 (tarefas, entregáveis, aprovações, dependências, riscos, comentários, histórico de mudanças, dashboards) ainda não foram implementados.
 
 ## Execução local
 
@@ -32,8 +33,22 @@ O servidor usa `127.0.0.1:3000` por padrão.
 ```text
 GET http://127.0.0.1:3000/api/v1/health
 GET http://127.0.0.1:3000/api/v1/ready
-POST http://127.0.0.1:3000/auth/dev-login
+POST http://127.0.0.1:3000/api/v1/auth/dev-login
+POST http://127.0.0.1:3000/api/v1/auth/logout
+GET http://127.0.0.1:3000/api/v1/auth/me
+POST http://127.0.0.1:3000/api/v1/clients
+GET http://127.0.0.1:3000/api/v1/clients
+GET http://127.0.0.1:3000/api/v1/clients/:id
+PATCH http://127.0.0.1:3000/api/v1/clients/:id
+DELETE http://127.0.0.1:3000/api/v1/clients/:id
+POST http://127.0.0.1:3000/api/v1/projects
+GET http://127.0.0.1:3000/api/v1/projects
+GET http://127.0.0.1:3000/api/v1/projects/:id
+PATCH http://127.0.0.1:3000/api/v1/projects/:id
+DELETE http://127.0.0.1:3000/api/v1/projects/:id
 ```
+
+Todas as rotas de `clients` e `projects` exigem autenticação (`Authorization: Bearer <token>`) e a permissão correspondente (`client:read`, `client:write`, `project:read`, `project:write`).
 
 ## Persistência local (PostgreSQL)
 
@@ -57,4 +72,4 @@ O schema e as migrações existem e compilam, mas isso não comprova, por si só
    npm run test:integration
    ```
 
-Esse teste insere, lê e remove um registro real na tabela `person`, e falha se o banco não estiver acessível. Ele é isolado da suíte padrão (`npm test`), que continua rodando sem depender de um banco disponível.
+Esse comando executa dois arquivos de teste de integração: o de persistência básica (`person`, Task 052) e o de CRUD real de clientes e projetos via API (`tests/client-project.integration.test.ts`, Task 053), ambos isolados da suíte padrão (`npm test`), que continua rodando sem depender de um banco disponível.
