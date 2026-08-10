@@ -5,6 +5,8 @@ import { registerHealthRoutes } from "../http/routes/health.js";
 import { registerAuthRoutes } from "../http/routes/auth.js";
 import { registerClientRoutes } from "../http/routes/client.js";
 import { registerProjectRoutes } from "../http/routes/project.js";
+import { registerContactRoutes } from "../http/routes/contact.js";
+import { registerProjectMembershipRoutes } from "../http/routes/project-membership.js";
 import { createLoggerOptions } from "../logging/logger.js";
 
 export async function buildApp(
@@ -31,6 +33,14 @@ export async function buildApp(
   });
 
   await app.register(registerProjectRoutes, {
+    prefix: "/api/v1"
+  });
+
+  await app.register(registerContactRoutes, {
+    prefix: "/api/v1"
+  });
+
+  await app.register(registerProjectMembershipRoutes, {
     prefix: "/api/v1"
   });
 
