@@ -973,7 +973,7 @@ As seguintes decisões devem ser tomadas nas fases adequadas:
 
 ## 19. Estado atual
 
-*Atualizado em 2026-08-10 (Task 052), após verificação direta do código, dos testes e das decisões formais — não apenas da documentação anterior desta seção, que estava desatualizada desde 2026-07-30.*
+*Atualizado em 2026-08-10 (Task 053), após verificação direta do código, dos testes e das decisões formais — não apenas da documentação anterior desta seção.*
 
 ### Concluído
 
@@ -985,14 +985,19 @@ As seguintes decisões devem ser tomadas nas fases adequadas:
 - Fase 3 (persistência local): schema, migração e infraestrutura Docker local implementados; validação contra um banco Postgres real em execução ainda pendente de confirmação (teste de integração já existe em `apps/core-brain/tests/db.integration.test.ts`, aguardando execução em ambiente com Docker disponível);
 - Fase 4 (identidade, autenticação dev e autorização): `dev-login` bloqueado em produção, RBAC e revogação de sessão implementados e testados (Tasks 044 e 045, 14/14 testes automatizados passando).
 
+### Em andamento
+
+- Fase 5 (operação de clientes e projetos): iniciada pela Task 053 com uma primeira fatia — API CRUD real para `client` e `project` (autenticação e RBAC obrigatórios), sob suposição explícita de single-tenant, aguardando decisão formal sobre o modelo de multi-organização (seção 17) para ser revisada quando essa decisão for tomada. Os demais entregáveis da fase (tarefas, entregáveis, aprovações, dependências, riscos, comentários, histórico de mudanças, dashboards) ainda não foram iniciados. Validação da API contra um banco real segue o mesmo padrão da Fase 3: teste de integração criado (`apps/core-brain/tests/client-project.integration.test.ts`), aguardando execução em ambiente com Docker disponível.
+
 ### Ainda não iniciado
 
 - autenticação de produção real (Google Workspace/OIDC) — arquitetura documentada na Task 040, implementação técnica não iniciada;
-- Fase 5 em diante — nenhuma implementada; Fase 5 depende de decisão formal sobre estratégia de multi-organização, ainda em aberto (seção 17).
+- modelo de multi-organização — decisão formal ainda em aberto (seção 17), adiada deliberadamente para depois do início da Fase 5;
+- demais entregáveis da Fase 5 além de clientes e projetos, e todas as fases 6 em diante.
 
 ### Próximo gate recomendado
 
-Confirmar a execução do teste de integração de persistência (Task 052, Parte B) em ambiente com Docker disponível. Depois, decidir entre fechar a autenticação de produção real ou abrir a Fase 5, ambas condicionadas a decisões formais ainda pendentes.
+Confirmar a execução dos testes de integração de persistência e de API de clientes/projetos (Tasks 052 e 053, Parte B de cada uma) em ambiente com Docker disponível. Em paralelo, decidir o modelo de multi-organização (para revisar o que já foi construído na Fase 5 sob suposição single-tenant) e a estratégia de autenticação de produção, ambas ainda pendentes.
 
 ## 20. Critério de sucesso do plano
 
