@@ -2,8 +2,8 @@
 id: task-2026-050
 type: task
 title: "Unidade de trabalho do Helpper: a demanda, não o documento"
-status: draft
-task_state: active
+status: done
+task_state: done
 owner: ceo-monvi
 agent: claude-cursor
 reviewer: ceo-monvi
@@ -13,7 +13,7 @@ confidentiality: internal
 classification: internal
 created_at: "2026-08-10"
 updated_at: "2026-08-10"
-reviewed_at: null
+reviewed_at: "2026-08-10T15:19:07-03:00"
 review_cycle: on-change
 sources:
   - 00_SYSTEM/helpper/README.md
@@ -46,7 +46,7 @@ forbidden_paths:
   - 05_SHARED/
   - 03_OPERATIONS/decisoes/
   - 00_SYSTEM/architecture/Backlog-priorizado-Helpper-Central-e-criterios-Task-048.md
-requires_review: true
+requires_review: false
 acceptance_criteria:
   - Seção "1.2 Unidade de trabalho: a demanda, não o documento" inserida em 00_SYSTEM/helpper/README.md, imediatamente após a seção 1.1, sem renumerar as seções existentes.
   - Princípio central redigido exatamente conforme aprovado pelo CEO.
@@ -86,23 +86,32 @@ Antes da criação desta task, eu verifiquei a compatibilidade do texto da seç�
 
 ## Critérios de aceite
 
-- [ ] Seção 1.2 inserida em `00_SYSTEM/helpper/README.md`, sem renumerar as seções existentes.
-- [ ] Princípio central idêntico ao aprovado pelo CEO.
-- [ ] Nenhuma duplicação das responsabilidades operacionais da seção 1.1.
-- [ ] Limite técnico de continuidade entre sessões declarado explicitamente.
-- [ ] Nenhuma incompatibilidade com `AI-CONTRACT.md`, `PERMISSIONS.md` ou a hierarquia documental.
-- [ ] Nenhuma alteração em documentos das Tasks 047, 048 (backlog) ou 049.
-- [ ] Evento de criação registrado em `changes.jsonl` sem alterar linhas históricas.
-- [ ] Conteúdo revisado e aprovado pelo CEO antes do merge.
+- [x] Seção 1.2 inserida em `00_SYSTEM/helpper/README.md`, sem renumerar as seções existentes. (Confirmado em `main`, commit `9bb25e8b3f7e352a84aa454422cee358da2cc658`)
+- [x] Princípio central idêntico ao aprovado pelo CEO.
+- [x] Nenhuma duplicação das responsabilidades operacionais da seção 1.1. (Resolvido por referência explícita em vez de repetição)
+- [x] Limite técnico de continuidade entre sessões declarado explicitamente.
+- [x] Nenhuma incompatibilidade com `AI-CONTRACT.md`, `PERMISSIONS.md` ou a hierarquia documental. (Verificação registrada na seção "Análise crítica já realizada")
+- [x] Nenhuma alteração em documentos das Tasks 047, 048 (backlog) ou 049. (Confirmado por diff vazio contra o estado anterior de `main`)
+- [x] Evento de criação registrado em `changes.jsonl` sem alterar linhas históricas. (`change-20260810-task-2026-050-created`)
+- [x] Conteúdo revisado e aprovado pelo CEO antes do merge. (Aprovação explícita ao longo da conversa; PR #29 mesclado por squash em `main`)
 
 ## Riscos e gates humanos
 
 Riscos: redundância residual não percebida com a seção 1.1; leitura da regra de continuidade como promessa de capacidade que eu não possuo; diluição do princípio caso seções futuras o repitam com palavras diferentes em vez de referenciá-lo.
 
-Gate vigente: `Helpper, considero aprovada a direção proposta. Quero que você transforme isso em um princípio permanente do sistema... Caso não encontre conflitos, prossiga normalmente`. Este gate autoriza a análise crítica final, a criação desta task, a branch dedicada, a edição de `00_SYSTEM/helpper/README.md` conforme o texto especificado, o registro do evento em `changes.jsonl` e a condução do ciclo de governança (commit, push, PR) até o ponto em que a revisão final e o merge, que permanecem sujeitos a gate humano específico, sejam solicitados.
+Gate vigente: `autorizo` (em resposta à minha solicitação explícita do squash merge do PR #29). Este gate autorizou a verificação pré-merge, o squash merge do PR #29, a verificação pós-merge e a preparação do encerramento formal desta task (sincronização de `main`, branch de encerramento, movimentação para `done` e registro do evento final em `changes.jsonl`). Não autoriza staging, commit, push ou merge do próprio encerramento sem gate humano específico, Task 048 ou início da Fase 5.
 
-Histórico de gates desta task: auditoria estratégica ampla apresentada por mim → revisão crítica da auditoria pelo CEO, com reprioritização dos achados e registro do Achado 11 → análise crítica por mim da proposta de princípio permanente, identificando o limite técnico de continuidade entre sessões e o risco de redundância com a seção 1.1 → `Helpper, considero aprovada a direção proposta... Caso não encontre conflitos, prossiga normalmente` (este gate: análise final sem conflitos, criação da task, branch, edição do README, commit, push e PR).
+Histórico de gates desta task: auditoria estratégica ampla apresentada por mim → revisão crítica da auditoria pelo CEO, com reprioritização dos achados e registro do Achado 11 → análise crítica por mim da proposta de princípio permanente, identificando o limite técnico de continuidade entre sessões e o risco de redundância com a seção 1.1 → `Helpper, considero aprovada a direção proposta... Caso não encontre conflitos, prossiga normalmente` (análise final sem conflitos, criação da task, branch `task/2026-050-unidade-de-trabalho-do-helpper`, commit `921f32c`, push, PR #29 aberto pronto para revisão) → `autorizo` (squash merge concluído; squash commit `9bb25e8b3f7e352a84aa454422cee358da2cc658` integrado em `main`; verificação pós-merge concluída sem achados; este gate: preparação do encerramento formal).
 
 ## Revisão e entrega
 
-Apresentarei o diff documental, as validações e o estado Git, e solicitarei explicitamente o gate de merge antes de integrar esta mudança em `main`.
+Apresentei o diff documental, as validações e o estado Git, e solicitei explicitamente o gate de merge antes de integrar esta mudança em `main` — que foi concedido e executado (squash commit `9bb25e8b3f7e352a84aa454422cee358da2cc658`).
+
+## Encerramento — 2026-08-10
+
+- **Gate de encerramento**: preparação autorizada como parte do gate `autorizo`, concedido pelo CEO em resposta à minha solicitação de merge do PR #29.
+- **Integração**: PR #29 mesclado por squash merge; commit integrado em `main`: `9bb25e8b3f7e352a84aa454422cee358da2cc658`; pai: `ae2b1990e8fa6bf1717d5349abc183475d48029f`.
+- **Verificação pós-merge**: seção 1.2 confirmada em `00_SYSTEM/helpper/README.md` na `main`; `changes.jsonl` com 165 linhas válidas incluindo o evento de criação desta task; nenhuma alteração em qualquer documento das Tasks 047, 048 (backlog) ou 049.
+- **Estado final**: `status: done`, `task_state: done`, `requires_review: false`; task movida para `00_SYSTEM/tasks/done/`.
+- **Escopo preservado**: nenhuma fonte canônica, documento das Tasks 047/049, backlog aprovado, Task 048 ou Fase 5 foi tocado ou iniciado por este encerramento.
+- **Integração deste próprio encerramento**: ainda pendente de commit, push, PR e merge — mesma fotografia documental local já usada no encerramento das Tasks 046, 047 e 049.
