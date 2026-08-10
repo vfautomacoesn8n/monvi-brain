@@ -107,9 +107,11 @@ related:
 
 ## Limitações atuais
 
-- Monvi Core Brain não implementado;
-- autenticação não implementada;
-- autorização real não implementada;
+*Bullets de Core Brain, autenticação e autorização atualizados em 2026-08-10 (Task 052), após verificação direta do código — as afirmações anteriores desta seção estavam desatualizadas desde 2026-07-22 e não refletiam a implementação já integrada em `main` pelas Tasks 041, 043, 044 e 045.*
+
+- Monvi Core Brain com fundação, modelo de domínio, autenticação de desenvolvimento e autorização RBAC implementados e testados (Fases 1, 2 e 4); persistência local (Fase 3) implementada, mas ainda sem validação confirmada contra um banco Postgres real em execução (ver Task 052);
+- autenticação de desenvolvimento implementada e testada (`dev-login`, bloqueada em produção); autenticação de produção real (Google Workspace/OIDC) não implementada;
+- autorização RBAC implementada e testada em ambiente de desenvolvimento; nenhuma autorização foi validada em ambiente de produção;
 - agentes reais não implementados;
 - integrações não ativadas;
 - dashboards são documentais;
