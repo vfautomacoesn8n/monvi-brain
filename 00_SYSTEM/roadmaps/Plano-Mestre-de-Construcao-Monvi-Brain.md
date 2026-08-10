@@ -973,19 +973,26 @@ As seguintes decisões devem ser tomadas nas fases adequadas:
 
 ## 19. Estado atual
 
+*Atualizado em 2026-08-10 (Task 052), após verificação direta do código, dos testes e das decisões formais — não apenas da documentação anterior desta seção, que estava desatualizada desde 2026-07-30.*
+
 ### Concluído
 
 - governança inicial;
 - arquitetura inicial do Core Brain MVP;
 - aprovação da stack com condições;
-- Etapa 1 técnica;
-- integração da Etapa 1 à `main`.
+- Fase 1 (fundação técnica): implementada, testada e integrada à `main`;
+- Fase 2 (modelo de domínio): schema Drizzle implementado (pessoa, identidade, perfil, papel, permissão, cliente, projeto, sessão), exportado e coberto por teste;
+- Fase 3 (persistência local): schema, migração e infraestrutura Docker local implementados; validação contra um banco Postgres real em execução ainda pendente de confirmação (teste de integração já existe em `apps/core-brain/tests/db.integration.test.ts`, aguardando execução em ambiente com Docker disponível);
+- Fase 4 (identidade, autenticação dev e autorização): `dev-login` bloqueado em produção, RBAC e revogação de sessão implementados e testados (Tasks 044 e 045, 14/14 testes automatizados passando).
+
+### Ainda não iniciado
+
+- autenticação de produção real (Google Workspace/OIDC) — arquitetura documentada na Task 040, implementação técnica não iniciada;
+- Fase 5 em diante — nenhuma implementada; Fase 5 depende de decisão formal sobre estratégia de multi-organização, ainda em aberto (seção 17).
 
 ### Próximo gate recomendado
 
-Aprovar este Plano Mestre como roadmap estratégico sem autorização de implementação automática.
-
-Depois, abrir uma task específica para a Fase 2: modelo de domínio e contratos.
+Confirmar a execução do teste de integração de persistência (Task 052, Parte B) em ambiente com Docker disponível. Depois, decidir entre fechar a autenticação de produção real ou abrir a Fase 5, ambas condicionadas a decisões formais ainda pendentes.
 
 ## 20. Critério de sucesso do plano
 
