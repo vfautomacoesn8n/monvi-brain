@@ -2,8 +2,8 @@
 id: task-2026-052
 type: task
 title: "Validação real de persistência do Core Brain (Fase 3) e correção documental do estado atual"
-status: draft
-task_state: active
+status: done
+task_state: done
 owner: ceo-monvi
 agent: claude-cursor
 reviewer: ceo-monvi
@@ -13,7 +13,7 @@ confidentiality: internal
 classification: internal
 created_at: "2026-08-10"
 updated_at: "2026-08-10"
-reviewed_at: null
+reviewed_at: "2026-08-10T16:27:59-03:00"
 review_cycle: on-change
 sources:
   - 00_SYSTEM/roadmaps/Plano-Mestre-de-Construcao-Monvi-Brain.md
@@ -70,7 +70,7 @@ forbidden_paths:
   - apps/core-brain/node_modules/
   - apps/core-brain/dist/
   - 00_SYSTEM/architecture/Backlog-priorizado-Helpper-Central-e-criterios-Task-048.md
-requires_review: true
+requires_review: false
 acceptance_criteria:
   - Teste de integração real criado em apps/core-brain/tests/db.integration.test.ts, isolado da suíte padrão, que insere, lê e remove um registro real na tabela person.
   - Script test:integration criado e configuração de vitest separada, sem alterar o comportamento de npm test.
@@ -115,23 +115,37 @@ Subir `infrastructure/local/docker-compose.yml`, rodar `npm run db:migrate` e `n
 
 ## Critérios de aceite
 
-- [ ] Teste de integração real criado, isolado da suíte padrão.
-- [ ] `test:integration` funcional (falha corretamente sem banco, pronto para validar quando o banco existir).
-- [ ] `npm run typecheck` e `npm test` continuam passando sem alteração de resultado.
-- [ ] `README.md` de `apps/core-brain` atualizado com estado real e runbook.
-- [ ] Plano Mestre e registro de riscos corrigidos, sem declarar persistência validada antes da Parte B.
-- [ ] Nenhuma credencial, dado real ou dependência nova.
-- [ ] Nenhuma alteração em `apps/core-brain/src/`.
-- [ ] Conteúdo revisado e aprovado pelo CEO antes do merge.
+- [x] Teste de integração real criado, isolado da suíte padrão. Evidência: `apps/core-brain/tests/db.integration.test.ts`, integrado em `main` no commit `17c3f30d185c0e416ee88e410f1d5520647214c8`.
+- [x] `test:integration` funcional (falha corretamente sem banco, pronto para validar quando o banco existir). Evidência: script `test:integration` em `apps/core-brain/package.json`; execução local retornou `ECONNREFUSED`, comportamento esperado sem Postgres disponível.
+- [x] `npm run typecheck` e `npm test` continuam passando sem alteração de resultado. Evidência: reexecutados após o merge, contra `main` sincronizado (`17c3f30d`): typecheck limpo; `test` com 14/14 testes, 4 arquivos.
+- [x] `README.md` de `apps/core-brain` atualizado com estado real e runbook. Evidência: seção "Persistência local (PostgreSQL)" adicionada, integrada em `main`.
+- [x] Plano Mestre e registro de riscos corrigidos, sem declarar persistência validada antes da Parte B. Evidência: seção 19 do Plano Mestre e bullets de "Limitações atuais" do registro de riscos, ambos atualizados e integrados em `main`.
+- [x] Nenhuma credencial, dado real ou dependência nova. Evidência: diff do PR #33 restrito aos 9 arquivos previstos em `allowed_paths`, sem alteração de `package-lock.json` ou variáveis de ambiente.
+- [x] Nenhuma alteração em `apps/core-brain/src/`. Evidência: `git show --name-status --format= origin/main` confirmou apenas os 9 arquivos esperados, nenhum em `src/`.
+- [x] Conteúdo revisado e aprovado pelo CEO antes do merge. Evidência: gate explícito "autorizo" concedido para o merge do PR #33.
 
 ## Riscos e gates humanos
 
 Riscos: a Parte B pendente pode ser esquecida e a persistência tratada como validada sem execução real; ausência de Docker neste ambiente pode se repetir em tasks técnicas futuras, exigindo alternativa (ambiente do CEO, ou CI, conforme o Achado 2 da minha auditoria).
 
-Gate vigente: `Autorizado` (em resposta à minha proposta de escopo revisado, dividido em Parte A e Parte B). Este gate autoriza a execução completa da Parte A — criação do teste de integração, configuração isolada, atualização de documentação — e a condução do ciclo de governança (commit, push, PR) até o ponto em que a revisão final e o merge, que dependem de decisão do CEO, sejam solicitados. Não autoriza a Parte B (que depende de ambiente externo), nem autenticação de produção real, nem Fase 5, nem alteração de código de negócio.
+Gate vigente: encerrado. O merge do PR #33 foi autorizado (`autorizo`) e executado por squash em `17c3f30d185c0e416ee88e410f1d5520647214c8`. Esta task está formalmente concluída quanto à Parte A. A Parte B permanece pendente, fora do meu alcance neste ambiente, e não é coberta por este encerramento.
 
-Histórico de gates desta task: proposta de escopo (Gate A, alternativas e recomendação) → CEO autoriza seguir a recomendação → eu identifico e reporto a ausência de Docker neste ambiente antes de assumir compromisso que não poderia cumprir → proposta de escopo revisado, dividido em Parte A/Parte B → `Autorizado` (este gate: execução completa da Parte A, criação da task, branch, commit, push e PR).
+Histórico de gates desta task: proposta de escopo (Gate A, alternativas e recomendação) → CEO autoriza seguir a recomendação → eu identifico e reporto a ausência de Docker neste ambiente antes de assumir compromisso que não poderia cumprir → proposta de escopo revisado, dividido em Parte A/Parte B → `Autorizado` (execução completa da Parte A, criação da task, branch, commit, push e PR) → `autorizo` (merge do PR #33, integrado em `17c3f30d185c0e416ee88e410f1d5520647214c8`).
 
 ## Revisão e entrega
 
 Apresentarei o diff completo, as validações locais (`typecheck`, `test`, `test:integration` com falha esperada e documentada) e o estado Git, e solicitarei explicitamente o gate de merge antes de integrar esta mudança em `main`.
+
+## Encerramento — 2026-08-10
+
+**Gate de encerramento**: o CEO autorizou (`autorizo`) o squash merge do PR #33.
+
+**Integração**: PR #33 integrado em `main` via squash merge, commit `17c3f30d185c0e416ee88e410f1d5520647214c8`, em 2026-08-10T19:25:50Z. Escopo integrado: exatamente os 9 arquivos previstos em `allowed_paths` — criação de `tests/db.integration.test.ts` e `vitest.integration.config.ts`, edição de `vitest.config.ts`, `package.json` e `README.md` em `apps/core-brain/`, e correção documental em `Plano-Mestre-de-Construcao-Monvi-Brain.md` e `Registro-pendencias-riscos-e-limitacoes-v1.md`. Nenhuma alteração em `apps/core-brain/src/`.
+
+**Verificação pós-merge**: sincronizei `main` local via fast-forward (`git pull --ff-only`, `2589421..17c3f30`) e reexecutei `npm run typecheck` e `npm test` diretamente contra o `main` já integrado — typecheck limpo, 14/14 testes passando em 4 arquivos, mesma contagem de antes da mudança. Confirma que a integração não alterou o comportamento da suíte padrão.
+
+**Estado final**: Parte A desta task está concluída e integrada em `main`. Parte B (execução real de `docker compose up`, `npm run db:migrate` e `npm run test:integration` contra Postgres real) permanece explicitamente pendente, depende de um ambiente com Docker disponível, e não deve ser tratada como concluída até execução e relato reais. Enquanto a Parte B não ocorrer, a Fase 3 (persistência) permanece classificada como "implementada, não validada contra banco real em execução" — exatamente o estado já refletido no Plano Mestre corrigido por esta própria task.
+
+**Escopo preservado**: nenhuma alteração fora de `allowed_paths` foi feita; nenhum código de negócio em `apps/core-brain/src/` foi tocado; nenhuma credencial, dado real ou dependência nova foi introduzida; a Task 048 permanece reservada exclusivamente para a futura implementação técnica do MVP do Helpper Central.
+
+**Integração deste próprio encerramento**: ainda pendente. Este documento de encerramento, ao ser commitado, seguirá o mesmo ciclo de governança (branch → commit → push → PR → gate de merge explícito) antes de ser integrado em `main`.
