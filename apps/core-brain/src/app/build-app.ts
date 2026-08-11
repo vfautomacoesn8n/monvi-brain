@@ -10,6 +10,7 @@ import { registerProjectMembershipRoutes } from "../http/routes/project-membersh
 import { registerTaskRoutes } from "../http/routes/task.js";
 import { registerDeliverableRoutes } from "../http/routes/deliverable.js";
 import { registerApprovalRoutes } from "../http/routes/approval.js";
+import { registerDependencyRoutes } from "../http/routes/dependency.js";
 import { createLoggerOptions } from "../logging/logger.js";
 
 export async function buildApp(
@@ -56,6 +57,10 @@ export async function buildApp(
   });
 
   await app.register(registerApprovalRoutes, {
+    prefix: "/api/v1"
+  });
+
+  await app.register(registerDependencyRoutes, {
     prefix: "/api/v1"
   });
 
