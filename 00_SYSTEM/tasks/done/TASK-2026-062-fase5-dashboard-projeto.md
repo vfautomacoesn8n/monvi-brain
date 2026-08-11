@@ -2,8 +2,8 @@
 id: task-2026-062
 type: task
 title: "Fase 5 — décima e última fatia operacional: dashboard operacional mínimo por projeto"
-status: draft
-task_state: active
+status: done
+task_state: done
 owner: ceo-monvi
 agent: claude-cursor
 reviewer: ceo-monvi
@@ -13,7 +13,7 @@ confidentiality: internal
 classification: internal
 created_at: "2026-08-11"
 updated_at: "2026-08-11"
-reviewed_at: null
+reviewed_at: "2026-08-11T15:11:58-03:00"
 review_cycle: on-change
 sources:
   - 00_SYSTEM/roadmaps/Plano-Mestre-de-Construcao-Monvi-Brain.md
@@ -112,7 +112,7 @@ forbidden_paths:
   - apps/core-brain/node_modules/
   - apps/core-brain/dist/
   - 00_SYSTEM/architecture/Backlog-priorizado-Helpper-Central-e-criterios-Task-048.md
-requires_review: true
+requires_review: false
 acceptance_criteria:
   - Rota GET /projects/:projectId/dashboard criada em apps/core-brain/src/http/routes/dashboard.ts, agregando contagens de tasks (por status), deliverables (por status), risks (por status e severidade) e approvals (por status, via join com deliverable).
   - Nenhuma tabela ou migração nova criada — a rota lê exclusivamente as tabelas task, deliverable, risk e approval já existentes.
@@ -158,25 +158,39 @@ Mesma decisão já registrada nas Tasks 052 a 061: a aplicação real das migra�
 
 ## Critérios de aceite
 
-- [ ] Rota `GET /projects/:projectId/dashboard` criada, agregando tarefas, entregáveis, riscos e aprovações.
-- [ ] Nenhuma tabela ou migração nova criada.
-- [ ] Rota exige autenticação e permissão, reaproveitando o middleware existente.
-- [ ] Nenhuma alteração em `src/db/`, `src/modules/`, `src/http/middlewares/` ou nas rotas já existentes.
-- [ ] Teste de bloqueio de acesso (401) passando sem banco real.
-- [ ] Teste de integração real criado, isolado da suíte padrão, não executado.
-- [ ] `typecheck`, `test` e `build` continuam passando (64/64 testes).
-- [ ] `README.md` e Plano Mestre atualizados, refletindo a Fase 5 funcionalmente completa.
-- [ ] Nenhuma credencial, dado real, dependência de software nova ou decisão de multi-organização.
-- [ ] Conteúdo revisado e aprovado pelo CEO antes do merge.
+- [x] Rota `GET /projects/:projectId/dashboard` criada, agregando tarefas, entregáveis, riscos e aprovações. Evidência: `apps/core-brain/src/http/routes/dashboard.ts`, integrado em `main` no commit `ab298f33f7aeb3118f0d9294a8f2b360c699e16c`.
+- [x] Nenhuma tabela ou migração nova criada. Evidência: nenhum arquivo em `apps/core-brain/drizzle/` foi alterado neste PR; `git show --name-status --format= origin/main` confirmou apenas os 8 arquivos previstos.
+- [x] Rota exige autenticação e permissão, reaproveitando o middleware existente. Evidência: `preHandler: [authenticateRequest, requirePermission('dashboard:read')]`; `src/http/middlewares/` não foi alterado.
+- [x] Nenhuma alteração em `src/db/`, `src/modules/`, `src/http/middlewares/` ou nas rotas já existentes. Evidência: diff restrito aos 8 arquivos previstos em `allowed_paths`.
+- [x] Teste de bloqueio de acesso (401) passando sem banco real. Evidência: `tests/dashboard.test.ts`, 1 teste, parte dos 64/64 da suíte padrão.
+- [x] Teste de integração real criado, isolado da suíte padrão, não executado. Evidência: `tests/dashboard.integration.test.ts`, escrito e presente na suíte de integração, não executado por decisão explícita do CEO.
+- [x] `typecheck`, `test` e `build` continuam passando (64/64 testes). Evidência: reexecutados após o merge, contra `main` sincronizado (`ab298f3`): typecheck limpo, 64/64 testes em 16 arquivos, build sem erros.
+- [x] `README.md` e Plano Mestre atualizados, refletindo a Fase 5 funcionalmente completa. Evidência: seção "Escopo implementado" do README e seção 19 do Plano Mestre (Fase 5 movida para "Concluído", com a ressalva explícita de que não está validada contra banco real), ambos integrados em `main`.
+- [x] Nenhuma credencial, dado real, dependência de software nova ou decisão de multi-organização. Evidência: diff do PR #53 restrito aos 8 arquivos previstos; nenhuma alteração em `package.json`; suposição single-tenant mantida.
+- [x] Conteúdo revisado e aprovado pelo CEO antes do merge. Evidência: gate explícito "autorizado" concedido para o merge do PR #53.
 
 ## Riscos e gates humanos
 
 Riscos: o dashboard não agrega `dependencies` nem `comments` — decisão deliberada de escopo mínimo, revisável se houver necessidade real; a consulta de agregação nunca foi executada contra um banco real (mesma limitação de Parte B de toda a fase); ausência de Docker neste ambiente segue sendo uma limitação estrutural; "Fase 5 completa" descreve implementação e testes que não dependem de banco — não uma fase validada e pronta para uso real, distinção que fiz questão de deixar explícita na atualização do Plano Mestre.
 
-Gate vigente: `autorizado` (em resposta à proposta de escopo da Task 062 — dashboard operacional mínimo por projeto). Este gate autoriza a execução completa do escopo técnico e a condução do ciclo de governança (commit, push, PR) até o ponto em que a revisão final e o merge, que dependem de decisão do CEO, sejam solicitados. Não autoriza a aplicação real de nenhuma migração, o modelo de multi-organização, nem autenticação de produção real.
+Gate vigente: encerrado. O merge do PR #53 foi autorizado (`autorizado`) e executado por squash em `ab298f33f7aeb3118f0d9294a8f2b360c699e16c`. Esta task está formalmente concluída — e com ela, os 12 entregáveis previstos para a Fase 5. O modelo de multi-organização e a Parte B (aplicação real de todas as migrações e validação contra Postgres) permanecem fora deste encerramento, como as duas únicas pendências reais restantes da fase.
 
-Histórico de gates desta task: encerramento da Task 061 → CEO pede para continuar → proponho o escopo desta task (dashboard mínimo, sem tabela nova, cobrindo tarefas/entregáveis/riscos/aprovações) → `autorizado` (este gate: execução completa do escopo, criação da task, branch, commit, push e PR).
+Histórico de gates desta task: encerramento da Task 061 → CEO pede para continuar → proponho o escopo desta task (dashboard mínimo, sem tabela nova, cobrindo tarefas/entregáveis/riscos/aprovações) → `autorizado` (execução completa do escopo, criação da task, branch, commit, push e PR) → `autorizado` (merge do PR #53, integrado em `ab298f33f7aeb3118f0d9294a8f2b360c699e16c`).
 
 ## Revisão e entrega
 
 Apresentarei o diff completo, as validações locais (`typecheck`, `test`, `build`, `test:integration` com falha esperada e documentada) e o estado Git, e solicitarei explicitamente o gate de merge antes de integrar esta mudança em `main`.
+
+## Encerramento — 2026-08-11
+
+**Gate de encerramento**: o CEO autorizou (`autorizado`) o squash merge do PR #53.
+
+**Integração**: PR #53 integrado em `main` via squash merge, commit `ab298f33f7aeb3118f0d9294a8f2b360c699e16c`, em 2026-08-11T18:10:19Z. Escopo integrado: exatamente os 8 arquivos previstos em `allowed_paths` — criação de `src/http/routes/dashboard.ts`, `tests/dashboard.test.ts` e `tests/dashboard.integration.test.ts`; edição de `src/app/build-app.ts`, `README.md`, o Plano Mestre e `changes.jsonl`. Nenhuma tabela ou migração nova; nenhuma alteração em `src/db/`, `src/modules/`, `src/http/middlewares/` ou nas rotas já existentes.
+
+**Verificação pós-merge**: sincronizei `main` local via fast-forward (`git pull --ff-only`, `cb8031c..ab298f3`) e reexecutei `npm run typecheck`, `npm test` e `npm run build` diretamente contra o `main` já integrado — typecheck limpo, 64/64 testes passando em 16 arquivos, build sem erros. Confirma que a integração não quebrou o comportamento da suíte padrão nem o build de produção.
+
+**Estado final**: a décima e última fatia operacional da Fase 5 (dashboard operacional mínimo por projeto, com autenticação e RBAC) está concluída e integrada em `main`, sob a mesma suposição explícita de single-tenant já documentada. Com esta task, **os 12 entregáveis previstos para a Fase 5 no Plano Mestre estão implementados**: clientes, contatos, projetos, participação em projetos, tarefas, entregáveis, aprovações, dependências, riscos, comentários, histórico de mudanças e dashboards. A Fase 5 está funcionalmente completa, mas explicitamente **não validada** contra um banco Postgres real — nenhum dos onze testes de integração escritos ao longo da fase (Tasks 052 a 062) foi executado com sucesso. O modelo de multi-organização e a autenticação de produção real também permanecem pendentes. Essas são as pendências reais restantes, e ficam fora deste encerramento.
+
+**Escopo preservado**: nenhuma alteração fora de `allowed_paths` foi feita; nenhum código de identidade/autenticação/autorização ou das rotas já existentes foi tocado; nenhuma credencial, dado real ou dependência de software nova foi introduzida; nenhuma decisão de multi-organização foi tomada ou presumida.
+
+**Integração deste próprio encerramento**: ainda pendente. Este documento de encerramento, ao ser commitado, seguirá o mesmo ciclo de governança (branch → commit → push → PR → gate de merge explícito) antes de ser integrado em `main`.
