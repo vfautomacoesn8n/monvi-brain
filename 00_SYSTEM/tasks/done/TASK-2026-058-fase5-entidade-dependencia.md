@@ -2,8 +2,8 @@
 id: task-2026-058
 type: task
 title: "Fase 5 — sexta fatia operacional: entidade dependency (dependências) e sua API"
-status: draft
-task_state: active
+status: done
+task_state: done
 owner: ceo-monvi
 agent: claude-cursor
 reviewer: ceo-monvi
@@ -13,7 +13,7 @@ confidentiality: internal
 classification: internal
 created_at: "2026-08-11"
 updated_at: "2026-08-11"
-reviewed_at: null
+reviewed_at: "2026-08-11T10:55:52-03:00"
 review_cycle: on-change
 sources:
   - 00_SYSTEM/roadmaps/Plano-Mestre-de-Construcao-Monvi-Brain.md
@@ -116,7 +116,7 @@ forbidden_paths:
   - apps/core-brain/node_modules/
   - apps/core-brain/dist/
   - 00_SYSTEM/architecture/Backlog-priorizado-Helpper-Central-e-criterios-Task-048.md
-requires_review: true
+requires_review: false
 acceptance_criteria:
   - Entidade dependency criada em apps/core-brain/src/db/schema/dependency.ts, auto-referenciada em task (task_id e depends_on_task_id), com índice único evitando duplicatas, exportada em schema/index.ts.
   - Migração gerada via npm run db:generate (sem aplicar contra banco real), correspondendo exatamente ao schema desenhado.
@@ -161,26 +161,40 @@ Mesma decisão já registrada nas Tasks 052 a 057: a aplicação real das migra�
 
 ## Critérios de aceite
 
-- [ ] Entidade `dependency` criada, auto-referenciada em `task`, com índice único, exportada em `schema/index.ts`.
-- [ ] Migração gerada (não aplicada) correspondendo ao schema desenhado.
-- [ ] Rotas CRUD para `dependency` criadas e registradas, rejeitando auto-dependência com 400.
-- [ ] Todas as rotas exigem autenticação e permissão, reaproveitando o middleware existente.
-- [ ] Nenhuma alteração em outros arquivos de schema, `src/modules/`, `src/http/middlewares/` ou nas rotas já existentes.
-- [ ] Testes de bloqueio de acesso (401) passando sem banco real.
-- [ ] Teste de integração real do ciclo completo criado, isolado da suíte padrão, não executado.
-- [ ] `typecheck`, `test` e `build` continuam passando (52/52 testes).
-- [ ] `README.md` e Plano Mestre atualizados.
-- [ ] Nenhuma credencial, dado real, dependência de software nova ou decisão de multi-organização.
-- [ ] Conteúdo revisado e aprovado pelo CEO antes do merge.
+- [x] Entidade `dependency` criada, auto-referenciada em `task`, com índice único, exportada em `schema/index.ts`. Evidência: `apps/core-brain/src/db/schema/dependency.ts`, integrado em `main` no commit `748f12a68dd05a2191582367b6f3d3e242053476`.
+- [x] Migração gerada (não aplicada) correspondendo ao schema desenhado. Evidência: `apps/core-brain/drizzle/0004_icy_pestilence.sql`, conferida manualmente contra o schema; `npm run test:integration` segue falhando com `ECONNREFUSED`, confirmando que não foi aplicada.
+- [x] Rotas CRUD para `dependency` criadas e registradas, rejeitando auto-dependência com 400. Evidência: `apps/core-brain/src/http/routes/dependency.ts`, registrado em `build-app.ts`; verificação `dependsOnTaskId === taskId` no handler de criação.
+- [x] Todas as rotas exigem autenticação e permissão, reaproveitando o middleware existente. Evidência: `preHandler: [authenticateRequest, requirePermission(...)]` em cada rota; `src/http/middlewares/` não foi alterado.
+- [x] Nenhuma alteração em outros arquivos de schema, `src/modules/`, `src/http/middlewares/` ou nas rotas já existentes. Evidência: `git show --name-status --format= origin/main` confirmou apenas os 12 arquivos previstos em `allowed_paths`.
+- [x] Testes de bloqueio de acesso (401) passando sem banco real. Evidência: `tests/dependency.test.ts`, 5 testes, parte dos 52/52 da suíte padrão.
+- [x] Teste de integração real do ciclo completo criado, isolado da suíte padrão, não executado. Evidência: `tests/dependency.integration.test.ts`, escrito e presente na suíte de integração, não executado por decisão explícita do CEO.
+- [x] `typecheck`, `test` e `build` continuam passando (52/52 testes). Evidência: reexecutados após o merge, contra `main` sincronizado (`748f12a`): typecheck limpo, 52/52 testes em 12 arquivos, build sem erros.
+- [x] `README.md` e Plano Mestre atualizados. Evidência: seção "Escopo implementado"/"Endpoints" do README e seção 19 do Plano Mestre, ambos integrados em `main`.
+- [x] Nenhuma credencial, dado real, dependência de software nova ou decisão de multi-organização. Evidência: diff do PR #45 restrito aos 12 arquivos previstos; nenhuma alteração em `package.json`; suposição single-tenant mantida.
+- [x] Conteúdo revisado e aprovado pelo CEO antes do merge. Evidência: gate explícito "autorizado" concedido para o merge do PR #45.
 
 ## Riscos e gates humanos
 
 Riscos: mesmos já registrados nas Tasks 055 a 057 — migrações nunca aplicadas contra banco real, suposição single-tenant acumulando escopo, ausência de Docker neste ambiente; o índice único em `(task_id, depends_on_task_id)` não impede dependências circulares indiretas (A depende de B, B depende de C, C depende de A) — validação de ciclo não foi implementada nesta fatia, por não ter sido identificada como necessidade real comprovada ainda.
 
-Gate vigente: `Autorizado` (em resposta à proposta de escopo da Task 058 — entidade `dependency` e sua API). Este gate autoriza a execução completa do escopo técnico e a condução do ciclo de governança (commit, push, PR) até o ponto em que a revisão final e o merge, que dependem de decisão do CEO, sejam solicitados. Não autoriza os demais entregáveis da Fase 5, o modelo de multi-organização, a aplicação real de nenhuma migração, nem autenticação de produção real.
+Gate vigente: encerrado. O merge do PR #45 foi autorizado (`autorizado`) e executado por squash em `748f12a68dd05a2191582367b6f3d3e242053476`. Esta task está formalmente concluída. Os demais entregáveis da Fase 5, o modelo de multi-organização e a Parte B (aplicação real de todas as migrações e validação contra Postgres, adiada para o fim da fase) permanecem fora deste encerramento.
 
-Histórico de gates desta task: encerramento da Task 057 → CEO pede para seguir para a próxima → proponho o escopo desta task (entidade `dependency` nova, auto-referenciada em `task`, reaproveitando o padrão já estabelecido) → `Autorizado` (este gate: execução completa do escopo, criação da task, branch, commit, push e PR).
+Histórico de gates desta task: encerramento da Task 057 → CEO pede para seguir para a próxima → proponho o escopo desta task (entidade `dependency` nova, auto-referenciada em `task`, reaproveitando o padrão já estabelecido) → `Autorizado` (execução completa do escopo, criação da task, branch, commit, push e PR) → `autorizado` (merge do PR #45, integrado em `748f12a68dd05a2191582367b6f3d3e242053476`).
 
 ## Revisão e entrega
 
 Apresentarei o diff completo, as validações locais (`typecheck`, `test`, `build`, `test:integration` com falha esperada e documentada) e o estado Git, e solicitarei explicitamente o gate de merge antes de integrar esta mudança em `main`.
+
+## Encerramento — 2026-08-11
+
+**Gate de encerramento**: o CEO autorizou (`autorizado`) o squash merge do PR #45.
+
+**Integração**: PR #45 integrado em `main` via squash merge, commit `748f12a68dd05a2191582367b6f3d3e242053476`, em 2026-08-11T13:55:13Z. Escopo integrado: exatamente os 12 arquivos previstos em `allowed_paths` — criação de `src/db/schema/dependency.ts`, `src/http/routes/dependency.ts`, `tests/dependency.test.ts`, `tests/dependency.integration.test.ts`, `drizzle/0004_icy_pestilence.sql` e `drizzle/meta/0004_snapshot.json`; edição de `src/db/schema/index.ts`, `src/app/build-app.ts`, `drizzle/meta/_journal.json`, `README.md`, o Plano Mestre e `changes.jsonl`. Nenhuma alteração em outros arquivos de schema, `src/modules/`, `src/http/middlewares/` ou nas rotas já existentes.
+
+**Verificação pós-merge**: sincronizei `main` local via fast-forward (`git pull --ff-only`, `0a6891e..748f12a`) e reexecutei `npm run typecheck`, `npm test` e `npm run build` diretamente contra o `main` já integrado — typecheck limpo, 52/52 testes passando em 12 arquivos, build sem erros. Confirma que a integração não quebrou o comportamento da suíte padrão nem o build de produção.
+
+**Estado final**: a sexta fatia operacional da Fase 5 (entidade `dependency` e sua API real, com autenticação e RBAC) está concluída e integrada em `main`, sob a mesma suposição explícita de single-tenant já documentada. Os demais entregáveis da Fase 5 (riscos, comentários, histórico de mudanças, dashboards), o modelo de multi-organização e a autenticação de produção real permanecem pendentes e fora deste encerramento. A Parte B (aplicação real de todas as migrações e validação das APIs contra Postgres via Docker) permanece explicitamente pendente, por decisão do CEO adiada em bloco para o final da Fase 5. O risco de ciclos indiretos de dependência não validados (A→B→C→A) permanece registrado como limitação conhecida, não tratada nesta fatia.
+
+**Escopo preservado**: nenhuma alteração fora de `allowed_paths` foi feita; nenhum código de identidade/autenticação/autorização ou das rotas já existentes foi tocado; nenhuma credencial, dado real ou dependência de software nova foi introduzida; nenhuma decisão de multi-organização foi tomada ou presumida.
+
+**Integração deste próprio encerramento**: ainda pendente. Este documento de encerramento, ao ser commitado, seguirá o mesmo ciclo de governança (branch → commit → push → PR → gate de merge explícito) antes de ser integrado em `main`.
