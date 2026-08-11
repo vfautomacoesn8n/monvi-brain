@@ -973,7 +973,7 @@ As seguintes decisões devem ser tomadas nas fases adequadas:
 
 ## 19. Estado atual
 
-*Atualizado em 2026-08-10 (Task 054), após verificação direta do código, dos testes e das decisões formais — não apenas da documentação anterior desta seção.*
+*Atualizado em 2026-08-11 (Task 055), após verificação direta do código, dos testes e das decisões formais — não apenas da documentação anterior desta seção.*
 
 ### Concluído
 
@@ -987,17 +987,17 @@ As seguintes decisões devem ser tomadas nas fases adequadas:
 
 ### Em andamento
 
-- Fase 5 (operação de clientes e projetos): iniciada pela Task 053 (API CRUD real para `client` e `project`) e estendida pela Task 054 (API real para `contact`, vinculado a `client`, e `project_membership`, vinculando pessoa a projeto com papel — encerramento de participação preserva histórico via `leftAt`, sem exclusão). Ambas sob autenticação e RBAC obrigatórios e sob a mesma suposição explícita de single-tenant, aguardando decisão formal sobre o modelo de multi-organização (seção 17) para serem revisadas quando essa decisão for tomada. Os demais entregáveis da fase (tarefas, entregáveis, aprovações, dependências, riscos, comentários, histórico de mudanças, dashboards) ainda não foram iniciados. Validação da API contra um banco real segue o mesmo padrão da Fase 3: testes de integração criados (`apps/core-brain/tests/client-project.integration.test.ts`, `apps/core-brain/tests/contact-membership.integration.test.ts`), aguardando execução em ambiente com Docker disponível.
+- Fase 5 (operação de clientes e projetos): iniciada pela Task 053 (API CRUD real para `client` e `project`), estendida pela Task 054 (API real para `contact`, vinculado a `client`, e `project_membership`, vinculando pessoa a projeto com papel — encerramento de participação preserva histórico via `leftAt`, sem exclusão) e pela Task 055 (entidade `task` nova no schema Drizzle — primeira entidade de schema criada nesta fase, não reaproveitada da Fase 2 — vinculada a `project`, com responsável opcional vinculado a `person`, e API CRUD correspondente). Todas sob autenticação e RBAC obrigatórios e sob a mesma suposição explícita de single-tenant, aguardando decisão formal sobre o modelo de multi-organização (seção 17) para serem revisadas quando essa decisão for tomada. Os demais entregáveis da fase (entregáveis, aprovações, dependências, riscos, comentários, histórico de mudanças, dashboards) ainda não foram iniciados. A migração da tabela `task` foi gerada (`drizzle/0001_deep_scarlet_spider.sql`), passo que não depende de Docker, mas ainda não foi aplicada contra um banco real. Validação da API contra um banco real segue o mesmo padrão da Fase 3: testes de integração criados (`apps/core-brain/tests/client-project.integration.test.ts`, `apps/core-brain/tests/contact-membership.integration.test.ts`, `apps/core-brain/tests/task.integration.test.ts`), aguardando execução em ambiente com Docker disponível.
 
 ### Ainda não iniciado
 
 - autenticação de produção real (Google Workspace/OIDC) — arquitetura documentada na Task 040, implementação técnica não iniciada;
 - modelo de multi-organização — decisão formal ainda em aberto (seção 17), adiada deliberadamente para depois do início da Fase 5;
-- demais entregáveis da Fase 5 além de clientes, projetos, contatos e participação em projetos, e todas as fases 6 em diante.
+- demais entregáveis da Fase 5 além de clientes, projetos, contatos, participação em projetos e tarefas, e todas as fases 6 em diante.
 
 ### Próximo gate recomendado
 
-Confirmar a execução dos testes de integração de persistência e de API de clientes/projetos/contatos/participação em projeto (Tasks 052, 053 e 054, Parte B de cada uma) em ambiente com Docker disponível. Em paralelo, decidir o modelo de multi-organização (para revisar o que já foi construído na Fase 5 sob suposição single-tenant) e a estratégia de autenticação de produção, ambas ainda pendentes.
+Confirmar a execução dos testes de integração de persistência e de API de clientes/projetos/contatos/participação em projeto/tarefas (Tasks 052, 053, 054 e 055, Parte B de cada uma), incluindo a aplicação real da migração `0001_deep_scarlet_spider.sql`, em ambiente com Docker disponível. Em paralelo, decidir o modelo de multi-organização (para revisar o que já foi construído na Fase 5 sob suposição single-tenant) e a estratégia de autenticação de produção, ambas ainda pendentes.
 
 ## 20. Critério de sucesso do plano
 

@@ -8,6 +8,13 @@
       "when": 1785510542179,
       "tag": "0000_orange_hammerhead",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1786452026586,
+      "tag": "0001_deep_scarlet_spider",
+      "breakpoints": true
     }
   ]
 }
