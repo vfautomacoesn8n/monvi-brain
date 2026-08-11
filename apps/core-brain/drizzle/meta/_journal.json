@@ -15,6 +15,13 @@
       "when": 1786452026586,
       "tag": "0001_deep_scarlet_spider",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1786454239433,
+      "tag": "0002_nifty_electro",
+      "breakpoints": true
     }
   ]
 }
