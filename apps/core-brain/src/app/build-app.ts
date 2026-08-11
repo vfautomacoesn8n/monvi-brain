@@ -14,6 +14,7 @@ import { registerDependencyRoutes } from "../http/routes/dependency.js";
 import { registerRiskRoutes } from "../http/routes/risk.js";
 import { registerCommentRoutes } from "../http/routes/comment.js";
 import { registerHistoryRoutes } from "../http/routes/history.js";
+import { registerDashboardRoutes } from "../http/routes/dashboard.js";
 import { createLoggerOptions } from "../logging/logger.js";
 
 export async function buildApp(
@@ -76,6 +77,10 @@ export async function buildApp(
   });
 
   await app.register(registerHistoryRoutes, {
+    prefix: "/api/v1"
+  });
+
+  await app.register(registerDashboardRoutes, {
     prefix: "/api/v1"
   });
 
