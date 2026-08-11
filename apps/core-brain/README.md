@@ -1,6 +1,6 @@
 # Monvi Core Brain
 
-Fundação técnica do Monvi Core Brain MVP, autorizada pela Task 041 e evoluída pelas Tasks 043 (persistência), 044 (identidade/autenticação/autorização), 045 (correção e validação factual), 053, 054, 055, 056, 057, 058 e 059 (Fase 5 — API operacional de clientes, projetos, contatos, participação em projetos, tarefas, entregáveis, aprovações, dependências e riscos).
+Fundação técnica do Monvi Core Brain MVP, autorizada pela Task 041 e evoluída pelas Tasks 043 (persistência), 044 (identidade/autenticação/autorização), 045 (correção e validação factual), 053, 054, 055, 056, 057, 058, 059 e 060 (Fase 5 — API operacional de clientes, projetos, contatos, participação em projetos, tarefas, entregáveis, aprovações, dependências, riscos e comentários).
 
 ## Escopo implementado
 
@@ -10,13 +10,13 @@ Fundação técnica do Monvi Core Brain MVP, autorizada pela Task 041 e evoluíd
 - tratamento básico de erros;
 - `GET /api/v1/health`;
 - `GET /api/v1/ready`;
-- schema de domínio via Drizzle (pessoa, identidade, perfil, papel, permissão, cliente, projeto, tarefa, entregável, aprovação, dependência, risco, sessão);
+- schema de domínio via Drizzle (pessoa, identidade, perfil, papel, permissão, cliente, projeto, tarefa, entregável, aprovação, dependência, risco, comentário, sessão);
 - persistência local via PostgreSQL e migrações Drizzle (Fase 3);
 - autenticação de desenvolvimento (`POST /api/v1/auth/dev-login`, bloqueada quando `NODE_ENV=production`) e autorização RBAC (Fase 4);
-- API operacional de clientes, projetos, contatos, participação em projetos, tarefas, entregáveis, aprovações, dependências entre tarefas e riscos (CRUD/gestão de ciclo de vida, com autenticação e RBAC obrigatórios), sob suposição explícita de single-tenant — sem modelo de multi-organização, decisão ainda pendente (Fase 5, Tasks 053, 054, 055, 056, 057, 058 e 059);
-- testes automatizados unitários, de configuração, de autenticação/autorização e de rotas de clientes, projetos, contatos, participação em projetos, tarefas, entregáveis, aprovações, dependências e riscos.
+- API operacional de clientes, projetos, contatos, participação em projetos, tarefas, entregáveis, aprovações, dependências entre tarefas, riscos e comentários em tarefas (CRUD/gestão de ciclo de vida, com autenticação e RBAC obrigatórios), sob suposição explícita de single-tenant — sem modelo de multi-organização, decisão ainda pendente (Fase 5, Tasks 053, 054, 055, 056, 057, 058, 059 e 060);
+- testes automatizados unitários, de configuração, de autenticação/autorização e de rotas de clientes, projetos, contatos, participação em projetos, tarefas, entregáveis, aprovações, dependências, riscos e comentários.
 
-Autenticação de produção real (Google Workspace/OIDC), modelo de multi-organização, credenciais reais, dados reais de clientes, integrações externas, homologação e produção permanecem fora do escopo. Os demais entregáveis da Fase 5 (comentários, histórico de mudanças, dashboards) ainda não foram implementados.
+Autenticação de produção real (Google Workspace/OIDC), modelo de multi-organização, credenciais reais, dados reais de clientes, integrações externas, homologação e produção permanecem fora do escopo. Os demais entregáveis da Fase 5 (histórico de mudanças, dashboards) ainda não foram implementados. Comentários estão escopados a tarefas apenas (sem associação polimórfica a outras entidades ainda).
 
 ## Execução local
 
@@ -79,13 +79,18 @@ GET http://127.0.0.1:3000/api/v1/projects/:projectId/risks
 GET http://127.0.0.1:3000/api/v1/risks/:id
 PATCH http://127.0.0.1:3000/api/v1/risks/:id
 DELETE http://127.0.0.1:3000/api/v1/risks/:id
+POST http://127.0.0.1:3000/api/v1/tasks/:taskId/comments
+GET http://127.0.0.1:3000/api/v1/tasks/:taskId/comments
+GET http://127.0.0.1:3000/api/v1/comments/:id
+PATCH http://127.0.0.1:3000/api/v1/comments/:id
+DELETE http://127.0.0.1:3000/api/v1/comments/:id
 ```
 
-Todas as rotas de `clients`, `projects`, `contacts`, `memberships`, `tasks`, `deliverables`, `approvals`, `dependencies` e `risks` exigem autenticação (`Authorization: Bearer <token>`) e a permissão correspondente (`client:read`/`write`, `project:read`/`write`, `contact:read`/`write`, `project_membership:read`/`write`, `task:read`/`write`, `deliverable:read`/`write`, `approval:read`/`write`, `dependency:read`/`write`, `risk:read`/`write`). O `DELETE` de participação em projeto não remove o registro; encerra a participação (`leftAt`), preservando o histórico. O `PATCH` de aprovação que define `status` diferente de `pending` preenche `decidedAt` automaticamente. O `POST` de dependência rejeita com 400 uma tarefa que dependa de si mesma.
+Todas as rotas de `clients`, `projects`, `contacts`, `memberships`, `tasks`, `deliverables`, `approvals`, `dependencies`, `risks` e `comments` exigem autenticação (`Authorization: Bearer <token>`) e a permissão correspondente (`client:read`/`write`, `project:read`/`write`, `contact:read`/`write`, `project_membership:read`/`write`, `task:read`/`write`, `deliverable:read`/`write`, `approval:read`/`write`, `dependency:read`/`write`, `risk:read`/`write`, `comment:read`/`write`). O `DELETE` de participação em projeto não remove o registro; encerra a participação (`leftAt`), preservando o histórico. O `PATCH` de aprovação que define `status` diferente de `pending` preenche `decidedAt` automaticamente. O `POST` de dependência rejeita com 400 uma tarefa que dependa de si mesma. O autor de um comentário é sempre o usuário autenticado (`request.user.personId`), nunca informado no corpo da requisição.
 
 ## Persistência local (PostgreSQL)
 
-O schema e as migrações existem e compilam, mas isso não comprova, por si só, que a persistência funciona contra um banco real em execução. As migrações das tabelas `task` (`drizzle/0001_deep_scarlet_spider.sql`), `deliverable` (`drizzle/0002_nifty_electro.sql`), `approval` (`drizzle/0003_daffy_odin.sql`), `dependency` (`drizzle/0004_icy_pestilence.sql`) e `risk` (`drizzle/0005_curious_synch.sql`) foram geradas com `npm run db:generate`, que não depende de conexão com banco — apenas compara o schema Drizzle com o histórico de migrações. Aplicá-las contra um banco real ainda depende dos passos abaixo — por decisão do CEO, essa validação (Parte B) será feita em bloco depois que a Fase 5 estiver completa. Para validar isso de fato, quando chegar a hora:
+O schema e as migrações existem e compilam, mas isso não comprova, por si só, que a persistência funciona contra um banco real em execução. As migrações das tabelas `task` (`drizzle/0001_deep_scarlet_spider.sql`), `deliverable` (`drizzle/0002_nifty_electro.sql`), `approval` (`drizzle/0003_daffy_odin.sql`), `dependency` (`drizzle/0004_icy_pestilence.sql`), `risk` (`drizzle/0005_curious_synch.sql`) e `comment` (`drizzle/0006_equal_gladiator.sql`) foram geradas com `npm run db:generate`, que não depende de conexão com banco — apenas compara o schema Drizzle com o histórico de migrações. Aplicá-las contra um banco real ainda depende dos passos abaixo — por decisão do CEO, essa validação (Parte B) será feita em bloco depois que a Fase 5 estiver completa. Para validar isso de fato, quando chegar a hora:
 
 1. Subir o banco local definido em `infrastructure/local/docker-compose.yml`:
 
@@ -105,4 +110,4 @@ O schema e as migrações existem e compilam, mas isso não comprova, por si só
    npm run test:integration
    ```
 
-Esse comando executa oito arquivos de teste de integração: o de persistência básica (`person`, Task 052), o de CRUD real de clientes e projetos via API (`tests/client-project.integration.test.ts`, Task 053), o de contatos e participação em projeto via API (`tests/contact-membership.integration.test.ts`, Task 054), o de tarefas via API (`tests/task.integration.test.ts`, Task 055), o de entregáveis via API (`tests/deliverable.integration.test.ts`, Task 056), o de aprovações via API (`tests/approval.integration.test.ts`, Task 057), o de dependências via API (`tests/dependency.integration.test.ts`, Task 058) e o de riscos via API (`tests/risk.integration.test.ts`, Task 059), todos isolados da suíte padrão (`npm test`), que continua rodando sem depender de um banco disponível.
+Esse comando executa nove arquivos de teste de integração: o de persistência básica (`person`, Task 052), o de CRUD real de clientes e projetos via API (`tests/client-project.integration.test.ts`, Task 053), o de contatos e participação em projeto via API (`tests/contact-membership.integration.test.ts`, Task 054), o de tarefas via API (`tests/task.integration.test.ts`, Task 055), o de entregáveis via API (`tests/deliverable.integration.test.ts`, Task 056), o de aprovações via API (`tests/approval.integration.test.ts`, Task 057), o de dependências via API (`tests/dependency.integration.test.ts`, Task 058), o de riscos via API (`tests/risk.integration.test.ts`, Task 059) e o de comentários via API (`tests/comment.integration.test.ts`, Task 060), todos isolados da suíte padrão (`npm test`), que continua rodando sem depender de um banco disponível.

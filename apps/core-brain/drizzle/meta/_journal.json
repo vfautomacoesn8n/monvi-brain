@@ -43,6 +43,13 @@
       "when": 1786457904116,
       "tag": "0005_curious_synch",
       "breakpoints": true
+    },
+    {
+      "idx": 6,
+      "version": "7",
+      "when": 1786459417666,
+      "tag": "0006_equal_gladiator",
+      "breakpoints": true
     }
   ]
 }
