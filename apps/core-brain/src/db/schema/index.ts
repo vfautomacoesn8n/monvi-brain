@@ -7,4 +7,5 @@ export * from './project.js';
 export * from './task.js';
 export * from './deliverable.js';
 export * from './approval.js';
+export * from './dependency.js';
 export * from './session.js';
