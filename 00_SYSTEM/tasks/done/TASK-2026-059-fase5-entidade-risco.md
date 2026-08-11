@@ -2,8 +2,8 @@
 id: task-2026-059
 type: task
 title: "Fase 5 — sétima fatia operacional: entidade risk (riscos) e sua API"
-status: draft
-task_state: active
+status: done
+task_state: done
 owner: ceo-monvi
 agent: claude-cursor
 reviewer: ceo-monvi
@@ -13,7 +13,7 @@ confidentiality: internal
 classification: internal
 created_at: "2026-08-11"
 updated_at: "2026-08-11"
-reviewed_at: null
+reviewed_at: "2026-08-11T11:32:05-03:00"
 review_cycle: on-change
 sources:
   - 00_SYSTEM/roadmaps/Plano-Mestre-de-Construcao-Monvi-Brain.md
@@ -124,7 +124,7 @@ forbidden_paths:
   - apps/core-brain/node_modules/
   - apps/core-brain/dist/
   - 00_SYSTEM/architecture/Backlog-priorizado-Helpper-Central-e-criterios-Task-048.md
-requires_review: true
+requires_review: false
 acceptance_criteria:
   - Entidade risk criada em apps/core-brain/src/db/schema/risk.ts, vinculada a project (obrigatório) e opcionalmente a person (responsável), exportada em schema/index.ts.
   - Migração gerada via npm run db:generate (sem aplicar contra banco real), correspondendo exatamente ao schema desenhado.
@@ -169,26 +169,40 @@ Mesma decisão já registrada nas Tasks 052 a 058: a aplicação real das migra�
 
 ## Critérios de aceite
 
-- [ ] Entidade `risk` criada, vinculada a `project` e `person`, exportada em `schema/index.ts`.
-- [ ] Migração gerada (não aplicada) correspondendo ao schema desenhado.
-- [ ] Rotas CRUD para `risk` criadas e registradas.
-- [ ] Todas as rotas exigem autenticação e permissão, reaproveitando o middleware existente.
-- [ ] Nenhuma alteração em outros arquivos de schema, `src/modules/`, `src/http/middlewares/` ou nas rotas já existentes.
-- [ ] Testes de bloqueio de acesso (401) passando sem banco real.
-- [ ] Teste de integração real do ciclo completo criado, isolado da suíte padrão, não executado.
-- [ ] `typecheck`, `test` e `build` continuam passando (57/57 testes).
-- [ ] `README.md` e Plano Mestre atualizados.
-- [ ] Nenhuma credencial, dado real, dependência de software nova ou decisão de multi-organização.
-- [ ] Conteúdo revisado e aprovado pelo CEO antes do merge.
+- [x] Entidade `risk` criada, vinculada a `project` e `person`, exportada em `schema/index.ts`. Evidência: `apps/core-brain/src/db/schema/risk.ts`, integrado em `main` no commit `ff4d508ec28f4bf7d9846935ec2a10b21fc36e60`.
+- [x] Migração gerada (não aplicada) correspondendo ao schema desenhado. Evidência: `apps/core-brain/drizzle/0005_curious_synch.sql`, conferida manualmente contra o schema; `npm run test:integration` segue falhando com `ECONNREFUSED`, confirmando que não foi aplicada.
+- [x] Rotas CRUD para `risk` criadas e registradas. Evidência: `apps/core-brain/src/http/routes/risk.ts`, registrado em `build-app.ts`.
+- [x] Todas as rotas exigem autenticação e permissão, reaproveitando o middleware existente. Evidência: `preHandler: [authenticateRequest, requirePermission(...)]` em cada rota; `src/http/middlewares/` não foi alterado.
+- [x] Nenhuma alteração em outros arquivos de schema, `src/modules/`, `src/http/middlewares/` ou nas rotas já existentes. Evidência: `git show --name-status --format= origin/main` confirmou apenas os 12 arquivos previstos em `allowed_paths`.
+- [x] Testes de bloqueio de acesso (401) passando sem banco real. Evidência: `tests/risk.test.ts`, 5 testes, parte dos 57/57 da suíte padrão.
+- [x] Teste de integração real do ciclo completo criado, isolado da suíte padrão, não executado. Evidência: `tests/risk.integration.test.ts`, escrito e presente na suíte de integração, não executado por decisão explícita do CEO.
+- [x] `typecheck`, `test` e `build` continuam passando (57/57 testes). Evidência: reexecutados após o merge, contra `main` sincronizado (`ff4d508`): typecheck limpo, 57/57 testes em 13 arquivos, build sem erros.
+- [x] `README.md` e Plano Mestre atualizados. Evidência: seção "Escopo implementado"/"Endpoints" do README e seção 19 do Plano Mestre, ambos integrados em `main`.
+- [x] Nenhuma credencial, dado real, dependência de software nova ou decisão de multi-organização. Evidência: diff do PR #47 restrito aos 12 arquivos previstos; nenhuma alteração em `package.json`; suposição single-tenant mantida.
+- [x] Conteúdo revisado e aprovado pelo CEO antes do merge. Evidência: gate explícito "Aprovado" concedido para o merge do PR #47.
 
 ## Riscos e gates humanos
 
 Riscos: mesmos já registrados nas Tasks 055 a 058 — migrações nunca aplicadas contra banco real, suposição single-tenant acumulando escopo, ausência de Docker neste ambiente.
 
-Gate vigente: `autorizado` (em resposta à proposta de escopo da Task 059 — entidade `risk` e sua API). Este gate autoriza a execução completa do escopo técnico e a condução do ciclo de governança (commit, push, PR) até o ponto em que a revisão final e o merge, que dependem de decisão do CEO, sejam solicitados. Não autoriza os demais entregáveis da Fase 5, o modelo de multi-organização, a aplicação real de nenhuma migração, nem autenticação de produção real.
+Gate vigente: encerrado. O merge do PR #47 foi autorizado (`Aprovado`) e executado por squash em `ff4d508ec28f4bf7d9846935ec2a10b21fc36e60`. Esta task está formalmente concluída. Os demais entregáveis da Fase 5, o modelo de multi-organização e a Parte B (aplicação real de todas as migrações e validação contra Postgres, adiada para o fim da fase) permanecem fora deste encerramento.
 
-Histórico de gates desta task: encerramento da Task 058 → CEO pede para começar a próxima fatia → proponho o escopo desta task (entidade `risk` nova, vinculada a `project`, reaproveitando o padrão já estabelecido) → `autorizado` (este gate: execução completa do escopo, criação da task, branch, commit, push e PR).
+Histórico de gates desta task: encerramento da Task 058 → CEO pede para começar a próxima fatia → proponho o escopo desta task (entidade `risk` nova, vinculada a `project`, reaproveitando o padrão já estabelecido) → `autorizado` (execução completa do escopo, criação da task, branch, commit, push e PR) → `Aprovado` (merge do PR #47, integrado em `ff4d508ec28f4bf7d9846935ec2a10b21fc36e60`).
 
 ## Revisão e entrega
 
 Apresentarei o diff completo, as validações locais (`typecheck`, `test`, `build`, `test:integration` com falha esperada e documentada) e o estado Git, e solicitarei explicitamente o gate de merge antes de integrar esta mudança em `main`.
+
+## Encerramento — 2026-08-11
+
+**Gate de encerramento**: o CEO autorizou (`Aprovado`) o squash merge do PR #47.
+
+**Integração**: PR #47 integrado em `main` via squash merge, commit `ff4d508ec28f4bf7d9846935ec2a10b21fc36e60`, em 2026-08-11T14:30:46Z. Escopo integrado: exatamente os 12 arquivos previstos em `allowed_paths` — criação de `src/db/schema/risk.ts`, `src/http/routes/risk.ts`, `tests/risk.test.ts`, `tests/risk.integration.test.ts`, `drizzle/0005_curious_synch.sql` e `drizzle/meta/0005_snapshot.json`; edição de `src/db/schema/index.ts`, `src/app/build-app.ts`, `drizzle/meta/_journal.json`, `README.md`, o Plano Mestre e `changes.jsonl`. Nenhuma alteração em outros arquivos de schema, `src/modules/`, `src/http/middlewares/` ou nas rotas já existentes.
+
+**Verificação pós-merge**: sincronizei `main` local via fast-forward (`git pull --ff-only`, `8b68b21..ff4d508`) e reexecutei `npm run typecheck`, `npm test` e `npm run build` diretamente contra o `main` já integrado — typecheck limpo, 57/57 testes passando em 13 arquivos, build sem erros. Confirma que a integração não quebrou o comportamento da suíte padrão nem o build de produção.
+
+**Estado final**: a sétima fatia operacional da Fase 5 (entidade `risk` e sua API real, com autenticação e RBAC) está concluída e integrada em `main`, sob a mesma suposição explícita de single-tenant já documentada. Os demais entregáveis da Fase 5 (comentários, histórico de mudanças, dashboards), o modelo de multi-organização e a autenticação de produção real permanecem pendentes e fora deste encerramento. A Parte B (aplicação real de todas as migrações e validação das APIs contra Postgres via Docker) permanece explicitamente pendente, por decisão do CEO adiada em bloco para o final da Fase 5.
+
+**Escopo preservado**: nenhuma alteração fora de `allowed_paths` foi feita; nenhum código de identidade/autenticação/autorização ou das rotas já existentes foi tocado; nenhuma credencial, dado real ou dependência de software nova foi introduzida; nenhuma decisão de multi-organização foi tomada ou presumida.
+
+**Integração deste próprio encerramento**: ainda pendente. Este documento de encerramento, ao ser commitado, seguirá o mesmo ciclo de governança (branch → commit → push → PR → gate de merge explícito) antes de ser integrado em `main`.
