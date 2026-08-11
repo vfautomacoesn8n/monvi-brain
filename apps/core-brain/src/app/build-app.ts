@@ -12,6 +12,7 @@ import { registerDeliverableRoutes } from "../http/routes/deliverable.js";
 import { registerApprovalRoutes } from "../http/routes/approval.js";
 import { registerDependencyRoutes } from "../http/routes/dependency.js";
 import { registerRiskRoutes } from "../http/routes/risk.js";
+import { registerCommentRoutes } from "../http/routes/comment.js";
 import { createLoggerOptions } from "../logging/logger.js";
 
 export async function buildApp(
@@ -66,6 +67,10 @@ export async function buildApp(
   });
 
   await app.register(registerRiskRoutes, {
+    prefix: "/api/v1"
+  });
+
+  await app.register(registerCommentRoutes, {
     prefix: "/api/v1"
   });
 
