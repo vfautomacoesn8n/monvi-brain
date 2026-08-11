@@ -2,8 +2,8 @@
 id: task-2026-056
 type: task
 title: "Fase 5 — quarta fatia operacional: entidade deliverable (entregáveis) e sua API"
-status: draft
-task_state: active
+status: done
+task_state: done
 owner: ceo-monvi
 agent: claude-cursor
 reviewer: ceo-monvi
@@ -13,7 +13,7 @@ confidentiality: internal
 classification: internal
 created_at: "2026-08-11"
 updated_at: "2026-08-11"
-reviewed_at: null
+reviewed_at: "2026-08-11T10:26:57-03:00"
 review_cycle: on-change
 sources:
   - 00_SYSTEM/roadmaps/Plano-Mestre-de-Construcao-Monvi-Brain.md
@@ -103,7 +103,7 @@ forbidden_paths:
   - apps/core-brain/node_modules/
   - apps/core-brain/dist/
   - 00_SYSTEM/architecture/Backlog-priorizado-Helpper-Central-e-criterios-Task-048.md
-requires_review: true
+requires_review: false
 acceptance_criteria:
   - Entidade deliverable criada em apps/core-brain/src/db/schema/deliverable.ts, vinculada a project (obrigatório) e opcionalmente a task e a person (responsável), exportada em schema/index.ts.
   - Migração gerada via npm run db:generate (sem aplicar contra banco real), correspondendo exatamente ao schema desenhado.
@@ -150,26 +150,40 @@ Por decisão explícita do CEO, a aplicação real das migrações (`0001_deep_s
 
 ## Critérios de aceite
 
-- [ ] Entidade `deliverable` criada, vinculada a `project`, `task` e `person`, exportada em `schema/index.ts`.
-- [ ] Migração gerada (não aplicada) correspondendo ao schema desenhado.
-- [ ] Rotas CRUD para `deliverable` criadas e registradas.
-- [ ] Todas as rotas exigem autenticação e permissão, reaproveitando o middleware existente.
-- [ ] Nenhuma alteração em outros arquivos de schema, `src/modules/`, `src/http/middlewares/` ou nas rotas já existentes.
-- [ ] Testes de bloqueio de acesso (401) passando sem banco real.
-- [ ] Teste de integração real do ciclo completo criado, isolado da suíte padrão, não executado.
-- [ ] `typecheck`, `test` e `build` continuam passando (42/42 testes).
-- [ ] `README.md` e Plano Mestre atualizados.
-- [ ] Nenhuma credencial, dado real, dependência nova ou decisão de multi-organização.
-- [ ] Conteúdo revisado e aprovado pelo CEO antes do merge.
+- [x] Entidade `deliverable` criada, vinculada a `project`, `task` e `person`, exportada em `schema/index.ts`. Evidência: `apps/core-brain/src/db/schema/deliverable.ts`, integrado em `main` no commit `76832b1b562487b97ab4dd3c21c11123de8f763a`.
+- [x] Migração gerada (não aplicada) correspondendo ao schema desenhado. Evidência: `apps/core-brain/drizzle/0002_nifty_electro.sql`, conferida manualmente contra o schema; `npm run test:integration` segue falhando com `ECONNREFUSED`, confirmando que não foi aplicada.
+- [x] Rotas CRUD para `deliverable` criadas e registradas. Evidência: `apps/core-brain/src/http/routes/deliverable.ts`, registrado em `build-app.ts`.
+- [x] Todas as rotas exigem autenticação e permissão, reaproveitando o middleware existente. Evidência: `preHandler: [authenticateRequest, requirePermission(...)]` em cada rota; `src/http/middlewares/` não foi alterado.
+- [x] Nenhuma alteração em outros arquivos de schema, `src/modules/`, `src/http/middlewares/` ou nas rotas já existentes. Evidência: `git show --name-status --format= origin/main` confirmou apenas os 12 arquivos previstos em `allowed_paths`.
+- [x] Testes de bloqueio de acesso (401) passando sem banco real. Evidência: `tests/deliverable.test.ts`, 5 testes, parte dos 42/42 da suíte padrão.
+- [x] Teste de integração real do ciclo completo criado, isolado da suíte padrão, não executado. Evidência: `tests/deliverable.integration.test.ts`, escrito e presente na suíte de integração, não executado por decisão explícita do CEO.
+- [x] `typecheck`, `test` e `build` continuam passando (42/42 testes). Evidência: reexecutados após o merge, contra `main` sincronizado (`76832b1`): typecheck limpo, 42/42 testes em 10 arquivos, build sem erros.
+- [x] `README.md` e Plano Mestre atualizados. Evidência: seção "Escopo implementado"/"Endpoints" do README e seção 19 do Plano Mestre, ambos integrados em `main`.
+- [x] Nenhuma credencial, dado real, dependência nova ou decisão de multi-organização. Evidência: diff do PR #41 restrito aos 12 arquivos previstos; nenhuma alteração em `package.json`; suposição single-tenant mantida.
+- [x] Conteúdo revisado e aprovado pelo CEO antes do merge. Evidência: gate explícito "autorizado" concedido para o merge do PR #41.
 
 ## Riscos e gates humanos
 
 Riscos: adiar a Parte B para o fim da Fase 5 significa que erros de aplicação real de migração (não capturados pelo `generate`) só aparecerão depois de acumular várias entidades, tornando a depuração potencialmente mais trabalhosa — risco aceito explicitamente pelo CEO; a suposição single-tenant segue acumulando escopo; ausência de Docker neste ambiente segue sendo uma limitação estrutural.
 
-Gate vigente: `autorizado` (em resposta à proposta de escopo da Task 056 — entidade `deliverable` e sua API). Este gate autoriza a execução completa do escopo técnico e a condução do ciclo de governança (commit, push, PR) até o ponto em que a revisão final e o merge, que dependem de decisão do CEO, sejam solicitados. Não autoriza os demais entregáveis da Fase 5, o modelo de multi-organização, a aplicação real de nenhuma migração, nem autenticação de produção real.
+Gate vigente: encerrado. O merge do PR #41 foi autorizado (`autorizado`) e executado por squash em `76832b1b562487b97ab4dd3c21c11123de8f763a`. Esta task está formalmente concluída. Os demais entregáveis da Fase 5, o modelo de multi-organização e a Parte B (aplicação real de todas as migrações e validação contra Postgres, adiada para o fim da fase) permanecem fora deste encerramento.
 
-Histórico de gates desta task: encerramento da Task 055 → CEO pergunta é respondida (Fase 5 não está completa) → CEO decide continuar as fatias da Fase 5 e resolver a Parte B só ao final → proponho o escopo desta task (entidade `deliverable` nova, reaproveitando o padrão já estabelecido) → `autorizado` (este gate: execução completa do escopo, criação da task, branch, commit, push e PR).
+Histórico de gates desta task: encerramento da Task 055 → CEO pergunta é respondida (Fase 5 não está completa) → CEO decide continuar as fatias da Fase 5 e resolver a Parte B só ao final → proponho o escopo desta task (entidade `deliverable` nova, reaproveitando o padrão já estabelecido) → `autorizado` (execução completa do escopo, criação da task, branch, commit, push e PR) → `autorizado` (merge do PR #41, integrado em `76832b1b562487b97ab4dd3c21c11123de8f763a`).
 
 ## Revisão e entrega
 
 Apresentarei o diff completo, as validações locais (`typecheck`, `test`, `build`, `test:integration` com falha esperada e documentada) e o estado Git, e solicitarei explicitamente o gate de merge antes de integrar esta mudança em `main`.
+
+## Encerramento — 2026-08-11
+
+**Gate de encerramento**: o CEO autorizou (`autorizado`) o squash merge do PR #41.
+
+**Integração**: PR #41 integrado em `main` via squash merge, commit `76832b1b562487b97ab4dd3c21c11123de8f763a`, em 2026-08-11T13:25:40Z. Escopo integrado: exatamente os 12 arquivos previstos em `allowed_paths` — criação de `src/db/schema/deliverable.ts`, `src/http/routes/deliverable.ts`, `tests/deliverable.test.ts`, `tests/deliverable.integration.test.ts`, `drizzle/0002_nifty_electro.sql` e `drizzle/meta/0002_snapshot.json`; edição de `src/db/schema/index.ts`, `src/app/build-app.ts`, `drizzle/meta/_journal.json`, `README.md`, o Plano Mestre e `changes.jsonl`. Nenhuma alteração em outros arquivos de schema, `src/modules/`, `src/http/middlewares/` ou nas rotas já existentes.
+
+**Verificação pós-merge**: sincronizei `main` local via fast-forward (`git pull --ff-only`, `80b14f4..76832b1`) e reexecutei `npm run typecheck`, `npm test` e `npm run build` diretamente contra o `main` já integrado — typecheck limpo, 42/42 testes passando em 10 arquivos, build sem erros. Confirma que a integração não quebrou o comportamento da suíte padrão nem o build de produção.
+
+**Estado final**: a quarta fatia operacional da Fase 5 (entidade `deliverable` e sua API real, com autenticação e RBAC) está concluída e integrada em `main`, sob a mesma suposição explícita de single-tenant já documentada. Os demais entregáveis da Fase 5 (aprovações, dependências, riscos, comentários, histórico de mudanças, dashboards), o modelo de multi-organização e a autenticação de produção real permanecem pendentes e fora deste encerramento. A Parte B (aplicação real de todas as migrações e validação das APIs contra Postgres via Docker) permanece explicitamente pendente, por decisão do CEO adiada em bloco para o final da Fase 5.
+
+**Escopo preservado**: nenhuma alteração fora de `allowed_paths` foi feita; nenhum código de identidade/autenticação/autorização ou das rotas já existentes foi tocado; nenhuma credencial, dado real ou dependência nova foi introduzida; nenhuma decisão de multi-organização foi tomada ou presumida.
+
+**Integração deste próprio encerramento**: ainda pendente. Este documento de encerramento, ao ser commitado, seguirá o mesmo ciclo de governança (branch → commit → push → PR → gate de merge explícito) antes de ser integrado em `main`.
