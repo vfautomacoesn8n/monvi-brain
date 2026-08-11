@@ -2,8 +2,8 @@
 id: task-2026-061
 type: task
 title: "Fase 5 — nona fatia operacional: API de leitura do histórico de mudanças"
-status: draft
-task_state: active
+status: done
+task_state: done
 owner: ceo-monvi
 agent: claude-cursor
 reviewer: ceo-monvi
@@ -13,7 +13,7 @@ confidentiality: internal
 classification: internal
 created_at: "2026-08-11"
 updated_at: "2026-08-11"
-reviewed_at: null
+reviewed_at: "2026-08-11T14:21:17-03:00"
 review_cycle: on-change
 sources:
   - 00_SYSTEM/roadmaps/Plano-Mestre-de-Construcao-Monvi-Brain.md
@@ -106,7 +106,7 @@ forbidden_paths:
   - apps/core-brain/node_modules/
   - apps/core-brain/dist/
   - 00_SYSTEM/architecture/Backlog-priorizado-Helpper-Central-e-criterios-Task-048.md
-requires_review: true
+requires_review: false
 acceptance_criteria:
   - Rota GET /history criada em apps/core-brain/src/http/routes/history.ts, aceitando entityType e entityId via query string, validados contra as dez entidades da Fase 5.
   - Nenhuma tabela ou migração nova criada — a rota lê exclusivamente a tabela audit_event já existente desde a Fase 4.
@@ -149,25 +149,39 @@ Mesma decisão já registrada nas Tasks 052 a 060: a aplicação real das migra�
 
 ## Critérios de aceite
 
-- [ ] Rota `GET /history` criada, validando `entityType` contra as dez entidades da Fase 5.
-- [ ] Nenhuma tabela ou migração nova criada.
-- [ ] Rota exige autenticação e permissão, reaproveitando o middleware existente.
-- [ ] Nenhuma alteração em `src/db/`, `src/modules/`, `src/http/middlewares/` ou nas rotas já existentes.
-- [ ] Teste de bloqueio de acesso (401) passando sem banco real.
-- [ ] Teste de integração real criado, isolado da suíte padrão, não executado.
-- [ ] `typecheck`, `test` e `build` continuam passando (63/63 testes).
-- [ ] `README.md` e Plano Mestre atualizados.
-- [ ] Nenhuma credencial, dado real, dependência de software nova ou decisão de multi-organização.
-- [ ] Conteúdo revisado e aprovado pelo CEO antes do merge.
+- [x] Rota `GET /history` criada, validando `entityType` contra as dez entidades da Fase 5. Evidência: `apps/core-brain/src/http/routes/history.ts`, integrado em `main` no commit `3a91c2a067d29c530d13726d4abb180ec8565d23`.
+- [x] Nenhuma tabela ou migração nova criada. Evidência: nenhum arquivo em `apps/core-brain/drizzle/` foi alterado neste PR; `git show --name-status --format= origin/main` confirmou apenas os 8 arquivos previstos.
+- [x] Rota exige autenticação e permissão, reaproveitando o middleware existente. Evidência: `preHandler: [authenticateRequest, requirePermission('history:read')]`; `src/http/middlewares/` não foi alterado.
+- [x] Nenhuma alteração em `src/db/`, `src/modules/`, `src/http/middlewares/` ou nas rotas já existentes. Evidência: diff restrito aos 8 arquivos previstos em `allowed_paths`.
+- [x] Teste de bloqueio de acesso (401) passando sem banco real. Evidência: `tests/history.test.ts`, 1 teste, parte dos 63/63 da suíte padrão.
+- [x] Teste de integração real criado, isolado da suíte padrão, não executado. Evidência: `tests/history.integration.test.ts`, escrito e presente na suíte de integração, não executado por decisão explícita do CEO.
+- [x] `typecheck`, `test` e `build` continuam passando (63/63 testes). Evidência: reexecutados após o merge, contra `main` sincronizado (`3a91c2a`): typecheck limpo, 63/63 testes em 15 arquivos, build sem erros.
+- [x] `README.md` e Plano Mestre atualizados. Evidência: seção "Escopo implementado"/"Endpoints" do README e seção 19 do Plano Mestre, ambos integrados em `main`.
+- [x] Nenhuma credencial, dado real, dependência de software nova ou decisão de multi-organização. Evidência: diff do PR #51 restrito aos 8 arquivos previstos; nenhuma alteração em `package.json`; suposição single-tenant mantida.
+- [x] Conteúdo revisado e aprovado pelo CEO antes do merge. Evidência: gate explícito "autorizado" concedido para o merge do PR #51.
 
 ## Riscos e gates humanos
 
 Riscos: a chave usada em `actionDetails` para o id da própria entidade não é 100% uniforme entre rotas (`project_membership` usa `membershipId`, não `project_membershipId`) — mapeei isso explicitamente no código, mas é uma fragilidade de convenção herdada das Tasks 053-060, não desta task; a consulta usa o operador `->>` do Postgres sobre `jsonb`, nunca executada contra um banco real (mesma limitação de Parte B das fatias anteriores); ausência de Docker neste ambiente segue sendo uma limitação estrutural.
 
-Gate vigente: `autorizado` (em resposta à proposta de escopo da Task 061 — API de histórico de mudanças, genérica, reaproveitando `audit_event`). Este gate autoriza a execução completa do escopo técnico e a condução do ciclo de governança (commit, push, PR) até o ponto em que a revisão final e o merge, que dependem de decisão do CEO, sejam solicitados. Não autoriza o último entregável da Fase 5 (dashboards), o modelo de multi-organização, a aplicação real de nenhuma migração, nem autenticação de produção real.
+Gate vigente: encerrado. O merge do PR #51 foi autorizado (`autorizado`) e executado por squash em `3a91c2a067d29c530d13726d4abb180ec8565d23`. Esta task está formalmente concluída. O último entregável da Fase 5 (dashboards), o modelo de multi-organização e a Parte B (aplicação real de todas as migrações e validação contra Postgres, adiada para o fim da fase) permanecem fora deste encerramento.
 
-Histórico de gates desta task: encerramento da Task 060 → CEO pede para continuar → apresento a análise de que audit_event já cobre o dado necessário, sem tabela nova → CEO decide o escopo (genérico, cobrindo todas as entidades, em vez de escopado a uma entidade) → `autorizado` (este gate: execução completa do escopo, criação da task, branch, commit, push e PR).
+Histórico de gates desta task: encerramento da Task 060 → CEO pede para continuar → apresento a análise de que audit_event já cobre o dado necessário, sem tabela nova → CEO decide o escopo (genérico, cobrindo todas as entidades, em vez de escopado a uma entidade) → `autorizado` (execução completa do escopo, criação da task, branch, commit, push e PR) → `autorizado` (merge do PR #51, integrado em `3a91c2a067d29c530d13726d4abb180ec8565d23`).
 
 ## Revisão e entrega
 
 Apresentarei o diff completo, as validações locais (`typecheck`, `test`, `build`, `test:integration` com falha esperada e documentada) e o estado Git, e solicitarei explicitamente o gate de merge antes de integrar esta mudança em `main`.
+
+## Encerramento — 2026-08-11
+
+**Gate de encerramento**: o CEO autorizou (`autorizado`) o squash merge do PR #51.
+
+**Integração**: PR #51 integrado em `main` via squash merge, commit `3a91c2a067d29c530d13726d4abb180ec8565d23`, em 2026-08-11T17:17:59Z. Escopo integrado: exatamente os 8 arquivos previstos em `allowed_paths` — criação de `src/http/routes/history.ts`, `tests/history.test.ts` e `tests/history.integration.test.ts`; edição de `src/app/build-app.ts`, `README.md`, o Plano Mestre e `changes.jsonl`. Nenhuma tabela ou migração nova; nenhuma alteração em `src/db/`, `src/modules/`, `src/http/middlewares/` ou nas rotas já existentes.
+
+**Verificação pós-merge**: sincronizei `main` local via fast-forward (`git pull --ff-only`, `28e4c13..3a91c2a`) e reexecutei `npm run typecheck`, `npm test` e `npm run build` diretamente contra o `main` já integrado — typecheck limpo, 63/63 testes passando em 15 arquivos, build sem erros. Confirma que a integração não quebrou o comportamento da suíte padrão nem o build de produção.
+
+**Estado final**: a nona fatia operacional da Fase 5 (leitura de histórico de mudanças via `audit_event`, com autenticação e RBAC) está concluída e integrada em `main`, sob a mesma suposição explícita de single-tenant já documentada. Restam apenas os dashboards operacionais mínimos para fechar todos os 12 entregáveis da Fase 5. O modelo de multi-organização e a autenticação de produção real permanecem pendentes e fora deste encerramento. A Parte B (aplicação real de todas as migrações e validação das APIs contra Postgres via Docker) permanece explicitamente pendente, por decisão do CEO adiada em bloco para o final da Fase 5.
+
+**Escopo preservado**: nenhuma alteração fora de `allowed_paths` foi feita; nenhum código de identidade/autenticação/autorização ou das rotas já existentes foi tocado; nenhuma credencial, dado real ou dependência de software nova foi introduzida; nenhuma decisão de multi-organização foi tomada ou presumida.
+
+**Integração deste próprio encerramento**: ainda pendente. Este documento de encerramento, ao ser commitado, seguirá o mesmo ciclo de governança (branch → commit → push → PR → gate de merge explícito) antes de ser integrado em `main`.
