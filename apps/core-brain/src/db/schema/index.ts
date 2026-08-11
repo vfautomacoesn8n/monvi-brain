@@ -4,4 +4,5 @@ export * from './profile.js';
 export * from './role.js';
 export * from './client.js';
 export * from './project.js';
+export * from './task.js';
 export * from './session.js';

@@ -7,6 +7,7 @@ import { registerClientRoutes } from "../http/routes/client.js";
 import { registerProjectRoutes } from "../http/routes/project.js";
 import { registerContactRoutes } from "../http/routes/contact.js";
 import { registerProjectMembershipRoutes } from "../http/routes/project-membership.js";
+import { registerTaskRoutes } from "../http/routes/task.js";
 import { createLoggerOptions } from "../logging/logger.js";
 
 export async function buildApp(
@@ -41,6 +42,10 @@ export async function buildApp(
   });
 
   await app.register(registerProjectMembershipRoutes, {
+    prefix: "/api/v1"
+  });
+
+  await app.register(registerTaskRoutes, {
     prefix: "/api/v1"
   });
 
