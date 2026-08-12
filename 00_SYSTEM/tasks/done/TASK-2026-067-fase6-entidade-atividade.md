@@ -2,8 +2,8 @@
 id: task-2026-067
 type: task
 title: "Fase 6 — terceira fatia operacional: entidade activity (diagnóstico, proposta e follow-up unificados) e sua API"
-status: draft
-task_state: active
+status: done
+task_state: done
 owner: ceo-monvi
 agent: claude-cursor
 reviewer: ceo-monvi
@@ -13,6 +13,7 @@ confidentiality: internal
 classification: internal
 created_at: "2026-08-12"
 updated_at: "2026-08-12"
+reviewed_at: "2026-08-12T14:05:00-03:00"
 review_cycle: on-change
 sources:
   - 00_SYSTEM/roadmaps/Plano-Mestre-de-Construcao-Monvi-Brain.md
@@ -116,7 +117,7 @@ forbidden_paths:
   - apps/core-brain/node_modules/
   - apps/core-brain/dist/
   - 00_SYSTEM/architecture/Backlog-priorizado-Helpper-Central-e-criterios-Task-048.md
-requires_review: true
+requires_review: false
 acceptance_criteria:
   - Entidade activity criada em apps/core-brain/src/db/schema/activity.ts, unificando diagnóstico, proposta e follow-up via discriminador activity_type, com vínculo opcional a lead e a opportunity, exportada em schema/index.ts.
   - Migração gerada via npm run db:generate (sem aplicar contra banco real), correspondendo exatamente ao schema desenhado.
@@ -129,6 +130,7 @@ acceptance_criteria:
   - README.md de apps/core-brain e Plano Mestre atualizados refletindo a terceira fatia da Fase 6.
   - Nenhuma credencial, dado real ou dependência de software nova adicionada; nenhuma decisão sobre modelo de multi-organização tomada ou presumida; nenhuma entidade além de activity criada.
   - Conteúdo revisado e aprovado pelo CEO antes da integração em main. Por alterar código, esta task segue com PR de encerramento separada, posterior ao merge e à verificação pós-merge, conforme a Regra Fundamental 6 de TASK-LIFECYCLE.md.
+  - Retrospectiva crítica executada conforme ../workflows/retro.md antes da solicitação do gate de encerramento, conforme a Regra Fundamental 5 de TASK-LIFECYCLE.md.
 blocked_reason: "Esta task autoriza exclusivamente a criação da entidade activity (Fase 6), sua migração gerada (não aplicada) e sua API CRUD, sob suposição explícita de single-tenant. Não autoriza indicadores comerciais, integrações externas nem os demais entregáveis da Fase 6, o modelo de multi-organização, aplicação real de qualquer migração contra banco (Parte B, segue deliberadamente adiada), autenticação de produção real, alteração de código de identidade/autenticação/autorização ou das rotas já existentes (incluindo lead e opportunity), ou qualquer credencial, dado real ou dependência de software nova."
 ---
 
@@ -171,16 +173,49 @@ Mesma decisão já registrada desde a Task 052: a aplicação real das migraçõ
 - [x] `typecheck`, `test` e `build` continuam passando (79/79 testes). Evidência: execução local antes do commit.
 - [x] `README.md` e Plano Mestre atualizados. Evidência: seção "Escopo implementado"/"Endpoints" do README e seção 19 do Plano Mestre.
 - [x] Nenhuma credencial, dado real, dependência de software nova, entidade adicional ou decisão de multi-organização. Evidência: diff restrito aos arquivos previstos; nenhuma alteração em `package.json`; nenhuma entidade além de `activity`.
-- [ ] Conteúdo revisado e aprovado pelo CEO antes do merge; encerramento em PR separada (Regra Fundamental 6, exceção para código). Pendente do gate de merge do PR desta task.
+- [x] Conteúdo revisado e aprovado pelo CEO antes do merge; encerramento em PR separada (Regra Fundamental 6, exceção para código). Evidência: gate explícito "Autorizado" para o merge do PR #61; este encerramento, em PR própria, é essa própria exceção em aplicação.
+- [x] Retrospectiva crítica executada conforme `../workflows/retro.md` (Regra Fundamental 5). Evidência: seção "Retrospectiva crítica" abaixo, com mudanças aceitas registradas em `changes.jsonl`.
 
 ## Riscos e gates humanos
 
 Riscos: mesmos já registrados desde a Fase 5 — migração nunca aplicada contra banco real, suposição single-tenant acumulando escopo, ausência de Docker neste ambiente; `activity` não valida que `leadId`/`opportunityId`, quando ambos informados, pertençam de fato um ao outro — decisão deliberada de manter simples até haver necessidade real comprovada.
 
-Gate vigente: aguardando revisão do CEO e autorização explícita do squash merge do PR desta task.
+Gate vigente: encerrado. O merge do PR #61 foi autorizado (`Autorizado`) e executado por squash em `ca1730259320c47daef0a3b297a69da59c16d991`. Esta task está formalmente concluída. Os demais entregáveis da Fase 6, o modelo de multi-organização e a Parte B permanecem fora deste encerramento.
 
-Histórico de gates desta task: encerramento da Task 066 → CEO pede para continuar com a próxima fatia → proponho o escopo desta task (entidade `activity`, unificando diagnóstico/proposta/follow-up, vínculo opcional a `lead`/`opportunity`) → `Autorizado` (execução completa do escopo, criação da task, branch, commit, push e PR).
+Histórico de gates desta task: encerramento da Task 066 → CEO pede para continuar com a próxima fatia → proponho o escopo desta task (entidade `activity`, unificando diagnóstico/proposta/follow-up, vínculo opcional a `lead`/`opportunity`) → `Autorizado` (execução completa do escopo, criação da task, branch, commit, push e PR) → `Autorizado` (merge do PR #61, integrado em `ca1730259320c47daef0a3b297a69da59c16d991`).
 
 ## Revisão e entrega
 
-Apresentarei o diff completo, as validações locais (`typecheck`, `test`, `build`, `test:integration` com falha esperada e documentada) e o estado Git, e solicitarei explicitamente o gate de merge antes de integrar esta mudança em `main`.
+Apresentei o diff completo, as validações locais (`typecheck`, `test`, `build`, `test:integration` com falha esperada e documentada) e o estado Git, e solicitei explicitamente o gate de merge antes de integrar esta mudança em `main`.
+
+## Encerramento — 2026-08-12
+
+**Gate de encerramento**: o CEO autorizou (`Autorizado`) o squash merge do PR #61.
+
+**Integração**: PR #61 integrado em `main` via squash merge, commit `ca1730259320c47daef0a3b297a69da59c16d991`, em 2026-08-12T17:01:06Z. Escopo integrado: exatamente os 13 arquivos previstos em `allowed_paths` — criação de `src/db/schema/activity.ts`, `src/http/routes/activity.ts`, `tests/activity.test.ts`, `tests/activity.integration.test.ts`, `drizzle/0009_dazzling_kronos.sql` e `drizzle/meta/0009_snapshot.json`; edição de `src/db/schema/index.ts`, `src/app/build-app.ts`, `drizzle/meta/_journal.json`, `README.md`, o Plano Mestre e `changes.jsonl`. Nenhuma alteração em outros arquivos de schema, `src/modules/`, `src/http/middlewares/` ou nas rotas já existentes, incluindo `lead` e `opportunity`.
+
+**Verificação pós-merge**: sincronizei `main` local via fast-forward (`git pull --ff-only`, `4109994..ca17302`) e reexecutei `npm run typecheck`, `npm test` e `npm run build` diretamente contra o `main` já integrado — typecheck limpo, 79/79 testes passando em 19 arquivos, build sem erros.
+
+**Estado final**: a terceira fatia operacional da Fase 6 (entidade `activity` e sua API real, com autenticação e RBAC) está concluída e integrada em `main`, sob a mesma suposição explícita de single-tenant já documentada. Os demais entregáveis da Fase 6 (indicadores comerciais, integrações externas), o modelo de multi-organização e a autenticação de produção real permanecem pendentes e fora deste encerramento. A Parte B (aplicação real de todas as migrações e validação das APIs contra Postgres via Docker) permanece explicitamente pendente.
+
+**Escopo preservado**: nenhuma alteração fora de `allowed_paths` foi feita; nenhum código de identidade/autenticação/autorização, das rotas já existentes (incluindo `lead` e `opportunity`) foi tocado; nenhuma credencial, dado real ou dependência de software nova foi introduzida; nenhuma decisão de multi-organização foi tomada ou presumida; nenhuma entidade além de `activity` foi criada.
+
+## Retrospectiva crítica (conforme `../workflows/retro.md`)
+
+**Objetivo**: dar continuidade ao funil comercial, cobrindo os entregáveis "diagnóstico", "proposta" e "follow-up" da Fase 6 sem criar três tabelas quase idênticas.
+
+**Resultado conhecido**: entidade `activity` implementada e integrada, unificando os três entregáveis via `activity_type`, com vínculo opcional (mínimo um) a `lead` e `opportunity`, sem tocar em nenhum código já existente.
+
+**O que ajudou**: o padrão de origem opcional (`onDelete: set null`) já validado em `opportunity.leadId` deu um modelo direto para os dois vínculos de `activity`; a decisão de unificar em uma entidade só, em vez de três tabelas, evitou duplicação sem adicionar complexidade real — a mesma lógica de "três linhas parecidas é melhor que abstração prematura" aplicada ao contrário (três tabelas parecidas seriam a duplicação prematura).
+
+**O que dificultou**: a validação Zod `.refine()` exigindo pelo menos um de `leadId`/`opportunityId` precisou de atenção extra para não quebrar o `updateActivitySchema` (que não precisa dessa mesma restrição, já que a atividade já nasce vinculada) — resolvido mantendo dois schemas Zod separados para criação e atualização.
+
+**Surpresas**: nenhuma.
+
+**Riscos materializados**: nenhum.
+
+**Perguntas em aberto**: se `activity` deveria validar que, quando ambos `leadId` e `opportunityId` são informados, um pertence de fato ao outro (evitando vínculos inconsistentes) — decidi deliberadamente não implementar isso agora, por simplicidade; fica como ponto de atenção se um caso real exigir.
+
+**Ações propostas**: nenhuma adicional; indicadores comerciais é a próxima candidata natural, provável extensão do padrão de dashboard já usado na Task 062.
+
+**Mudanças aceitas**: registradas em `00_SYSTEM/logs/changes.jsonl`.
