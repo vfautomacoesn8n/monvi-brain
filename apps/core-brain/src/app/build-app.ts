@@ -20,6 +20,8 @@ import { registerOpportunityRoutes } from "../http/routes/opportunity.js";
 import { registerActivityRoutes } from "../http/routes/activity.js";
 import { registerCommercialDashboardRoutes } from "../http/routes/commercial-dashboard.js";
 import { registerSourceRoutes } from "../http/routes/source.js";
+import { registerDocumentRoutes } from "../http/routes/document.js";
+import { registerDocumentVersionRoutes } from "../http/routes/document-version.js";
 import { createLoggerOptions } from "../logging/logger.js";
 
 export async function buildApp(
@@ -106,6 +108,14 @@ export async function buildApp(
   });
 
   await app.register(registerSourceRoutes, {
+    prefix: "/api/v1"
+  });
+
+  await app.register(registerDocumentRoutes, {
+    prefix: "/api/v1"
+  });
+
+  await app.register(registerDocumentVersionRoutes, {
     prefix: "/api/v1"
   });
 

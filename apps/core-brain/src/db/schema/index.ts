@@ -14,4 +14,6 @@ export * from './lead.js';
 export * from './opportunity.js';
 export * from './activity.js';
 export * from './source.js';
+export * from './document.js';
+export * from './document-version.js';
 export * from './session.js';
