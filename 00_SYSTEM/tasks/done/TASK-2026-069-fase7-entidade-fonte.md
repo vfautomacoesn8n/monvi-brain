@@ -2,8 +2,8 @@
 id: task-2026-069
 type: task
 title: "Fase 7 — primeira fatia operacional: entidade source (cadastro de fontes) e sua API"
-status: draft
-task_state: active
+status: done
+task_state: done
 owner: ceo-monvi
 agent: claude-cursor
 reviewer: ceo-monvi
@@ -13,6 +13,7 @@ confidentiality: internal
 classification: internal
 created_at: "2026-08-12"
 updated_at: "2026-08-12"
+reviewed_at: "2026-08-12T14:55:00-03:00"
 review_cycle: on-change
 sources:
   - 00_SYSTEM/roadmaps/Plano-Mestre-de-Construcao-Monvi-Brain.md
@@ -119,7 +120,7 @@ forbidden_paths:
   - apps/core-brain/node_modules/
   - apps/core-brain/dist/
   - 00_SYSTEM/architecture/Backlog-priorizado-Helpper-Central-e-criterios-Task-048.md
-requires_review: true
+requires_review: false
 acceptance_criteria:
   - Entidade source criada em apps/core-brain/src/db/schema/source.ts, com nome, tipo, descricao, responsavel e status opcionais, exportada em schema/index.ts.
   - Migração gerada via npm run db:generate (sem aplicar contra banco real), correspondendo exatamente ao schema desenhado.
@@ -175,17 +176,49 @@ Mesma decisão já registrada desde a Task 052: a aplicação real das migraçõ
 - [x] `typecheck`, `test` e `build` continuam passando (85/85 testes). Evidência: execução local antes do commit.
 - [x] `README.md` e Plano Mestre atualizados. Evidência: seção "Escopo implementado"/"Endpoints" do README e seção 19 do Plano Mestre.
 - [x] Nenhuma credencial, dado real, dependência de software nova, entidade adicional, trabalho de extração/indexação/busca/embeddings ou decisão de multi-organização. Evidência: diff restrito aos arquivos previstos; nenhuma alteração em `package.json`; nenhuma entidade além de `source`.
-- [ ] Conteúdo revisado e aprovado pelo CEO antes do merge; encerramento em PR separada (Regra Fundamental 6, exceção para código). Pendente do gate de merge do PR desta task.
-- [ ] Retrospectiva crítica executada conforme `../workflows/retro.md` (Regra Fundamental 5). Pendente do encerramento formal desta task.
+- [x] Conteúdo revisado e aprovado pelo CEO antes do merge; encerramento em PR separada (Regra Fundamental 6, exceção para código). Evidência: gate explícito "Aprovado" para o merge do PR #65; este encerramento, em PR própria, é essa própria exceção em aplicação.
+- [x] Retrospectiva crítica executada conforme `../workflows/retro.md` (Regra Fundamental 5). Evidência: seção "Retrospectiva crítica" abaixo, com mudanças aceitas registradas em `changes.jsonl`.
 
 ## Riscos e gates humanos
 
 Riscos: mesmos já registrados desde a Fase 5 — migração nunca aplicada contra banco real, suposição single-tenant acumulando escopo, ausência de Docker neste ambiente; `source` ainda não tem nenhuma relação com `document` (que ainda não existe) — a modelagem dessa relação fica para a próxima fatia.
 
-Gate vigente: aguardando revisão do CEO e autorização explícita do squash merge do PR desta task.
+Gate vigente: encerrado. O merge do PR #65 foi autorizado (`Aprovado`) e executado por squash em `4a81ec5ee627cfc2e6d16613717c20a57322e9af`. Esta task está formalmente concluída. Os demais entregáveis da Fase 7, o modelo de multi-organização e a Parte B permanecem fora deste encerramento.
 
-Histórico de gates desta task: encerramento da Task 068 → CEO pede para avançar para a Fase 7 → proponho o escopo desta task (entidade `source`, cadastro de fontes, primeiro entregável e único ponto de partida permitido pela regra da fase) → `Autorizado` (execução completa do escopo, criação da task, branch, commit, push e PR).
+Histórico de gates desta task: encerramento da Task 068 → CEO pede para avançar para a Fase 7 → proponho o escopo desta task (entidade `source`, cadastro de fontes, primeiro entregável e único ponto de partida permitido pela regra da fase) → `Autorizado` (execução completa do escopo, criação da task, branch, commit, push e PR) → `Aprovado` (merge do PR #65, integrado em `4a81ec5ee627cfc2e6d16613717c20a57322e9af`).
 
 ## Revisão e entrega
 
-Apresentarei o diff completo, as validações locais (`typecheck`, `test`, `build`, `test:integration` com falha esperada e documentada) e o estado Git, e solicitarei explicitamente o gate de merge antes de integrar esta mudança em `main`.
+Apresentei o diff completo, as validações locais (`typecheck`, `test`, `build`, `test:integration` com falha esperada e documentada) e o estado Git, e solicitei explicitamente o gate de merge antes de integrar esta mudança em `main`.
+
+## Encerramento — 2026-08-12
+
+**Gate de encerramento**: o CEO autorizou (`Aprovado`) o squash merge do PR #65.
+
+**Integração**: PR #65 integrado em `main` via squash merge, commit `4a81ec5ee627cfc2e6d16613717c20a57322e9af`, em 2026-08-12T17:50:35Z. Escopo integrado: exatamente os 13 arquivos previstos em `allowed_paths` — criação de `src/db/schema/source.ts`, `src/http/routes/source.ts`, `tests/source.test.ts`, `tests/source.integration.test.ts`, `drizzle/0010_modern_maelstrom.sql` e `drizzle/meta/0010_snapshot.json`; edição de `src/db/schema/index.ts`, `src/app/build-app.ts`, `drizzle/meta/_journal.json`, `README.md`, o Plano Mestre e `changes.jsonl`. Nenhuma alteração em outros arquivos de schema, `src/modules/`, `src/http/middlewares/` ou nas rotas já existentes.
+
+**Verificação pós-merge**: sincronizei `main` local via fast-forward (`git pull --ff-only`, `772f23a..4a81ec5`) e reexecutei `npm run typecheck`, `npm test` e `npm run build` diretamente contra o `main` já integrado — typecheck limpo, 85/85 testes passando em 21 arquivos, build sem erros.
+
+**Estado final**: a primeira fatia operacional da Fase 7 (entidade `source` e sua API real, com autenticação e RBAC) está concluída e integrada em `main`, sob a mesma suposição explícita de single-tenant já documentada. Os demais entregáveis da Fase 7 (`document`, classificação, permissões, extração, indexação, busca textual, política de retenção, memória operacional e, por último, embeddings/busca vetorial), o modelo de multi-organização e a autenticação de produção real permanecem pendentes e fora deste encerramento. A Parte B (aplicação real de todas as migrações e validação das APIs contra Postgres via Docker) permanece explicitamente pendente.
+
+**Escopo preservado**: nenhuma alteração fora de `allowed_paths` foi feita; nenhum código de identidade/autenticação/autorização ou das rotas já existentes foi tocado; nenhuma credencial, dado real ou dependência de software nova foi introduzida; nenhuma decisão de multi-organização foi tomada ou presumida; nenhuma entidade além de `source` foi criada; nenhum trabalho de extração, indexação, busca textual ou embeddings foi iniciado.
+
+## Retrospectiva crítica (conforme `../workflows/retro.md`)
+
+**Objetivo**: dar o primeiro passo da Fase 7, criando o cadastro de fontes de conhecimento — o único entregável que a regra explícita da fase permite iniciar antes de qualquer trabalho de documentos, permissões, indexação ou embeddings.
+
+**Resultado conhecido**: entidade `source` implementada e integrada, isolada de qualquer entidade das Fases 5/6, sem tocar em nenhum código já existente.
+
+**O que ajudou**: o padrão de entidade simples (nome, tipo enumerado, responsável opcional, status, exclusão lógica) já validado em `lead` foi diretamente reaplicável — nenhuma decisão de design nova foi necessária, já que `source` não tem nenhuma relação (FK) com entidades de outras fases.
+
+**O que dificultou**: nada de relevante; quinta task de código sob as Regras Fundamentais 5 e 6 (contando desde a Task 065), e o ciclo está bem estabelecido.
+
+**Surpresas**: nenhuma.
+
+**Riscos materializados**: nenhum.
+
+**Perguntas em aberto**: como `source` vai se relacionar com `document` quando essa entidade for criada (referência opcional, provavelmente `onDelete: set null`, seguindo o padrão já usado em `opportunity.leadId` e `activity.leadId`/`activity.opportunityId`) — fica para a próxima fatia decidir.
+
+**Ações propostas**: nenhuma adicional; `document` (com versionamento) é a próxima candidata natural, já que a regra da fase exige fontes, permissões, versionamento e descarte definidos antes de qualquer trabalho de busca ou embeddings.
+
+**Mudanças aceitas**: registradas em `00_SYSTEM/logs/changes.jsonl`.
