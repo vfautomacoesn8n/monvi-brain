@@ -2,8 +2,8 @@
 id: task-2026-066
 type: task
 title: "Fase 6 — segunda fatia operacional: entidade opportunity e sua API"
-status: draft
-task_state: active
+status: done
+task_state: done
 owner: ceo-monvi
 agent: claude-cursor
 reviewer: ceo-monvi
@@ -13,7 +13,7 @@ confidentiality: internal
 classification: internal
 created_at: "2026-08-12"
 updated_at: "2026-08-12"
-reviewed_at: null
+reviewed_at: "2026-08-12T13:16:21-03:00"
 review_cycle: on-change
 sources:
   - 00_SYSTEM/roadmaps/Plano-Mestre-de-Construcao-Monvi-Brain.md
@@ -111,7 +111,7 @@ forbidden_paths:
   - apps/core-brain/node_modules/
   - apps/core-brain/dist/
   - 00_SYSTEM/architecture/Backlog-priorizado-Helpper-Central-e-criterios-Task-048.md
-requires_review: true
+requires_review: false
 acceptance_criteria:
   - Entidade opportunity criada em apps/core-brain/src/db/schema/opportunity.ts, com origem opcional em lead, estagio de funil, motivo de perda e responsavel comercial opcional, exportada em schema/index.ts.
   - Migração gerada via npm run db:generate (sem aplicar contra banco real), correspondendo exatamente ao schema desenhado.
@@ -156,26 +156,58 @@ Mesma decisão já registrada desde a Task 052: a aplicação real das migraçõ
 
 ## Critérios de aceite
 
-- [ ] Entidade `opportunity` criada, com origem opcional em `lead`, exportada em `schema/index.ts`.
-- [ ] Migração gerada (não aplicada) correspondendo ao schema desenhado.
-- [ ] Rotas CRUD para `opportunity` criadas e registradas.
-- [ ] Todas as rotas exigem autenticação e permissão, reaproveitando o middleware existente.
-- [ ] Nenhuma alteração em outros arquivos de schema, `src/modules/`, `src/http/middlewares/` ou nas rotas já existentes.
-- [ ] Testes de bloqueio de acesso (401) passando sem banco real.
-- [ ] Teste de integração real do ciclo completo criado, incluindo perda com motivo, isolado da suíte padrão, não executado.
-- [ ] `typecheck`, `test` e `build` continuam passando (74/74 testes).
-- [ ] `README.md` e Plano Mestre atualizados.
-- [ ] Nenhuma credencial, dado real, dependência de software nova, entidade adicional ou decisão de multi-organização.
-- [ ] Conteúdo revisado e aprovado pelo CEO antes do merge; encerramento em PR separada (Regra Fundamental 6, exceção para código).
+- [x] Entidade `opportunity` criada, com origem opcional em `lead`, exportada em `schema/index.ts`. Evidência: `apps/core-brain/src/db/schema/opportunity.ts`, integrado em `main` no commit `8dc4bfb7fa490e835b3f8b29223cca3748e04af3`.
+- [x] Migração gerada (não aplicada) correspondendo ao schema desenhado. Evidência: `apps/core-brain/drizzle/0008_ancient_santa_claus.sql`, conferida manualmente; `npm run test:integration` segue falhando com `ECONNREFUSED`, confirmando que não foi aplicada.
+- [x] Rotas CRUD para `opportunity` criadas e registradas. Evidência: `apps/core-brain/src/http/routes/opportunity.ts`, registrado em `build-app.ts`.
+- [x] Todas as rotas exigem autenticação e permissão, reaproveitando o middleware existente. Evidência: `preHandler: [authenticateRequest, requirePermission(...)]` em cada rota; `src/http/middlewares/` não foi alterado.
+- [x] Nenhuma alteração em outros arquivos de schema, `src/modules/`, `src/http/middlewares/` ou nas rotas já existentes. Evidência: `git show --name-status --format= origin/main` confirmou apenas os 13 arquivos previstos em `allowed_paths`.
+- [x] Testes de bloqueio de acesso (401) passando sem banco real. Evidência: `tests/opportunity.test.ts`, 5 testes, parte dos 74/74 da suíte padrão.
+- [x] Teste de integração real do ciclo completo criado, incluindo perda com motivo, isolado da suíte padrão, não executado. Evidência: `tests/opportunity.integration.test.ts`, escrito e presente na suíte de integração, não executado por decisão do CEO.
+- [x] `typecheck`, `test` e `build` continuam passando (74/74 testes). Evidência: reexecutados após o merge, contra `main` sincronizado (`8dc4bfb`): typecheck limpo, 74/74 testes em 18 arquivos, build sem erros.
+- [x] `README.md` e Plano Mestre atualizados. Evidência: seção "Escopo implementado"/"Endpoints" do README e seção 19 do Plano Mestre, ambos integrados em `main`.
+- [x] Nenhuma credencial, dado real, dependência de software nova, entidade adicional ou decisão de multi-organização. Evidência: diff do PR #59 restrito aos 13 arquivos previstos; nenhuma alteração em `package.json`; nenhuma entidade além de `opportunity`.
+- [x] Conteúdo revisado e aprovado pelo CEO antes do merge; encerramento em PR separada (Regra Fundamental 6, exceção para código). Evidência: gate explícito "Autorizado" para o merge do PR #59; este encerramento, em PR própria, é essa própria exceção em aplicação.
 
 ## Riscos e gates humanos
 
 Riscos: mesmos já registrados desde a Fase 5 — migração nunca aplicada contra banco real, suposição single-tenant acumulando escopo, ausência de Docker neste ambiente; `loss_reason` não tem validação de obrigatoriedade quando o estágio vira `lost` — decisão deliberada de manter simples até haver necessidade real comprovada de reforçar essa regra.
 
-Gate vigente: `Autorizado` (em resposta à proposta de escopo da Task 066 — entidade `opportunity` e sua API, segunda fatia da Fase 6). Este gate autoriza a execução completa do escopo técnico e a condução do ciclo de governança (commit, push, PR) até o ponto em que a revisão final e o merge, que dependem de decisão do CEO, sejam solicitados. Por alterar código, o encerramento desta task permanece em PR separada, posterior ao merge e à verificação pós-merge (Regra Fundamental 6 de `TASK-LIFECYCLE.md`).
+Gate vigente: encerrado. O merge do PR #59 foi autorizado (`Autorizado`) e executado por squash em `8dc4bfb7fa490e835b3f8b29223cca3748e04af3`. Esta task está formalmente concluída. Os demais entregáveis da Fase 6, o modelo de multi-organização e a Parte B permanecem fora deste encerramento.
 
-Histórico de gates desta task: encerramento da Task 065 → CEO pede para continuar com a próxima fatia → proponho o escopo desta task (entidade `opportunity`, origem opcional em `lead`, cobrindo "estágios" e preparando "motivos de perda") → `Autorizado` (este gate: execução completa do escopo, criação da task, branch, commit, push e PR).
+Histórico de gates desta task: encerramento da Task 065 → CEO pede para continuar com a próxima fatia → proponho o escopo desta task (entidade `opportunity`, origem opcional em `lead`, cobrindo "estágios" e preparando "motivos de perda") → `Autorizado` (execução completa do escopo, criação da task, branch, commit, push e PR) → `Autorizado` (merge do PR #59, integrado em `8dc4bfb7fa490e835b3f8b29223cca3748e04af3`).
 
 ## Revisão e entrega
 
 Apresentarei o diff completo, as validações locais (`typecheck`, `test`, `build`, `test:integration` com falha esperada e documentada) e o estado Git, e solicitarei explicitamente o gate de merge antes de integrar esta mudança em `main`.
+
+## Encerramento — 2026-08-12
+
+**Gate de encerramento**: o CEO autorizou (`Autorizado`) o squash merge do PR #59.
+
+**Integração**: PR #59 integrado em `main` via squash merge, commit `8dc4bfb7fa490e835b3f8b29223cca3748e04af3`, em 2026-08-12T15:23:32Z. Escopo integrado: exatamente os 13 arquivos previstos em `allowed_paths` — criação de `src/db/schema/opportunity.ts`, `src/http/routes/opportunity.ts`, `tests/opportunity.test.ts`, `tests/opportunity.integration.test.ts`, `drizzle/0008_ancient_santa_claus.sql` e `drizzle/meta/0008_snapshot.json`; edição de `src/db/schema/index.ts`, `src/app/build-app.ts`, `drizzle/meta/_journal.json`, `README.md`, o Plano Mestre e `changes.jsonl`. Nenhuma alteração em outros arquivos de schema, `src/modules/`, `src/http/middlewares/` ou nas rotas já existentes, incluindo `lead`.
+
+**Verificação pós-merge**: sincronizei `main` local via fast-forward (`git pull --ff-only`, `d46e616..8dc4bfb`) e reexecutei `npm run typecheck`, `npm test` e `npm run build` diretamente contra o `main` já integrado — typecheck limpo, 74/74 testes passando em 18 arquivos, build sem erros.
+
+**Estado final**: a segunda fatia operacional da Fase 6 (entidade `opportunity` e sua API real, com autenticação e RBAC) está concluída e integrada em `main`, sob a mesma suposição explícita de single-tenant já documentada. Os demais entregáveis da Fase 6 (qualificação, diagnóstico, proposta, follow-up, indicadores comerciais, integrações externas), o modelo de multi-organização e a autenticação de produção real permanecem pendentes e fora deste encerramento. A Parte B (aplicação real de todas as migrações e validação das APIs contra Postgres via Docker) permanece explicitamente pendente.
+
+**Escopo preservado**: nenhuma alteração fora de `allowed_paths` foi feita; nenhum código de identidade/autenticação/autorização, das rotas já existentes (incluindo `lead`) foi tocado; nenhuma credencial, dado real ou dependência de software nova foi introduzida; nenhuma decisão de multi-organização foi tomada ou presumida; nenhuma entidade além de `opportunity` foi criada.
+
+## Retrospectiva crítica (conforme `../workflows/retro.md`)
+
+**Objetivo**: dar continuidade ao funil comercial, conectando um lead qualificado a uma oportunidade real, cobrindo os entregáveis "estágios" e preparando "motivos de perda".
+
+**Resultado conhecido**: entidade `opportunity` implementada e integrada, com origem opcional em `lead` e estágio de funil completo (incluindo estados terminais `won`/`lost`), sem tocar em nenhum código já existente.
+
+**O que ajudou**: o padrão de origem opcional (`onDelete: set null`) já validado em `deliverable.taskId` e `dependency`/`comment` deu um modelo direto para `opportunity.leadId`, sem precisar decidir do zero.
+
+**O que dificultou**: nada de relevante; segunda task de código sob as Regras Fundamentais 5 e 6, e o ciclo já está previsível.
+
+**Surpresas**: nenhuma.
+
+**Riscos materializados**: nenhum.
+
+**Perguntas em aberto**: se `loss_reason` deveria ter validação de obrigatoriedade quando `stage` vira `lost` — decidi deliberadamente não implementar isso agora, por simplicidade; fica como ponto de atenção se um caso real exigir.
+
+**Ações propostas**: nenhuma adicional; qualificação, diagnóstico, proposta e follow-up são as próximas candidatas naturais, prováveis extensões de `opportunity`.
+
+**Mudanças aceitas**: registradas em `00_SYSTEM/logs/changes.jsonl`.
