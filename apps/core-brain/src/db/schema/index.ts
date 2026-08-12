@@ -10,4 +10,5 @@ export * from './approval.js';
 export * from './dependency.js';
 export * from './risk.js';
 export * from './comment.js';
+export * from './lead.js';
 export * from './session.js';
