@@ -2,8 +2,8 @@
 id: task-2026-065
 type: task
 title: "Fase 6 — primeira fatia operacional: entidade lead e sua API"
-status: draft
-task_state: active
+status: done
+task_state: done
 owner: ceo-monvi
 agent: claude-cursor
 reviewer: ceo-monvi
@@ -13,7 +13,7 @@ confidentiality: internal
 classification: internal
 created_at: "2026-08-12"
 updated_at: "2026-08-12"
-reviewed_at: null
+reviewed_at: "2026-08-12T11:53:53-03:00"
 review_cycle: on-change
 sources:
   - 00_SYSTEM/roadmaps/Plano-Mestre-de-Construcao-Monvi-Brain.md
@@ -107,7 +107,7 @@ forbidden_paths:
   - apps/core-brain/node_modules/
   - apps/core-brain/dist/
   - 00_SYSTEM/architecture/Backlog-priorizado-Helpper-Central-e-criterios-Task-048.md
-requires_review: true
+requires_review: false
 acceptance_criteria:
   - Entidade lead criada em apps/core-brain/src/db/schema/lead.ts, com origem (source), status de funil e responsável comercial opcional vinculado a person, exportada em schema/index.ts. Não referencia client.
   - Migração gerada via npm run db:generate (sem aplicar contra banco real), correspondendo exatamente ao schema desenhado.
@@ -152,26 +152,58 @@ Mesma decisão já registrada desde a Task 052: a aplicação real das migraçõ
 
 ## Critérios de aceite
 
-- [ ] Entidade `lead` criada, sem referenciar `client`, exportada em `schema/index.ts`.
-- [ ] Migração gerada (não aplicada) correspondendo ao schema desenhado.
-- [ ] Rotas CRUD para `lead` criadas e registradas.
-- [ ] Todas as rotas exigem autenticação e permissão, reaproveitando o middleware existente.
-- [ ] Nenhuma alteração em outros arquivos de schema, `src/modules/`, `src/http/middlewares/` ou nas rotas já existentes.
-- [ ] Testes de bloqueio de acesso (401) passando sem banco real.
-- [ ] Teste de integração real do ciclo completo criado, isolado da suíte padrão, não executado.
-- [ ] `typecheck`, `test` e `build` continuam passando (69/69 testes).
-- [ ] `README.md` e Plano Mestre atualizados.
-- [ ] Nenhuma credencial, dado real, dependência de software nova, entidade adicional ou decisão de multi-organização.
-- [ ] Conteúdo revisado e aprovado pelo CEO antes do merge; encerramento em PR separada (Regra Fundamental 6, exceção para código).
+- [x] Entidade `lead` criada, sem referenciar `client`, exportada em `schema/index.ts`. Evidência: `apps/core-brain/src/db/schema/lead.ts`, integrado em `main` no commit `0d8ab75ff67df86f1c45f050e54b4d6df14013c5`.
+- [x] Migração gerada (não aplicada) correspondendo ao schema desenhado. Evidência: `apps/core-brain/drizzle/0007_secret_wither.sql`, conferida manualmente; `npm run test:integration` segue falhando com `ECONNREFUSED`, confirmando que não foi aplicada.
+- [x] Rotas CRUD para `lead` criadas e registradas. Evidência: `apps/core-brain/src/http/routes/lead.ts`, registrado em `build-app.ts`.
+- [x] Todas as rotas exigem autenticação e permissão, reaproveitando o middleware existente. Evidência: `preHandler: [authenticateRequest, requirePermission(...)]` em cada rota; `src/http/middlewares/` não foi alterado.
+- [x] Nenhuma alteração em outros arquivos de schema, `src/modules/`, `src/http/middlewares/` ou nas rotas já existentes. Evidência: `git show --name-status --format= origin/main` confirmou apenas os 13 arquivos previstos em `allowed_paths`.
+- [x] Testes de bloqueio de acesso (401) passando sem banco real. Evidência: `tests/lead.test.ts`, 5 testes, parte dos 69/69 da suíte padrão.
+- [x] Teste de integração real do ciclo completo criado, isolado da suíte padrão, não executado. Evidência: `tests/lead.integration.test.ts`, escrito e presente na suíte de integração, não executado por decisão do CEO.
+- [x] `typecheck`, `test` e `build` continuam passando (69/69 testes). Evidência: reexecutados após o merge, contra `main` sincronizado (`0d8ab75`): typecheck limpo, 69/69 testes em 17 arquivos, build sem erros.
+- [x] `README.md` e Plano Mestre atualizados. Evidência: seção "Escopo implementado"/"Endpoints" do README e seção 19 do Plano Mestre (nova seção "Em andamento" para a Fase 6), ambos integrados em `main`.
+- [x] Nenhuma credencial, dado real, dependência de software nova, entidade adicional ou decisão de multi-organização. Evidência: diff do PR #57 restrito aos 13 arquivos previstos; nenhuma alteração em `package.json`; nenhuma entidade além de `lead`.
+- [x] Conteúdo revisado e aprovado pelo CEO antes do merge; encerramento em PR separada (Regra Fundamental 6, exceção para código). Evidência: gate explícito "autorizado" para o merge do PR #57; este encerramento, em PR própria, é essa própria exceção em aplicação.
 
 ## Riscos e gates humanos
 
 Riscos: mesmos já registrados na Fase 5 — migração nunca aplicada contra banco real, suposição single-tenant acumulando escopo, ausência de Docker neste ambiente; `origem` e `indicadores comerciais`, entregáveis futuros da fase, são os pontos mais prováveis de esbarrar na decisão de multi-organização ainda pendente.
 
-Gate vigente: `Autorizado` (em resposta à proposta de escopo da Task 065 — entidade `lead` e sua API, primeira fatia da Fase 6). Este gate autoriza a execução completa do escopo técnico e a condução do ciclo de governança (commit, push, PR) até o ponto em que a revisão final e o merge, que dependem de decisão do CEO, sejam solicitados. Por alterar código, o encerramento desta task permanece em PR separada, posterior ao merge e à verificação pós-merge (Regra Fundamental 6 de `TASK-LIFECYCLE.md`).
+Gate vigente: encerrado. O merge do PR #57 foi autorizado (`autorizado`) e executado por squash em `0d8ab75ff67df86f1c45f050e54b4d6df14013c5`. Esta task está formalmente concluída. Os demais entregáveis da Fase 6, o modelo de multi-organização e a Parte B (que segue deliberadamente adiada) permanecem fora deste encerramento.
 
-Histórico de gates desta task: CEO pede a descrição de Parte B, decisão de multi-organização e Fase 6 → CEO decide seguir com a Fase 6 → proponho o escopo desta task (entidade `lead`, sem referenciar `client`, reaproveitando o padrão já validado na Fase 5) → `Autorizado` (este gate: execução completa do escopo, criação da task, branch, commit, push e PR).
+Histórico de gates desta task: CEO pede a descrição de Parte B, decisão de multi-organização e Fase 6 → CEO decide seguir com a Fase 6 → proponho o escopo desta task (entidade `lead`, sem referenciar `client`, reaproveitando o padrão já validado na Fase 5) → `Autorizado` (execução completa do escopo, criação da task, branch, commit, push e PR) → `autorizado` (merge do PR #57, integrado em `0d8ab75ff67df86f1c45f050e54b4d6df14013c5`).
 
 ## Revisão e entrega
 
 Apresentarei o diff completo, as validações locais (`typecheck`, `test`, `build`, `test:integration` com falha esperada e documentada) e o estado Git, e solicitarei explicitamente o gate de merge antes de integrar esta mudança em `main`.
+
+## Encerramento — 2026-08-12
+
+**Gate de encerramento**: o CEO autorizou (`autorizado`) o squash merge do PR #57.
+
+**Integração**: PR #57 integrado em `main` via squash merge, commit `0d8ab75ff67df86f1c45f050e54b4d6df14013c5`, em 2026-08-12T14:50:19Z. Escopo integrado: exatamente os 13 arquivos previstos em `allowed_paths` — criação de `src/db/schema/lead.ts`, `src/http/routes/lead.ts`, `tests/lead.test.ts`, `tests/lead.integration.test.ts`, `drizzle/0007_secret_wither.sql` e `drizzle/meta/0007_snapshot.json`; edição de `src/db/schema/index.ts`, `src/app/build-app.ts`, `drizzle/meta/_journal.json`, `README.md`, o Plano Mestre e `changes.jsonl`. Nenhuma alteração em outros arquivos de schema, `src/modules/`, `src/http/middlewares/` ou nas rotas já existentes.
+
+**Verificação pós-merge**: sincronizei `main` local via fast-forward (`git pull --ff-only`, `a124529..0d8ab75`) e reexecutei `npm run typecheck`, `npm test` e `npm run build` diretamente contra o `main` já integrado — typecheck limpo, 69/69 testes passando em 17 arquivos, build sem erros. Este encerramento, em PR separada e posterior ao merge, é exatamente a aplicação da exceção prevista na Regra Fundamental 6 de `TASK-LIFECYCLE.md` (tasks que alteram código e dependem de evidência pós-merge).
+
+**Estado final**: a primeira fatia operacional da Fase 6 (entidade `lead` e sua API real, com autenticação e RBAC) está concluída e integrada em `main`, sob a mesma suposição explícita de single-tenant já documentada. Os demais entregáveis da Fase 6 (oportunidade, qualificação, diagnóstico, proposta, follow-up, estágios, motivos de perda, indicadores comerciais, integrações externas), o modelo de multi-organização e a autenticação de produção real permanecem pendentes e fora deste encerramento. A Parte B (aplicação real de todas as migrações e validação das APIs contra Postgres via Docker) permanece explicitamente pendente, agora estendendo-se também à Fase 6.
+
+**Escopo preservado**: nenhuma alteração fora de `allowed_paths` foi feita; nenhum código de identidade/autenticação/autorização ou das rotas já existentes foi tocado; nenhuma credencial, dado real ou dependência de software nova foi introduzida; nenhuma decisão de multi-organização foi tomada ou presumida; nenhuma entidade além de `lead` foi criada.
+
+## Retrospectiva crítica (conforme `../workflows/retro.md`)
+
+**Objetivo**: abrir a Fase 6 pela entidade mais fundamental do funil comercial, reaproveitando integralmente o padrão de schema/API/RBAC/testes já validado em dez fatias da Fase 5.
+
+**Resultado conhecido**: entidade `lead` implementada e integrada, com API CRUD real, sem tocar em `client` nem em nenhum código já existente. Primeira task de código encerrada sob a nova Regra Fundamental 6 — confirmando na prática que a exceção (PR de encerramento separada para tasks com evidência pós-merge) funciona como desenhado.
+
+**O que ajudou**: a decisão de não referenciar `client` ficou clara desde o início, por já ter sido nomeada explicitamente na proposta — evitou eu desenhar um vínculo errado e ter que refazer o schema.
+
+**O que dificultou**: nada de relevante; o padrão das dez fatias da Fase 5 se aplicou quase sem ajuste.
+
+**Surpresas**: nenhuma.
+
+**Riscos materializados**: nenhum.
+
+**Perguntas em aberto**: se `origem` e `indicadores comerciais` (entregáveis futuros da fase) vão de fato esbarrar na decisão de multi-organização, como levantei na proposta — só se saberá ao chegar neles.
+
+**Ações propostas**: nenhuma adicional; a próxima fatia natural é `opportunity`, destino de um lead qualificado.
+
+**Mudanças aceitas**: registradas em `00_SYSTEM/logs/changes.jsonl`.
