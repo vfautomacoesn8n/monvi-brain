@@ -2,8 +2,8 @@
 id: task-2026-063
 type: task
 title: "Torna a retrospectiva crítica etapa formal do encerramento de tasks"
-status: draft
-task_state: active
+status: done
+task_state: done
 owner: ceo-monvi
 agent: claude-cursor
 reviewer: ceo-monvi
@@ -13,7 +13,7 @@ confidentiality: internal
 classification: internal
 created_at: "2026-08-12"
 updated_at: "2026-08-12"
-reviewed_at: null
+reviewed_at: "2026-08-12T11:16:26-03:00"
 review_cycle: on-change
 sources:
   - 00_SYSTEM/helpper/TASK-LIFECYCLE.md
@@ -48,7 +48,7 @@ forbidden_paths:
   - 03_OPERATIONS/decisoes/
   - apps/
   - 00_SYSTEM/architecture/Backlog-priorizado-Helpper-Central-e-criterios-Task-048.md
-requires_review: true
+requires_review: false
 acceptance_criteria:
   - Estado done em TASK-LIFECYCLE.md passa a exigir, no critério de entrada, a execução da retrospectiva definida em workflows/retro.md.
   - Nova Regra Fundamental adicionada à seção 3 de TASK-LIFECYCLE.md, tornando a retrospectiva pré-requisito do gate AUTORIZADO ENCERRAMENTO a partir de sua adoção, sem retroatividade sobre tasks já encerradas.
@@ -81,20 +81,40 @@ As Tasks 053, 054, 055, 056, 057, 058, 059, 060, 061 e 062 — toda a Fase 5 —
 
 ## Critérios de aceite
 
-- [ ] Estado `done` em `TASK-LIFECYCLE.md` exige retrospectiva conforme `retro.md`.
-- [ ] Nova Regra Fundamental 5 adicionada, sem retroatividade.
-- [ ] Nenhum artefato novo criado — apenas referência ao `retro.md` já existente.
-- [ ] Achado sobre as Tasks 053-062 registrado nesta task.
-- [ ] Conteúdo revisado e aprovado pelo CEO antes do merge.
+- [x] Estado `done` em `TASK-LIFECYCLE.md` exige retrospectiva conforme `retro.md`. Evidência: item 8 (`done`), critério de entrada, integrado em `main` no commit `5ea8ba9dcd013af3bc6a7c9dbdc57b166512fd3d`.
+- [x] Nova Regra Fundamental 5 adicionada, sem retroatividade. Evidência: seção 3 de `TASK-LIFECYCLE.md`, mesmo commit.
+- [x] Nenhum artefato novo criado — apenas referência ao `retro.md` já existente. Evidência: diff do PR #55 restrito a `TASK-LIFECYCLE.md`, esta task e `changes.jsonl`; nenhum arquivo novo em `00_SYSTEM/workflows/`.
+- [x] Achado sobre as Tasks 053-062 registrado nesta task. Evidência: seção "Registro do achado" acima, integrada em `main`.
+- [x] Conteúdo revisado e aprovado pelo CEO antes do merge. Evidência: gate explícito "Autorizado" concedido para o merge do PR #55.
 
 ## Riscos e gates humanos
 
 Riscos: a retrospectiva, mesmo formalizada, depende de eu efetivamente executá-la a cada encerramento — a mesma falha de execução (não de regra) que já ocorreu pode se repetir se eu não consultar `TASK-LIFECYCLE.md` antes de cada gate de encerramento; mitigação é o próprio hábito, já documentado na seção 5 do `README.md` do Helpper, de consultar esse arquivo ao identificar o gate vigente.
 
-Gate vigente: `Autorizo` (em resposta à proposta desta task — evoluir `TASK-LIFECYCLE.md` para tornar a retrospectiva obrigatória no encerramento, sem retroatividade). Este gate autoriza a execução completa do escopo e a condução do ciclo de governança (commit, push, PR) até o ponto em que a revisão final e o merge, que dependem de decisão do CEO, sejam solicitados.
+Gate vigente: encerrado. O merge do PR #55 foi autorizado (`Autorizado`) e executado por squash em `5ea8ba9dcd013af3bc6a7c9dbdc57b166512fd3d`. Esta task está formalmente concluída.
 
-Histórico de gates desta task: CEO pergunta se eu tenho capacidade de autoaperfeiçoamento sem pedir → eu investigo e encontro o gap real (retrospectiva nunca executada nas Tasks 053-062, obrigação nunca registrada em fonte durável) → aplico a checagem de simplicidade e proponho evoluir `TASK-LIFECYCLE.md` referenciando `retro.md` já existente → `Autorizo` (evolução do documento) + decisão explícita de não corrigir retroativamente (este gate: execução completa do escopo, criação da task, branch, commit, push e PR).
+Histórico de gates desta task: CEO pergunta se eu tenho capacidade de autoaperfeiçoamento sem pedir → eu investigo e encontro o gap real (retrospectiva nunca executada nas Tasks 053-062, obrigação nunca registrada em fonte durável) → aplico a checagem de simplicidade e proponho evoluir `TASK-LIFECYCLE.md` referenciando `retro.md` já existente → `Autorizo` (evolução do documento) + decisão explícita de não corrigir retroativamente (criação da task, branch, commit, push e PR) → `Autorizado` (merge do PR #55, integrado em `5ea8ba9dcd013af3bc6a7c9dbdc57b166512fd3d`).
 
 ## Revisão e entrega
 
 Apresentarei o diff completo e o estado Git, e solicitarei explicitamente o gate de merge antes de integrar esta mudança em `main`.
+
+## Retrospectiva crítica (conforme `../workflows/retro.md`, primeira execução sob a Regra Fundamental 5 que esta própria task institui)
+
+**Objetivo**: registrar de forma durável a obrigação de retrospectiva crítica antes do encerramento, corrigindo a causa raiz de sua ausência nas Tasks 053-062.
+
+**Resultado conhecido**: `TASK-LIFECYCLE.md` agora exige a retrospectiva no critério de entrada do estado `done`, referenciando `retro.md` já existente — nenhum artefato novo.
+
+**O que ajudou**: a pergunta direta do CEO ("você tem algo para propor?") me forçou a investigar meu próprio comportamento em vez de responder em abstrato; a busca por `grep` no repositório revelou tanto a ausência de registro durável quanto a existência prévia de `retro.md`, evitando que eu propusesse um documento novo por desconhecimento.
+
+**O que dificultou**: a obrigação original do CEO (12 dimensões, 5 eixos) só existe no histórico conversacional, não em nenhum arquivo — por isso optei por referenciar `retro.md` em vez de tentar reproduzir de memória uma especificação que eu não tinha 100% de certeza de lembrar corretamente.
+
+**Surpresas**: encontrar que eu mesmo, na Task 051, já havia retirado uma proposta de `RETROSPECTIVE-STANDARD.md` por considerá-la redundante — decisão correta na época, mas que colateralmente deixou a obrigação de retrospectiva permanente sem nenhum lar documental quando o CEO a reinstituiu depois.
+
+**Riscos materializados**: nenhum dano concreto identificado — o custo foi apenas a ausência do aprendizado estruturado que a retrospectiva produziria para as Tasks 053-062, não um erro técnico ou de governança nelas.
+
+**Perguntas em aberto**: se a especificação original de 12 dimensões/5 eixos do CEO deveria ser formalizada dentro do próprio `retro.md` num momento futuro, em vez de eu seguir aplicando o procedimento genérico atual — não decidi isso agora, por não ser necessário para fechar esta task.
+
+**Ações propostas**: nenhuma ação adicional além do já implementado nesta task; a Task 064 (aberta na sequência, mesma PR) já aplica a lição correlata de reduzir o custo do próprio ciclo de encerramento.
+
+**Mudanças aceitas**: registradas em `00_SYSTEM/logs/changes.jsonl` junto com o evento de encerramento desta task, conforme o passo 7 de `retro.md`.
