@@ -973,7 +973,7 @@ As seguintes decisões devem ser tomadas nas fases adequadas:
 
 ## 19. Estado atual
 
-*Atualizado em 2026-08-12 (Task 067), após verificação direta do código, dos testes e das decisões formais — não apenas da documentação anterior desta seção.*
+*Atualizado em 2026-08-12 (Task 068), após verificação direta do código, dos testes e das decisões formais — não apenas da documentação anterior desta seção.*
 
 ### Concluído
 
@@ -988,21 +988,21 @@ As seguintes decisões devem ser tomadas nas fases adequadas:
 
 ### Em andamento
 
-- Fase 6 (comercial e CRM): iniciada pela Task 065 com a entidade `lead` — nome, empresa, e-mail e telefone opcionais, origem (`referral`/`website`/`social_media`/`event`/`cold_outreach`/`other`), status de funil (`new`/`contacted`/`qualified`/`disqualified`/`converted`) e responsável comercial opcional vinculado a `person`. Deliberadamente não referencia `client` — um lead ainda não é um cliente em relacionamento. Estendida pela Task 066 com a entidade `opportunity` — título, origem opcional em `lead` (`onDelete: set null`), estágio de funil (`opportunity_stage`: `prospecting`/`qualification`/`proposal`/`negotiation`/`won`/`lost`), motivo de perda (texto livre, sem validação de obrigatoriedade ainda) e responsável comercial opcional. Estendida pela Task 067 com a entidade `activity`, que unifica em uma única tabela (via discriminador `activity_type`: `diagnosis`/`proposal`/`follow_up`/`call`/`meeting`/`other`) os entregáveis de diagnóstico, proposta e follow-up da fase, evitando três tabelas quase idênticas; vínculo obrigatório com pelo menos um de `leadId`/`opportunityId` (validado via Zod `.refine`, ambos `onDelete: set null`), status de execução (`activity_status`: `scheduled`/`done`/`cancelled`) e responsável comercial opcional. Qualificação foi considerada já coberta pelos campos existentes `lead.status`/`lead.notes`, sem exigir entidade nova. Mesma suposição explícita de single-tenant das fases anteriores. Os demais entregáveis da fase (indicadores comerciais, integrações externas) ainda não foram iniciados.
+- Fase 6 (comercial e CRM): iniciada pela Task 065 com a entidade `lead` — nome, empresa, e-mail e telefone opcionais, origem (`referral`/`website`/`social_media`/`event`/`cold_outreach`/`other`), status de funil (`new`/`contacted`/`qualified`/`disqualified`/`converted`) e responsável comercial opcional vinculado a `person`. Deliberadamente não referencia `client` — um lead ainda não é um cliente em relacionamento. Estendida pela Task 066 com a entidade `opportunity` — título, origem opcional em `lead` (`onDelete: set null`), estágio de funil (`opportunity_stage`: `prospecting`/`qualification`/`proposal`/`negotiation`/`won`/`lost`), motivo de perda (texto livre, sem validação de obrigatoriedade ainda) e responsável comercial opcional. Estendida pela Task 067 com a entidade `activity`, que unifica em uma única tabela (via discriminador `activity_type`: `diagnosis`/`proposal`/`follow_up`/`call`/`meeting`/`other`) os entregáveis de diagnóstico, proposta e follow-up da fase, evitando três tabelas quase idênticas; vínculo obrigatório com pelo menos um de `leadId`/`opportunityId` (validado via Zod `.refine`, ambos `onDelete: set null`), status de execução (`activity_status`: `scheduled`/`done`/`cancelled`) e responsável comercial opcional. Qualificação foi considerada já coberta pelos campos existentes `lead.status`/`lead.notes`, sem exigir entidade nova. Estendida pela Task 068 com o dashboard de indicadores comerciais (`GET /commercial/dashboard`), agregando contagens globais de leads por status, oportunidades por estágio e atividades por status e por tipo, mesmo padrão do dashboard de projeto da Task 062 — sem tabela nova. Mesma suposição explícita de single-tenant das fases anteriores. Resta apenas integrações externas, explicitamente fora de escopo por ora ("integração futura" no Plano Mestre original).
 
 ### Ainda não iniciado
 
 - autenticação de produção real (Google Workspace/OIDC) — arquitetura documentada na Task 040, implementação técnica não iniciada;
 - modelo de multi-organização — decisão formal ainda em aberto (seção 17), adiada deliberadamente desde a Fase 5;
-- demais entregáveis da Fase 6 além de `lead`, `opportunity` e `activity` (indicadores comerciais, integrações externas), e todas as fases 7 em diante.
+- integrações externas da Fase 6 (WhatsApp/e-mail/formulários), e todas as fases 7 em diante.
 
 ### Parte B — validação real de persistência (transversal a Fases 3, 5 e 6)
 
-Nenhuma das migrações geradas (`0000` a `0009`, incluindo `task`, `deliverable`, `approval`, `dependency`, `risk`, `comment`, `lead`, `opportunity` e, agora, `activity`) foi aplicada contra um banco Postgres real; nenhum dos 14 testes de integração criados (`apps/core-brain/tests/*.integration.test.ts`) foi executado com sucesso — todos falham com `ECONNREFUSED` neste ambiente de execução, que não tem Docker disponível. Por decisão do CEO, essa validação é tratada como pendência única, deliberadamente adiada. Aplicar exige um ambiente com Docker: `docker compose up`, `npm run db:migrate`, `npm run test:integration`.
+Nenhuma das migrações geradas (`0000` a `0009`, incluindo `task`, `deliverable`, `approval`, `dependency`, `risk`, `comment`, `lead`, `opportunity` e `activity`) foi aplicada contra um banco Postgres real; nenhum dos 15 testes de integração criados (`apps/core-brain/tests/*.integration.test.ts`) foi executado com sucesso — todos falham com `ECONNREFUSED` neste ambiente de execução, que não tem Docker disponível. Por decisão do CEO, essa validação é tratada como pendência única, deliberadamente adiada. Aplicar exige um ambiente com Docker: `docker compose up`, `npm run db:migrate`, `npm run test:integration`.
 
 ### Próximo gate recomendado
 
-Continuar as fatias da Fase 6 (indicadores comerciais é a próxima candidata, prováveis extensão do padrão de dashboard já usado na Task 062; integrações externas seguem fora de escopo por ora). Em paralelo, seguem pendentes: a Parte B (validação real contra Postgres, cada vez mais acumulada), o modelo de multi-organização e a estratégia de autenticação de produção.
+Com os cinco entregáveis funcionais da Fase 6 completos (`lead`, `opportunity`, `activity` e o dashboard de indicadores; integrações externas fora de escopo por decisão explícita do Plano Mestre), a fase está funcionalmente concluída. Seguem pendentes, de forma transversal: a Parte B (validação real contra Postgres, cada vez mais acumulada), o modelo de multi-organização e a estratégia de autenticação de produção — candidatos naturais para a próxima decisão do CEO sobre onde investir em seguida.
 
 ## 20. Critério de sucesso do plano
 
