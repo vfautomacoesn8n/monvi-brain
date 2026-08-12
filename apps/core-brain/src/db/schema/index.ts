@@ -12,4 +12,5 @@ export * from './risk.js';
 export * from './comment.js';
 export * from './lead.js';
 export * from './opportunity.js';
+export * from './activity.js';
 export * from './session.js';

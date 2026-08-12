@@ -17,6 +17,7 @@ import { registerHistoryRoutes } from "../http/routes/history.js";
 import { registerDashboardRoutes } from "../http/routes/dashboard.js";
 import { registerLeadRoutes } from "../http/routes/lead.js";
 import { registerOpportunityRoutes } from "../http/routes/opportunity.js";
+import { registerActivityRoutes } from "../http/routes/activity.js";
 import { createLoggerOptions } from "../logging/logger.js";
 
 export async function buildApp(
@@ -91,6 +92,10 @@ export async function buildApp(
   });
 
   await app.register(registerOpportunityRoutes, {
+    prefix: "/api/v1"
+  });
+
+  await app.register(registerActivityRoutes, {
     prefix: "/api/v1"
   });
 
