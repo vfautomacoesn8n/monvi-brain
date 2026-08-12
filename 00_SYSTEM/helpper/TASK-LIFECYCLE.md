@@ -122,7 +122,7 @@ flowchart LR
 ### 8. `done`
 - **Significado**: Tarefa formalmente finalizada, arquivada e chancelada pelo CEO.
 - **Responsável**: CEO.
-- **Critério de Entrada**: Gate de encerramento recebido e arquivo movido para `00_SYSTEM/tasks/done/`.
+- **Critério de Entrada**: Retrospectiva crítica executada conforme [`../workflows/retro.md`](../workflows/retro.md) (ver Regra Fundamental 5), gate de encerramento recebido e arquivo movido para `00_SYSTEM/tasks/done/`.
 - **Critério de Saída**: N/A (Estado final de arquivo).
 - **Transições Permitidas**: Nenhuma (Estado terminal).
 - **Transições Proibidas**: Todas.
@@ -197,6 +197,7 @@ flowchart LR
 2. **`verified` não significa `done`**: Uma task verificada permanece em `00_SYSTEM/tasks/active/` até receber a chancela explícita do gate `AUTORIZADO ENCERRAMENTO`.
 3. **Movimentação para `done`**: O arquivo da task só é movido de `active/` para `done/` mediante o gate de encerramento.
 4. **Não Retroatividade**: As tarefas antigas já finalizadas em `00_SYSTEM/tasks/done/` não exigem reescrita ou atualização retroativa de frontmatter.
+5. **Retrospectiva crítica antes do encerramento**: antes de solicitar o gate `AUTORIZADO ENCERRAMENTO` de qualquer task, o agente executa a retrospectiva definida em [`../workflows/retro.md`](../workflows/retro.md) sobre a demanda concluída e registra as mudanças aceitas em [`../logs/changes.jsonl`](../logs/changes.jsonl), conforme o passo 7 daquele workflow. Esta regra vale a partir de sua adoção; tasks já encerradas antes dela não são revisadas retroativamente, por força da Regra Fundamental 4.
 
 ---
 
