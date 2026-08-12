@@ -50,6 +50,13 @@
       "when": 1786459417666,
       "tag": "0006_equal_gladiator",
       "breakpoints": true
+    },
+    {
+      "idx": 7,
+      "version": "7",
+      "when": 1786545223331,
+      "tag": "0007_secret_wither",
+      "breakpoints": true
     }
   ]
 }

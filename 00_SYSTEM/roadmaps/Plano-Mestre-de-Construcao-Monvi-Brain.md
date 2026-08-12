@@ -973,7 +973,7 @@ As seguintes decisões devem ser tomadas nas fases adequadas:
 
 ## 19. Estado atual
 
-*Atualizado em 2026-08-11 (Task 062), após verificação direta do código, dos testes e das decisões formais — não apenas da documentação anterior desta seção.*
+*Atualizado em 2026-08-12 (Task 065), após verificação direta do código, dos testes e das decisões formais — não apenas da documentação anterior desta seção.*
 
 ### Concluído
 
@@ -984,17 +984,25 @@ As seguintes decisões devem ser tomadas nas fases adequadas:
 - Fase 2 (modelo de domínio): schema Drizzle implementado (pessoa, identidade, perfil, papel, permissão, cliente, projeto, sessão), exportado e coberto por teste;
 - Fase 3 (persistência local): schema, migração e infraestrutura Docker local implementados; validação contra um banco Postgres real em execução ainda pendente de confirmação (teste de integração já existe em `apps/core-brain/tests/db.integration.test.ts`, aguardando execução em ambiente com Docker disponível);
 - Fase 4 (identidade, autenticação dev e autorização): `dev-login` bloqueado em produção, RBAC e revogação de sessão implementados e testados (Tasks 044 e 045, 14/14 testes automatizados passando);
-- Fase 5 (operação de clientes e projetos), todos os 12 entregáveis do escopo implementados: `client`/`project` (Task 053), `contact`/`project_membership` (Task 054), `task` (Task 055, primeira entidade de schema nova desta fase), `deliverable` (Task 056), `approval` (Task 057), `dependency` (Task 058, auto-referenciada em `task`, com índice único e validação contra auto-dependência), `risk` (Task 059), `comment` (Task 060, deliberadamente escopado a `task`, sem associação polimórfica), histórico de mudanças (Task 061, rota genérica `GET /history` sem tabela nova, lendo `audit_event`) e dashboard operacional mínimo por projeto (Task 062, `GET /projects/:projectId/dashboard`, agregando tarefas/entregáveis/riscos/aprovações por status, também sem tabela nova). Toda a API sob autenticação e RBAC obrigatórios, sob suposição explícita de single-tenant, aguardando decisão formal sobre o modelo de multi-organização (seção 17) para ser revisada quando essa decisão for tomada. As migrações das tabelas `task` (`drizzle/0001_deep_scarlet_spider.sql`), `deliverable` (`drizzle/0002_nifty_electro.sql`), `approval` (`drizzle/0003_daffy_odin.sql`), `dependency` (`drizzle/0004_icy_pestilence.sql`), `risk` (`drizzle/0005_curious_synch.sql`) e `comment` (`drizzle/0006_equal_gladiator.sql`) foram geradas — passo que não depende de Docker — mas **ainda não foram aplicadas contra um banco real**; nenhum dos 11 testes de integração criados ao longo da fase (`apps/core-brain/tests/*.integration.test.ts`) foi executado com sucesso ainda. Por decisão do CEO, essa validação real (Parte B) é tratada como pendência única, a ser resolvida em bloco agora que a fase está funcionalmente completa — ver "Próximo gate recomendado".
+- Fase 5 (operação de clientes e projetos), todos os 12 entregáveis do escopo implementados: `client`/`project` (Task 053), `contact`/`project_membership` (Task 054), `task` (Task 055, primeira entidade de schema nova desta fase), `deliverable` (Task 056), `approval` (Task 057), `dependency` (Task 058, auto-referenciada em `task`, com índice único e validação contra auto-dependência), `risk` (Task 059), `comment` (Task 060, deliberadamente escopado a `task`, sem associação polimórfica), histórico de mudanças (Task 061, rota genérica `GET /history` sem tabela nova, lendo `audit_event`) e dashboard operacional mínimo por projeto (Task 062, `GET /projects/:projectId/dashboard`, agregando tarefas/entregáveis/riscos/aprovações por status, também sem tabela nova). Toda a API sob autenticação e RBAC obrigatórios, sob suposição explícita de single-tenant, aguardando decisão formal sobre o modelo de multi-organização (seção 17) para ser revisada quando essa decisão for tomada.
+
+### Em andamento
+
+- Fase 6 (comercial e CRM): iniciada pela Task 065 com a entidade `lead` — nome, empresa, e-mail e telefone opcionais, origem (`referral`/`website`/`social_media`/`event`/`cold_outreach`/`other`), status de funil (`new`/`contacted`/`qualified`/`disqualified`/`converted`) e responsável comercial opcional vinculado a `person`. Deliberadamente não referencia `client` — um lead ainda não é um cliente em relacionamento. Mesma suposição explícita de single-tenant das fases anteriores. Os demais entregáveis da fase (oportunidade, qualificação, diagnóstico, proposta, follow-up, estágios, motivos de perda, indicadores comerciais, integrações externas) ainda não foram iniciados.
 
 ### Ainda não iniciado
 
 - autenticação de produção real (Google Workspace/OIDC) — arquitetura documentada na Task 040, implementação técnica não iniciada;
-- modelo de multi-organização — decisão formal ainda em aberto (seção 17), adiada deliberadamente durante toda a Fase 5;
-- todas as fases 6 em diante.
+- modelo de multi-organização — decisão formal ainda em aberto (seção 17), adiada deliberadamente desde a Fase 5;
+- demais entregáveis da Fase 6 além de `lead`, e todas as fases 7 em diante.
+
+### Parte B — validação real de persistência (transversal a Fases 3, 5 e 6)
+
+Nenhuma das migrações geradas (`0000` a `0007`, incluindo `task`, `deliverable`, `approval`, `dependency`, `risk`, `comment` e, agora, `lead`) foi aplicada contra um banco Postgres real; nenhum dos 12 testes de integração criados (`apps/core-brain/tests/*.integration.test.ts`) foi executado com sucesso — todos falham com `ECONNREFUSED` neste ambiente de execução, que não tem Docker disponível. Por decisão do CEO, essa validação é tratada como pendência única, deliberadamente adiada, agora estendendo-se também à Fase 6. Aplicar exige um ambiente com Docker: `docker compose up`, `npm run db:migrate`, `npm run test:integration`.
 
 ### Próximo gate recomendado
 
-A Fase 5 está funcionalmente completa, mas **não validada** contra um banco real — "concluído" acima descreve implementação e testes que não dependem de banco, não uma fase pronta para uso. Confirmar em bloco a execução de todos os testes de integração e a aplicação real de todas as migrações geradas (Tasks 052 a 062, Parte B) em ambiente com Docker disponível é o gate que falta para a fase ser considerada de fato pronta ("fluxo interno utilizável com dados controlados e permissões aplicadas", conforme o gate de saída original). Em paralelo, decidir o modelo de multi-organização (para revisar o que foi construído sob suposição single-tenant) e a estratégia de autenticação de produção, ambas ainda pendentes, antes de iniciar a Fase 6.
+Continuar as fatias da Fase 6 (oportunidade é a próxima candidata natural, por ser o destino de um lead qualificado). Em paralelo, seguem pendentes: a Parte B (validação real contra Postgres, cada vez mais acumulada), o modelo de multi-organização e a estratégia de autenticação de produção.
 
 ## 20. Critério de sucesso do plano
 
