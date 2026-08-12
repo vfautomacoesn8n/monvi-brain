@@ -64,6 +64,13 @@
       "when": 1786546826973,
       "tag": "0008_ancient_santa_claus",
       "breakpoints": true
+    },
+    {
+      "idx": 9,
+      "version": "7",
+      "when": 1786552914675,
+      "tag": "0009_dazzling_kronos",
+      "breakpoints": true
     }
   ]
 }
