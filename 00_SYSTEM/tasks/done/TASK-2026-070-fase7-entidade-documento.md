@@ -2,8 +2,8 @@
 id: task-2026-070
 type: task
 title: "Fase 7 — segunda fatia operacional: entidades document e document_version (documentos e versões) e suas APIs"
-status: draft
-task_state: active
+status: done
+task_state: done
 owner: ceo-monvi
 agent: claude-cursor
 reviewer: ceo-monvi
@@ -13,6 +13,7 @@ confidentiality: internal
 classification: internal
 created_at: "2026-08-12"
 updated_at: "2026-08-12"
+reviewed_at: "2026-08-12T15:20:00-03:00"
 review_cycle: on-change
 sources:
   - 00_SYSTEM/roadmaps/Plano-Mestre-de-Construcao-Monvi-Brain.md
@@ -127,7 +128,7 @@ forbidden_paths:
   - apps/core-brain/node_modules/
   - apps/core-brain/dist/
   - 00_SYSTEM/architecture/Backlog-priorizado-Helpper-Central-e-criterios-Task-048.md
-requires_review: true
+requires_review: false
 acceptance_criteria:
   - Entidade document criada em apps/core-brain/src/db/schema/document.ts, com titulo, origem opcional em source, responsavel e status opcionais, exportada em schema/index.ts.
   - Entidade document_version criada em apps/core-brain/src/db/schema/document-version.ts, vinculada a document (onDelete cascade), com numero de versao auto-incremental (indice unico document_id+version_number) e conteudo textual, exportada em schema/index.ts.
@@ -189,17 +190,49 @@ Mesma decisão já registrada desde a Task 052: a aplicação real das migraçõ
 - [x] `typecheck`, `test` e `build` continuam passando (92/92 testes). Evidência: execução local antes do commit.
 - [x] `README.md` e Plano Mestre atualizados. Evidência: seção "Escopo implementado"/"Endpoints" do README e seção 19 do Plano Mestre.
 - [x] Nenhuma credencial, dado real, dependência de software nova, entidade adicional ou trabalho além do escopo autorizado. Evidência: diff restrito aos arquivos previstos; nenhuma alteração em `package.json`; nenhuma entidade além de `document`/`document_version`.
-- [ ] Conteúdo revisado e aprovado pelo CEO antes do merge; encerramento em PR separada (Regra Fundamental 6, exceção para código). Pendente do gate de merge do PR desta task.
-- [ ] Retrospectiva crítica executada conforme `../workflows/retro.md` (Regra Fundamental 5). Pendente do encerramento formal desta task.
+- [x] Conteúdo revisado e aprovado pelo CEO antes do merge; encerramento em PR separada (Regra Fundamental 6, exceção para código). Evidência: gate explícito "Autorizado" para o merge do PR #67; este encerramento, em PR própria, é essa própria exceção em aplicação.
+- [x] Retrospectiva crítica executada conforme `../workflows/retro.md` (Regra Fundamental 5). Evidência: seção "Retrospectiva crítica" abaixo, com mudanças aceitas registradas em `changes.jsonl`.
 
 ## Riscos e gates humanos
 
 Riscos: mesmos já registrados desde a Fase 5 — migração nunca aplicada contra banco real, suposição single-tenant acumulando escopo, ausência de Docker neste ambiente; o cálculo do próximo número de versão (`select max + insert`) não está dentro de uma transação com lock explícito, o que teoricamente permite uma corrida rara sob escrita concorrente simultânea no mesmo documento — o índice único no banco impede duplicidade real (a segunda escrita falharia), mas não há retry automático; decisão deliberada de manter simples até haver evidência real de necessidade, dado que o sistema é single-tenant e de baixo volume nesta fase.
 
-Gate vigente: aguardando revisão do CEO e autorização explícita do squash merge do PR desta task.
+Gate vigente: encerrado. O merge do PR #67 foi autorizado (`Autorizado`) e executado por squash em `2cf2903d9578c5a385fd78d1b7a4946e9302dc2d`. Esta task está formalmente concluída. Os demais entregáveis da Fase 7, o modelo de multi-organização e a Parte B permanecem fora deste encerramento.
 
-Histórico de gates desta task: encerramento da Task 069 → CEO pede para continuar com a próxima fatia → proponho o escopo desta task (entidades `document` e `document_version`, documentos e versões, segundo entregável da Fase 7) → `Autorizado` (execução completa do escopo, criação da task, branch, commit, push e PR).
+Histórico de gates desta task: encerramento da Task 069 → CEO pede para continuar com a próxima fatia → proponho o escopo desta task (entidades `document` e `document_version`, documentos e versões, segundo entregável da Fase 7) → `Autorizado` (execução completa do escopo, criação da task, branch, commit, push e PR) → `Autorizado` (merge do PR #67, integrado em `2cf2903d9578c5a385fd78d1b7a4946e9302dc2d`).
 
 ## Revisão e entrega
 
-Apresentarei o diff completo, as validações locais (`typecheck`, `test`, `build`, `test:integration` com falha esperada e documentada) e o estado Git, e solicitarei explicitamente o gate de merge antes de integrar esta mudança em `main`.
+Apresentei o diff completo, as validações locais (`typecheck`, `test`, `build`, `test:integration` com falha esperada e documentada) e o estado Git, e solicitei explicitamente o gate de merge antes de integrar esta mudança em `main`.
+
+## Encerramento — 2026-08-12
+
+**Gate de encerramento**: o CEO autorizou (`Autorizado`) o squash merge do PR #67.
+
+**Integração**: PR #67 integrado em `main` via squash merge, commit `2cf2903d9578c5a385fd78d1b7a4946e9302dc2d`, em 2026-08-12T18:15:04Z. Escopo integrado: exatamente os 15 arquivos previstos em `allowed_paths` — criação de `src/db/schema/document.ts`, `src/db/schema/document-version.ts`, `src/http/routes/document.ts`, `src/http/routes/document-version.ts`, `tests/document.test.ts`, `tests/document.integration.test.ts`, `drizzle/0011_tearful_expediter.sql` e `drizzle/meta/0011_snapshot.json`; edição de `src/db/schema/index.ts`, `src/app/build-app.ts`, `drizzle/meta/_journal.json`, `README.md`, o Plano Mestre e `changes.jsonl`. Nenhuma alteração em outros arquivos de schema, `src/modules/`, `src/http/middlewares/` ou nas rotas já existentes, incluindo `source`.
+
+**Verificação pós-merge**: sincronizei `main` local via fast-forward (`git pull --ff-only`, `dfe0e83..2cf2903`) e reexecutei `npm run typecheck`, `npm test` e `npm run build` diretamente contra o `main` já integrado — typecheck limpo, 92/92 testes passando em 22 arquivos, build sem erros.
+
+**Estado final**: a segunda fatia operacional da Fase 7 (entidades `document` e `document_version` e suas APIs reais, com autenticação e RBAC) está concluída e integrada em `main`, sob a mesma suposição explícita de single-tenant já documentada. Os demais entregáveis da Fase 7 (classificação, permissões, extração, indexação, busca textual, política de retenção, memória operacional e, por último, embeddings/busca vetorial), o modelo de multi-organização e a autenticação de produção real permanecem pendentes e fora deste encerramento. A Parte B (aplicação real de todas as migrações e validação das APIs contra Postgres via Docker) permanece explicitamente pendente.
+
+**Escopo preservado**: nenhuma alteração fora de `allowed_paths` foi feita; nenhum código de identidade/autenticação/autorização ou das rotas já existentes (incluindo `source`) foi tocado; nenhuma credencial, dado real ou dependência de software nova foi introduzida; nenhuma decisão de multi-organização foi tomada ou presumida; nenhuma entidade além de `document`/`document_version` foi criada; nenhum trabalho de classificação, permissões granulares, extração, indexação, busca textual ou embeddings foi iniciado.
+
+## Retrospectiva crítica (conforme `../workflows/retro.md`)
+
+**Objetivo**: entregar "documentos e versões" — o segundo entregável explícito da Fase 7 e um dos pré-requisitos (versionamento) exigidos pela regra da própria fase antes de permissões, indexação, busca e embeddings.
+
+**Resultado conhecido**: entidades `document` e `document_version` implementadas e integradas, com versionamento imutável e auto-incremental funcionando corretamente (confirmado no teste de bloqueio de acesso e desenhado no teste de integração, ainda não executado), sem tocar em nenhum código já existente.
+
+**O que ajudou**: o padrão de rota aninhada pai/filho já validado em `comment` (aninhada sob `task`) foi diretamente reaplicável para `document_version` aninhada sob `document`; o padrão de agregação `sql` já usado nos dashboards (Tasks 062/068) resolveu o cálculo do próximo número de versão sem precisar de nova abstração.
+
+**O que dificultou**: um erro de TypeScript na primeira versão da rota de criação de versão — desestruturar `[{ nextVersion }]` diretamente do resultado do `select` falhava porque o tipo do array permite elemento `undefined` (strict mode). Corrigido usando uma variável intermediária com fallback (`nextVersionRow?.nextVersion ?? 1`) antes do primeiro `POST` real ser tentado — pego pelo próprio `npm run typecheck` antes do commit, nenhuma regressão chegou a ser testada com o erro presente.
+
+**Surpresas**: nenhuma.
+
+**Riscos materializados**: nenhum — o erro de tipo foi pego em tempo de compilação, exatamente a função que `typecheck` deveria cumprir.
+
+**Perguntas em aberto**: se o cálculo de próximo número de versão via `select max + insert` (sem lock transacional explícito) precisará de reforço sob concorrência real — o índice único no banco previne duplicidade, mas não há retry automático hoje; fica como ponto de atenção documentado, não implementado, por decisão deliberada de manter simples até haver evidência real de necessidade.
+
+**Ações propostas**: nenhuma adicional; classificação e permissões são as próximas candidatas naturais, já que a regra da fase exige as duas (junto de versionamento, já feito, e descarte/retenção, ainda pendente) antes de qualquer trabalho de busca ou embeddings.
+
+**Mudanças aceitas**: registradas em `00_SYSTEM/logs/changes.jsonl`.
