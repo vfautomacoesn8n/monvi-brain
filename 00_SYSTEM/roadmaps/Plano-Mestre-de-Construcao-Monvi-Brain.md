@@ -973,7 +973,7 @@ As seguintes decisões devem ser tomadas nas fases adequadas:
 
 ## 19. Estado atual
 
-*Atualizado em 2026-08-13 (Task 076), após verificação direta do código, dos testes e das decisões formais — não apenas da documentação anterior desta seção.*
+*Atualizado em 2026-08-13 (Task 077), após verificação direta do código, dos testes e das decisões formais — não apenas da documentação anterior desta seção.*
 
 ### Concluído
 
@@ -990,7 +990,7 @@ As seguintes decisões devem ser tomadas nas fases adequadas:
 
 ### Em andamento
 
-- Fase 8 (plataforma de automações): iniciada pela Task 076 com a entidade `automation_workflow` — nome, descrição, responsável, tipo de gatilho pretendido (`trigger_type`: `manual`/`webhook`/`schedule`/`event`) opcionais, status (`draft`/`active`/`paused`/`archived`, padrão `draft`). Puramente cadastro nesta versão — `triggerType` só descreve a intenção, nenhum gatilho dispara nada de fato ainda. Restam: gatilhos reais, webhooks, filas, retries, idempotência, dead-letter, aprovações, logs, métricas, reprocessamento e integração com n8n.
+- Fase 8 (plataforma de automações): iniciada pela Task 076 com a entidade `automation_workflow` — nome, descrição, responsável, tipo de gatilho pretendido (`trigger_type`: `manual`/`webhook`/`schedule`/`event`) opcionais, status (`draft`/`active`/`paused`/`archived`, padrão `draft`), puro cadastro. Estendida pela Task 077 com gatilhos e webhooks reais (segundo e terceiro entregáveis, combinados numa fatia) — `automation_trigger` referencia um `automation_workflow` e configura como ele é disparado; tipo `webhook` gera um `webhookToken` aleatório automaticamente; `scheduleCron`/`eventName` são armazenados para `schedule`/`event`, mas sem execução real (nenhum agendador ou consumidor de eventos existe). `automation_invocation` é o log imutável de cada chamada recebida. `POST /automation-triggers/:token/invoke` é a **única rota pública de todo o sistema** — sem autenticação Monvi, por decisão deliberada, já que webhooks externos reais não conseguem autenticar com Bearer token; a segurança é o próprio token no caminho, validado contra um gatilho ativo. Restam: filas, retries, idempotência, dead-letter, aprovações, logs (além do log de invocação já existente), métricas, reprocessamento e integração com n8n.
 
 ### Ainda não iniciado
 
@@ -998,15 +998,15 @@ As seguintes decisões devem ser tomadas nas fases adequadas:
 - modelo de multi-organização — decisão formal ainda em aberto (seção 17), adiada deliberadamente desde a Fase 5;
 - integrações externas da Fase 6 (WhatsApp/e-mail/formulários);
 - extração de arquivos reais, embeddings e busca vetorial da Fase 7 (deixados deliberadamente pendentes, dependem de decisões de infraestrutura do CEO);
-- demais entregáveis da Fase 8 além de `automation_workflow`, e todas as fases 9 em diante.
+- demais entregáveis da Fase 8 além de `automation_workflow`/`automation_trigger`/`automation_invocation`, e todas as fases 9 em diante.
 
 ### Parte B — validação real de persistência (transversal a Fases 3, 5, 6, 7 e 8)
 
-Nenhuma das migrações geradas (`0000` a `0016`, incluindo `task`, `deliverable`, `approval`, `dependency`, `risk`, `comment`, `lead`, `opportunity`, `activity`, `source`, `document`/`document_version`, `document_permission`, a política de retenção de `document`, `memory_note` e `automation_workflow`) foi aplicada contra um banco Postgres real; nenhum dos 21 testes de integração criados (`apps/core-brain/tests/*.integration.test.ts`) foi executado com sucesso — todos falham com `ECONNREFUSED` neste ambiente de execução, que não tem Docker disponível. Por decisão do CEO, essa validação é tratada como pendência única, deliberadamente adiada. Aplicar exige um ambiente com Docker: `docker compose up`, `npm run db:migrate`, `npm run test:integration`. Nota adicional: mesmo quando a Parte B for executada, o teste de integração de permissões (`document-permission.integration.test.ts`) não conseguirá exercitar o caminho de negação (403) sem uma mudança separada no harness de sessão de teste — hoje toda sessão criada via `createSession` resolve para o papel `admin` (join fixo em `validateSessionToken`, Fase 4), que sempre contorna a checagem granular. A Task 074 não gerou migração (`search` é rota de leitura pura).
+Nenhuma das migrações geradas (`0000` a `0017`, incluindo `task`, `deliverable`, `approval`, `dependency`, `risk`, `comment`, `lead`, `opportunity`, `activity`, `source`, `document`/`document_version`, `document_permission`, a política de retenção de `document`, `memory_note`, `automation_workflow` e `automation_trigger`/`automation_invocation`) foi aplicada contra um banco Postgres real; nenhum dos 22 testes de integração criados (`apps/core-brain/tests/*.integration.test.ts`) foi executado com sucesso — todos falham com `ECONNREFUSED` neste ambiente de execução, que não tem Docker disponível. Por decisão do CEO, essa validação é tratada como pendência única, deliberadamente adiada. Aplicar exige um ambiente com Docker: `docker compose up`, `npm run db:migrate`, `npm run test:integration`. Nota adicional: mesmo quando a Parte B for executada, o teste de integração de permissões (`document-permission.integration.test.ts`) não conseguirá exercitar o caminho de negação (403) sem uma mudança separada no harness de sessão de teste — hoje toda sessão criada via `createSession` resolve para o papel `admin` (join fixo em `validateSessionToken`, Fase 4), que sempre contorna a checagem granular. A Task 074 não gerou migração (`search` é rota de leitura pura).
 
 ### Próximo gate recomendado
 
-Continuar as fatias da Fase 8 (gatilhos reais e webhooks são as próximas candidatas naturais, já que `automation_workflow` — o catálogo — está pronto para ser referenciado). Em paralelo, seguem pendentes, de forma transversal: a Parte B (validação real contra Postgres, cada vez mais acumulada), o modelo de multi-organização, a estratégia de autenticação de produção e as duas frentes deixadas pendentes na Fase 7 (extração de arquivos reais; embeddings/busca vetorial) — todas dependentes de decisões do CEO ainda não tomadas.
+Continuar as fatias da Fase 8 (filas/retries/idempotência/dead-letter são as próximas candidatas naturais, já que gatilhos reais existem e geram invocações registradas — falta o que fazer com elas de forma confiável). Em paralelo, seguem pendentes, de forma transversal: a Parte B (validação real contra Postgres, cada vez mais acumulada), o modelo de multi-organização, a estratégia de autenticação de produção e as duas frentes deixadas pendentes na Fase 7 (extração de arquivos reais; embeddings/busca vetorial) — todas dependentes de decisões do CEO ainda não tomadas.
 
 ## 20. Critério de sucesso do plano
 
