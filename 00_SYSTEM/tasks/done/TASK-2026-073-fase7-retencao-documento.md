@@ -2,8 +2,8 @@
 id: task-2026-073
 type: task
 title: "Fase 7 — quinta fatia operacional: política de retenção de documentos (retentionPolicy/retentionUntil)"
-status: draft
-task_state: active
+status: done
+task_state: done
 owner: ceo-monvi
 agent: claude-cursor
 reviewer: ceo-monvi
@@ -13,6 +13,7 @@ confidentiality: internal
 classification: internal
 created_at: "2026-08-13"
 updated_at: "2026-08-13"
+reviewed_at: "2026-08-13T11:10:00-03:00"
 review_cycle: on-change
 sources:
   - 00_SYSTEM/roadmaps/Plano-Mestre-de-Construcao-Monvi-Brain.md
@@ -134,7 +135,7 @@ forbidden_paths:
   - apps/core-brain/node_modules/
   - apps/core-brain/dist/
   - 00_SYSTEM/architecture/Backlog-priorizado-Helpper-Central-e-criterios-Task-048.md
-requires_review: true
+requires_review: false
 acceptance_criteria:
   - Campos retentionPolicy e retentionUntil adicionados a apps/core-brain/src/db/schema/document.ts, com enum document_retention_policy (indefinite/time_limited, padrao indefinite).
   - Migração gerada via npm run db:generate (sem aplicar contra banco real), correspondendo exatamente ao schema desenhado.
@@ -187,17 +188,49 @@ Mesma decisão já registrada desde a Task 052: a aplicação real das migraçõ
 - [x] `typecheck`, `test` e `build` continuam passando (95/95 testes). Evidência: execução local antes do commit.
 - [x] `README.md` e Plano Mestre atualizados. Evidência: seção "Escopo implementado"/"Endpoints" do README e seção 19 do Plano Mestre.
 - [x] Nenhuma credencial, dado real, dependência de software nova, entidade nova ou trabalho além do escopo autorizado. Evidência: diff restrito aos arquivos previstos; nenhuma alteração em `package.json`; nenhuma entidade nova.
-- [ ] Conteúdo revisado e aprovado pelo CEO antes do merge; encerramento em PR separada (Regra Fundamental 6, exceção para código). Pendente do gate de merge do PR desta task.
-- [ ] Retrospectiva crítica executada conforme `../workflows/retro.md` (Regra Fundamental 5). Pendente do encerramento formal desta task.
+- [x] Conteúdo revisado e aprovado pelo CEO antes do merge; encerramento em PR separada (Regra Fundamental 6, exceção para código). Evidência: gate explícito "Autorizado" para o merge do PR #73; este encerramento, em PR própria, é essa própria exceção em aplicação.
+- [x] Retrospectiva crítica executada conforme `../workflows/retro.md` (Regra Fundamental 5). Evidência: seção "Retrospectiva crítica" abaixo, com mudanças aceitas registradas em `changes.jsonl`.
 
 ## Riscos e gates humanos
 
 Riscos: mesmos já registrados desde a Fase 5 — migração nunca aplicada contra banco real, suposição single-tenant acumulando escopo, ausência de Docker neste ambiente; a política de retenção é puramente declarativa — sem automação, um documento com `retentionUntil` vencido continua acessível normalmente até que uma ação humana ou, futuramente, um processo da Fase 8 aja sobre ele. Isso é uma limitação deliberada, não um bug, mas fica registrado para não ser confundido com descarte automático real.
 
-Gate vigente: aguardando revisão do CEO e autorização explícita do squash merge do PR desta task.
+Gate vigente: encerrado. O merge do PR #73 foi autorizado (`Autorizado`) e executado por squash em `1a0c49c9cc951759bd6e39293f656dc5a821c260`. Esta task está formalmente concluída. Os demais entregáveis da Fase 7, o modelo de multi-organização e a Parte B permanecem fora deste encerramento.
 
-Histórico de gates desta task: encerramento da Task 072 → CEO pede para continuar com a próxima fatia → proponho o escopo desta task (`retentionPolicy`/`retentionUntil` em `document`, última peça bloqueante da regra da Fase 7, deliberadamente sem automação) → `Aprovado` (execução completa do escopo, criação da task, branch, commit, push e PR).
+Histórico de gates desta task: encerramento da Task 072 → CEO pede para continuar com a próxima fatia → proponho o escopo desta task (`retentionPolicy`/`retentionUntil` em `document`, última peça bloqueante da regra da Fase 7, deliberadamente sem automação) → `Aprovado` (execução completa do escopo, criação da task, branch, commit, push e PR) → `Autorizado` (merge do PR #73, integrado em `1a0c49c9cc951759bd6e39293f656dc5a821c260`).
 
 ## Revisão e entrega
 
-Apresentarei o diff completo, as validações locais (`typecheck`, `test`, `build`, `test:integration` com falha esperada e documentada) e o estado Git, e solicitarei explicitamente o gate de merge antes de integrar esta mudança em `main`.
+Apresentei o diff completo, as validações locais (`typecheck`, `test`, `build`, `test:integration` com falha esperada e documentada) e o estado Git, e solicitei explicitamente o gate de merge antes de integrar esta mudança em `main`.
+
+## Encerramento — 2026-08-13
+
+**Gate de encerramento**: o CEO autorizou (`Autorizado`) o squash merge do PR #73.
+
+**Integração**: PR #73 integrado em `main` via squash merge, commit `1a0c49c9cc951759bd6e39293f656dc5a821c260`, em 2026-08-13T14:06:13Z. Escopo integrado: exatamente os 10 arquivos previstos em `allowed_paths` — criação de `drizzle/0014_purple_redwing.sql` e `drizzle/meta/0014_snapshot.json`; edição de `src/db/schema/document.ts`, `src/http/routes/document.ts`, `tests/document.integration.test.ts`, `drizzle/meta/_journal.json`, `README.md`, o Plano Mestre e `changes.jsonl`. Nenhuma alteração em outros arquivos de schema, `src/modules/`, `src/http/middlewares/` ou em rotas além de `document.ts`.
+
+**Verificação pós-merge**: sincronizei `main` local via fast-forward (`git pull --ff-only`, `0ae8b95..1a0c49c`) e reexecutei `npm run typecheck`, `npm test` e `npm run build` diretamente contra o `main` já integrado — typecheck limpo, 95/95 testes passando em 23 arquivos, build sem erros.
+
+**Estado final**: a quinta fatia operacional da Fase 7 (política de retenção de documentos) está concluída e integrada em `main`, sob a mesma suposição explícita de single-tenant já documentada. Com esta task, os quatro pré-requisitos bloqueantes da regra da Fase 7 (fontes, permissões, versionamento, descarte) estão completos — embeddings e busca vetorial estão formalmente desbloqueados, mas ainda não implementados. Os demais entregáveis da Fase 7 (extração, indexação, busca textual, memória operacional, embeddings/busca vetorial), o modelo de multi-organização e a autenticação de produção real permanecem pendentes e fora deste encerramento. A Parte B (aplicação real de todas as migrações e validação das APIs contra Postgres via Docker) permanece explicitamente pendente.
+
+**Escopo preservado**: nenhuma alteração fora de `allowed_paths` foi feita; nenhum código de identidade/autenticação/autorização ou de rotas além de `document.ts` foi tocado; nenhuma credencial, dado real ou dependência de software nova foi introduzida; nenhuma decisão de multi-organização foi tomada ou presumida; nenhuma entidade nova foi criada; nenhuma automação de descarte/arquivamento foi implementada.
+
+## Retrospectiva crítica (conforme `../workflows/retro.md`)
+
+**Objetivo**: entregar "política de retenção" — o último dos quatro pré-requisitos explícitos da regra da Fase 7 antes de embeddings/busca vetorial poderem começar.
+
+**Resultado conhecido**: `document.retentionPolicy`/`retentionUntil` implementados com validação de consistência, sem nenhuma automação de descarte real (deliberadamente adiada para a Fase 8), completando os quatro pré-requisitos bloqueantes da fase.
+
+**O que ajudou**: a decisão de exigir `retentionPolicy` e `retentionUntil` juntos no mesmo pedido (em vez de permitir `retentionUntil` sozinho, assumindo o estado anterior do documento) evitou qualquer ambiguidade sobre o que uma atualização parcial realmente significa — uma escolha de design simples que elimina uma classe inteira de bugs de "o que o cliente da API quis dizer" sem precisar de nenhuma consulta extra ao banco.
+
+**O que dificultou**: nada tecnicamente; sexta task de código sob as Regras Fundamentais 5 e 6, ciclo bem estabelecido.
+
+**Surpresas**: nenhuma.
+
+**Riscos materializados**: nenhum.
+
+**Perguntas em aberto**: quando a Fase 8 (Plataforma de automações) for iniciada, será necessário decidir o que "descarte" realmente significa na prática — arquivamento automático (`status: archived`), soft delete automático, ou apenas uma notificação/alerta para revisão humana. Essa decisão fica para quando a Fase 8 chegar, não é urgente agora.
+
+**Ações propostas**: com os quatro pré-requisitos da regra completos, as próximas candidatas naturais da Fase 7 são extração, indexação e busca textual — mas essas envolvem processamento de conteúdo (possivelmente arquivos, não só texto já digitado), o que pode exigir uma decisão de escopo maior do CEO antes de eu propor a próxima fatia (por exemplo: até onde vai "extração" sem envolver upload real de arquivos, que ainda não existe no sistema).
+
+**Mudanças aceitas**: registradas em `00_SYSTEM/logs/changes.jsonl`.
