@@ -2,8 +2,8 @@
 id: task-2026-072
 type: task
 title: "Fase 7 — quarta fatia operacional: permissões granulares por documento (entidade document_permission e enforcement)"
-status: draft
-task_state: active
+status: done
+task_state: done
 owner: ceo-monvi
 agent: claude-cursor
 reviewer: ceo-monvi
@@ -13,6 +13,7 @@ confidentiality: internal
 classification: internal
 created_at: "2026-08-13"
 updated_at: "2026-08-13"
+reviewed_at: "2026-08-13T10:32:00-03:00"
 review_cycle: on-change
 sources:
   - 00_SYSTEM/roadmaps/Plano-Mestre-de-Construcao-Monvi-Brain.md
@@ -136,7 +137,7 @@ forbidden_paths:
   - apps/core-brain/node_modules/
   - apps/core-brain/dist/
   - 00_SYSTEM/architecture/Backlog-priorizado-Helpper-Central-e-criterios-Task-048.md
-requires_review: true
+requires_review: false
 acceptance_criteria:
   - Entidade document_permission criada em apps/core-brain/src/db/schema/document-permission.ts, vinculada a document (onDelete cascade), com concessao a pessoa ou papel (exatamente um dos dois) e nivel de acesso read/write, exportada em schema/index.ts.
   - Migração gerada via npm run db:generate (sem aplicar contra banco real), correspondendo exatamente ao schema desenhado.
@@ -197,17 +198,49 @@ Mesma decisão já registrada desde a Task 052: a aplicação real das migraçõ
 - [x] `typecheck`, `test` e `build` continuam passando (95/95 testes). Evidência: execução local antes do commit.
 - [x] `README.md` e Plano Mestre atualizados. Evidência: seção "Escopo implementado"/"Endpoints" do README e seção 19 do Plano Mestre.
 - [x] Nenhuma credencial, dado real, dependência de software nova, entidade adicional ou trabalho além do escopo autorizado. Evidência: diff restrito aos arquivos previstos; nenhuma alteração em `package.json`; nenhuma entidade além de `document_permission`.
-- [ ] Conteúdo revisado e aprovado pelo CEO antes do merge; encerramento em PR separada (Regra Fundamental 6, exceção para código). Pendente do gate de merge do PR desta task.
-- [ ] Retrospectiva crítica executada conforme `../workflows/retro.md` (Regra Fundamental 5). Pendente do encerramento formal desta task.
+- [x] Conteúdo revisado e aprovado pelo CEO antes do merge; encerramento em PR separada (Regra Fundamental 6, exceção para código). Evidência: gate explícito "Autorizado" para o merge do PR #71; este encerramento, em PR própria, é essa própria exceção em aplicação.
+- [x] Retrospectiva crítica executada conforme `../workflows/retro.md` (Regra Fundamental 5). Evidência: seção "Retrospectiva crítica" abaixo, com mudanças aceitas registradas em `changes.jsonl`.
 
 ## Riscos e gates humanos
 
 Riscos: mesmos já registrados desde a Fase 5 — migração nunca aplicada contra banco real, suposição single-tenant acumulando escopo, ausência de Docker neste ambiente; o teste de integração não consegue validar o caminho de negação (403) por limitação do harness de sessão de teste, documentada explicitamente — a lógica de enforcement em si (`hasGranularDocumentAccess`) foi revisada manualmente linha a linha, mas não tem cobertura automatizada de "acesso negado" nem mesmo quando a Parte B for retomada, a menos que o harness de sessão seja estendido separadamente; `GET /documents` faz uma verificação de acesso por documento (`Promise.all` sobre a lista completa) — aceitável no volume atual, mas não otimizado para uma tabela grande.
 
-Gate vigente: aguardando revisão do CEO e autorização explícita do squash merge do PR desta task.
+Gate vigente: encerrado. O merge do PR #71 foi autorizado (`Autorizado`) e executado por squash em `f6813a042b01de86e517519ada565e7da08006ed`. Esta task está formalmente concluída. Os demais entregáveis da Fase 7, o modelo de multi-organização e a Parte B permanecem fora deste encerramento.
 
-Histórico de gates desta task: encerramento da Task 071 → CEO pede para continuar com a próxima fatia → proponho o escopo desta task (entidade `document_permission`, permissões granulares, quarto entregável da Fase 7, com enforcement mínimo em `document.ts`) → `Autorizado` (execução completa do escopo, criação da task, branch, commit, push e PR).
+Histórico de gates desta task: encerramento da Task 071 → CEO pede para continuar com a próxima fatia → proponho o escopo desta task (entidade `document_permission`, permissões granulares, quarto entregável da Fase 7, com enforcement mínimo em `document.ts`) → `Autorizado` (execução completa do escopo, criação da task, branch, commit, push e PR) → `Autorizado` (merge do PR #71, integrado em `f6813a042b01de86e517519ada565e7da08006ed`).
 
 ## Revisão e entrega
 
-Apresentarei o diff completo, as validações locais (`typecheck`, `test`, `build`, `test:integration` com falha esperada e documentada) e o estado Git, e solicitarei explicitamente o gate de merge antes de integrar esta mudança em `main`.
+Apresentei o diff completo, as validações locais (`typecheck`, `test`, `build`, `test:integration` com falha esperada e documentada) e o estado Git, e solicitei explicitamente o gate de merge antes de integrar esta mudança em `main`.
+
+## Encerramento — 2026-08-13
+
+**Gate de encerramento**: o CEO autorizou (`Autorizado`) o squash merge do PR #71.
+
+**Integração**: PR #71 integrado em `main` via squash merge, commit `f6813a042b01de86e517519ada565e7da08006ed`, em 2026-08-13T13:25:32Z. Escopo integrado: exatamente os 14 arquivos previstos em `allowed_paths` — criação de `src/db/schema/document-permission.ts`, `src/http/routes/document-permission.ts`, `tests/document-permission.test.ts`, `tests/document-permission.integration.test.ts`, `drizzle/0013_foamy_nighthawk.sql` e `drizzle/meta/0013_snapshot.json`; edição de `src/db/schema/index.ts`, `src/app/build-app.ts`, `src/http/routes/document.ts`, `drizzle/meta/_journal.json`, `README.md`, o Plano Mestre e `changes.jsonl`. Nenhuma alteração em outros arquivos de schema, `src/modules/`, `src/http/middlewares/` ou em rotas além de `document.ts`/`document-permission.ts`.
+
+**Verificação pós-merge**: sincronizei `main` local via fast-forward (`git pull --ff-only`, `e6b0312..f6813a0`) e reexecutei `npm run typecheck`, `npm test` e `npm run build` diretamente contra o `main` já integrado — typecheck limpo, 95/95 testes passando em 23 arquivos, build sem erros.
+
+**Estado final**: a quarta fatia operacional da Fase 7 (permissões granulares por documento, com enforcement real para `confidential`/`restricted`) está concluída e integrada em `main`, sob a mesma suposição explícita de single-tenant já documentada. A classificação da Task 071 deixou de ser puramente descritiva. Os demais entregáveis da Fase 7 (extração, indexação, busca textual, política de retenção, memória operacional e, por último, embeddings/busca vetorial), o modelo de multi-organização e a autenticação de produção real permanecem pendentes e fora deste encerramento. A Parte B (aplicação real de todas as migrações e validação das APIs contra Postgres via Docker) permanece explicitamente pendente — e, quando retomada, o teste de negação de `document-permission.integration.test.ts` ainda não será exercitável sem uma mudança separada no harness de sessão de teste.
+
+**Escopo preservado**: nenhuma alteração fora de `allowed_paths` foi feita; nenhum código de identidade/autenticação/autorização ou de rotas além de `document.ts`/`document-permission.ts` foi tocado; nenhuma credencial, dado real ou dependência de software nova foi introduzida; nenhuma decisão de multi-organização foi tomada ou presumida; nenhuma entidade além de `document_permission` foi criada.
+
+## Retrospectiva crítica (conforme `../workflows/retro.md`)
+
+**Objetivo**: entregar "permissões" — o quarto entregável explícito da Fase 7 — e, com isso, tornar a classificação da Task 071 realmente funcional em vez de apenas decorativa.
+
+**Resultado conhecido**: `document_permission` implementada e integrada, com enforcement real aplicado a `GET/PATCH/DELETE /documents/:id` e ao filtro de `GET /documents`, sem alterar o comportamento de documentos `public`/`internal` — nenhuma regressão nos 92 testes já existentes.
+
+**O que ajudou**: reaproveitar o bypass de `admin` já usado em `requirePermission`, em vez de inventar uma lógica de superusuário separada, manteve o modelo mental consistente com o resto do RBAC; ler `session.service.ts` antes de escrever o enforcement revelou de imediato a limitação do harness de teste (join fixo para `admin`), evitando que eu escrevesse um teste de integração que pareceria cobrir a negação mas na prática nunca falharia de verdade.
+
+**O que dificultou**: a decisão de onde aplicar o filtro em `GET /documents` — filtrar em memória após buscar tudo, versus tentar expressar a checagem de permissão como parte da query SQL. Optei pela versão em memória (mais simples, aceitável no volume atual) e documentei explicitamente que não está otimizada para uma tabela grande, em vez de resolver isso agora sem evidência real de necessidade.
+
+**Surpresas**: nenhuma tecnicamente — a limitação do harness de sessão de teste já era esperada a partir da leitura de `session.service.ts`, mas vale registrar como um padrão recorrente desta fase: descobrir limitações reais ao ler o código existente antes de escrever, em vez de assumir que tudo se comporta como o "caminho feliz" sugere.
+
+**Riscos materializados**: nenhum — os riscos identificados (query N+1 em memória, teste de negação não exercitável) foram descobertos e documentados durante o desenho, não depois de um problema real.
+
+**Perguntas em aberto**: se e quando o harness de sessão de teste deveria ganhar uma forma de criar sessões não-admin para testes de integração mais realistas — decisão que caberia a uma task própria, não a esta, dado que mexe em código de Fase 4 (`session.service.ts`), fora do escopo autorizado aqui.
+
+**Ações propostas**: política de retenção/descarte é a próxima candidata natural da Fase 7 — última peça exigida pela regra da fase antes de extração, indexação, busca e embeddings poderem começar.
+
+**Mudanças aceitas**: registradas em `00_SYSTEM/logs/changes.jsonl`.
