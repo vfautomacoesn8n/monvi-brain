@@ -2,8 +2,8 @@
 id: task-2026-078
 type: task
 title: "Fase 8 — terceira fatia operacional: fila, retries, idempotência e dead-letter (ciclo de vida de automation_invocation)"
-status: draft
-task_state: active
+status: done
+task_state: done
 owner: ceo-monvi
 agent: claude-cursor
 reviewer: ceo-monvi
@@ -13,6 +13,7 @@ confidentiality: internal
 classification: internal
 created_at: "2026-08-13"
 updated_at: "2026-08-13"
+reviewed_at: "2026-08-13T15:17:00-03:00"
 review_cycle: on-change
 sources:
   - 00_SYSTEM/roadmaps/Plano-Mestre-de-Construcao-Monvi-Brain.md
@@ -154,7 +155,7 @@ forbidden_paths:
   - apps/core-brain/node_modules/
   - apps/core-brain/dist/
   - 00_SYSTEM/architecture/Backlog-priorizado-Helpper-Central-e-criterios-Task-048.md
-requires_review: true
+requires_review: false
 acceptance_criteria:
   - Campos idempotencyKey, status, attemptCount, maxAttempts, nextAttemptAt e lastError adicionados a apps/core-brain/src/db/schema/automation-invocation.ts, com enum automation_invocation_status (pending/succeeded/dead_letter) e indice unico (automationTriggerId, idempotencyKey).
   - Migração gerada via npm run db:generate (sem aplicar contra banco real), correspondendo exatamente ao schema desenhado.
@@ -215,17 +216,49 @@ Mesma decisão já registrada desde a Task 052: a aplicação real das migraçõ
 - [x] `typecheck`, `test` e `build` continuam passando (115/115 testes). Evidência: execução local antes do commit.
 - [x] `README.md` e Plano Mestre atualizados. Evidência: seção "Escopo implementado"/"Endpoints" do README e seção 19 do Plano Mestre.
 - [x] Nenhuma credencial, dado real, dependência de software nova, entidade nova ou worker real. Evidência: diff restrito aos arquivos previstos; nenhuma alteração em `package.json`; nenhuma entidade nova; nenhum processo em background introduzido.
-- [ ] Conteúdo revisado e aprovado pelo CEO antes do merge; encerramento em PR separada (Regra Fundamental 6, exceção para código). Pendente do gate de merge do PR desta task.
-- [ ] Retrospectiva crítica executada conforme `../workflows/retro.md` (Regra Fundamental 5). Pendente do encerramento formal desta task.
+- [x] Conteúdo revisado e aprovado pelo CEO antes do merge; encerramento em PR separada (Regra Fundamental 6, exceção para código). Evidência: gate explícito "Autorizado" para o merge do PR #83; este encerramento, em PR própria, é essa própria exceção em aplicação.
+- [x] Retrospectiva crítica executada conforme `../workflows/retro.md` (Regra Fundamental 5). Evidência: seção "Retrospectiva crítica" abaixo, com mudanças aceitas registradas em `changes.jsonl`.
 
 ## Riscos e gates humanos
 
 Riscos: mesmos já registrados desde a Fase 5 — migração nunca aplicada contra banco real, suposição single-tenant acumulando escopo, ausência de Docker neste ambiente; sem nenhum worker real, uma invocação só avança de estado se alguém (humano ou sistema externo) chamar `/attempt` — isso é uma limitação deliberada desta fatia, não um bug, mas significa que a fila pode crescer indefinidamente sem processamento automático até que essa decisão de infraestrutura seja tomada; o backoff exponencial não tem teto máximo configurado (pode gerar `nextAttemptAt` muito distante em teoria, embora `maxAttempts` padrão de 3 limite isso na prática).
 
-Gate vigente: aguardando revisão do CEO e autorização explícita do squash merge do PR desta task.
+Gate vigente: encerrado. O merge do PR #83 foi autorizado (`Autorizado`) e executado por squash em `2789e494cf573764960081919260d13d95d61daa`. Esta task está formalmente concluída. Os demais entregáveis da Fase 8, o modelo de multi-organização e a Parte B permanecem fora deste encerramento.
 
-Histórico de gates desta task: encerramento da Task 077 → CEO pede para continuar → proponho o escopo desta task (fila/retries/idempotência/dead-letter combinados, sem fila externa) → `Autorizado` (execução completa do escopo, criação da task, branch, commit, push e PR).
+Histórico de gates desta task: encerramento da Task 077 → CEO pede para continuar → proponho o escopo desta task (fila/retries/idempotência/dead-letter combinados, sem fila externa) → `Autorizado` (execução completa do escopo, criação da task, branch, commit, push e PR) → `Autorizado` (merge do PR #83, integrado em `2789e494cf573764960081919260d13d95d61daa`).
 
 ## Revisão e entrega
 
-Apresentarei o diff completo, as validações locais (`typecheck`, `test`, `build`, `test:integration` com falha esperada e documentada) e o estado Git, e solicitarei explicitamente o gate de merge antes de integrar esta mudança em `main`.
+Apresentei o diff completo, as validações locais (`typecheck`, `test`, `build`, `test:integration` com falha esperada e documentada) e o estado Git, e solicitei explicitamente o gate de merge antes de integrar esta mudança em `main`.
+
+## Encerramento — 2026-08-13
+
+**Gate de encerramento**: o CEO autorizou (`Autorizado`) o squash merge do PR #83.
+
+**Integração**: PR #83 integrado em `main` via squash merge, commit `2789e494cf573764960081919260d13d95d61daa`, em 2026-08-13T18:11:18Z. Escopo integrado: exatamente os 12 arquivos previstos em `allowed_paths` — criação de `src/http/routes/automation-invocation.ts`, `tests/automation-invocation.test.ts`, `tests/automation-invocation.integration.test.ts`, `drizzle/0018_third_ma_gnuci.sql` e `drizzle/meta/0018_snapshot.json`; edição de `src/db/schema/automation-invocation.ts`, `src/http/routes/automation-trigger.ts`, `src/app/build-app.ts`, `drizzle/meta/_journal.json`, `README.md`, o Plano Mestre e `changes.jsonl`. Nenhuma alteração em outros arquivos de schema, `src/modules/`, `src/http/middlewares/` ou nas rotas já existentes além do necessário.
+
+**Verificação pós-merge**: sincronizei `main` local via fast-forward (`git pull --ff-only`, `d41e1f0..2789e49`) e reexecutei `npm run typecheck`, `npm test` e `npm run build` diretamente contra o `main` já integrado — typecheck limpo, 115/115 testes passando em 28 arquivos, build sem erros.
+
+**Estado final**: a terceira fatia operacional da Fase 8 (fila, retries, idempotência e dead-letter) está concluída e integrada em `main`, sob a mesma suposição explícita de single-tenant já documentada. Uma invocação recebida por webhook agora tem um ciclo de vida real (pendente → sucesso ou dead-letter), com deduplicação e retry com backoff, mas continua sem nenhum worker automático consumindo a fila. Restam aprovações, logs, métricas, reprocessamento e integração com n8n como entregáveis não iniciados da Fase 8. A Fase 7 permanece funcionalmente concluída com extração de arquivos reais e embeddings/busca vetorial deliberadamente pendentes. O modelo de multi-organização e a autenticação de produção real permanecem pendentes e fora deste encerramento. A Parte B permanece explicitamente pendente.
+
+**Escopo preservado**: nenhuma alteração fora de `allowed_paths` foi feita; nenhum código de identidade/autenticação/autorização foi tocado; nenhuma credencial, dado real ou dependência de software nova foi introduzida; nenhuma decisão de multi-organização foi tomada ou presumida; nenhuma entidade nova foi criada; nenhum worker ou processo em background real foi implementado.
+
+## Retrospectiva crítica (conforme `../workflows/retro.md`)
+
+**Objetivo**: entregar fila, retries, idempotência e dead-letter — os quatro entregáveis seguintes da Fase 8 — dando a uma invocação recebida um ciclo de vida real, sem introduzir nenhuma peça de infraestrutura nova (fila externa, worker).
+
+**Resultado conhecido**: `automation_invocation` ganhou estado completo de processamento; o teste de integração exercita os quatro cenários principais (deduplicação, presença/ausência na fila, ciclo até dead-letter, rejeição de tentativa terminal) de ponta a ponta.
+
+**O que ajudou**: reconhecer que "fila" não precisa ser uma peça de infraestrutura separada — é só um filtro SQL (`status = pending AND nextAttemptAt <= now()`) sobre uma tabela que já existia. Essa decisão evitou introduzir Redis/RabbitMQ/SQS numa fase em que ainda não há nem um worker real para consumir a fila — construir a infraestrutura de mensageria antes de ter algo que a consuma seria investimento sem retorno imediato.
+
+**O que dificultou**: decidir o índice único de idempotência — `(automation_trigger_id, idempotency_key)` com múltiplos `NULL` permitidos é o comportamento padrão do Postgres, mas exigiu verificar explicitamente essa semântica antes de assumir que funcionaria como esperado para invocações sem chave de idempotência (a maioria).
+
+**Surpresas**: nenhuma.
+
+**Riscos materializados**: nenhum — o risco de "fila crescendo sem processamento automático" foi identificado e documentado durante o desenho, não descoberto depois.
+
+**Perguntas em aberto**: quando um worker real deveria existir para consumir `/queue` e chamar `/attempt` automaticamente — decisão de infraestrutura que cabe ao CEO, possivelmente ligada à integração real com n8n (último entregável da fase).
+
+**Ações propostas**: aprovações e reprocessamento são candidatas naturais seguintes — falta decidir se algumas automações precisam de aprovação humana antes de rodar, e se/como reprocessar manualmente uma invocação em `dead_letter`.
+
+**Mudanças aceitas**: registradas em `00_SYSTEM/logs/changes.jsonl`.
