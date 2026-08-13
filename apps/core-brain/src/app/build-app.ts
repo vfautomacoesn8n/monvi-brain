@@ -24,6 +24,7 @@ import { registerDocumentRoutes } from "../http/routes/document.js";
 import { registerDocumentVersionRoutes } from "../http/routes/document-version.js";
 import { registerDocumentPermissionRoutes } from "../http/routes/document-permission.js";
 import { registerSearchRoutes } from "../http/routes/search.js";
+import { registerMemoryNoteRoutes } from "../http/routes/memory-note.js";
 import { createLoggerOptions } from "../logging/logger.js";
 
 export async function buildApp(
@@ -126,6 +127,10 @@ export async function buildApp(
   });
 
   await app.register(registerSearchRoutes, {
+    prefix: "/api/v1"
+  });
+
+  await app.register(registerMemoryNoteRoutes, {
     prefix: "/api/v1"
   });
 

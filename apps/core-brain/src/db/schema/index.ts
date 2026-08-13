@@ -17,4 +17,5 @@ export * from './source.js';
 export * from './document.js';
 export * from './document-version.js';
 export * from './document-permission.js';
+export * from './memory-note.js';
 export * from './session.js';
