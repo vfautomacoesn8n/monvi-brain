@@ -1,11 +1,58 @@
-import type { FastifyInstance } from 'fastify';
+import type { FastifyInstance, FastifyRequest } from 'fastify';
 import { and, eq, isNull } from 'drizzle-orm';
 import { z } from 'zod';
 import { db } from '../../db/client.js';
-import { document, documentStatusEnum, documentConfidentialityEnum } from '../../db/schema/index.js';
+import {
+  document,
+  documentStatusEnum,
+  documentConfidentialityEnum,
+  documentPermission,
+} from '../../db/schema/index.js';
 import { authenticateRequest } from '../middlewares/authenticate.js';
 import { requirePermission } from '../middlewares/authorize.js';
 import { recordAuditEvent } from '../../modules/audit/audit.service.js';
+
+const RESTRICTED_CONFIDENTIALITY_LEVELS = new Set(['confidential', 'restricted']);
+
+async function hasGranularDocumentAccess(
+  user: FastifyRequest['user'],
+  doc: { id: string; confidentiality: string },
+  requiredLevel: 'read' | 'write'
+): Promise<boolean> {
+  if (!RESTRICTED_CONFIDENTIALITY_LEVELS.has(doc.confidentiality)) {
+    return true;
+  }
+  if (!user) {
+    return false;
+  }
+  if (user.roleName === 'admin') {
+    return true;
+  }
+
+  const grants = await db
+    .select()
+    .from(documentPermission)
+    .where(and(eq(documentPermission.documentId, doc.id), isNull(documentPermission.deletedAt)));
+
+  const relevantGrants = grants.filter(
+    (grant) =>
+      grant.granteePersonId === user.personId ||
+      (user.roleId !== null && grant.granteeRoleId === user.roleId)
+  );
+
+  if (requiredLevel === 'write') {
+    return relevantGrants.some((grant) => grant.accessLevel === 'write');
+  }
+  return relevantGrants.some((grant) => grant.accessLevel === 'read' || grant.accessLevel === 'write');
+}
+
+function forbiddenDocumentAccessResponse() {
+  return {
+    statusCode: 403,
+    error: 'Forbidden',
+    message: 'Este documento tem confidencialidade restrita e você não tem uma permissão concedida para ele.',
+  } as const;
+}
 
 const createDocumentSchema = z.object({
   title: z.string().min(1).max(255),
@@ -64,8 +111,12 @@ export async function registerDocumentRoutes(app: FastifyInstance): Promise<void
   app.get(
     '/documents',
     { preHandler: [authenticateRequest, requirePermission('document:read')] },
-    async () => {
-      const documents = await db.select().from(document).where(isNull(document.deletedAt));
+    async (request) => {
+      const allDocuments = await db.select().from(document).where(isNull(document.deletedAt));
+      const accessFlags = await Promise.all(
+        allDocuments.map((doc) => hasGranularDocumentAccess(request.user, doc, 'read'))
+      );
+      const documents = allDocuments.filter((_doc, index) => accessFlags[index]);
       return { documents };
     }
   );
@@ -96,6 +147,10 @@ export async function registerDocumentRoutes(app: FastifyInstance): Promise<void
         });
       }
 
+      if (!(await hasGranularDocumentAccess(request.user, found, 'read'))) {
+        return reply.status(403).send(forbiddenDocumentAccessResponse());
+      }
+
       return { document: found };
     }
   );
@@ -121,6 +176,23 @@ export async function registerDocumentRoutes(app: FastifyInstance): Promise<void
           message: 'Dados de atualização de documento inválidos.',
           details: bodyResult.error.flatten(),
         });
+      }
+
+      const [existing] = await db
+        .select()
+        .from(document)
+        .where(and(eq(document.id, paramsResult.data.id), isNull(document.deletedAt)));
+
+      if (!existing) {
+        return reply.status(404).send({
+          statusCode: 404,
+          error: 'Not Found',
+          message: 'Documento não encontrado.',
+        });
+      }
+
+      if (!(await hasGranularDocumentAccess(request.user, existing, 'write'))) {
+        return reply.status(403).send(forbiddenDocumentAccessResponse());
       }
 
       const [updated] = await db
@@ -160,6 +232,23 @@ export async function registerDocumentRoutes(app: FastifyInstance): Promise<void
           error: 'Bad Request',
           message: 'Identificador de documento inválido.',
         });
+      }
+
+      const [existing] = await db
+        .select()
+        .from(document)
+        .where(and(eq(document.id, paramsResult.data.id), isNull(document.deletedAt)));
+
+      if (!existing) {
+        return reply.status(404).send({
+          statusCode: 404,
+          error: 'Not Found',
+          message: 'Documento não encontrado.',
+        });
+      }
+
+      if (!(await hasGranularDocumentAccess(request.user, existing, 'write'))) {
+        return reply.status(403).send(forbiddenDocumentAccessResponse());
       }
 
       const [deleted] = await db
