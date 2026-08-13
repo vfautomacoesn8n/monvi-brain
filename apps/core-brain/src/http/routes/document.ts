@@ -1,4 +1,4 @@
-import type { FastifyInstance, FastifyRequest } from 'fastify';
+import type { FastifyInstance } from 'fastify';
 import { and, eq, isNull } from 'drizzle-orm';
 import { z } from 'zod';
 import { db } from '../../db/client.js';
@@ -7,45 +7,11 @@ import {
   documentStatusEnum,
   documentConfidentialityEnum,
   documentRetentionPolicyEnum,
-  documentPermission,
 } from '../../db/schema/index.js';
 import { authenticateRequest } from '../middlewares/authenticate.js';
 import { requirePermission } from '../middlewares/authorize.js';
 import { recordAuditEvent } from '../../modules/audit/audit.service.js';
-
-const RESTRICTED_CONFIDENTIALITY_LEVELS = new Set(['confidential', 'restricted']);
-
-async function hasGranularDocumentAccess(
-  user: FastifyRequest['user'],
-  doc: { id: string; confidentiality: string },
-  requiredLevel: 'read' | 'write'
-): Promise<boolean> {
-  if (!RESTRICTED_CONFIDENTIALITY_LEVELS.has(doc.confidentiality)) {
-    return true;
-  }
-  if (!user) {
-    return false;
-  }
-  if (user.roleName === 'admin') {
-    return true;
-  }
-
-  const grants = await db
-    .select()
-    .from(documentPermission)
-    .where(and(eq(documentPermission.documentId, doc.id), isNull(documentPermission.deletedAt)));
-
-  const relevantGrants = grants.filter(
-    (grant) =>
-      grant.granteePersonId === user.personId ||
-      (user.roleId !== null && grant.granteeRoleId === user.roleId)
-  );
-
-  if (requiredLevel === 'write') {
-    return relevantGrants.some((grant) => grant.accessLevel === 'write');
-  }
-  return relevantGrants.some((grant) => grant.accessLevel === 'read' || grant.accessLevel === 'write');
-}
+import { hasGranularDocumentAccess } from '../../modules/documents/access.service.js';
 
 function forbiddenDocumentAccessResponse() {
   return {
