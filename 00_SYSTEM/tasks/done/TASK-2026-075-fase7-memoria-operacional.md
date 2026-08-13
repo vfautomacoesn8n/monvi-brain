@@ -2,8 +2,8 @@
 id: task-2026-075
 type: task
 title: "Fase 7 — sétima fatia operacional: memória operacional (entidade memory_note e sua API)"
-status: draft
-task_state: active
+status: done
+task_state: done
 owner: ceo-monvi
 agent: claude-cursor
 reviewer: ceo-monvi
@@ -13,6 +13,7 @@ confidentiality: internal
 classification: internal
 created_at: "2026-08-13"
 updated_at: "2026-08-13"
+reviewed_at: "2026-08-13T12:30:00-03:00"
 review_cycle: on-change
 sources:
   - 00_SYSTEM/roadmaps/Plano-Mestre-de-Construcao-Monvi-Brain.md
@@ -139,7 +140,7 @@ forbidden_paths:
   - apps/core-brain/node_modules/
   - apps/core-brain/dist/
   - 00_SYSTEM/architecture/Backlog-priorizado-Helpper-Central-e-criterios-Task-048.md
-requires_review: true
+requires_review: false
 acceptance_criteria:
   - Entidade memory_note criada em apps/core-brain/src/db/schema/memory-note.ts, com conteudo, referencia generica opcional (entityType/entityId, sem FK), autor opcional e expiresAt opcional, exportada em schema/index.ts.
   - Migração gerada via npm run db:generate (sem aplicar contra banco real), correspondendo exatamente ao schema desenhado.
@@ -199,17 +200,49 @@ Mesma decisão já registrada desde a Task 052: a aplicação real das migraçõ
 - [x] `typecheck`, `test` e `build` continuam passando (101/101 testes). Evidência: execução local antes do commit.
 - [x] `README.md` e Plano Mestre atualizados. Evidência: seção "Escopo implementado"/"Endpoints" do README e seção 19 do Plano Mestre.
 - [x] Nenhuma credencial, dado real, dependência de software nova, entidade adicional ou automação de expiração real. Evidência: diff restrito aos arquivos previstos; nenhuma alteração em `package.json`; nenhuma entidade além de `memory_note`.
-- [ ] Conteúdo revisado e aprovado pelo CEO antes do merge; encerramento em PR separada (Regra Fundamental 6, exceção para código). Pendente do gate de merge do PR desta task.
-- [ ] Retrospectiva crítica executada conforme `../workflows/retro.md` (Regra Fundamental 5). Pendente do encerramento formal desta task.
+- [x] Conteúdo revisado e aprovado pelo CEO antes do merge; encerramento em PR separada (Regra Fundamental 6, exceção para código). Evidência: gate explícito "Autorizado" para o merge do PR #77; este encerramento, em PR própria, é essa própria exceção em aplicação.
+- [x] Retrospectiva crítica executada conforme `../workflows/retro.md` (Regra Fundamental 5). Evidência: seção "Retrospectiva crítica" abaixo, com mudanças aceitas registradas em `changes.jsonl`.
 
 ## Riscos e gates humanos
 
 Riscos: mesmos já registrados desde a Fase 5 — migração nunca aplicada contra banco real, suposição single-tenant acumulando escopo, ausência de Docker neste ambiente; `entityType`/`entityId` não têm integridade referencial forçada por FK (decisão deliberada, mesmo padrão de `audit_event`) — uma nota pode referenciar um registro que já foi excluído, sem nenhum aviso automático.
 
-Gate vigente: aguardando revisão do CEO e autorização explícita do squash merge do PR desta task.
+Gate vigente: encerrado. O merge do PR #77 foi autorizado (`Autorizado`) e executado por squash em `fc289751884ec580700c38224b9673a8741f4d4a`. Esta task está formalmente concluída. O entregável restante da Fase 7 (extração de arquivos reais), o modelo de multi-organização e a Parte B permanecem fora deste encerramento.
 
-Histórico de gates desta task: encerramento da Task 074 → CEO pede para continuar com a próxima fatia → apresento minha interpretação de "memória operacional" (nota leve e efêmera, distinta de `document`) e o escopo de `memory_note` → CEO responde "Aprovado" → executo o escopo completo (execução, criação da task, branch, commit, push e PR).
+Histórico de gates desta task: encerramento da Task 074 → CEO pede para continuar com a próxima fatia → apresento minha interpretação de "memória operacional" (nota leve e efêmera, distinta de `document`) e o escopo de `memory_note` → CEO responde "Aprovado" → executo o escopo completo (execução, criação da task, branch, commit, push e PR) → `Autorizado` (merge do PR #77, integrado em `fc289751884ec580700c38224b9673a8741f4d4a`).
 
 ## Revisão e entrega
 
-Apresentarei o diff completo, as validações locais (`typecheck`, `test`, `build`, `test:integration` com falha esperada e documentada) e o estado Git, e solicitarei explicitamente o gate de merge antes de integrar esta mudança em `main`.
+Apresentei o diff completo, as validações locais (`typecheck`, `test`, `build`, `test:integration` com falha esperada e documentada) e o estado Git, e solicitei explicitamente o gate de merge antes de integrar esta mudança em `main`.
+
+## Encerramento — 2026-08-13
+
+**Gate de encerramento**: o CEO autorizou (`Autorizado`) o squash merge do PR #77.
+
+**Integração**: PR #77 integrado em `main` via squash merge, commit `fc289751884ec580700c38224b9673a8741f4d4a`, em 2026-08-13T15:20:27Z. Escopo integrado: exatamente os 13 arquivos previstos em `allowed_paths` — criação de `src/db/schema/memory-note.ts`, `src/http/routes/memory-note.ts`, `tests/memory-note.test.ts`, `tests/memory-note.integration.test.ts`, `drizzle/0015_dizzy_devos.sql` e `drizzle/meta/0015_snapshot.json`; edição de `src/db/schema/index.ts`, `src/app/build-app.ts`, `drizzle/meta/_journal.json`, `README.md`, o Plano Mestre e `changes.jsonl`. Nenhuma alteração em outros arquivos de schema, `src/modules/`, `src/http/middlewares/` ou nas rotas já existentes.
+
+**Verificação pós-merge**: sincronizei `main` local via fast-forward (`git pull --ff-only`, `fa459bd..fc28975`) e reexecutei `npm run typecheck`, `npm test` e `npm run build` diretamente contra o `main` já integrado — typecheck limpo, 101/101 testes passando em 25 arquivos, build sem erros.
+
+**Estado final**: a sétima fatia operacional da Fase 7 (memória operacional) está concluída e integrada em `main`, sob a mesma suposição explícita de single-tenant já documentada. Resta apenas extração de arquivos reais como entregável explícito não iniciado da fase; embeddings e busca vetorial seguem formalmente desbloqueados pela regra da fase, mas dependem de uma decisão de estratégia/custo que cabe ao CEO. O modelo de multi-organização e a autenticação de produção real permanecem pendentes e fora deste encerramento. A Parte B (aplicação real de todas as migrações e validação das APIs contra Postgres via Docker) permanece explicitamente pendente.
+
+**Escopo preservado**: nenhuma alteração fora de `allowed_paths` foi feita; nenhum código de identidade/autenticação/autorização ou das rotas já existentes foi tocado; nenhuma credencial, dado real ou dependência de software nova foi introduzida; nenhuma decisão de multi-organização foi tomada ou presumida; nenhuma entidade além de `memory_note` foi criada; nenhuma automação de expiração real foi implementada.
+
+## Retrospectiva crítica (conforme `../workflows/retro.md`)
+
+**Objetivo**: entregar "memória operacional" — o penúltimo entregável explícito da Fase 7 — com uma interpretação concreta de um termo genérico do Plano Mestre.
+
+**Resultado conhecido**: `memory_note` implementada e integrada, deliberadamente mais simples que `document` (sem versionamento, classificação ou permissão granular), com referência genérica opcional a qualquer entidade, sem tocar em nenhum código já existente.
+
+**O que ajudou**: propor uma interpretação concreta e pedir confirmação explícita, em vez de simplesmente construir a primeira interpretação que me ocorreu — "memória operacional" é vago o bastante para que duas pessoas discordassem razoavelmente sobre o que significa; ter a interpretação registrada e aprovada evita retrabalho e mal-entendido futuro sobre o propósito da entidade.
+
+**O que dificultou**: nada tecnicamente; padrão de referência genérica sem FK já estava validado em `audit_event`, reaproveitado diretamente.
+
+**Surpresas**: nenhuma.
+
+**Riscos materializados**: nenhum.
+
+**Perguntas em aberto**: nenhuma nova — as mesmas de sempre (Parte B, multi-organização) seguem em aberto.
+
+**Ações propostas**: com memória operacional completa, o único entregável explícito não iniciado da Fase 7 é extração de arquivos reais, que depende de uma decisão de infraestrutura de armazenamento que cabe ao CEO — não é uma fatia que eu deva propor sozinho sem essa decisão prévia. Embeddings/busca vetorial, mesmo desbloqueados pela regra, dependem de uma decisão de estratégia/custo semelhante. Sugiro ao CEO decidir entre: (a) tomar essas decisões de infraestrutura agora para continuar a Fase 7, ou (b) considerar a Fase 7 funcionalmente completa por ora e avançar para a Fase 8.
+
+**Mudanças aceitas**: registradas em `00_SYSTEM/logs/changes.jsonl`.
