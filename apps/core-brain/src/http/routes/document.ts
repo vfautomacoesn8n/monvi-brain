@@ -6,6 +6,7 @@ import {
   document,
   documentStatusEnum,
   documentConfidentialityEnum,
+  documentRetentionPolicyEnum,
   documentPermission,
 } from '../../db/schema/index.js';
 import { authenticateRequest } from '../middlewares/authenticate.js';
@@ -54,22 +55,46 @@ function forbiddenDocumentAccessResponse() {
   } as const;
 }
 
-const createDocumentSchema = z.object({
-  title: z.string().min(1).max(255),
-  sourceId: z.string().uuid().optional(),
-  ownerPersonId: z.string().uuid().optional(),
-  confidentiality: z.enum(documentConfidentialityEnum.enumValues).optional(),
-  notes: z.string().optional(),
-});
+function validateRetentionConsistency(data: {
+  retentionPolicy?: string | undefined;
+  retentionUntil?: Date | null | undefined;
+}): boolean {
+  if (data.retentionPolicy === 'time_limited') {
+    return data.retentionUntil !== undefined && data.retentionUntil !== null;
+  }
+  if (data.retentionPolicy === 'indefinite') {
+    return data.retentionUntil === undefined || data.retentionUntil === null;
+  }
+  return data.retentionUntil === undefined || data.retentionUntil === null;
+}
 
-const updateDocumentSchema = z.object({
-  title: z.string().min(1).max(255).optional(),
-  sourceId: z.string().uuid().nullable().optional(),
-  ownerPersonId: z.string().uuid().nullable().optional(),
-  status: z.enum(documentStatusEnum.enumValues).optional(),
-  confidentiality: z.enum(documentConfidentialityEnum.enumValues).optional(),
-  notes: z.string().optional(),
-});
+const RETENTION_CONSISTENCY_MESSAGE =
+  'retentionUntil é obrigatório quando retentionPolicy é time_limited, e não pode ser informado sem retentionPolicy: time_limited no mesmo pedido.';
+
+const createDocumentSchema = z
+  .object({
+    title: z.string().min(1).max(255),
+    sourceId: z.string().uuid().optional(),
+    ownerPersonId: z.string().uuid().optional(),
+    confidentiality: z.enum(documentConfidentialityEnum.enumValues).optional(),
+    retentionPolicy: z.enum(documentRetentionPolicyEnum.enumValues).optional(),
+    retentionUntil: z.coerce.date().optional(),
+    notes: z.string().optional(),
+  })
+  .refine(validateRetentionConsistency, { message: RETENTION_CONSISTENCY_MESSAGE });
+
+const updateDocumentSchema = z
+  .object({
+    title: z.string().min(1).max(255).optional(),
+    sourceId: z.string().uuid().nullable().optional(),
+    ownerPersonId: z.string().uuid().nullable().optional(),
+    status: z.enum(documentStatusEnum.enumValues).optional(),
+    confidentiality: z.enum(documentConfidentialityEnum.enumValues).optional(),
+    retentionPolicy: z.enum(documentRetentionPolicyEnum.enumValues).optional(),
+    retentionUntil: z.coerce.date().nullable().optional(),
+    notes: z.string().optional(),
+  })
+  .refine(validateRetentionConsistency, { message: RETENTION_CONSISTENCY_MESSAGE });
 
 const idParamsSchema = z.object({
   id: z.string().uuid(),

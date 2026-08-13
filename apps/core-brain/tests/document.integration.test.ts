@@ -117,6 +117,33 @@ describe('Fluxo real de documentos e versões — PostgreSQL local (Fase 7)', ()
     });
     expect(updateResponse.statusCode).toBe(200);
     expect(updateResponse.json().document.status).toBe('approved');
+
+    const invalidRetentionResponse = await app.inject({
+      method: 'PATCH',
+      url: `/api/v1/documents/${createdDocumentId}`,
+      headers: { authorization: `Bearer ${sessionToken}` },
+      payload: { retentionPolicy: 'time_limited' },
+    });
+    expect(invalidRetentionResponse.statusCode).toBe(400);
+
+    const retentionResponse = await app.inject({
+      method: 'PATCH',
+      url: `/api/v1/documents/${createdDocumentId}`,
+      headers: { authorization: `Bearer ${sessionToken}` },
+      payload: { retentionPolicy: 'time_limited', retentionUntil: '2030-01-01T00:00:00.000Z' },
+    });
+    expect(retentionResponse.statusCode).toBe(200);
+    expect(retentionResponse.json().document.retentionPolicy).toBe('time_limited');
+
+    const clearRetentionResponse = await app.inject({
+      method: 'PATCH',
+      url: `/api/v1/documents/${createdDocumentId}`,
+      headers: { authorization: `Bearer ${sessionToken}` },
+      payload: { retentionPolicy: 'indefinite', retentionUntil: null },
+    });
+    expect(clearRetentionResponse.statusCode).toBe(200);
+    expect(clearRetentionResponse.json().document.retentionPolicy).toBe('indefinite');
+    expect(clearRetentionResponse.json().document.retentionUntil).toBeNull();
   });
 
   it('cria versões sequenciais imutáveis para um documento real', async () => {

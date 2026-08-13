@@ -17,6 +17,11 @@ export const documentConfidentialityEnum = pgEnum('document_confidentiality', [
   'restricted',
 ]);
 
+export const documentRetentionPolicyEnum = pgEnum('document_retention_policy', [
+  'indefinite',
+  'time_limited',
+]);
+
 export const document = pgTable('document', {
   id: uuid('id').primaryKey().defaultRandom(),
   sourceId: uuid('source_id').references(() => source.id, { onDelete: 'set null' }),
@@ -24,6 +29,8 @@ export const document = pgTable('document', {
   ownerPersonId: uuid('owner_person_id').references(() => person.id, { onDelete: 'set null' }),
   status: documentStatusEnum('status').notNull().default('draft'),
   confidentiality: documentConfidentialityEnum('confidentiality').notNull().default('internal'),
+  retentionPolicy: documentRetentionPolicyEnum('retention_policy').notNull().default('indefinite'),
+  retentionUntil: timestamp('retention_until', { withTimezone: true }),
   notes: text('notes'),
   createdAt: timestamp('created_at', { withTimezone: true }).notNull().defaultNow(),
   updatedAt: timestamp('updated_at', { withTimezone: true }).notNull().defaultNow(),
