@@ -2,8 +2,8 @@
 id: task-2026-074
 type: task
 title: "Fase 7 — sexta fatia operacional: indexação e busca textual sobre documentos (GET /search)"
-status: draft
-task_state: active
+status: done
+task_state: done
 owner: ceo-monvi
 agent: claude-cursor
 reviewer: ceo-monvi
@@ -13,6 +13,7 @@ confidentiality: internal
 classification: internal
 created_at: "2026-08-13"
 updated_at: "2026-08-13"
+reviewed_at: "2026-08-13T11:35:00-03:00"
 review_cycle: on-change
 sources:
   - 00_SYSTEM/roadmaps/Plano-Mestre-de-Construcao-Monvi-Brain.md
@@ -93,7 +94,7 @@ forbidden_paths:
   - apps/core-brain/node_modules/
   - apps/core-brain/dist/
   - 00_SYSTEM/architecture/Backlog-priorizado-Helpper-Central-e-criterios-Task-048.md
-requires_review: true
+requires_review: false
 acceptance_criteria:
   - Rota GET /api/v1/search?q=<termo> criada em apps/core-brain/src/http/routes/search.ts, registrada em build-app.ts, sem nenhuma tabela, coluna ou migração nova.
   - Busca por relevancia (ts_rank) sobre o titulo do documento e o conteudo da versao mais recente (maior versionNumber), via to_tsvector/plainto_tsquery nativos do Postgres, sem dependencia de software nova.
@@ -152,17 +153,49 @@ Mesma decisão já registrada desde a Task 052: a aplicação real das migraçõ
 - [x] `typecheck`, `test` e `build` continuam passando (96/96 testes). Evidência: execução local antes do commit.
 - [x] `README.md` e Plano Mestre atualizados, incluindo as duas limitações deliberadas. Evidência: seção "Escopo implementado"/"Endpoints" do README e seção 19 do Plano Mestre.
 - [x] Nenhuma credencial, dado real, dependência de software nova, entidade nova, upload/parsing de arquivo, ou trabalho de memória operacional/embeddings. Evidência: diff restrito aos arquivos previstos; nenhuma alteração em `package.json`; nenhuma entidade nova; nenhuma migração gerada.
-- [ ] Conteúdo revisado e aprovado pelo CEO antes do merge; encerramento em PR separada (Regra Fundamental 6, exceção para código). Pendente do gate de merge do PR desta task.
-- [ ] Retrospectiva crítica executada conforme `../workflows/retro.md` (Regra Fundamental 5). Pendente do encerramento formal desta task.
+- [x] Conteúdo revisado e aprovado pelo CEO antes do merge; encerramento em PR separada (Regra Fundamental 6, exceção para código). Evidência: gate explícito "Autorizado" para o merge do PR #75; este encerramento, em PR própria, é essa própria exceção em aplicação.
+- [x] Retrospectiva crítica executada conforme `../workflows/retro.md` (Regra Fundamental 5). Evidência: seção "Retrospectiva crítica" abaixo, com mudanças aceitas registradas em `changes.jsonl`.
 
 ## Riscos e gates humanos
 
 Riscos: mesmos já registrados desde a Fase 5 — suposição single-tenant acumulando escopo, ausência de Docker neste ambiente; a busca calcula `to_tsvector` em tempo de consulta, sem índice persistido (GIN) — aceitável no volume atual, mas não otimizado, e essa limitação só pode ser avaliada de verdade quando a Parte B for retomada; a busca cobre apenas a versão mais recente de cada documento, não o histórico completo de versões — decisão deliberada de simplicidade, revisável se houver necessidade real de buscar em versões antigas.
 
-Gate vigente: aguardando revisão do CEO e autorização explícita do squash merge do PR desta task.
+Gate vigente: encerrado. O merge do PR #75 foi autorizado (`Autorizado`) e executado por squash em `3fbbd696cb37b5fc2bb5d0010cb3f333be69979f`. Esta task está formalmente concluída. Os demais entregáveis da Fase 7, o modelo de multi-organização e a Parte B permanecem fora deste encerramento.
 
-Histórico de gates desta task: encerramento da Task 073 → aviso o CEO que a próxima fatia natural ("extração"/"indexação"/"busca textual") pode exigir uma decisão de escopo maior, já que "extração" envolve upload real de arquivos, algo que o sistema ainda não tem → CEO pergunta "O que você me recomenda?" → recomendo pular extração por ora e ir direto para indexação + busca textual sobre o conteúdo já armazenado como texto puro, com o trade-off explícito (extração de arquivo real fica pendente) → CEO responde "Vamos então seguir com a sua recomendação então" → executo o escopo completo (código, testes, documentação, criação da task, branch, commit, push e PR).
+Histórico de gates desta task: encerramento da Task 073 → aviso o CEO que a próxima fatia natural ("extração"/"indexação"/"busca textual") pode exigir uma decisão de escopo maior, já que "extração" envolve upload real de arquivos, algo que o sistema ainda não tem → CEO pergunta "O que você me recomenda?" → recomendo pular extração por ora e ir direto para indexação + busca textual sobre o conteúdo já armazenado como texto puro, com o trade-off explícito (extração de arquivo real fica pendente) → CEO responde "Vamos então seguir com a sua recomendação então" → executo o escopo completo (código, testes, documentação, criação da task, branch, commit, push e PR) → `Autorizado` (merge do PR #75, integrado em `3fbbd696cb37b5fc2bb5d0010cb3f333be69979f`).
 
 ## Revisão e entrega
 
-Apresentarei o diff completo, as validações locais (`typecheck`, `test`, `build`, `test:integration` com falha esperada e documentada) e o estado Git, e solicitarei explicitamente o gate de merge antes de integrar esta mudança em `main`.
+Apresentei o diff completo, as validações locais (`typecheck`, `test`, `build`, `test:integration` com falha esperada e documentada) e o estado Git, e solicitei explicitamente o gate de merge antes de integrar esta mudança em `main`.
+
+## Encerramento — 2026-08-13
+
+**Gate de encerramento**: o CEO autorizou (`Autorizado`) o squash merge do PR #75.
+
+**Integração**: PR #75 integrado em `main` via squash merge, commit `3fbbd696cb37b5fc2bb5d0010cb3f333be69979f`, em 2026-08-13T14:27:18Z. Escopo integrado: exatamente os 10 arquivos previstos em `allowed_paths` — criação de `src/http/routes/search.ts`, `src/modules/documents/access.service.ts`, `tests/search.test.ts`, `tests/search.integration.test.ts`; edição de `src/http/routes/document.ts` (apenas para importar `hasGranularDocumentAccess` do módulo compartilhado), `src/app/build-app.ts`, `README.md`, o Plano Mestre e `changes.jsonl`. Nenhuma alteração em schema, `src/modules/audit/`, `src/modules/auth/`, `src/http/middlewares/` ou em rotas além de `document.ts`/`search.ts`.
+
+**Verificação pós-merge**: sincronizei `main` local via fast-forward (`git pull --ff-only`, `ae3a746..3fbbd69`) e reexecutei `npm run typecheck`, `npm test` e `npm run build` diretamente contra o `main` já integrado — typecheck limpo, 96/96 testes passando em 24 arquivos (um worker crash transitório na primeira tentativa, resolvido limpo na segunda — mesmo padrão de flakiness já observado antes na Task 072, não relacionado ao código desta task), build sem erros.
+
+**Estado final**: a sexta fatia operacional da Fase 7 (indexação e busca textual sobre documentos) está concluída e integrada em `main`, sob a mesma suposição explícita de single-tenant já documentada. Os demais entregáveis da Fase 7 (extração de arquivos reais, memória operacional e, então, embeddings/busca vetorial), o modelo de multi-organização e a autenticação de produção real permanecem pendentes e fora deste encerramento. A Parte B (aplicação real de todas as migrações e validação das APIs contra Postgres via Docker) permanece explicitamente pendente — e é a única forma real de medir se a busca sem índice persistido tem desempenho aceitável em volume real.
+
+**Escopo preservado**: nenhuma alteração fora de `allowed_paths` foi feita; nenhum código de identidade/autenticação/autorização ou de rotas além de `document.ts`/`search.ts` foi tocado; nenhuma credencial, dado real ou dependência de software nova foi introduzida; nenhuma decisão de multi-organização foi tomada ou presumida; nenhuma entidade nova foi criada; nenhum upload ou parsing de arquivo binário foi implementado.
+
+## Retrospectiva crítica (conforme `../workflows/retro.md`)
+
+**Objetivo**: entregar "indexação" e "busca textual" — os dois entregáveis seguintes da Fase 7 — sobre o conteúdo já armazenado, seguindo a recomendação que dei ao CEO de adiar "extração" de arquivos reais até haver uma decisão de infraestrutura de armazenamento.
+
+**Resultado conhecido**: `GET /search` implementada e integrada, com busca por relevância real (Postgres `tsvector`/`tsquery`/`ts_rank`, não um `ILIKE` improvisado), respeitando a mesma checagem de `document_permission` já usada em `GET /documents`, sem nenhuma dependência de software nova.
+
+**O que ajudou**: extrair `hasGranularDocumentAccess` para um módulo compartilhado antes de escrever `search.ts`, em vez de duplicar a lógica — isso significa que qualquer melhoria futura nessa checagem (por exemplo, se a limitação do harness de sessão de teste for resolvida) beneficia as duas rotas automaticamente, sem risco de uma ficar desatualizada em relação à outra.
+
+**O que dificultou**: decidir o nível certo de "indexação" para esta fatia — cheguei a considerar adicionar uma coluna `tsvector` persistida com índice GIN (uma "indexação" mais literal), mas decidi não fazer isso sem evidência real de necessidade de performance, já que o volume atual é mínimo e a Parte B (única forma de medir isso de verdade) segue adiada. Documentei essa decisão explicitamente em vez de simplesmente omiti-la.
+
+**Surpresas**: nenhuma relacionada ao código; o worker crash transitório do Vitest na verificação pós-merge já havia aparecido antes (Task 072) e se resolveu numa segunda tentativa, confirmando que é flakiness de ambiente, não uma regressão real.
+
+**Riscos materializados**: nenhum.
+
+**Perguntas em aberto**: se/quando a busca precisar de um índice persistido de verdade (GIN), e se a busca deveria cobrir todo o histórico de versões de um documento, não só a mais recente — nenhuma das duas tem evidência real de necessidade hoje, ficam registradas como possíveis fatias futuras, não decisões pendentes urgentes.
+
+**Ações propostas**: memória operacional é a próxima candidata natural da Fase 7. Extração de arquivos reais e embeddings/busca vetorial seguem como frentes maiores, dependentes de decisões de infraestrutura que cabem ao CEO, não a mim propor sozinho.
+
+**Mudanças aceitas**: registradas em `00_SYSTEM/logs/changes.jsonl`.
