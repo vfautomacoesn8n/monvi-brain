@@ -2,8 +2,8 @@
 id: task-2026-077
 type: task
 title: "Fase 8 — segunda fatia operacional: gatilhos e webhooks reais (entidades automation_trigger e automation_invocation)"
-status: draft
-task_state: active
+status: done
+task_state: done
 owner: ceo-monvi
 agent: claude-cursor
 reviewer: ceo-monvi
@@ -13,6 +13,7 @@ confidentiality: internal
 classification: internal
 created_at: "2026-08-13"
 updated_at: "2026-08-13"
+reviewed_at: "2026-08-13T14:30:00-03:00"
 review_cycle: on-change
 sources:
   - 00_SYSTEM/roadmaps/Plano-Mestre-de-Construcao-Monvi-Brain.md
@@ -150,7 +151,7 @@ forbidden_paths:
   - apps/core-brain/node_modules/
   - apps/core-brain/dist/
   - 00_SYSTEM/architecture/Backlog-priorizado-Helpper-Central-e-criterios-Task-048.md
-requires_review: true
+requires_review: false
 acceptance_criteria:
   - Entidade automation_trigger criada em apps/core-brain/src/db/schema/automation-trigger.ts, vinculada a automation_workflow (onDelete cascade), com tipo, webhookToken/scheduleCron/eventName opcionais e status ativo/inativo, exportada em schema/index.ts.
   - Entidade automation_invocation criada em apps/core-brain/src/db/schema/automation-invocation.ts, vinculada a automation_trigger (onDelete cascade), imutavel (sem PATCH/DELETE), exportada em schema/index.ts.
@@ -213,17 +214,49 @@ Mesma decisão já registrada desde a Task 052: a aplicação real das migraçõ
 - [x] `typecheck`, `test` e `build` continuam passando (113/113 testes). Evidência: execução local antes do commit.
 - [x] `README.md` e Plano Mestre atualizados, incluindo a rota pública. Evidência: seção "Escopo implementado"/"Endpoints" do README e seção 19 do Plano Mestre.
 - [x] Nenhuma credencial, dado real, dependência de software nova, entidade adicional ou execução real (fila/retry/agendador). Evidência: diff restrito aos arquivos previstos; nenhuma alteração em `package.json`; nenhuma entidade além de `automation_trigger`/`automation_invocation`.
-- [ ] Conteúdo revisado e aprovado pelo CEO antes do merge; encerramento em PR separada (Regra Fundamental 6, exceção para código). Pendente do gate de merge do PR desta task.
-- [ ] Retrospectiva crítica executada conforme `../workflows/retro.md` (Regra Fundamental 5). Pendente do encerramento formal desta task.
+- [x] Conteúdo revisado e aprovado pelo CEO antes do merge; encerramento em PR separada (Regra Fundamental 6, exceção para código). Evidência: gate explícito "Aprovado" para o merge do PR #81; este encerramento, em PR própria, é essa própria exceção em aplicação.
+- [x] Retrospectiva crítica executada conforme `../workflows/retro.md` (Regra Fundamental 5). Evidência: seção "Retrospectiva crítica" abaixo, com mudanças aceitas registradas em `changes.jsonl`.
 
 ## Riscos e gates humanos
 
 Riscos: mesmos já registrados desde a Fase 5 — migração nunca aplicada contra banco real, suposição single-tenant acumulando escopo, ausência de Docker neste ambiente; a rota pública `/invoke` é, por natureza, uma superfície de ataque nova — qualquer pessoa com o token correto pode chamar repetidamente sem limite de taxa (nenhum rate limiting implementado nesta fatia); o token não expira nem é rotacionável via API (só recriando o gatilho); a busca do gatilho por `webhookToken` usa igualdade simples de string, não comparação de tempo constante — teoricamente vulnerável a um ataque de timing extremamente improvável dado o volume e ambiente atuais, mas registrado como limitação conhecida, não resolvida por falta de evidência real de necessidade.
 
-Gate vigente: aguardando revisão do CEO e autorização explícita do squash merge do PR desta task.
+Gate vigente: encerrado. O merge do PR #81 foi autorizado (`Aprovado`) e executado por squash em `5d72190779a63606f9f4f29d39e30f1f2646aa6b`. Esta task está formalmente concluída. Os demais entregáveis da Fase 8, o modelo de multi-organização e a Parte B permanecem fora deste encerramento.
 
-Histórico de gates desta task: encerramento da Task 076 → CEO pede para continuar → proponho o escopo desta task (entidades `automation_trigger`/`automation_invocation`, gatilhos e webhooks combinados) e destaco explicitamente a decisão de segurança de tornar `/invoke` uma rota pública → `Autorizado`, incluindo a rota pública (execução completa do escopo, criação da task, branch, commit, push e PR).
+Histórico de gates desta task: encerramento da Task 076 → CEO pede para continuar → proponho o escopo desta task (entidades `automation_trigger`/`automation_invocation`, gatilhos e webhooks combinados) e destaco explicitamente a decisão de segurança de tornar `/invoke` uma rota pública → `Autorizado`, incluindo a rota pública (execução completa do escopo, criação da task, branch, commit, push e PR) → `Aprovado` (merge do PR #81, integrado em `5d72190779a63606f9f4f29d39e30f1f2646aa6b`).
 
 ## Revisão e entrega
 
-Apresentarei o diff completo, as validações locais (`typecheck`, `test`, `build`, `test:integration` com falha esperada e documentada) e o estado Git, e solicitarei explicitamente o gate de merge antes de integrar esta mudança em `main`.
+Apresentei o diff completo, as validações locais (`typecheck`, `test`, `build`, `test:integration` com falha esperada e documentada) e o estado Git, e solicitei explicitamente o gate de merge antes de integrar esta mudança em `main`.
+
+## Encerramento — 2026-08-13
+
+**Gate de encerramento**: o CEO autorizou (`Aprovado`) o squash merge do PR #81.
+
+**Integração**: PR #81 integrado em `main` via squash merge, commit `5d72190779a63606f9f4f29d39e30f1f2646aa6b`, em 2026-08-13T17:23:31Z. Escopo integrado: exatamente os 14 arquivos previstos em `allowed_paths` — criação de `src/db/schema/automation-trigger.ts`, `src/db/schema/automation-invocation.ts`, `src/http/routes/automation-trigger.ts`, `tests/automation-trigger.test.ts`, `tests/automation-trigger.integration.test.ts`, `drizzle/0017_redundant_slyde.sql` e `drizzle/meta/0017_snapshot.json`; edição de `src/db/schema/index.ts`, `src/app/build-app.ts`, `drizzle/meta/_journal.json`, `README.md`, o Plano Mestre e `changes.jsonl`. Nenhuma alteração em outros arquivos de schema, `src/modules/`, `src/http/middlewares/` ou nas rotas já existentes.
+
+**Verificação pós-merge**: sincronizei `main` local via fast-forward (`git pull --ff-only`, `0013dc2..5d72190`) e reexecutei `npm run typecheck`, `npm test` e `npm run build` diretamente contra o `main` já integrado — typecheck limpo, 113/113 testes passando em 27 arquivos, build sem erros.
+
+**Estado final**: a segunda fatia operacional da Fase 8 (gatilhos e webhooks reais) está concluída e integrada em `main`, sob a mesma suposição explícita de single-tenant já documentada. `automation_workflow` agora pode ser efetivamente disparado por webhook, com registro real de cada chamada recebida. Restam filas, retries, idempotência, dead-letter, aprovações, métricas, reprocessamento e integração com n8n como entregáveis não iniciados da Fase 8. A Fase 7 permanece funcionalmente concluída com extração de arquivos reais e embeddings/busca vetorial deliberadamente pendentes. O modelo de multi-organização e a autenticação de produção real permanecem pendentes e fora deste encerramento. A Parte B permanece explicitamente pendente.
+
+**Escopo preservado**: nenhuma alteração fora de `allowed_paths` foi feita; nenhum código de identidade/autenticação/autorização ou das rotas já existentes foi tocado (`src/modules/auth/tokens.ts` permaneceu intocado — a geração do token de webhook usa uma função local própria, não a de sessão); nenhuma credencial, dado real ou dependência de software nova foi introduzida; nenhuma decisão de multi-organização foi tomada ou presumida; nenhuma entidade além de `automation_trigger`/`automation_invocation` foi criada; nenhuma fila, retry, idempotência, dead-letter ou execução real foi implementada.
+
+## Retrospectiva crítica (conforme `../workflows/retro.md`)
+
+**Objetivo**: dar o segundo e terceiro passos da Fase 8 — gatilhos e webhooks — fazendo o catálogo de workflows da Task 076 ser efetivamente disparável, pelo menos por um caminho real (webhook).
+
+**Resultado conhecido**: `automation_trigger`/`automation_invocation` implementadas e integradas; `POST /automation-triggers/:token/invoke` é a primeira e única rota pública do sistema, exercitada de ponta a ponta no teste de integração (criação de gatilho, chamada externa simulada sem nenhum header de autenticação, verificação do registro).
+
+**O que ajudou**: apresentar a decisão de segurança (rota pública) explicitamente antes de escrever qualquer código, em vez de descobrir no meio da implementação que a autenticação padrão não fazia sentido para esse caso — isso evitou retrabalho e deu ao CEO a chance real de vetar ou ajustar antes do custo de implementação ser pago.
+
+**O que dificultou**: nada tecnicamente. A parte mais delicada foi desenhar o teste de bloqueio de acesso da rota pública sem depender de banco — como a rota não tem nenhum `preHandler` de autenticação, ela tenta consultar o banco imediatamente, então o teste em `automation-trigger.test.ts` verifica apenas "não retorna 401", sem assumir 404, já que sem banco disponível o resultado real é um erro 500 de conexão. Documentei isso no próprio teste para não parecer um teste incompleto por engano.
+
+**Surpresas**: nenhuma.
+
+**Riscos materializados**: nenhum — os riscos de segurança da rota pública (sem rate limiting, sem rotação de token, comparação de string não constante) foram identificados e documentados durante o desenho, não descobertos depois de um incidente.
+
+**Perguntas em aberto**: quando (e se) rate limiting, rotação de token ou comparação em tempo constante se tornam necessários — nenhuma evidência real de necessidade hoje, mas vale revisar quando a Fase 8 avançar para filas/retries, já que nesse ponto o volume de chamadas provavelmente aumenta.
+
+**Ações propostas**: filas, retries, idempotência e dead-letter são as próximas candidatas naturais — agora que existe um jeito real de uma invocação chegar (webhook), falta decidir o que fazer com ela de forma confiável.
+
+**Mudanças aceitas**: registradas em `00_SYSTEM/logs/changes.jsonl`.
