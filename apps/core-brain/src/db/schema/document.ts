@@ -2,7 +2,20 @@ import { pgTable, uuid, varchar, pgEnum, text, timestamp } from 'drizzle-orm/pg-
 import { source } from './source.js';
 import { person } from './person.js';
 
-export const documentStatusEnum = pgEnum('document_status', ['draft', 'published', 'archived']);
+export const documentStatusEnum = pgEnum('document_status', [
+  'draft',
+  'review',
+  'approved',
+  'deprecated',
+  'archived',
+]);
+
+export const documentConfidentialityEnum = pgEnum('document_confidentiality', [
+  'public',
+  'internal',
+  'confidential',
+  'restricted',
+]);
 
 export const document = pgTable('document', {
   id: uuid('id').primaryKey().defaultRandom(),
@@ -10,6 +23,7 @@ export const document = pgTable('document', {
   title: varchar('title', { length: 255 }).notNull(),
   ownerPersonId: uuid('owner_person_id').references(() => person.id, { onDelete: 'set null' }),
   status: documentStatusEnum('status').notNull().default('draft'),
+  confidentiality: documentConfidentialityEnum('confidentiality').notNull().default('internal'),
   notes: text('notes'),
   createdAt: timestamp('created_at', { withTimezone: true }).notNull().defaultNow(),
   updatedAt: timestamp('updated_at', { withTimezone: true }).notNull().defaultNow(),

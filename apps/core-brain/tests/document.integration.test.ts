@@ -78,12 +78,18 @@ describe('Fluxo real de documentos e versões — PostgreSQL local (Fase 7)', ()
       method: 'POST',
       url: '/api/v1/documents',
       headers: { authorization: `Bearer ${sessionToken}` },
-      payload: { title: 'Documento Integração Fase 7', sourceId: createdSourceId, ownerPersonId: personId },
+      payload: {
+        title: 'Documento Integração Fase 7',
+        sourceId: createdSourceId,
+        ownerPersonId: personId,
+        confidentiality: 'confidential',
+      },
     });
     expect(createResponse.statusCode).toBe(201);
     const created = createResponse.json().document;
     createdDocumentId = created.id;
     expect(created.status).toBe('draft');
+    expect(created.confidentiality).toBe('confidential');
 
     const listResponse = await app.inject({
       method: 'GET',
@@ -107,10 +113,10 @@ describe('Fluxo real de documentos e versões — PostgreSQL local (Fase 7)', ()
       method: 'PATCH',
       url: `/api/v1/documents/${createdDocumentId}`,
       headers: { authorization: `Bearer ${sessionToken}` },
-      payload: { status: 'published' },
+      payload: { status: 'approved' },
     });
     expect(updateResponse.statusCode).toBe(200);
-    expect(updateResponse.json().document.status).toBe('published');
+    expect(updateResponse.json().document.status).toBe('approved');
   });
 
   it('cria versões sequenciais imutáveis para um documento real', async () => {

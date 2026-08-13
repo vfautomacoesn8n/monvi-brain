@@ -2,7 +2,7 @@ import type { FastifyInstance } from 'fastify';
 import { and, eq, isNull } from 'drizzle-orm';
 import { z } from 'zod';
 import { db } from '../../db/client.js';
-import { document, documentStatusEnum } from '../../db/schema/index.js';
+import { document, documentStatusEnum, documentConfidentialityEnum } from '../../db/schema/index.js';
 import { authenticateRequest } from '../middlewares/authenticate.js';
 import { requirePermission } from '../middlewares/authorize.js';
 import { recordAuditEvent } from '../../modules/audit/audit.service.js';
@@ -11,6 +11,7 @@ const createDocumentSchema = z.object({
   title: z.string().min(1).max(255),
   sourceId: z.string().uuid().optional(),
   ownerPersonId: z.string().uuid().optional(),
+  confidentiality: z.enum(documentConfidentialityEnum.enumValues).optional(),
   notes: z.string().optional(),
 });
 
@@ -19,6 +20,7 @@ const updateDocumentSchema = z.object({
   sourceId: z.string().uuid().nullable().optional(),
   ownerPersonId: z.string().uuid().nullable().optional(),
   status: z.enum(documentStatusEnum.enumValues).optional(),
+  confidentiality: z.enum(documentConfidentialityEnum.enumValues).optional(),
   notes: z.string().optional(),
 });
 
