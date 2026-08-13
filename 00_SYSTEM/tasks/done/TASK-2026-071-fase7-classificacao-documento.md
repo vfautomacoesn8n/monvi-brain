@@ -2,8 +2,8 @@
 id: task-2026-071
 type: task
 title: "Fase 7 — terceira fatia operacional: classificação de documentos (confidencialidade canônica e realinhamento de status)"
-status: draft
-task_state: active
+status: done
+task_state: done
 owner: ceo-monvi
 agent: claude-cursor
 reviewer: ceo-monvi
@@ -12,7 +12,8 @@ active_project: null
 confidentiality: internal
 classification: internal
 created_at: "2026-08-12"
-updated_at: "2026-08-12"
+updated_at: "2026-08-13"
+reviewed_at: "2026-08-13T09:35:00-03:00"
 review_cycle: on-change
 sources:
   - 00_SYSTEM/roadmaps/Plano-Mestre-de-Construcao-Monvi-Brain.md
@@ -125,7 +126,7 @@ forbidden_paths:
   - apps/core-brain/node_modules/
   - apps/core-brain/dist/
   - 00_SYSTEM/architecture/Backlog-priorizado-Helpper-Central-e-criterios-Task-048.md
-requires_review: true
+requires_review: false
 acceptance_criteria:
   - Campo confidentiality adicionado a apps/core-brain/src/db/schema/document.ts, com enum document_confidentiality reaproveitando exatamente o vocabulario canonico de KNOWLEDGE-MODEL.md (public/internal/confidential/restricted), padrao internal.
   - Enum document_status realinhado ao Status canonico de KNOWLEDGE-MODEL.md (draft/review/approved/deprecated/archived), substituindo o valor anterior (draft/published/archived).
@@ -181,17 +182,49 @@ Mesma decisão já registrada desde a Task 052: a aplicação real das migraçõ
 - [x] `typecheck`, `test` e `build` continuam passando (92/92 testes). Evidência: execução local antes do commit.
 - [x] `README.md` e Plano Mestre atualizados. Evidência: seção "Escopo implementado"/"Endpoints" do README e seção 19 do Plano Mestre.
 - [x] Nenhuma credencial, dado real, dependência de software nova, entidade nova ou restrição de acesso implementada. Evidência: diff restrito aos arquivos previstos; nenhuma alteração em `package.json`; nenhuma entidade além do campo/enum em `document`.
-- [ ] Conteúdo revisado e aprovado pelo CEO antes do merge; encerramento em PR separada (Regra Fundamental 6, exceção para código). Pendente do gate de merge do PR desta task.
-- [ ] Retrospectiva crítica executada conforme `../workflows/retro.md` (Regra Fundamental 5). Pendente do encerramento formal desta task.
+- [x] Conteúdo revisado e aprovado pelo CEO antes do merge; encerramento em PR separada (Regra Fundamental 6, exceção para código). Evidência: gate explícito "autorizado" para o merge do PR #69; este encerramento, em PR própria, é essa própria exceção em aplicação.
+- [x] Retrospectiva crítica executada conforme `../workflows/retro.md` (Regra Fundamental 5). Evidência: seção "Retrospectiva crítica" abaixo, com mudanças aceitas registradas em `changes.jsonl`.
 
 ## Riscos e gates humanos
 
 Riscos: mesmos já registrados desde a Fase 5 — migração nunca aplicada contra banco real, suposição single-tenant acumulando escopo, ausência de Docker neste ambiente; como a Parte B nunca rodou, a migração 0012 (que recria o tipo `document_status` via `DROP TYPE`) não tem nenhum dado real em risco — mas fica registrado que, num ambiente com dados reais, essa operação exigiria cuidado (a recriação do tipo depende de nenhuma linha ter um valor não mapeável, o que é garantido aqui porque os três valores antigos são um subconjunto dos cinco novos).
 
-Gate vigente: aguardando revisão do CEO e autorização explícita do squash merge do PR desta task.
+Gate vigente: encerrado. O merge do PR #69 foi autorizado ("autorizado") e executado por squash em `b9a685869df8a8792279974dc26e65eb41d7b7dc`. Esta task está formalmente concluída. Os demais entregáveis da Fase 7, o modelo de multi-organização e a Parte B permanecem fora deste encerramento.
 
-Histórico de gates desta task: encerramento da Task 070 → CEO diz "vamos implementar a próxima fase" → esclareço, via pergunta estruturada, se isso significa continuar a Fase 7 ou pular para a Fase 8 → CEO escolhe explicitamente "Continuar Fase 7" → ao desenhar a fatia de classificação, identifico que o vocabulário canônico já existe em `KNOWLEDGE-MODEL.md` e que `document.status` diverge dele → apresento a divergência ao CEO via segunda pergunta estruturada → CEO escolhe explicitamente "Sim, alinhar agora" → executo o escopo completo (schema, rotas, testes, documentação) e apresentarei nesta PR o gate de merge explícito antes de qualquer integração em `main`.
+Histórico de gates desta task: encerramento da Task 070 → CEO diz "vamos implementar a próxima fase" → esclareço, via pergunta estruturada, se isso significa continuar a Fase 7 ou pular para a Fase 8 → CEO escolhe explicitamente "Continuar Fase 7" → ao desenhar a fatia de classificação, identifico que o vocabulário canônico já existe em `KNOWLEDGE-MODEL.md` e que `document.status` diverge dele → apresento a divergência ao CEO via segunda pergunta estruturada → CEO escolhe explicitamente "Sim, alinhar agora" → executo o escopo completo (schema, rotas, testes, documentação, criação da task, branch, commit, push e PR) → "autorizado" (merge do PR #69, integrado em `b9a685869df8a8792279974dc26e65eb41d7b7dc`).
 
 ## Revisão e entrega
 
-Apresentarei o diff completo, as validações locais (`typecheck`, `test`, `build`, `test:integration` com falha esperada e documentada) e o estado Git, e solicitarei explicitamente o gate de merge antes de integrar esta mudança em `main`.
+Apresentei o diff completo, as validações locais (`typecheck`, `test`, `build`, `test:integration` com falha esperada e documentada) e o estado Git, e solicitei explicitamente o gate de merge antes de integrar esta mudança em `main`.
+
+## Encerramento — 2026-08-13
+
+**Gate de encerramento**: o CEO autorizou ("autorizado") o squash merge do PR #69.
+
+**Integração**: PR #69 integrado em `main` via squash merge, commit `b9a685869df8a8792279974dc26e65eb41d7b7dc`, em 2026-08-13T12:28:19Z. Escopo integrado: exatamente os 10 arquivos previstos em `allowed_paths` — criação de `drizzle/0012_light_havok.sql` e `drizzle/meta/0012_snapshot.json`; edição de `src/db/schema/document.ts`, `src/http/routes/document.ts`, `tests/document.integration.test.ts`, `drizzle/meta/_journal.json`, `README.md`, o Plano Mestre e `changes.jsonl`. Nenhuma alteração em outros arquivos de schema, `src/modules/`, `src/http/middlewares/` ou em rotas além de `document.ts`.
+
+**Verificação pós-merge**: sincronizei `main` local via fast-forward (`git pull --ff-only`, `0e6d426..b9a6858`) e reexecutei `npm run typecheck`, `npm test` e `npm run build` diretamente contra o `main` já integrado — typecheck limpo, 92/92 testes passando em 22 arquivos, build sem erros.
+
+**Estado final**: a terceira fatia operacional da Fase 7 (classificação de documentos, com `confidentiality` canônico e `status` realinhado) está concluída e integrada em `main`, sob a mesma suposição explícita de single-tenant já documentada. A classificação segue puramente descritiva — não restringe leitura/escrita. Os demais entregáveis da Fase 7 (permissões, extração, indexação, busca textual, política de retenção, memória operacional e, por último, embeddings/busca vetorial), o modelo de multi-organização e a autenticação de produção real permanecem pendentes e fora deste encerramento. A Parte B (aplicação real de todas as migrações e validação das APIs contra Postgres via Docker) permanece explicitamente pendente.
+
+**Escopo preservado**: nenhuma alteração fora de `allowed_paths` foi feita; nenhum código de identidade/autenticação/autorização ou de rotas além de `document.ts` foi tocado; nenhuma credencial, dado real ou dependência de software nova foi introduzida; nenhuma decisão de multi-organização foi tomada ou presumida; nenhuma entidade nova foi criada; nenhuma restrição de acesso por classificação foi implementada.
+
+## Retrospectiva crítica (conforme `../workflows/retro.md`)
+
+**Objetivo**: entregar "classificação" — o terceiro entregável explícito da Fase 7 — reaproveitando, em vez de inventar, o vocabulário de confidencialidade e status já canônico no sistema.
+
+**Resultado conhecido**: `document.confidentiality` implementado com o vocabulário exato de `KNOWLEDGE-MODEL.md`; `document.status` corrigido para o mesmo padrão canônico, resolvendo uma divergência que eu mesmo introduzi na Task 070 por não ter consultado o modelo canônico antes daquela fatia.
+
+**O que ajudou**: parar para ler `KNOWLEDGE-MODEL.md` antes de desenhar o schema, em vez de inventar um enum novo — isso é literalmente o que o checklist de simplicidade pede ("já existe solução equivalente?") e, neste caso, a resposta era um "sim" direto, já usado em todo arquivo de task deste repositório.
+
+**O que dificultou**: nada tecnicamente, mas a divergência de `document.status` exigiu uma pausa para esclarecer com o CEO, via pergunta estruturada, se a correção deveria entrar nesta mesma task ou ficar para depois — decidiu-se corrigir agora, evitando duas migrações de enum separadas no mesmo campo.
+
+**Surpresas**: a maior surpresa desta task foi descobrir, só ao consultar o modelo canônico para uma fatia nova, que uma decisão já tomada na Task anterior (070) estava desalinhada com um padrão que já existia havia muito tempo no repositório — um lembrete de que "já existe solução equivalente?" deveria ser verificado antes de desenhar qualquer vocabulário nomeado (enum, status, categoria), não só antes de criar uma entidade inteira.
+
+**Riscos materializados**: nenhum — a divergência foi descoberta antes de qualquer merge, e corrigida sem custo de retrabalho em produção (nenhuma migração anterior chegou a ser aplicada contra um banco real).
+
+**Perguntas em aberto**: nenhuma nova.
+
+**Ações propostas**: ao desenhar qualquer campo com vocabulário fechado (enum) em tasks futuras, consultar primeiro `KNOWLEDGE-MODEL.md` (e demais documentos canônicos relevantes) antes de definir valores — não apenas ao criar entidades novas, mas também ao adicionar campos a entidades já existentes. Próxima fatia natural da Fase 7: permissões (a regra da fase já exige fontes, versionamento e classificação — todos feitos — mais permissões e descarte/retenção).
+
+**Mudanças aceitas**: registradas em `00_SYSTEM/logs/changes.jsonl`.
