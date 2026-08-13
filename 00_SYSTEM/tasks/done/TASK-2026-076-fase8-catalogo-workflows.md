@@ -2,8 +2,8 @@
 id: task-2026-076
 type: task
 title: "Fase 8 — primeira fatia operacional: catálogo de workflows de automação (entidade automation_workflow e sua API)"
-status: draft
-task_state: active
+status: done
+task_state: done
 owner: ceo-monvi
 agent: claude-cursor
 reviewer: ceo-monvi
@@ -13,6 +13,7 @@ confidentiality: internal
 classification: internal
 created_at: "2026-08-13"
 updated_at: "2026-08-13"
+reviewed_at: "2026-08-13T13:55:00-03:00"
 review_cycle: on-change
 sources:
   - 00_SYSTEM/roadmaps/Plano-Mestre-de-Construcao-Monvi-Brain.md
@@ -142,7 +143,7 @@ forbidden_paths:
   - apps/core-brain/node_modules/
   - apps/core-brain/dist/
   - 00_SYSTEM/architecture/Backlog-priorizado-Helpper-Central-e-criterios-Task-048.md
-requires_review: true
+requires_review: false
 acceptance_criteria:
   - Entidade automation_workflow criada em apps/core-brain/src/db/schema/automation-workflow.ts, com nome, descricao, responsavel, tipo de gatilho pretendido e status opcionais, exportada em schema/index.ts.
   - Migração gerada via npm run db:generate (sem aplicar contra banco real), correspondendo exatamente ao schema desenhado.
@@ -200,17 +201,49 @@ Mesma decisão já registrada desde a Task 052: a aplicação real das migraçõ
 - [x] `typecheck`, `test` e `build` continuam passando (106/106 testes). Evidência: execução local antes do commit.
 - [x] `README.md` e Plano Mestre atualizados, incluindo a transição da Fase 7. Evidência: seção "Escopo implementado"/"Endpoints" do README e seção 19 do Plano Mestre.
 - [x] Nenhuma credencial, dado real, dependência de software nova, entidade adicional ou trabalho de execução real. Evidência: diff restrito aos arquivos previstos; nenhuma alteração em `package.json`; nenhuma entidade além de `automation_workflow`.
-- [ ] Conteúdo revisado e aprovado pelo CEO antes do merge; encerramento em PR separada (Regra Fundamental 6, exceção para código). Pendente do gate de merge do PR desta task.
-- [ ] Retrospectiva crítica executada conforme `../workflows/retro.md` (Regra Fundamental 5). Pendente do encerramento formal desta task.
+- [x] Conteúdo revisado e aprovado pelo CEO antes do merge; encerramento em PR separada (Regra Fundamental 6, exceção para código). Evidência: gate explícito "Autorizado" para o merge do PR #79; este encerramento, em PR própria, é essa própria exceção em aplicação.
+- [x] Retrospectiva crítica executada conforme `../workflows/retro.md` (Regra Fundamental 5). Evidência: seção "Retrospectiva crítica" abaixo, com mudanças aceitas registradas em `changes.jsonl`.
 
 ## Riscos e gates humanos
 
 Riscos: mesmos já registrados desde a Fase 5 — migração nunca aplicada contra banco real, suposição single-tenant acumulando escopo, ausência de Docker neste ambiente; nenhum risco novo específico desta task, já que é puro cadastro sem nenhuma lógica de execução.
 
-Gate vigente: aguardando revisão do CEO e autorização explícita do squash merge do PR desta task.
+Gate vigente: encerrado. O merge do PR #79 foi autorizado (`Autorizado`) e executado por squash em `457eda0d1e852c0e03bdb7022911467401931280`. Esta task está formalmente concluída. Os demais entregáveis da Fase 8, o modelo de multi-organização e a Parte B permanecem fora deste encerramento.
 
-Histórico de gates desta task: encerramento da Task 075 → CEO decide deixar pendente a extração de arquivos da Fase 7 e avançar para a Fase 8 → pergunto quantas fases faltam e qual a próxima → apresento as fases 8 a 13 e o objetivo da Fase 8 → CEO pede para propor a primeira fatia → proponho o escopo desta task (entidade `automation_workflow`, catálogo de workflows, primeiro entregável da Fase 8) → `Autorizado` (execução completa do escopo, criação da task, branch, commit, push e PR).
+Histórico de gates desta task: encerramento da Task 075 → CEO decide deixar pendente a extração de arquivos da Fase 7 e avançar para a Fase 8 → pergunto quantas fases faltam e qual a próxima → apresento as fases 8 a 13 e o objetivo da Fase 8 → CEO pede para propor a primeira fatia → proponho o escopo desta task (entidade `automation_workflow`, catálogo de workflows, primeiro entregável da Fase 8) → `Autorizado` (execução completa do escopo, criação da task, branch, commit, push e PR) → `Autorizado` (merge do PR #79, integrado em `457eda0d1e852c0e03bdb7022911467401931280`).
 
 ## Revisão e entrega
 
-Apresentarei o diff completo, as validações locais (`typecheck`, `test`, `build`, `test:integration` com falha esperada e documentada) e o estado Git, e solicitarei explicitamente o gate de merge antes de integrar esta mudança em `main`.
+Apresentei o diff completo, as validações locais (`typecheck`, `test`, `build`, `test:integration` com falha esperada e documentada) e o estado Git, e solicitei explicitamente o gate de merge antes de integrar esta mudança em `main`.
+
+## Encerramento — 2026-08-13
+
+**Gate de encerramento**: o CEO autorizou (`Autorizado`) o squash merge do PR #79.
+
+**Integração**: PR #79 integrado em `main` via squash merge, commit `457eda0d1e852c0e03bdb7022911467401931280`, em 2026-08-13T16:48:23Z. Escopo integrado: exatamente os 13 arquivos previstos em `allowed_paths` — criação de `src/db/schema/automation-workflow.ts`, `src/http/routes/automation-workflow.ts`, `tests/automation-workflow.test.ts`, `tests/automation-workflow.integration.test.ts`, `drizzle/0016_funny_red_hulk.sql` e `drizzle/meta/0016_snapshot.json`; edição de `src/db/schema/index.ts`, `src/app/build-app.ts`, `drizzle/meta/_journal.json`, `README.md`, o Plano Mestre e `changes.jsonl`. Nenhuma alteração em outros arquivos de schema, `src/modules/`, `src/http/middlewares/` ou nas rotas já existentes.
+
+**Verificação pós-merge**: sincronizei `main` local via fast-forward (`git pull --ff-only`, `caa7d61..457eda0`) e reexecutei `npm run typecheck`, `npm test` e `npm run build` diretamente contra o `main` já integrado — typecheck limpo, 106/106 testes passando em 26 arquivos, build sem erros.
+
+**Estado final**: a primeira fatia operacional da Fase 8 (catálogo de workflows de automação) está concluída e integrada em `main`, sob a mesma suposição explícita de single-tenant já documentada. Restam gatilhos reais, webhooks, filas, retries, idempotência, dead-letter, aprovações, logs, métricas, reprocessamento e integração com n8n como entregáveis não iniciados da Fase 8. A Fase 7 permanece funcionalmente concluída com extração de arquivos reais e embeddings/busca vetorial deliberadamente pendentes, por decisão do CEO. O modelo de multi-organização e a autenticação de produção real permanecem pendentes e fora deste encerramento. A Parte B (aplicação real de todas as migrações e validação das APIs contra Postgres via Docker) permanece explicitamente pendente.
+
+**Escopo preservado**: nenhuma alteração fora de `allowed_paths` foi feita; nenhum código de identidade/autenticação/autorização ou das rotas já existentes foi tocado; nenhuma credencial, dado real ou dependência de software nova foi introduzida; nenhuma decisão de multi-organização foi tomada ou presumida; nenhuma entidade além de `automation_workflow` foi criada; nenhum gatilho, webhook, fila, retry, idempotência, dead-letter ou execução real foi implementado.
+
+## Retrospectiva crítica (conforme `../workflows/retro.md`)
+
+**Objetivo**: dar o primeiro passo da Fase 8, criando o catálogo de workflows — pré-requisito para tudo mais na fase (gatilhos, filas, execuções vão referenciar um workflow cadastrado).
+
+**Resultado conhecido**: `automation_workflow` implementada e integrada, seguindo exatamente o mesmo padrão de "primeira entidade de fase, puro cadastro" já validado com `source` na abertura da Fase 7 (Task 069).
+
+**O que ajudou**: reaplicar deliberadamente o padrão de abertura de fase já testado (nome, descrição, responsável, tipo/categoria, status, notas, exclusão lógica) — não houve nenhuma decisão de design nova a tomar, e a task fluiu no ritmo mais rápido desde o início da Fase 7.
+
+**O que dificultou**: nada tecnicamente. A única decisão real foi de escopo, não de código: resistir à tentação de já incluir alguma lógica mínima de disparo (por exemplo, um `POST /automation-workflows/:id/trigger` que só logasse algo) — decidi não fazer isso porque não estava no escopo aprovado e criaria uma falsa sensação de "workflow funcional" quando na verdade é só cadastro.
+
+**Surpresas**: nenhuma relacionada ao código. Notei, ao verificar o estado do repositório antes desta task, um terceiro arquivo (`00_SYSTEM/audits/Checklist-prontidao-executado-Monvi-Brain-v1.md`) exibindo o mesmo padrão de diff vazio (normalização de fim de linha) já visto nos dois arquivos historicamente conhecidos — não é uma mudança real de conteúdo, mesma causa (`core.autocrlf`), só um arquivo a mais afetado.
+
+**Riscos materializados**: nenhum.
+
+**Perguntas em aberto**: nenhuma nova.
+
+**Ações propostas**: gatilhos reais e webhooks são as próximas candidatas naturais da Fase 8, já que o catálogo está pronto para ser referenciado por eles.
+
+**Mudanças aceitas**: registradas em `00_SYSTEM/logs/changes.jsonl`.
