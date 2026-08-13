@@ -337,12 +337,35 @@ export async function registerAutomationTriggerRoutes(app: FastifyInstance): Pro
       });
     }
 
+    const rawBody = (request.body ?? {}) as Record<string, unknown>;
+    const idempotencyKey =
+      typeof rawBody.idempotencyKey === 'string' && rawBody.idempotencyKey.length > 0
+        ? rawBody.idempotencyKey
+        : undefined;
+
+    if (idempotencyKey) {
+      const [existing] = await db
+        .select()
+        .from(automationInvocation)
+        .where(
+          and(
+            eq(automationInvocation.automationTriggerId, found.id),
+            eq(automationInvocation.idempotencyKey, idempotencyKey)
+          )
+        );
+
+      if (existing) {
+        return reply.status(200).send({ automationInvocation: existing, deduplicated: true });
+      }
+    }
+
     const [created] = await db
       .insert(automationInvocation)
       .values({
         automationTriggerId: found.id,
-        payload: (request.body ?? null) as object | null,
+        payload: rawBody,
         sourceIp: request.ip,
+        idempotencyKey,
       })
       .returning();
 
