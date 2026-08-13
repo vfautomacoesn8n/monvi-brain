@@ -973,7 +973,7 @@ As seguintes decisões devem ser tomadas nas fases adequadas:
 
 ## 19. Estado atual
 
-*Atualizado em 2026-08-12 (Task 070), após verificação direta do código, dos testes e das decisões formais — não apenas da documentação anterior desta seção.*
+*Atualizado em 2026-08-12 (Task 071), após verificação direta do código, dos testes e das decisões formais — não apenas da documentação anterior desta seção.*
 
 ### Concluído
 
@@ -989,22 +989,22 @@ As seguintes decisões devem ser tomadas nas fases adequadas:
 
 ### Em andamento
 
-- Fase 7 (conhecimento, documentos e memória): iniciada pela Task 069 com a entidade `source` — nome, tipo (`manual`/`upload`/`google_drive`/`website`/`api`/`other`), descrição, responsável e status (`active`/`archived`) opcionais, cadastro isolado, sem relação com nenhuma entidade das Fases 5/6. Estendida pela Task 070 com `document` e `document_version` (segundo entregável explícito, "documentos e versões") — `document` referencia `source` de forma opcional (`onDelete: set null`) e tem status próprio (`document_status`: `draft`/`published`/`archived`); `document_version` é imutável (sem `PATCH`/`DELETE`), com número de versão auto-incremental por documento (índice único `document_id`+`version_number`) e conteúdo textual. Restam: classificação, permissões, extração, indexação, busca textual, política de retenção, memória operacional e, só depois de tudo isso, avaliação de embeddings e busca vetorial — bloqueados explicitamente até fontes, permissões, versionamento e descarte estarem definidos, por regra da própria fase (fontes e versionamento já definidos; faltam permissões e descarte/retenção).
+- Fase 7 (conhecimento, documentos e memória): iniciada pela Task 069 com a entidade `source` — nome, tipo (`manual`/`upload`/`google_drive`/`website`/`api`/`other`), descrição, responsável e status (`active`/`archived`) opcionais, cadastro isolado, sem relação com nenhuma entidade das Fases 5/6. Estendida pela Task 070 com `document` e `document_version` (segundo entregável explícito, "documentos e versões") — `document_version` é imutável (sem `PATCH`/`DELETE`), com número de versão auto-incremental por documento (índice único `document_id`+`version_number`) e conteúdo textual. Estendida pela Task 071 com classificação (terceiro entregável) — `document.confidentiality` (`public`/`internal`/`confidential`/`restricted`) reaproveita exatamente o vocabulário canônico já definido em [`KNOWLEDGE-MODEL.md`](../canonical/KNOWLEDGE-MODEL.md), usado em todo o resto do sistema; nessa mesma task, `document.status` foi realinhado ao `Status` canônico do mesmo documento (`draft`/`review`/`approved`/`deprecated`/`archived`, antes `draft`/`published`/`archived`, divergência descoberta ao consultar o modelo canônico para esta fatia). A classificação é puramente descritiva nesta versão — ainda não restringe leitura/escrita; isso é o entregável seguinte ("permissões"). Restam: permissões, extração, indexação, busca textual, política de retenção, memória operacional e, só depois de tudo isso, avaliação de embeddings e busca vetorial — bloqueados explicitamente até fontes, permissões, versionamento e descarte estarem definidos, por regra da própria fase (fontes e versionamento já definidos; faltam permissões e descarte/retenção).
 
 ### Ainda não iniciado
 
 - autenticação de produção real (Google Workspace/OIDC) — arquitetura documentada na Task 040, implementação técnica não iniciada;
 - modelo de multi-organização — decisão formal ainda em aberto (seção 17), adiada deliberadamente desde a Fase 5;
 - integrações externas da Fase 6 (WhatsApp/e-mail/formulários);
-- demais entregáveis da Fase 7 além de `source` e `document`/`document_version`, e todas as fases 8 em diante.
+- demais entregáveis da Fase 7 além de `source`, `document`/`document_version` e classificação, e todas as fases 8 em diante.
 
 ### Parte B — validação real de persistência (transversal a Fases 3, 5, 6 e 7)
 
-Nenhuma das migrações geradas (`0000` a `0011`, incluindo `task`, `deliverable`, `approval`, `dependency`, `risk`, `comment`, `lead`, `opportunity`, `activity`, `source` e `document`/`document_version`) foi aplicada contra um banco Postgres real; nenhum dos 17 testes de integração criados (`apps/core-brain/tests/*.integration.test.ts`) foi executado com sucesso — todos falham com `ECONNREFUSED` neste ambiente de execução, que não tem Docker disponível. Por decisão do CEO, essa validação é tratada como pendência única, deliberadamente adiada. Aplicar exige um ambiente com Docker: `docker compose up`, `npm run db:migrate`, `npm run test:integration`.
+Nenhuma das migrações geradas (`0000` a `0012`, incluindo `task`, `deliverable`, `approval`, `dependency`, `risk`, `comment`, `lead`, `opportunity`, `activity`, `source` e `document`/`document_version`) foi aplicada contra um banco Postgres real; nenhum dos 17 testes de integração criados (`apps/core-brain/tests/*.integration.test.ts`) foi executado com sucesso — todos falham com `ECONNREFUSED` neste ambiente de execução, que não tem Docker disponível. Por decisão do CEO, essa validação é tratada como pendência única, deliberadamente adiada. Aplicar exige um ambiente com Docker: `docker compose up`, `npm run db:migrate`, `npm run test:integration`.
 
 ### Próximo gate recomendado
 
-Continuar as fatias da Fase 7 (classificação e permissões são as próximas candidatas naturais — a regra da fase exige as duas, junto de versionamento e descarte, definidas antes de qualquer trabalho de embeddings/busca vetorial; descarte/política de retenção também segue pendente). Em paralelo, seguem pendentes, de forma transversal: a Parte B (validação real contra Postgres, cada vez mais acumulada), o modelo de multi-organização e a estratégia de autenticação de produção — o CEO manifestou preferência por concluir as fases funcionais antes de retomar essas pendências.
+Continuar as fatias da Fase 7 (permissões é a próxima candidata natural — a regra da fase exige fontes, permissões, versionamento e descarte definidos antes de qualquer trabalho de embeddings/busca vetorial; fontes, versionamento e classificação já feitos, resta permissões e descarte/retenção). Em paralelo, seguem pendentes, de forma transversal: a Parte B (validação real contra Postgres, cada vez mais acumulada), o modelo de multi-organização e a estratégia de autenticação de produção — o CEO manifestou preferência por concluir as fases funcionais antes de retomar essas pendências.
 
 ## 20. Critério de sucesso do plano
 
