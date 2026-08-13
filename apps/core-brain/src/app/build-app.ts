@@ -27,6 +27,7 @@ import { registerSearchRoutes } from "../http/routes/search.js";
 import { registerMemoryNoteRoutes } from "../http/routes/memory-note.js";
 import { registerAutomationWorkflowRoutes } from "../http/routes/automation-workflow.js";
 import { registerAutomationTriggerRoutes } from "../http/routes/automation-trigger.js";
+import { registerAutomationInvocationRoutes } from "../http/routes/automation-invocation.js";
 import { createLoggerOptions } from "../logging/logger.js";
 
 export async function buildApp(
@@ -141,6 +142,10 @@ export async function buildApp(
   });
 
   await app.register(registerAutomationTriggerRoutes, {
+    prefix: "/api/v1"
+  });
+
+  await app.register(registerAutomationInvocationRoutes, {
     prefix: "/api/v1"
   });
 
