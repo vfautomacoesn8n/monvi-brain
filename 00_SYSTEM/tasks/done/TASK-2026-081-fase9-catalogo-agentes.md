@@ -2,8 +2,8 @@
 id: task-2026-081
 type: task
 title: "Fase 9 — primeira fatia: catálogo de agentes de IA (ai_agent, sem execução real)"
-status: draft
-task_state: active
+status: done
+task_state: done
 owner: ceo-monvi
 agent: claude-cursor
 reviewer: ceo-monvi
@@ -13,7 +13,7 @@ confidentiality: internal
 classification: internal
 created_at: "2026-08-14"
 updated_at: "2026-08-14"
-reviewed_at: "2026-08-14"
+reviewed_at: "2026-08-14T09:36:00-03:00"
 review_cycle: on-change
 sources:
   - 00_SYSTEM/roadmaps/Plano-Mestre-de-Construcao-Monvi-Brain.md
@@ -211,29 +211,61 @@ Mesma decisão já registrada desde a Task 052: a aplicação real das migraçõ
 
 ## Critérios de aceite
 
-- [ ] `ai_agent` criada com todos os campos previstos. Evidência: `apps/core-brain/src/db/schema/ai-agent.ts`.
-- [ ] Migração gerada (não aplicada) correspondendo ao schema desenhado. Evidência: `apps/core-brain/drizzle/0020_violet_thor_girl.sql`, conferida manualmente.
-- [ ] CRUD completo implementado, seguindo o padrão de `automation-workflow.ts`. Evidência: `apps/core-brain/src/http/routes/ai-agent.ts`.
-- [ ] Rotas exigem autenticação e permissão nova (`agent:read`/`agent:write`), reaproveitando o middleware existente. Evidência: `preHandler: [authenticateRequest, requirePermission(...)]`; `src/http/middlewares/` não foi alterado.
-- [ ] `DELETE` é soft delete. Evidência: `deletedAt` preenchido, não removido; teste de integração confirma `404` após remoção.
-- [ ] Nenhuma execução real de agente, ferramenta ou verificação de fonte. Evidência: rotas fazem apenas leitura/escrita de metadados; nenhuma chamada a serviço externo ou de IA.
-- [ ] Nenhuma alteração em outros arquivos de schema, `src/modules/`, `src/http/middlewares/` ou rotas já existentes. Evidência: `git status --short` local confirmou apenas os arquivos previstos em `allowed_paths`.
-- [ ] Testes de bloqueio de acesso (401) passando sem banco real. Evidência: `tests/ai-agent.test.ts`, 5 testes.
-- [ ] Teste de integração real do ciclo completo, isolado da suíte padrão, não executado. Evidência: `tests/ai-agent.integration.test.ts`, escrito e presente na suíte de integração.
-- [ ] `typecheck`, `test` e `build` continuam passando (123/123 testes). Evidência: execução local antes do commit.
-- [ ] `README.md` e Plano Mestre atualizados. Evidência: seção "Escopo implementado"/"Endpoints" do README e seção 19 do Plano Mestre.
-- [ ] Nenhuma credencial, dado real, dependência de software nova ou worker de execução real. Evidência: diff restrito aos arquivos previstos; nenhuma alteração em `package.json`; nenhum processo em background introduzido.
-- [ ] Conteúdo revisado e aprovado pelo CEO antes do merge; encerramento em PR separada (Regra Fundamental 6, exceção para código). Evidência: gate explícito para o merge do PR de implementação; este encerramento, em PR própria, é essa própria exceção em aplicação.
-- [ ] Retrospectiva crítica executada conforme `../workflows/retro.md` (Regra Fundamental 5). Evidência: seção "Retrospectiva crítica" a ser adicionada no encerramento, com mudanças aceitas registradas em `changes.jsonl`.
+- [x] `ai_agent` criada com todos os campos previstos. Evidência: `apps/core-brain/src/db/schema/ai-agent.ts`, integrado em `main` no commit `354fcc8b69a8a42c3ff31bf94680704fd8c4d17e`.
+- [x] Migração gerada (não aplicada) correspondendo ao schema desenhado. Evidência: `apps/core-brain/drizzle/0020_violet_thor_girl.sql`, conferida manualmente.
+- [x] CRUD completo implementado, seguindo o padrão de `automation-workflow.ts`. Evidência: `apps/core-brain/src/http/routes/ai-agent.ts`.
+- [x] Rotas exigem autenticação e permissão nova (`agent:read`/`agent:write`), reaproveitando o middleware existente. Evidência: `preHandler: [authenticateRequest, requirePermission(...)]`; `src/http/middlewares/` não foi alterado.
+- [x] `DELETE` é soft delete. Evidência: `deletedAt` preenchido, não removido; teste de integração confirma `404` após remoção.
+- [x] Nenhuma execução real de agente, ferramenta ou verificação de fonte. Evidência: rotas fazem apenas leitura/escrita de metadados; nenhuma chamada a serviço externo ou de IA.
+- [x] Nenhuma alteração em outros arquivos de schema, `src/modules/`, `src/http/middlewares/` ou rotas já existentes. Evidência: `git status --short` local confirmou apenas os arquivos previstos em `allowed_paths`; PR #89 integrou exatamente os 13 arquivos previstos.
+- [x] Testes de bloqueio de acesso (401) passando sem banco real. Evidência: `tests/ai-agent.test.ts`, 5 testes.
+- [x] Teste de integração real do ciclo completo, isolado da suíte padrão, não executado. Evidência: `tests/ai-agent.integration.test.ts`, escrito e presente na suíte de integração.
+- [x] `typecheck`, `test` e `build` continuam passando (123/123 testes). Evidência: execução local antes do commit e reexecução pós-merge contra `main` sincronizado (commit `354fcc8b69a8a42c3ff31bf94680704fd8c4d17e`).
+- [x] `README.md` e Plano Mestre atualizados. Evidência: seção "Escopo implementado"/"Endpoints" do README e seção 19 do Plano Mestre.
+- [x] Nenhuma credencial, dado real, dependência de software nova ou worker de execução real. Evidência: diff restrito aos arquivos previstos; nenhuma alteração em `package.json`; nenhum processo em background introduzido.
+- [x] Conteúdo revisado e aprovado pelo CEO antes do merge; encerramento em PR separada (Regra Fundamental 6, exceção para código). Evidência: gate explícito `Autorizado` para o merge do PR #89, integrado em `354fcc8b69a8a42c3ff31bf94680704fd8c4d17e`; este encerramento, em PR própria, é essa própria exceção em aplicação.
+- [x] Retrospectiva crítica executada conforme `../workflows/retro.md` (Regra Fundamental 5). Evidência: seção "Retrospectiva crítica" abaixo, com mudanças aceitas registradas em `changes.jsonl`.
 
 ## Riscos e gates humanos
 
 Riscos: mesmos já registrados desde a Fase 5 — migração nunca aplicada contra banco real, suposição single-tenant acumulando escopo, ausência de Docker neste ambiente; `authorizedSourceIds` não tem integridade referencial forçada, então nada impede referenciar um `source` que não existe ou foi removido — decisão deliberada de simplicidade, mesmo padrão já aceito para `memory_note.entityId` (Task 075); `allowedTools` é texto livre sem validação contra nenhum catálogo formal de ferramentas, então nada impede um valor sem sentido ali — aceitável enquanto não existir execução real que dependa desse campo.
 
-Gate vigente: aguardando revisão e autorização do CEO para abrir o PR de implementação.
+Gate vigente: encerrado. O merge do PR #89 foi autorizado (`Autorizado`) e executado por squash em `354fcc8b69a8a42c3ff31bf94680704fd8c4d17e`. Esta task está formalmente concluída. Os demais entregáveis da Fase 9, o modelo de multi-organização e a Parte B permanecem fora deste encerramento.
 
-Histórico de gates desta task: encerramento da Task 080 → CEO pede para avançar para a Fase 9 (`Vamos avançar para a Fase 9`) → proponho o escopo desta task (catálogo de agentes de IA, mesmo padrão de `automation_workflow`, puro cadastro) → `Autorizado`.
+Histórico de gates desta task: encerramento da Task 080 → CEO pede para avançar para a Fase 9 (`Vamos avançar para a Fase 9`) → proponho o escopo desta task (catálogo de agentes de IA, mesmo padrão de `automation_workflow`, puro cadastro) → `Autorizado` (execução completa do escopo, criação da task, branch, commit, push e PR) → `Autorizado` (merge do PR #89, integrado em `354fcc8b69a8a42c3ff31bf94680704fd8c4d17e`).
 
 ## Revisão e entrega
 
-Apresentarei o diff completo, as validações locais (`typecheck`, `test`, `build`, `test:integration` com falha esperada e documentada) e o estado Git, e solicitarei explicitamente o gate de merge antes de integrar esta mudança em `main`.
+Apresentei o diff completo, as validações locais (`typecheck`, `test`, `build`, `test:integration` com falha esperada e documentada) e o estado Git, e solicitei explicitamente o gate de merge antes de integrar esta mudança em `main`.
+
+## Encerramento — 2026-08-14
+
+**Gate de encerramento**: o CEO autorizou (`Autorizado`) o squash merge do PR #89.
+
+**Integração**: PR #89 integrado em `main` via squash merge, commit `354fcc8b69a8a42c3ff31bf94680704fd8c4d17e`, em 2026-08-14T12:34:27Z. Escopo integrado: exatamente os 13 arquivos previstos em `allowed_paths` — criação de `00_SYSTEM/tasks/active/TASK-2026-081-fase9-catalogo-agentes.md`, `src/db/schema/ai-agent.ts`, `src/http/routes/ai-agent.ts`, `tests/ai-agent.test.ts`, `tests/ai-agent.integration.test.ts`, `drizzle/0020_violet_thor_girl.sql` e `drizzle/meta/0020_snapshot.json`; edição de `src/db/schema/index.ts`, `src/app/build-app.ts`, `drizzle/meta/_journal.json`, `README.md`, o Plano Mestre e `changes.jsonl`. Nenhuma alteração em outros arquivos de schema, `src/modules/`, `src/http/middlewares/` ou rotas já existentes.
+
+**Verificação pós-merge**: sincronizei `main` local via fast-forward (`git pull --ff-only`, `e47d112..354fcc8`) e reexecutei `npm run typecheck`, `npm test` e `npm run build` diretamente contra o `main` já integrado — typecheck limpo, 123/123 testes passando em 30 arquivos, build sem erros.
+
+**Estado final**: a primeira fatia da Fase 9 (catálogo de agentes de IA) está concluída e integrada em `main`, sob a mesma suposição explícita de single-tenant já documentada. `ai_agent` existe como cadastro puro — nome, propósito, ferramentas permitidas, fontes autorizadas, responsável e status — mas nenhum agente é de fato invocado, nenhuma ferramenta listada é de fato chamada, e nenhuma fonte é verificada. Restam políticas, limites, aprovações humanas, avaliações, métricas de qualidade, fallback, controle de custo e proteção contra prompt injection como entregáveis não iniciados da Fase 9 — todos deliberadamente anteriores a qualquer execução real de agente, dado o gate de saída da fase. A Fase 8 permanece funcionalmente concluída com integração com n8n e APIs deliberadamente pendente. A Fase 7 permanece funcionalmente concluída com extração de arquivos reais e embeddings/busca vetorial deliberadamente pendentes. O modelo de multi-organização e a autenticação de produção real permanecem pendentes e fora deste encerramento. A Parte B permanece explicitamente pendente.
+
+**Escopo preservado**: nenhuma alteração fora de `allowed_paths` foi feita; nenhum código de identidade/autenticação/autorização foi tocado; nenhuma credencial, dado real ou dependência de software nova foi introduzida; nenhuma decisão de multi-organização foi tomada ou presumida; nenhuma execução real de IA foi implementada.
+
+## Retrospectiva crítica (conforme `../workflows/retro.md`)
+
+**Objetivo**: abrir a Fase 9 com um catálogo puro de agentes de IA — nome, propósito, ferramentas permitidas, fontes autorizadas — sem nenhuma execução real, estabelecendo a base sobre a qual políticas, limites e aprovações humanas vão se apoiar.
+
+**Resultado conhecido**: `ai_agent` existe com CRUD completo e testado; nenhuma capacidade de execução foi introduzida.
+
+**O que ajudou**: reconhecer que os quatro primeiros entregáveis da fase (catálogo, propósito, ferramentas permitidas, fontes autorizadas) eram todos campos do mesmo cadastro, não quatro entidades ou fatias separadas — o mesmo raciocínio já aplicado à Task 076 ao abrir a Fase 8. Isso evitou fragmentar a primeira fatia em pedaços artificiais.
+
+**O que dificultou**: decidir como representar "fontes autorizadas" — a alternativa de criar uma tabela de junção com FK real para `source` foi descartada em favor de uma lista de UUIDs sem integridade forçada (jsonb), seguindo o precedente já estabelecido por `memory_note.entityId` (Task 075); isso manteve a primeira fatia simples, mas significa que a validação de que as fontes existem fica para quando (se) houver execução real.
+
+**Surpresas**: nenhuma.
+
+**Riscos materializados**: nenhum — o risco de `allowedTools` ser texto livre sem nenhum catálogo formal de ferramentas foi identificado e documentado durante o desenho, não descoberto depois; aceitável enquanto não existir execução real que dependa desse campo.
+
+**Perguntas em aberto**: se um catálogo formal de ferramentas (nomes válidos, categorias, nível de risco) deveria existir antes de `allowedTools` deixar de ser texto livre — decisão que só faz sentido junto com "ferramentas permitidas" ganhando enforcement real, ligada aos entregáveis de políticas/limites.
+
+**Ações propostas**: políticas e limites são as próximas candidatas naturais — governam o que um agente pode fazer antes de qualquer execução real ser considerada segura, conforme o gate de saída da fase.
+
+**Mudanças aceitas**: registradas em `00_SYSTEM/logs/changes.jsonl`.
