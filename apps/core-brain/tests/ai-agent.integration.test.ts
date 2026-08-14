@@ -69,6 +69,9 @@ describe('Fluxo real de agentes de IA — PostgreSQL local (Fase 9)', () => {
         name: 'Agente de triagem de leads',
         purpose: 'Classificar leads recebidos por origem e urgência',
         allowedTools: ['search', 'memory-notes'],
+        policy: 'Não enviar e-mails sem revisão humana.',
+        maxActionsPerRun: 10,
+        timeoutSeconds: 60,
         ownerPersonId: personId,
       },
     });
@@ -77,6 +80,9 @@ describe('Fluxo real de agentes de IA — PostgreSQL local (Fase 9)', () => {
     createdAiAgentId = created.id;
     expect(created.status).toBe('draft');
     expect(created.allowedTools).toEqual(['search', 'memory-notes']);
+    expect(created.policy).toBe('Não enviar e-mails sem revisão humana.');
+    expect(created.maxActionsPerRun).toBe(10);
+    expect(created.timeoutSeconds).toBe(60);
 
     const listResponse = await app.inject({
       method: 'GET',
@@ -98,10 +104,11 @@ describe('Fluxo real de agentes de IA — PostgreSQL local (Fase 9)', () => {
       method: 'PATCH',
       url: `/api/v1/ai-agents/${createdAiAgentId}`,
       headers: { authorization: `Bearer ${sessionToken}` },
-      payload: { status: 'active' },
+      payload: { status: 'active', maxActionsPerRun: 5 },
     });
     expect(updateResponse.statusCode).toBe(200);
     expect(updateResponse.json().aiAgent.status).toBe('active');
+    expect(updateResponse.json().aiAgent.maxActionsPerRun).toBe(5);
 
     const deleteResponse = await app.inject({
       method: 'DELETE',
