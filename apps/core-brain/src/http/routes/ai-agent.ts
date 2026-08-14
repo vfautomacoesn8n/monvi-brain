@@ -16,6 +16,7 @@ const createAiAgentSchema = z.object({
   policy: z.string().optional(),
   maxActionsPerRun: z.number().int().positive().optional(),
   timeoutSeconds: z.number().int().positive().optional(),
+  requiresHumanApproval: z.boolean().optional(),
   ownerPersonId: z.string().uuid().optional(),
   notes: z.string().optional(),
 });
@@ -29,6 +30,7 @@ const updateAiAgentSchema = z.object({
   policy: z.string().nullable().optional(),
   maxActionsPerRun: z.number().int().positive().nullable().optional(),
   timeoutSeconds: z.number().int().positive().nullable().optional(),
+  requiresHumanApproval: z.boolean().optional(),
   ownerPersonId: z.string().uuid().nullable().optional(),
   status: z.enum(aiAgentStatusEnum.enumValues).optional(),
   notes: z.string().optional(),

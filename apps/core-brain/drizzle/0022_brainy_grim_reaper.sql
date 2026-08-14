@@ -1,0 +1,1 @@
+ALTER TABLE "ai_agent" ADD COLUMN "requires_human_approval" boolean DEFAULT false NOT NULL;

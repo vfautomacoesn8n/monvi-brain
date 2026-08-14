@@ -1,4 +1,4 @@
-import { pgTable, uuid, varchar, text, jsonb, pgEnum, integer, timestamp } from 'drizzle-orm/pg-core';
+import { pgTable, uuid, varchar, text, jsonb, pgEnum, integer, boolean, timestamp } from 'drizzle-orm/pg-core';
 import { person } from './person.js';
 
 export const aiAgentStatusEnum = pgEnum('ai_agent_status', ['draft', 'active', 'paused', 'archived']);
@@ -13,6 +13,7 @@ export const aiAgent = pgTable('ai_agent', {
   policy: text('policy'),
   maxActionsPerRun: integer('max_actions_per_run'),
   timeoutSeconds: integer('timeout_seconds'),
+  requiresHumanApproval: boolean('requires_human_approval').notNull().default(false),
   ownerPersonId: uuid('owner_person_id').references(() => person.id, { onDelete: 'set null' }),
   status: aiAgentStatusEnum('status').notNull().default('draft'),
   notes: text('notes'),

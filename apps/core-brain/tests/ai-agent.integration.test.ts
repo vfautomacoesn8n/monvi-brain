@@ -83,6 +83,7 @@ describe('Fluxo real de agentes de IA — PostgreSQL local (Fase 9)', () => {
     expect(created.policy).toBe('Não enviar e-mails sem revisão humana.');
     expect(created.maxActionsPerRun).toBe(10);
     expect(created.timeoutSeconds).toBe(60);
+    expect(created.requiresHumanApproval).toBe(false);
 
     const listResponse = await app.inject({
       method: 'GET',
@@ -104,11 +105,12 @@ describe('Fluxo real de agentes de IA — PostgreSQL local (Fase 9)', () => {
       method: 'PATCH',
       url: `/api/v1/ai-agents/${createdAiAgentId}`,
       headers: { authorization: `Bearer ${sessionToken}` },
-      payload: { status: 'active', maxActionsPerRun: 5 },
+      payload: { status: 'active', maxActionsPerRun: 5, requiresHumanApproval: true },
     });
     expect(updateResponse.statusCode).toBe(200);
     expect(updateResponse.json().aiAgent.status).toBe('active');
     expect(updateResponse.json().aiAgent.maxActionsPerRun).toBe(5);
+    expect(updateResponse.json().aiAgent.requiresHumanApproval).toBe(true);
 
     const deleteResponse = await app.inject({
       method: 'DELETE',
