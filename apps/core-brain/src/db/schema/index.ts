@@ -22,4 +22,5 @@ export * from './automation-workflow.js';
 export * from './automation-trigger.js';
 export * from './automation-invocation.js';
 export * from './ai-agent.js';
+export * from './integration.js';
 export * from './session.js';
