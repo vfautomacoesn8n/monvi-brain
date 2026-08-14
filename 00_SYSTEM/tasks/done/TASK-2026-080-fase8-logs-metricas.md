@@ -2,8 +2,8 @@
 id: task-2026-080
 type: task
 title: "Fase 8 — quinta fatia operacional: logs e métricas de automação (histórico genérico e dashboard agregado)"
-status: draft
-task_state: active
+status: done
+task_state: done
 owner: ceo-monvi
 agent: claude-cursor
 reviewer: ceo-monvi
@@ -13,7 +13,7 @@ confidentiality: internal
 classification: internal
 created_at: "2026-08-14"
 updated_at: "2026-08-14"
-reviewed_at: "2026-08-14"
+reviewed_at: "2026-08-14T09:06:00-03:00"
 review_cycle: on-change
 sources:
   - 00_SYSTEM/roadmaps/Plano-Mestre-de-Construcao-Monvi-Brain.md
@@ -154,27 +154,59 @@ Mesma decisão já registrada desde a Task 052: a aplicação real das migraçõ
 
 ## Critérios de aceite
 
-- [ ] `automation_invocation` adicionado a `ENTITY_AUDIT_CONFIG` em `history.ts`, sem outra alteração no arquivo. Evidência: `apps/core-brain/src/http/routes/history.ts`.
-- [ ] `GET /automations/dashboard` agrega `automation_workflow`/`automation_invocation` por status. Evidência: `apps/core-brain/src/http/routes/automation-dashboard.ts`; teste de integração cobre a agregação.
-- [ ] Nenhuma tabela, coluna ou migração nova. Evidência: nenhum arquivo em `apps/core-brain/drizzle/` ou `apps/core-brain/src/db/schema/` alterado; `git status --short` local confirmou.
-- [ ] Rota nova exige autenticação e permissão, reaproveitando o middleware existente. Evidência: `preHandler: [authenticateRequest, requirePermission('automation:read')]`; `src/http/middlewares/` não foi alterado.
-- [ ] Nenhuma alteração em outros arquivos de schema, `src/modules/`, `src/http/middlewares/` ou rotas além de `history.ts` (uma linha) e `automation-dashboard.ts` (novo). Evidência: `git status --short` local confirmou apenas os arquivos previstos em `allowed_paths`.
-- [ ] Teste de bloqueio de acesso (401) passando sem banco real. Evidência: `tests/automation-dashboard.test.ts`, 1 teste.
-- [ ] Testes de integração real criados/estendidos, isolados da suíte padrão, não executados. Evidência: `tests/automation-dashboard.integration.test.ts` (novo) e `tests/automation-invocation.integration.test.ts` (estendido), presentes na suíte de integração.
-- [ ] `typecheck`, `test` e `build` continuam passando (118/118 testes). Evidência: execução local antes do commit.
-- [ ] `README.md` e Plano Mestre atualizados. Evidência: seção "Escopo implementado"/"Endpoints" do README e seção 19 do Plano Mestre.
-- [ ] Nenhuma credencial, dado real, dependência de software nova, entidade nova ou worker real. Evidência: diff restrito aos arquivos previstos; nenhuma alteração em `package.json`; nenhuma entidade nova; nenhum processo em background introduzido.
-- [ ] Conteúdo revisado e aprovado pelo CEO antes do merge; encerramento em PR separada (Regra Fundamental 6, exceção para código). Evidência: gate explícito para o merge do PR de implementação; este encerramento, em PR própria, é essa própria exceção em aplicação.
-- [ ] Retrospectiva crítica executada conforme `../workflows/retro.md` (Regra Fundamental 5). Evidência: seção "Retrospectiva crítica" a ser adicionada no encerramento, com mudanças aceitas registradas em `changes.jsonl`.
+- [x] `automation_invocation` adicionado a `ENTITY_AUDIT_CONFIG` em `history.ts`, sem outra alteração no arquivo. Evidência: `apps/core-brain/src/http/routes/history.ts`, integrado em `main` no commit `efad38b6c702a4d2dcbce8a74dbdee7804aede7f`.
+- [x] `GET /automations/dashboard` agrega `automation_workflow`/`automation_invocation` por status. Evidência: `apps/core-brain/src/http/routes/automation-dashboard.ts`; teste de integração cobre a agregação.
+- [x] Nenhuma tabela, coluna ou migração nova. Evidência: nenhum arquivo em `apps/core-brain/drizzle/` ou `apps/core-brain/src/db/schema/` alterado; `git status --short` local confirmou.
+- [x] Rota nova exige autenticação e permissão, reaproveitando o middleware existente. Evidência: `preHandler: [authenticateRequest, requirePermission('automation:read')]`; `src/http/middlewares/` não foi alterado.
+- [x] Nenhuma alteração em outros arquivos de schema, `src/modules/`, `src/http/middlewares/` ou rotas além de `history.ts` (uma linha) e `automation-dashboard.ts` (novo). Evidência: `git status --short` local confirmou apenas os arquivos previstos em `allowed_paths`; PR #87 integrou exatamente os 10 arquivos previstos.
+- [x] Teste de bloqueio de acesso (401) passando sem banco real. Evidência: `tests/automation-dashboard.test.ts`, 1 teste.
+- [x] Testes de integração real criados/estendidos, isolados da suíte padrão, não executados. Evidência: `tests/automation-dashboard.integration.test.ts` (novo) e `tests/automation-invocation.integration.test.ts` (estendido), presentes na suíte de integração.
+- [x] `typecheck`, `test` e `build` continuam passando (118/118 testes). Evidência: execução local antes do commit e reexecução pós-merge contra `main` sincronizado (commit `efad38b6c702a4d2dcbce8a74dbdee7804aede7f`).
+- [x] `README.md` e Plano Mestre atualizados. Evidência: seção "Escopo implementado"/"Endpoints" do README e seção 19 do Plano Mestre.
+- [x] Nenhuma credencial, dado real, dependência de software nova, entidade nova ou worker real. Evidência: diff restrito aos arquivos previstos; nenhuma alteração em `package.json`; nenhuma entidade nova; nenhum processo em background introduzido.
+- [x] Conteúdo revisado e aprovado pelo CEO antes do merge; encerramento em PR separada (Regra Fundamental 6, exceção para código). Evidência: gate explícito `Autorizado` para o merge do PR #87, integrado em `efad38b6c702a4d2dcbce8a74dbdee7804aede7f`; este encerramento, em PR própria, é essa própria exceção em aplicação.
+- [x] Retrospectiva crítica executada conforme `../workflows/retro.md` (Regra Fundamental 5). Evidência: seção "Retrospectiva crítica" abaixo, com mudanças aceitas registradas em `changes.jsonl`.
 
 ## Riscos e gates humanos
 
 Riscos: mesmos já registrados desde a Fase 5 — migração nunca aplicada contra banco real, suposição single-tenant acumulando escopo, ausência de Docker neste ambiente; `GET /automations/dashboard` não é escopado por período (é sempre "desde sempre"), então em volumes altos de invocações a agregação pode ficar cara sem um índice dedicado em `automation_invocation.status` — aceitável no volume atual e enquanto a Parte B seguir adiada, mesma lógica já aplicada à busca textual (Task 074).
 
-Gate vigente: aguardando revisão e autorização do CEO para abrir o PR de implementação.
+Gate vigente: encerrado. O merge do PR #87 foi autorizado (`Autorizado`) e executado por squash em `efad38b6c702a4d2dcbce8a74dbdee7804aede7f`. Esta task está formalmente concluída. O último entregável da Fase 8 (integração com n8n e APIs), o modelo de multi-organização e a Parte B permanecem fora deste encerramento.
 
-Histórico de gates desta task: encerramento da Task 079 → CEO pede para continuar (`Vamos para a próxima fatia`) → proponho o escopo desta task (logs via extensão de `GET /history`, métricas via novo `GET /automations/dashboard`, sem tabela nova) → `autorizado`.
+Histórico de gates desta task: encerramento da Task 079 → CEO pede para continuar (`Vamos para a próxima fatia`) → proponho o escopo desta task (logs via extensão de `GET /history`, métricas via novo `GET /automations/dashboard`, sem tabela nova) → `autorizado` (execução completa do escopo, criação da task, branch, commit, push e PR) → `Autorizado` (merge do PR #87, integrado em `efad38b6c702a4d2dcbce8a74dbdee7804aede7f`).
 
 ## Revisão e entrega
 
-Apresentarei o diff completo, as validações locais (`typecheck`, `test`, `build`, `test:integration` com falha esperada e documentada) e o estado Git, e solicitarei explicitamente o gate de merge antes de integrar esta mudança em `main`.
+Apresentei o diff completo, as validações locais (`typecheck`, `test`, `build`, `test:integration` com falha esperada e documentada) e o estado Git, e solicitei explicitamente o gate de merge antes de integrar esta mudança em `main`.
+
+## Encerramento — 2026-08-14
+
+**Gate de encerramento**: o CEO autorizou (`Autorizado`) o squash merge do PR #87.
+
+**Integração**: PR #87 integrado em `main` via squash merge, commit `efad38b6c702a4d2dcbce8a74dbdee7804aede7f`, em 2026-08-14T12:02:16Z. Escopo integrado: exatamente os 10 arquivos previstos em `allowed_paths` — criação de `00_SYSTEM/tasks/active/TASK-2026-080-fase8-logs-metricas.md`, `src/http/routes/automation-dashboard.ts`, `tests/automation-dashboard.test.ts` e `tests/automation-dashboard.integration.test.ts`; edição de `src/http/routes/history.ts` (uma linha), `src/app/build-app.ts`, `tests/automation-invocation.integration.test.ts`, `README.md`, o Plano Mestre e `changes.jsonl`. Nenhuma alteração em `src/db/schema/`, `src/modules/`, `src/http/middlewares/` ou em rotas além do necessário; nenhuma migração gerada.
+
+**Verificação pós-merge**: sincronizei `main` local via fast-forward (`git pull --ff-only`, `01c7d7f..efad38b`) e reexecutei `npm run typecheck`, `npm test` e `npm run build` diretamente contra o `main` já integrado — typecheck limpo, 118/118 testes passando em 29 arquivos, build sem erros.
+
+**Estado final**: a quinta fatia operacional da Fase 8 (logs e métricas) está concluída e integrada em `main`, sob a mesma suposição explícita de single-tenant já documentada. `GET /history` agora também cobre `automation_invocation`, e `GET /automations/dashboard` dá visibilidade agregada de workflows e invocações por status. Resta apenas integração com n8n e APIs como entregável não iniciado da Fase 8 — o único que exige decisão real de infraestrutura externa. A Fase 7 permanece funcionalmente concluída com extração de arquivos reais e embeddings/busca vetorial deliberadamente pendentes. O modelo de multi-organização e a autenticação de produção real permanecem pendentes e fora deste encerramento. A Parte B permanece explicitamente pendente.
+
+**Escopo preservado**: nenhuma alteração fora de `allowed_paths` foi feita; nenhum código de identidade/autenticação/autorização foi tocado; nenhuma credencial, dado real ou dependência de software nova foi introduzida; nenhuma decisão de multi-organização foi tomada ou presumida; nenhuma entidade nova foi criada; nenhuma tabela ou migração nova foi gerada; nenhum worker ou processo em background real foi implementado.
+
+## Retrospectiva crítica (conforme `../workflows/retro.md`)
+
+**Objetivo**: entregar logs e métricas — o décimo e o décimo-primeiro entregáveis da Fase 8 — dando visibilidade ao histórico de uma invocação específica e a contagens agregadas de workflows/invocações, sem introduzir nenhuma peça nova de schema ou infraestrutura.
+
+**Resultado conhecido**: `GET /history` cobre `automation_invocation` com uma única linha de configuração; `GET /automations/dashboard` agrega contagens reais; os testes de integração cobrem ambos os cenários de ponta a ponta.
+
+**O que ajudou**: reconhecer, antes de escrever qualquer código, que ambos os entregáveis já tinham solução equivalente pronta na base — `GET /history` (Task 061) já era genérico o suficiente para não precisar de nenhuma rota nova, e os quatro eventos de auditoria de `automation_invocation` (criados nas Tasks 077-079) já usavam consistentemente a mesma chave `automationInvocationId`, então a extensão foi realmente uma linha. Isso evitou construir uma rota de histórico dedicada que duplicaria o que já existia.
+
+**O que dificultou**: nada digno de nota — esta foi a fatia mais simples da Fase 8 até agora, exatamente porque não exigiu nenhuma decisão de design nova, só reaproveitamento de dois padrões já maduros.
+
+**Surpresas**: nenhuma.
+
+**Riscos materializados**: nenhum — o risco de `GET /automations/dashboard` não ser escopado por período (agregação sempre "desde sempre") foi identificado e documentado durante o desenho, não descoberto depois; aceitável no volume atual e enquanto a Parte B seguir adiada.
+
+**Perguntas em aberto**: como a autenticação n8n→Monvi deveria funcionar no último entregável da fase (integração com n8n e APIs), e se essa integração deveria vir acompanhada de um worker real consumindo `/queue` — ambas decisões de infraestrutura que cabem ao CEO.
+
+**Ações propostas**: integração com n8n e APIs é o único entregável restante da Fase 8 — mas, diferente das fatias anteriores, exige uma decisão de infraestrutura externa do CEO antes de qualquer proposta de escopo técnico, do mesmo tipo das integrações da Fase 6 (WhatsApp/e-mail/formulários), ainda deliberadamente adiadas.
+
+**Mudanças aceitas**: registradas em `00_SYSTEM/logs/changes.jsonl`.
