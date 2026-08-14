@@ -313,4 +313,30 @@ describe('Fluxo real de fila, retries, idempotência e dead-letter — PostgreSQ
     });
     expect(approveAgainResponse.statusCode).toBe(409);
   });
+
+  it('lista o histórico real de uma invocação via GET /history genérico', async () => {
+    const invokeResponse = await app.inject({
+      method: 'POST',
+      url: `/api/v1/automation-triggers/${webhookToken}/invoke`,
+      payload: { idempotencyKey: 'evento-historico' },
+    });
+    const invocationId = invokeResponse.json().automationInvocation.id;
+
+    await app.inject({
+      method: 'POST',
+      url: `/api/v1/automation-invocations/${invocationId}/attempt`,
+      headers: { authorization: `Bearer ${sessionToken}` },
+      payload: { success: true },
+    });
+
+    const historyResponse = await app.inject({
+      method: 'GET',
+      url: `/api/v1/history?entityType=automation_invocation&entityId=${invocationId}`,
+      headers: { authorization: `Bearer ${sessionToken}` },
+    });
+    expect(historyResponse.statusCode).toBe(200);
+    const events = historyResponse.json().history;
+    expect(events.some((e: { eventType: string }) => e.eventType === 'automation_invocation:received')).toBe(true);
+    expect(events.some((e: { eventType: string }) => e.eventType === 'automation_invocation:attempted')).toBe(true);
+  });
 });

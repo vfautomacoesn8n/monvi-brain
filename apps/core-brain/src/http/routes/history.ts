@@ -17,6 +17,7 @@ const ENTITY_AUDIT_CONFIG = {
   dependency: { prefix: 'dependency:', idKey: 'dependencyId' },
   risk: { prefix: 'risk:', idKey: 'riskId' },
   comment: { prefix: 'comment:', idKey: 'commentId' },
+  automation_invocation: { prefix: 'automation_invocation:', idKey: 'automationInvocationId' },
 } as const;
 
 const entityTypeValues = Object.keys(ENTITY_AUDIT_CONFIG) as [
