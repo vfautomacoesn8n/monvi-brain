@@ -2,8 +2,8 @@
 id: task-2026-079
 type: task
 title: "Fase 8 — quarta fatia operacional: aprovações e reprocessamento (gate humano e recuperação de dead-letter)"
-status: draft
-task_state: active
+status: done
+task_state: done
 owner: ceo-monvi
 agent: claude-cursor
 reviewer: ceo-monvi
@@ -12,8 +12,8 @@ active_project: null
 confidentiality: internal
 classification: internal
 created_at: "2026-08-13"
-updated_at: "2026-08-13"
-reviewed_at: "2026-08-13"
+updated_at: "2026-08-14"
+reviewed_at: "2026-08-14T08:26:00-03:00"
 review_cycle: on-change
 sources:
   - 00_SYSTEM/roadmaps/Plano-Mestre-de-Construcao-Monvi-Brain.md
@@ -211,30 +211,62 @@ Mesma decisão já registrada desde a Task 052: a aplicação real das migraçõ
 
 ## Critérios de aceite
 
-- [ ] `requiresApproval` adicionado a `automation_workflow`; `pending_approval`/`rejected` adicionados ao enum de `automation_invocation`, com `approvedByPersonId`/`approvedAt`/`rejectionReason`. Evidência: `apps/core-brain/src/db/schema/automation-workflow.ts`, `apps/core-brain/src/db/schema/automation-invocation.ts`.
-- [ ] Migração gerada (não aplicada) correspondendo ao schema desenhado. Evidência: `apps/core-brain/drizzle/0019_salty_mister_fear.sql`, conferida manualmente.
-- [ ] `/invoke` cria `pending_approval` quando o workflow exige aprovação, `pending` caso contrário. Evidência: `apps/core-brain/src/http/routes/automation-trigger.ts`; teste de integração cobre ambos os caminhos.
-- [ ] `POST /automation-invocations/:id/approve` implementa aprovação/rejeição/409. Evidência: `apps/core-brain/src/http/routes/automation-invocation.ts`; teste de integração cobre os três cenários.
-- [ ] `POST /automation-invocations/:id/reprocess` implementa reprocessamento de `dead_letter`/409. Evidência: mesmo arquivo; teste de integração cobre ambos os cenários.
-- [ ] `/attempt` só aceita `pending`. Evidência: mesmo arquivo, checagem `found.status !== 'pending'`.
-- [ ] Rotas autenticadas exigem autenticação e permissão, reaproveitando o middleware existente. Evidência: `preHandler: [authenticateRequest, requirePermission(...)]`; `src/http/middlewares/` não foi alterado.
-- [ ] Nenhuma alteração em outros arquivos de schema, `src/modules/`, `src/http/middlewares/` ou rotas além do necessário. Evidência: `git status --short` local confirmou apenas os arquivos previstos em `allowed_paths`.
-- [ ] Testes de bloqueio de acesso (401) passando sem banco real. Evidência: `tests/automation-invocation.test.ts`, 2 testes novos (4 no total do arquivo).
-- [ ] Teste de integração real estendido, isolado da suíte padrão, não executado. Evidência: `tests/automation-invocation.integration.test.ts`, com os dois cenários novos presentes na suíte de integração.
-- [ ] `typecheck`, `test` e `build` continuam passando (117/117 testes). Evidência: execução local antes do commit.
-- [ ] `README.md` e Plano Mestre atualizados. Evidência: seção "Escopo implementado"/"Endpoints" do README e seção 19 do Plano Mestre.
-- [ ] Nenhuma credencial, dado real, dependência de software nova, entidade nova, worker real ou reaproveitamento da entidade `approval` da Fase 5. Evidência: diff restrito aos arquivos previstos; nenhuma alteração em `package.json`; nenhuma entidade nova; `apps/core-brain/src/db/schema/approval.ts` permanece em `read_only_paths` e intocado.
-- [ ] Conteúdo revisado e aprovado pelo CEO antes do merge; encerramento em PR separada (Regra Fundamental 6, exceção para código). Evidência: gate explícito para o merge do PR de implementação; este encerramento, em PR própria, é essa própria exceção em aplicação.
-- [ ] Retrospectiva crítica executada conforme `../workflows/retro.md` (Regra Fundamental 5). Evidência: seção "Retrospectiva crítica" a ser adicionada no encerramento, com mudanças aceitas registradas em `changes.jsonl`.
+- [x] `requiresApproval` adicionado a `automation_workflow`; `pending_approval`/`rejected` adicionados ao enum de `automation_invocation`, com `approvedByPersonId`/`approvedAt`/`rejectionReason`. Evidência: `apps/core-brain/src/db/schema/automation-workflow.ts`, `apps/core-brain/src/db/schema/automation-invocation.ts`, integrados em `main` no commit `fab7e0f125c77ccbc5aee2f6ba010d8e00cf1682`.
+- [x] Migração gerada (não aplicada) correspondendo ao schema desenhado. Evidência: `apps/core-brain/drizzle/0019_salty_mister_fear.sql`, conferida manualmente.
+- [x] `/invoke` cria `pending_approval` quando o workflow exige aprovação, `pending` caso contrário. Evidência: `apps/core-brain/src/http/routes/automation-trigger.ts`; teste de integração cobre ambos os caminhos.
+- [x] `POST /automation-invocations/:id/approve` implementa aprovação/rejeição/409. Evidência: `apps/core-brain/src/http/routes/automation-invocation.ts`; teste de integração cobre os três cenários.
+- [x] `POST /automation-invocations/:id/reprocess` implementa reprocessamento de `dead_letter`/409. Evidência: mesmo arquivo; teste de integração cobre ambos os cenários.
+- [x] `/attempt` só aceita `pending`. Evidência: mesmo arquivo, checagem `found.status !== 'pending'`.
+- [x] Rotas autenticadas exigem autenticação e permissão, reaproveitando o middleware existente. Evidência: `preHandler: [authenticateRequest, requirePermission(...)]`; `src/http/middlewares/` não foi alterado.
+- [x] Nenhuma alteração em outros arquivos de schema, `src/modules/`, `src/http/middlewares/` ou rotas além do necessário. Evidência: `git status --short` local confirmou apenas os arquivos previstos em `allowed_paths`; PR #85 integrou exatamente os 14 arquivos previstos.
+- [x] Testes de bloqueio de acesso (401) passando sem banco real. Evidência: `tests/automation-invocation.test.ts`, 2 testes novos (4 no total do arquivo).
+- [x] Teste de integração real estendido, isolado da suíte padrão, não executado. Evidência: `tests/automation-invocation.integration.test.ts`, com os dois cenários novos presentes na suíte de integração.
+- [x] `typecheck`, `test` e `build` continuam passando (117/117 testes). Evidência: execução local antes do commit e reexecução pós-merge contra `main` sincronizado (commit `fab7e0f125c77ccbc5aee2f6ba010d8e00cf1682`).
+- [x] `README.md` e Plano Mestre atualizados. Evidência: seção "Escopo implementado"/"Endpoints" do README e seção 19 do Plano Mestre.
+- [x] Nenhuma credencial, dado real, dependência de software nova, entidade nova, worker real ou reaproveitamento da entidade `approval` da Fase 5. Evidência: diff restrito aos arquivos previstos; nenhuma alteração em `package.json`; nenhuma entidade nova; `apps/core-brain/src/db/schema/approval.ts` permanece em `read_only_paths` e intocado.
+- [x] Conteúdo revisado e aprovado pelo CEO antes do merge; encerramento em PR separada (Regra Fundamental 6, exceção para código). Evidência: gate explícito `autorizado` para o merge do PR #85, integrado em `fab7e0f125c77ccbc5aee2f6ba010d8e00cf1682`; este encerramento, em PR própria, é essa própria exceção em aplicação.
+- [x] Retrospectiva crítica executada conforme `../workflows/retro.md` (Regra Fundamental 5). Evidência: seção "Retrospectiva crítica" abaixo, com mudanças aceitas registradas em `changes.jsonl`.
 
 ## Riscos e gates humanos
 
 Riscos: mesmos já registrados desde a Fase 5 — migração nunca aplicada contra banco real, suposição single-tenant acumulando escopo, ausência de Docker neste ambiente; sem nenhum worker real, uma invocação `pending_approval` só avança se alguém chamar `/approve`, e uma invocação `dead_letter` só volta à fila se alguém chamar `/reprocess` — isso é uma limitação deliberada desta fatia, não um bug, mas significa que ambos os fluxos dependem inteiramente de ação humana ou externa explícita até que uma decisão de infraestrutura seja tomada; `reprocess` zera `attemptCount` sem limite de quantas vezes uma mesma invocação pode ser reprocessada (nenhum teto ou histórico de reprocessamentos anteriores é mantido).
 
-Gate vigente: aguardando revisão e autorização do CEO para abrir o PR de implementação.
+Gate vigente: encerrado. O merge do PR #85 foi autorizado (`autorizado`) e executado por squash em `fab7e0f125c77ccbc5aee2f6ba010d8e00cf1682`. Esta task está formalmente concluída. Os demais entregáveis da Fase 8, o modelo de multi-organização e a Parte B permanecem fora deste encerramento.
 
-Histórico de gates desta task: encerramento da Task 078 → CEO pede para continuar (`Vamos continuar`) → proponho o escopo desta task (aprovações e reprocessamento combinados, sem reaproveitar a entidade `approval` da Fase 5) → `Autorizado`.
+Histórico de gates desta task: encerramento da Task 078 → CEO pede para continuar (`Vamos continuar`) → proponho o escopo desta task (aprovações e reprocessamento combinados, sem reaproveitar a entidade `approval` da Fase 5) → `Autorizado` (execução completa do escopo, criação da task, branch, commit, push e PR) → `autorizado` (merge do PR #85, integrado em `fab7e0f125c77ccbc5aee2f6ba010d8e00cf1682`).
 
 ## Revisão e entrega
 
-Apresentarei o diff completo, as validações locais (`typecheck`, `test`, `build`, `test:integration` com falha esperada e documentada) e o estado Git, e solicitarei explicitamente o gate de merge antes de integrar esta mudança em `main`.
+Apresentei o diff completo, as validações locais (`typecheck`, `test`, `build`, `test:integration` com falha esperada e documentada) e o estado Git, e solicitei explicitamente o gate de merge antes de integrar esta mudança em `main`.
+
+## Encerramento — 2026-08-14
+
+**Gate de encerramento**: o CEO autorizou (`autorizado`) o squash merge do PR #85.
+
+**Integração**: PR #85 integrado em `main` via squash merge, commit `fab7e0f125c77ccbc5aee2f6ba010d8e00cf1682`, em 2026-08-14T11:22:06Z. Escopo integrado: exatamente os 14 arquivos previstos em `allowed_paths` — criação de `00_SYSTEM/tasks/active/TASK-2026-079-fase8-aprovacoes-reprocessamento.md`, `drizzle/0019_salty_mister_fear.sql` e `drizzle/meta/0019_snapshot.json`; edição de `src/db/schema/automation-workflow.ts`, `src/db/schema/automation-invocation.ts`, `src/http/routes/automation-workflow.ts`, `src/http/routes/automation-trigger.ts`, `src/http/routes/automation-invocation.ts`, `tests/automation-invocation.test.ts`, `tests/automation-invocation.integration.test.ts`, `drizzle/meta/_journal.json`, `README.md`, o Plano Mestre e `changes.jsonl`. Nenhuma alteração em outros arquivos de schema, `src/modules/`, `src/http/middlewares/` ou nas rotas já existentes além do necessário.
+
+**Verificação pós-merge**: sincronizei `main` local via fast-forward (`git pull --ff-only`, `ec4e6c1..fab7e0f`) e reexecutei `npm run typecheck`, `npm test` e `npm run build` diretamente contra o `main` já integrado — typecheck limpo, 117/117 testes passando em 28 arquivos, build sem erros.
+
+**Estado final**: a quarta fatia operacional da Fase 8 (aprovações e reprocessamento) está concluída e integrada em `main`, sob a mesma suposição explícita de single-tenant já documentada. Um workflow pode agora exigir aprovação humana antes de qualquer invocação entrar na fila, e uma invocação em `dead_letter` pode ser reprocessada manualmente. Restam logs (além do log de invocação já existente), métricas e integração com n8n como entregáveis não iniciados da Fase 8. A Fase 7 permanece funcionalmente concluída com extração de arquivos reais e embeddings/busca vetorial deliberadamente pendentes. O modelo de multi-organização e a autenticação de produção real permanecem pendentes e fora deste encerramento. A Parte B permanece explicitamente pendente.
+
+**Escopo preservado**: nenhuma alteração fora de `allowed_paths` foi feita; nenhum código de identidade/autenticação/autorização foi tocado; nenhuma credencial, dado real ou dependência de software nova foi introduzida; nenhuma decisão de multi-organização foi tomada ou presumida; nenhuma entidade nova foi criada; a entidade `approval` da Fase 5 não foi reaproveitada nem alterada; nenhum worker ou processo em background real foi implementado.
+
+## Retrospectiva crítica (conforme `../workflows/retro.md`)
+
+**Objetivo**: entregar aprovações e reprocessamento — os dois últimos entregáveis de execução da Fase 8 — dando a workflows um gate humano opcional antes da fila e permitindo recuperar manualmente invocações em `dead_letter`, sem introduzir nenhuma peça de infraestrutura nova.
+
+**Resultado conhecido**: `automation_workflow` ganhou `requiresApproval`; `automation_invocation` ganhou os estados `pending_approval`/`rejected` e os campos de decisão; o teste de integração exercita os cenários principais (reprocessamento de `dead_letter`, exigência de aprovação antes da fila, aprovação e rejeição) de ponta a ponta.
+
+**O que ajudou**: reconhecer cedo, antes de escrever qualquer código, que a entidade `approval` da Fase 5 não servia para este caso — ela é FK-locked a `deliverable`, então forçar seu reaproveitamento exigiria alterar seu desenho ou introduzir uma associação polimórfica, ambos fora de escopo. Estender `automation_workflow`/`automation_invocation` diretamente foi mais simples e manteve a integridade referencial existente.
+
+**O que dificultou**: decidir a checagem de estado de `/attempt` — a versão anterior (Task 078) checava apenas `succeeded`/`dead_letter` como terminais; com `pending_approval` e `rejected` novos, generalizar para "só `pending` aceita tentativa" evitou duplicar a lista de estados proibidos a cada nova fatia futura.
+
+**Surpresas**: nenhuma.
+
+**Riscos materializados**: nenhum — o risco de ambos os fluxos (`approve`/`reprocess`) dependerem inteiramente de ação humana ou externa, sem worker automático, foi identificado e documentado durante o desenho, não descoberto depois.
+
+**Perguntas em aberto**: quando um worker real deveria existir para consumir `/queue`, chamar `/attempt` e, potencialmente, notificar sobre invocações aguardando aprovação — decisão de infraestrutura que cabe ao CEO, possivelmente ligada à integração real com n8n.
+
+**Ações propostas**: logs (além do log de invocação já existente), métricas e integração com n8n são os entregáveis restantes da Fase 8 — candidatas naturais para a próxima fatia.
+
+**Mudanças aceitas**: registradas em `00_SYSTEM/logs/changes.jsonl`.
