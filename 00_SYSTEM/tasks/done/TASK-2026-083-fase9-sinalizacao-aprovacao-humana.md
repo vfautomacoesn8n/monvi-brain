@@ -2,8 +2,8 @@
 id: task-2026-083
 type: task
 title: "Fase 9 — terceira fatia: sinalização de aprovação humana em agentes de IA (metadado declarativo, sem fluxo real)"
-status: draft
-task_state: active
+status: done
+task_state: done
 owner: ceo-monvi
 agent: claude-cursor
 reviewer: ceo-monvi
@@ -13,7 +13,7 @@ confidentiality: internal
 classification: internal
 created_at: "2026-08-14"
 updated_at: "2026-08-14"
-reviewed_at: "2026-08-14"
+reviewed_at: "2026-08-14T10:17:00-03:00"
 review_cycle: on-change
 sources:
   - 00_SYSTEM/roadmaps/Plano-Mestre-de-Construcao-Monvi-Brain.md
@@ -205,26 +205,58 @@ Mesma decisão já registrada desde a Task 052: a aplicação real das migraçõ
 
 ## Critérios de aceite
 
-- [ ] `requiresHumanApproval` adicionado a `ai_agent`. Evidência: `apps/core-brain/src/db/schema/ai-agent.ts`.
-- [ ] Migração gerada (não aplicada) correspondendo ao schema desenhado. Evidência: `apps/core-brain/drizzle/0022_brainy_grim_reaper.sql`, conferida manualmente.
-- [ ] `POST`/`PATCH /ai-agents` aceitam o campo novo, validado. Evidência: `apps/core-brain/src/http/routes/ai-agent.ts`; teste de integração cobre criação (padrão `false`) e atualização (`true`).
-- [ ] Nenhum enforcement real, nenhuma infraestrutura de aprovação construída. Evidência: nenhuma rota de execução de agente ou de decisão de aprovação existe no sistema; o campo é apenas persistido e lido.
-- [ ] Nenhuma alteração em outros arquivos de schema, `src/modules/`, `src/http/middlewares/` ou rotas além de `ai-agent.ts`. Evidência: `git status --short` local confirmou apenas os arquivos previstos em `allowed_paths`.
-- [ ] Teste de integração real estendido, isolado da suíte padrão, não executado. Evidência: `tests/ai-agent.integration.test.ts`, cenário estendido presente na suíte de integração.
-- [ ] `typecheck`, `test` e `build` continuam passando (123/123 testes). Evidência: execução local antes do commit.
-- [ ] `README.md` e Plano Mestre atualizados. Evidência: seção "Escopo implementado"/prosa descritiva do README e seção 19 do Plano Mestre.
-- [ ] Nenhuma credencial, dado real, dependência de software nova, entidade nova ou infraestrutura de aprovação real. Evidência: diff restrito aos arquivos previstos; nenhuma alteração em `package.json`; nenhuma entidade nova; nenhuma fila ou endpoint de decisão adicionado.
-- [ ] Conteúdo revisado e aprovado pelo CEO antes do merge; encerramento em PR separada (Regra Fundamental 6, exceção para código). Evidência: gate explícito para o merge do PR de implementação; este encerramento, em PR própria, é essa própria exceção em aplicação.
-- [ ] Retrospectiva crítica executada conforme `../workflows/retro.md` (Regra Fundamental 5). Evidência: seção "Retrospectiva crítica" a ser adicionada no encerramento, com mudanças aceitas registradas em `changes.jsonl`.
+- [x] `requiresHumanApproval` adicionado a `ai_agent`. Evidência: `apps/core-brain/src/db/schema/ai-agent.ts`, integrado em `main` no commit `3aa9e1324637550809199afbe57209f003ca27d1`.
+- [x] Migração gerada (não aplicada) correspondendo ao schema desenhado. Evidência: `apps/core-brain/drizzle/0022_brainy_grim_reaper.sql`, conferida manualmente.
+- [x] `POST`/`PATCH /ai-agents` aceitam o campo novo, validado. Evidência: `apps/core-brain/src/http/routes/ai-agent.ts`; teste de integração cobre criação (padrão `false`) e atualização (`true`).
+- [x] Nenhum enforcement real, nenhuma infraestrutura de aprovação construída. Evidência: nenhuma rota de execução de agente ou de decisão de aprovação existe no sistema; o campo é apenas persistido e lido.
+- [x] Nenhuma alteração em outros arquivos de schema, `src/modules/`, `src/http/middlewares/` ou rotas além de `ai-agent.ts`. Evidência: `git status --short` local confirmou apenas os arquivos previstos em `allowed_paths`; PR #93 integrou exatamente os 10 arquivos previstos.
+- [x] Teste de integração real estendido, isolado da suíte padrão, não executado. Evidência: `tests/ai-agent.integration.test.ts`, cenário estendido presente na suíte de integração.
+- [x] `typecheck`, `test` e `build` continuam passando (123/123 testes). Evidência: execução local antes do commit e reexecução pós-merge contra `main` sincronizado (commit `3aa9e1324637550809199afbe57209f003ca27d1`).
+- [x] `README.md` e Plano Mestre atualizados. Evidência: seção "Escopo implementado"/prosa descritiva do README e seção 19 do Plano Mestre.
+- [x] Nenhuma credencial, dado real, dependência de software nova, entidade nova ou infraestrutura de aprovação real. Evidência: diff restrito aos arquivos previstos; nenhuma alteração em `package.json`; nenhuma entidade nova; nenhuma fila ou endpoint de decisão adicionado.
+- [x] Conteúdo revisado e aprovado pelo CEO antes do merge; encerramento em PR separada (Regra Fundamental 6, exceção para código). Evidência: gate explícito `Autorizado` para o merge do PR #93, integrado em `3aa9e1324637550809199afbe57209f003ca27d1`; este encerramento, em PR própria, é essa própria exceção em aplicação.
+- [x] Retrospectiva crítica executada conforme `../workflows/retro.md` (Regra Fundamental 5). Evidência: seção "Retrospectiva crítica" abaixo, com mudanças aceitas registradas em `changes.jsonl`.
 
 ## Riscos e gates humanos
 
 Riscos: mesmos já registrados desde a Fase 5 — migração nunca aplicada contra banco real, suposição single-tenant acumulando escopo, ausência de Docker neste ambiente; risco específico desta fatia — como o campo não tem nenhum consumidor real, existe a possibilidade de que, quando a execução real de agentes for desenhada, o modelo de aprovação necessário seja diferente do booleano simples aqui criado (por exemplo, aprovação por ação individual em vez de por execução inteira); isso é aceito conscientemente, já que o campo é barato de descartar ou estender se necessário, e o alternativa (esperar o desenho completo de execução antes de sinalizar qualquer coisa) atrasaria progresso incremental sem necessidade.
 
-Gate vigente: aguardando revisão e autorização do CEO para abrir o PR de implementação.
+Gate vigente: encerrado. O merge do PR #93 foi autorizado (`Autorizado`) e executado por squash em `3aa9e1324637550809199afbe57209f003ca27d1`. Esta task está formalmente concluída. Os demais entregáveis da Fase 9, o modelo de multi-organização e a Parte B permanecem fora deste encerramento.
 
-Histórico de gates desta task: encerramento da Task 082 → CEO pede para continuar (`Vamos para a próxima fatia`) → proponho o escopo desta task (sinalização declarativa de aprovação humana, sem fluxo real) → `Autorizado`.
+Histórico de gates desta task: encerramento da Task 082 → CEO pede para continuar (`Vamos para a próxima fatia`) → proponho o escopo desta task (sinalização declarativa de aprovação humana, sem fluxo real) → `Autorizado` (execução completa do escopo, criação da task, branch, commit, push e PR) → `Autorizado` (merge do PR #93, integrado em `3aa9e1324637550809199afbe57209f003ca27d1`).
 
 ## Revisão e entrega
 
-Apresentarei o diff completo, as validações locais (`typecheck`, `test`, `build`, `test:integration` com falha esperada e documentada) e o estado Git, e solicitarei explicitamente o gate de merge antes de integrar esta mudança em `main`.
+Apresentei o diff completo, as validações locais (`typecheck`, `test`, `build`, `test:integration` com falha esperada e documentada) e o estado Git, e solicitei explicitamente o gate de merge antes de integrar esta mudança em `main`.
+
+## Encerramento — 2026-08-14
+
+**Gate de encerramento**: o CEO autorizou (`Autorizado`) o squash merge do PR #93.
+
+**Integração**: PR #93 integrado em `main` via squash merge, commit `3aa9e1324637550809199afbe57209f003ca27d1`, em 2026-08-14T13:12:49Z. Escopo integrado: exatamente os 10 arquivos previstos em `allowed_paths` — criação de `00_SYSTEM/tasks/active/TASK-2026-083-fase9-sinalizacao-aprovacao-humana.md`, `drizzle/0022_brainy_grim_reaper.sql` e `drizzle/meta/0022_snapshot.json`; edição de `src/db/schema/ai-agent.ts`, `src/http/routes/ai-agent.ts`, `tests/ai-agent.integration.test.ts`, `drizzle/meta/_journal.json`, `README.md`, o Plano Mestre e `changes.jsonl`. Nenhuma alteração em outros arquivos de schema, `src/modules/`, `src/http/middlewares/` ou rotas além de `ai-agent.ts`.
+
+**Verificação pós-merge**: sincronizei `main` local via fast-forward (`git pull --ff-only`, `e23e9cc..3aa9e13`) e reexecutei `npm run typecheck`, `npm test` e `npm run build` diretamente contra o `main` já integrado — typecheck limpo, 123/123 testes passando em 30 arquivos, build sem erros.
+
+**Estado final**: a terceira fatia da Fase 9 (sinalização de aprovação humana) está concluída e integrada em `main`, sob a mesma suposição explícita de single-tenant já documentada. `ai_agent` agora registra `requiresHumanApproval`, mas nenhum fluxo de aprovação real existe — nenhuma fila de pendências, nenhum endpoint de decisão. Restam avaliações, métricas de qualidade, fallback, controle de custo e proteção contra prompt injection como entregáveis não iniciados da Fase 9 — todos, assim como aprovações humanas, esbarram na mesma limitação de não haver execução real de agente para validar ou medir contra. A Fase 8 permanece funcionalmente concluída com integração com n8n e APIs deliberadamente pendente. A Fase 7 permanece funcionalmente concluída com extração de arquivos reais e embeddings/busca vetorial deliberadamente pendentes. O modelo de multi-organização e a autenticação de produção real permanecem pendentes e fora deste encerramento. A Parte B permanece explicitamente pendente.
+
+**Escopo preservado**: nenhuma alteração fora de `allowed_paths` foi feita; nenhum código de identidade/autenticação/autorização foi tocado; nenhuma credencial, dado real ou dependência de software nova foi introduzida; nenhuma decisão de multi-organização foi tomada ou presumida; nenhuma infraestrutura de aprovação real foi construída; nenhuma execução real de IA foi implementada.
+
+## Retrospectiva crítica (conforme `../workflows/retro.md`)
+
+**Objetivo**: sinalizar, por agente, se ele exige aprovação humana antes de rodar, sem construir nenhum fluxo de aprovação real antes de haver execução real de agente.
+
+**Resultado conhecido**: `ai_agent.requiresHumanApproval` existe e é testado; nenhuma infraestrutura de aprovação foi construída.
+
+**O que ajudou**: nomear explicitamente, no README e na task, a diferença deliberada em relação ao padrão já usado na Fase 8 — lá a aprovação veio depois da execução; aqui vem antes. Deixar essa inversão de ordem documentada evita que uma leitura futura confunda isso com inconsistência de padrão.
+
+**O que dificultou**: nada digno de nota — esta foi outra fatia simples, seguindo exatamente o mesmo raciocínio já validado na Task 082.
+
+**Surpresas**: nenhuma.
+
+**Riscos materializados**: nenhum — o risco de o modelo de aprovação booleano simples não corresponder ao que a execução real de agentes vai precisar (por exemplo, aprovação por ação individual em vez de por execução inteira) foi identificado e documentado durante o desenho, não descoberto depois; aceito conscientemente como o custo de progresso incremental.
+
+**Perguntas em aberto**: quando (e se) o CEO vai decidir construir uma primeira forma de execução real de agente — sem essa decisão, os entregáveis restantes da fase (avaliações, métricas de qualidade, fallback, controle de custo, proteção contra prompt injection) tendem a continuar sendo campos declarativos sem nada real para validar.
+
+**Ações propostas**: sinalizar ao CEO, na próxima interação sobre a Fase 9, que a fase pode estar se aproximando do limite do que dá para avançar com fatias puramente declarativas — as próximas decisões provavelmente exigem uma escolha explícita sobre execução real de agentes.
+
+**Mudanças aceitas**: registradas em `00_SYSTEM/logs/changes.jsonl`.
