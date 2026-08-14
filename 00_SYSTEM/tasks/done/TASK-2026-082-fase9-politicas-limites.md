@@ -2,8 +2,8 @@
 id: task-2026-082
 type: task
 title: "Fase 9 — segunda fatia: políticas e limites de agentes de IA (metadados declarativos, sem execução real)"
-status: draft
-task_state: active
+status: done
+task_state: done
 owner: ceo-monvi
 agent: claude-cursor
 reviewer: ceo-monvi
@@ -13,7 +13,7 @@ confidentiality: internal
 classification: internal
 created_at: "2026-08-14"
 updated_at: "2026-08-14"
-reviewed_at: "2026-08-14"
+reviewed_at: "2026-08-14T09:53:00-03:00"
 review_cycle: on-change
 sources:
   - 00_SYSTEM/roadmaps/Plano-Mestre-de-Construcao-Monvi-Brain.md
@@ -202,26 +202,58 @@ Mesma decisão já registrada desde a Task 052: a aplicação real das migraçõ
 
 ## Critérios de aceite
 
-- [ ] `policy`/`maxActionsPerRun`/`timeoutSeconds` adicionados a `ai_agent`. Evidência: `apps/core-brain/src/db/schema/ai-agent.ts`.
-- [ ] Migração gerada (não aplicada) correspondendo ao schema desenhado. Evidência: `apps/core-brain/drizzle/0021_perfect_miek.sql`, conferida manualmente.
-- [ ] `POST`/`PATCH /ai-agents` aceitam os três campos novos, validados. Evidência: `apps/core-brain/src/http/routes/ai-agent.ts`; teste de integração cobre criação e atualização.
-- [ ] Nenhum enforcement real. Evidência: nenhuma rota de execução de agente existe no sistema; os campos são apenas persistidos e lidos.
-- [ ] Nenhuma alteração em outros arquivos de schema, `src/modules/`, `src/http/middlewares/` ou rotas além de `ai-agent.ts`. Evidência: `git status --short` local confirmou apenas os arquivos previstos em `allowed_paths`.
-- [ ] Teste de integração real estendido, isolado da suíte padrão, não executado. Evidência: `tests/ai-agent.integration.test.ts`, cenário estendido presente na suíte de integração.
-- [ ] `typecheck`, `test` e `build` continuam passando (123/123 testes). Evidência: execução local antes do commit.
-- [ ] `README.md` e Plano Mestre atualizados. Evidência: seção "Escopo implementado"/prosa descritiva do README e seção 19 do Plano Mestre.
-- [ ] Nenhuma credencial, dado real, dependência de software nova, entidade nova ou campo de controle de custo. Evidência: diff restrito aos arquivos previstos; nenhuma alteração em `package.json`; nenhuma entidade nova; nenhum campo relacionado a custo/orçamento adicionado.
-- [ ] Conteúdo revisado e aprovado pelo CEO antes do merge; encerramento em PR separada (Regra Fundamental 6, exceção para código). Evidência: gate explícito para o merge do PR de implementação; este encerramento, em PR própria, é essa própria exceção em aplicação.
-- [ ] Retrospectiva crítica executada conforme `../workflows/retro.md` (Regra Fundamental 5). Evidência: seção "Retrospectiva crítica" a ser adicionada no encerramento, com mudanças aceitas registradas em `changes.jsonl`.
+- [x] `policy`/`maxActionsPerRun`/`timeoutSeconds` adicionados a `ai_agent`. Evidência: `apps/core-brain/src/db/schema/ai-agent.ts`, integrado em `main` no commit `d789296da684d6f8142a18d0aa731b539fb5d8f9`.
+- [x] Migração gerada (não aplicada) correspondendo ao schema desenhado. Evidência: `apps/core-brain/drizzle/0021_perfect_miek.sql`, conferida manualmente.
+- [x] `POST`/`PATCH /ai-agents` aceitam os três campos novos, validados. Evidência: `apps/core-brain/src/http/routes/ai-agent.ts`; teste de integração cobre criação e atualização.
+- [x] Nenhum enforcement real. Evidência: nenhuma rota de execução de agente existe no sistema; os campos são apenas persistidos e lidos.
+- [x] Nenhuma alteração em outros arquivos de schema, `src/modules/`, `src/http/middlewares/` ou rotas além de `ai-agent.ts`. Evidência: `git status --short` local confirmou apenas os arquivos previstos em `allowed_paths`; PR #91 integrou exatamente os 10 arquivos previstos.
+- [x] Teste de integração real estendido, isolado da suíte padrão, não executado. Evidência: `tests/ai-agent.integration.test.ts`, cenário estendido presente na suíte de integração.
+- [x] `typecheck`, `test` e `build` continuam passando (123/123 testes). Evidência: execução local antes do commit e reexecução pós-merge contra `main` sincronizado (commit `d789296da684d6f8142a18d0aa731b539fb5d8f9`).
+- [x] `README.md` e Plano Mestre atualizados. Evidência: seção "Escopo implementado"/prosa descritiva do README e seção 19 do Plano Mestre.
+- [x] Nenhuma credencial, dado real, dependência de software nova, entidade nova ou campo de controle de custo. Evidência: diff restrito aos arquivos previstos; nenhuma alteração em `package.json`; nenhuma entidade nova; nenhum campo relacionado a custo/orçamento adicionado.
+- [x] Conteúdo revisado e aprovado pelo CEO antes do merge; encerramento em PR separada (Regra Fundamental 6, exceção para código). Evidência: gate explícito `Autorizado` para o merge do PR #91, integrado em `d789296da684d6f8142a18d0aa731b539fb5d8f9`; este encerramento, em PR própria, é essa própria exceção em aplicação.
+- [x] Retrospectiva crítica executada conforme `../workflows/retro.md` (Regra Fundamental 5). Evidência: seção "Retrospectiva crítica" abaixo, com mudanças aceitas registradas em `changes.jsonl`.
 
 ## Riscos e gates humanos
 
 Riscos: mesmos já registrados desde a Fase 5 — migração nunca aplicada contra banco real, suposição single-tenant acumulando escopo, ausência de Docker neste ambiente; `policy` é texto livre sem nenhuma estrutura ou validação semântica — nada garante que descreve regras aplicáveis ou coerentes, aceitável enquanto for só metadado; `maxActionsPerRun`/`timeoutSeconds` não têm teto máximo configurado (um valor absurdamente alto passaria na validação), também aceitável na ausência de qualquer execução real que dependa deles.
 
-Gate vigente: aguardando revisão e autorização do CEO para abrir o PR de implementação.
+Gate vigente: encerrado. O merge do PR #91 foi autorizado (`Autorizado`) e executado por squash em `d789296da684d6f8142a18d0aa731b539fb5d8f9`. Esta task está formalmente concluída. Os demais entregáveis da Fase 9, o modelo de multi-organização e a Parte B permanecem fora deste encerramento.
 
-Histórico de gates desta task: encerramento da Task 081 → CEO confirma avançar (`Sim`) → proponho o escopo desta task (políticas e limites combinados, extensão de `ai_agent`, sem controle de custo) → `Autorizado`.
+Histórico de gates desta task: encerramento da Task 081 → CEO confirma avançar (`Sim`) → proponho o escopo desta task (políticas e limites combinados, extensão de `ai_agent`, sem controle de custo) → `Autorizado` (execução completa do escopo, criação da task, branch, commit, push e PR) → `Autorizado` (merge do PR #91, integrado em `d789296da684d6f8142a18d0aa731b539fb5d8f9`).
 
 ## Revisão e entrega
 
-Apresentarei o diff completo, as validações locais (`typecheck`, `test`, `build`, `test:integration` com falha esperada e documentada) e o estado Git, e solicitarei explicitamente o gate de merge antes de integrar esta mudança em `main`.
+Apresentei o diff completo, as validações locais (`typecheck`, `test`, `build`, `test:integration` com falha esperada e documentada) e o estado Git, e solicitei explicitamente o gate de merge antes de integrar esta mudança em `main`.
+
+## Encerramento — 2026-08-14
+
+**Gate de encerramento**: o CEO autorizou (`Autorizado`) o squash merge do PR #91.
+
+**Integração**: PR #91 integrado em `main` via squash merge, commit `d789296da684d6f8142a18d0aa731b539fb5d8f9`, em 2026-08-14T12:51:39Z. Escopo integrado: exatamente os 10 arquivos previstos em `allowed_paths` — criação de `00_SYSTEM/tasks/active/TASK-2026-082-fase9-politicas-limites.md`, `drizzle/0021_perfect_miek.sql` e `drizzle/meta/0021_snapshot.json`; edição de `src/db/schema/ai-agent.ts`, `src/http/routes/ai-agent.ts`, `tests/ai-agent.integration.test.ts`, `drizzle/meta/_journal.json`, `README.md`, o Plano Mestre e `changes.jsonl`. Nenhuma alteração em outros arquivos de schema, `src/modules/`, `src/http/middlewares/` ou rotas além de `ai-agent.ts`.
+
+**Verificação pós-merge**: sincronizei `main` local via fast-forward (`git pull --ff-only`, `bfc4373..d789296`) e reexecutei `npm run typecheck`, `npm test` e `npm run build` diretamente contra o `main` já integrado — typecheck limpo, 123/123 testes passando em 30 arquivos, build sem erros.
+
+**Estado final**: a segunda fatia da Fase 9 (políticas e limites) está concluída e integrada em `main`, sob a mesma suposição explícita de single-tenant já documentada. `ai_agent` agora registra regras de comportamento (`policy`) e limites operacionais básicos (`maxActionsPerRun`/`timeoutSeconds`), mas nenhum deles é aplicado contra nada — permanecem metadados até existir alguma forma real de execução de agente. Restam aprovações humanas, avaliações, métricas de qualidade, fallback, controle de custo e proteção contra prompt injection como entregáveis não iniciados da Fase 9. A Fase 8 permanece funcionalmente concluída com integração com n8n e APIs deliberadamente pendente. A Fase 7 permanece funcionalmente concluída com extração de arquivos reais e embeddings/busca vetorial deliberadamente pendentes. O modelo de multi-organização e a autenticação de produção real permanecem pendentes e fora deste encerramento. A Parte B permanece explicitamente pendente.
+
+**Escopo preservado**: nenhuma alteração fora de `allowed_paths` foi feita; nenhum código de identidade/autenticação/autorização foi tocado; nenhuma credencial, dado real ou dependência de software nova foi introduzida; nenhuma decisão de multi-organização foi tomada ou presumida; nenhum campo de controle de custo foi adicionado; nenhuma execução real de IA foi implementada.
+
+## Retrospectiva crítica (conforme `../workflows/retro.md`)
+
+**Objetivo**: registrar políticas de comportamento e limites operacionais básicos por agente, preparando o terreno para aprovações humanas e execução real, sem introduzir enforcement prematuro.
+
+**Resultado conhecido**: `ai_agent` ganhou `policy`/`maxActionsPerRun`/`timeoutSeconds`; o teste de integração cobre criação e atualização com os três campos.
+
+**O que ajudou**: reconhecer explicitamente, antes de escrever qualquer código, que esses campos não têm nada real contra o que serem aplicados ainda — isso evitou a tentação de construir um "validador de política" ou um "limitador de ações" prematuro, sem nenhuma execução real de agente para justificá-lo. Escrever isso no `blocked_reason` da task deixou o limite de escopo explícito desde o início.
+
+**O que dificultou**: decidir onde termina "limites" (#6) e começa "controle de custo" (#11) — a linha que tracei foi: limites operacionais (quantas ações, quanto tempo) agora; qualquer coisa envolvendo dinheiro/orçamento fica para quando existir alguma métrica de uso real para basear isso.
+
+**Surpresas**: nenhuma.
+
+**Riscos materializados**: nenhum — o risco de `policy` ser texto livre sem estrutura, e de `maxActionsPerRun`/`timeoutSeconds` não terem teto configurado, foi identificado e documentado durante o desenho, não descoberto depois; aceitável enquanto forem só metadados.
+
+**Perguntas em aberto**: se "aprovações humanas" (próximo entregável) deveria reaproveitar o mesmo padrão de `automation_workflow.requiresApproval`/`automation_invocation.pending_approval` da Fase 8, ou se agentes de IA precisam de um modelo de aprovação diferente (por exemplo, aprovação por ação individual, não por execução inteira) — decisão de desenho para a próxima fatia.
+
+**Ações propostas**: aprovações humanas é a candidata natural seguinte — sem ela, nenhuma execução real de agente pode ser considerada segura, conforme o gate de saída da fase.
+
+**Mudanças aceitas**: registradas em `00_SYSTEM/logs/changes.jsonl`.
