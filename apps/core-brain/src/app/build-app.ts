@@ -29,6 +29,7 @@ import { registerAutomationWorkflowRoutes } from "../http/routes/automation-work
 import { registerAutomationTriggerRoutes } from "../http/routes/automation-trigger.js";
 import { registerAutomationInvocationRoutes } from "../http/routes/automation-invocation.js";
 import { registerAutomationDashboardRoutes } from "../http/routes/automation-dashboard.js";
+import { registerAiAgentRoutes } from "../http/routes/ai-agent.js";
 import { createLoggerOptions } from "../logging/logger.js";
 
 export async function buildApp(
@@ -151,6 +152,10 @@ export async function buildApp(
   });
 
   await app.register(registerAutomationDashboardRoutes, {
+    prefix: "/api/v1"
+  });
+
+  await app.register(registerAiAgentRoutes, {
     prefix: "/api/v1"
   });
 
