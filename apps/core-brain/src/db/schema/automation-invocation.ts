@@ -1,9 +1,12 @@
 import { pgTable, uuid, varchar, jsonb, pgEnum, integer, text, timestamp, uniqueIndex } from 'drizzle-orm/pg-core';
 import { automationTrigger } from './automation-trigger.js';
+import { person } from './person.js';
 
 export const automationInvocationStatusEnum = pgEnum('automation_invocation_status', [
+  'pending_approval',
   'pending',
   'succeeded',
+  'rejected',
   'dead_letter',
 ]);
 
@@ -22,6 +25,9 @@ export const automationInvocation = pgTable(
     maxAttempts: integer('max_attempts').notNull().default(3),
     nextAttemptAt: timestamp('next_attempt_at', { withTimezone: true }),
     lastError: text('last_error'),
+    approvedByPersonId: uuid('approved_by_person_id').references(() => person.id, { onDelete: 'set null' }),
+    approvedAt: timestamp('approved_at', { withTimezone: true }),
+    rejectionReason: text('rejection_reason'),
     receivedAt: timestamp('received_at', { withTimezone: true }).notNull().defaultNow(),
   },
   (table) => {

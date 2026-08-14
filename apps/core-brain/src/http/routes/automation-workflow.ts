@@ -16,6 +16,7 @@ const createAutomationWorkflowSchema = z.object({
   description: z.string().optional(),
   ownerPersonId: z.string().uuid().optional(),
   triggerType: z.enum(automationTriggerTypeEnum.enumValues).optional(),
+  requiresApproval: z.boolean().optional(),
   notes: z.string().optional(),
 });
 
@@ -25,6 +26,7 @@ const updateAutomationWorkflowSchema = z.object({
   ownerPersonId: z.string().uuid().nullable().optional(),
   triggerType: z.enum(automationTriggerTypeEnum.enumValues).optional(),
   status: z.enum(automationWorkflowStatusEnum.enumValues).optional(),
+  requiresApproval: z.boolean().optional(),
   notes: z.string().optional(),
 });
 

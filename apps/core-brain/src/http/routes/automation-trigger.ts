@@ -318,8 +318,12 @@ export async function registerAutomationTriggerRoutes(app: FastifyInstance): Pro
     }
 
     const [found] = await db
-      .select()
+      .select({
+        id: automationTrigger.id,
+        requiresApproval: automationWorkflow.requiresApproval,
+      })
       .from(automationTrigger)
+      .innerJoin(automationWorkflow, eq(automationTrigger.automationWorkflowId, automationWorkflow.id))
       .where(
         and(
           eq(automationTrigger.webhookToken, paramsResult.data.token),
@@ -366,6 +370,7 @@ export async function registerAutomationTriggerRoutes(app: FastifyInstance): Pro
         payload: rawBody,
         sourceIp: request.ip,
         idempotencyKey,
+        status: found.requiresApproval ? 'pending_approval' : 'pending',
       })
       .returning();
 

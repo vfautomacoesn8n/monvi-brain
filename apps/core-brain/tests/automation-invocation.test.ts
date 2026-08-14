@@ -44,4 +44,27 @@ describe('Automation invocation routes — proteção de acesso (Fase 8)', () =>
 
     expect(response.statusCode).toBe(401);
   });
+
+  it('rejeita POST /automation-invocations/:id/approve sem token com 401', async () => {
+    app = await buildTestApp();
+
+    const response = await app.inject({
+      method: 'POST',
+      url: '/api/v1/automation-invocations/00000000-0000-0000-0000-000000000000/approve',
+      payload: { approved: true },
+    });
+
+    expect(response.statusCode).toBe(401);
+  });
+
+  it('rejeita POST /automation-invocations/:id/reprocess sem token com 401', async () => {
+    app = await buildTestApp();
+
+    const response = await app.inject({
+      method: 'POST',
+      url: '/api/v1/automation-invocations/00000000-0000-0000-0000-000000000000/reprocess',
+    });
+
+    expect(response.statusCode).toBe(401);
+  });
 });
