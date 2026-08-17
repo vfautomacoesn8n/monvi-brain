@@ -169,6 +169,13 @@
       "when": 1786725009003,
       "tag": "0023_flat_xavin",
       "breakpoints": true
+    },
+    {
+      "idx": 24,
+      "version": "7",
+      "when": 1786986961845,
+      "tag": "0024_complete_hitman",
+      "breakpoints": true
     }
   ]
 }

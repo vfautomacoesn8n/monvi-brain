@@ -1,11 +1,17 @@
 import type { FastifyInstance } from 'fastify';
 import { and, eq, isNull, sql } from 'drizzle-orm';
 import { z } from 'zod';
+import type { AppConfig } from '../../config/environment.js';
 import { db } from '../../db/client.js';
 import { document, documentVersion } from '../../db/schema/index.js';
 import { authenticateRequest } from '../middlewares/authenticate.js';
 import { requirePermission } from '../middlewares/authorize.js';
 import { recordAuditEvent } from '../../modules/audit/audit.service.js';
+import { storeUploadedFile } from '../../modules/documents/file-storage.service.js';
+
+interface RouteDependencies {
+  config: AppConfig;
+}
 
 const createDocumentVersionSchema = z.object({
   content: z.string().min(1),
@@ -27,7 +33,10 @@ async function findActiveDocument(documentId: string) {
   return found;
 }
 
-export async function registerDocumentVersionRoutes(app: FastifyInstance): Promise<void> {
+export async function registerDocumentVersionRoutes(
+  app: FastifyInstance,
+  dependencies: RouteDependencies
+): Promise<void> {
   app.post(
     '/documents/:documentId/versions',
     { preHandler: [authenticateRequest, requirePermission('document:write')] },
@@ -116,6 +125,93 @@ export async function registerDocumentVersionRoutes(app: FastifyInstance): Promi
         .where(eq(documentVersion.documentId, paramsResult.data.documentId));
 
       return { documentVersions: versions };
+    }
+  );
+
+  app.post(
+    '/documents/:documentId/versions/upload',
+    { preHandler: [authenticateRequest, requirePermission('document:write')] },
+    async (request, reply) => {
+      const paramsResult = documentIdParamsSchema.safeParse(request.params);
+      if (!paramsResult.success) {
+        return reply.status(400).send({
+          statusCode: 400,
+          error: 'Bad Request',
+          message: 'Identificador de documento inválido.',
+        });
+      }
+
+      const foundDocument = await findActiveDocument(paramsResult.data.documentId);
+      if (!foundDocument) {
+        return reply.status(404).send({
+          statusCode: 404,
+          error: 'Not Found',
+          message: 'Documento não encontrado.',
+        });
+      }
+
+      const uploadedFile = await request.file();
+      if (!uploadedFile) {
+        return reply.status(400).send({
+          statusCode: 400,
+          error: 'Bad Request',
+          message: 'Nenhum arquivo enviado.',
+        });
+      }
+
+      const buffer = await uploadedFile.toBuffer();
+      const stored = await storeUploadedFile(
+        dependencies.config.UPLOADS_DIR,
+        uploadedFile.filename,
+        uploadedFile.mimetype,
+        buffer
+      );
+
+      const [nextVersionRow] = await db
+        .select({ nextVersion: sql<number>`coalesce(max(${documentVersion.versionNumber}), 0)::int + 1` })
+        .from(documentVersion)
+        .where(eq(documentVersion.documentId, paramsResult.data.documentId));
+      const nextVersion = nextVersionRow?.nextVersion ?? 1;
+
+      const [created] = await db
+        .insert(documentVersion)
+        .values({
+          documentId: paramsResult.data.documentId,
+          versionNumber: nextVersion,
+          content: stored.extractedContent,
+          originalFilename: stored.originalFilename,
+          mimeType: stored.mimeType,
+          fileSizeBytes: stored.fileSizeBytes,
+          storagePath: stored.storagePath,
+          createdByPersonId: request.user?.personId ?? null,
+        })
+        .returning();
+
+      await recordAuditEvent({
+        eventType: 'document_version:uploaded',
+        severity: 'info',
+        actorPersonId: request.user?.personId ?? null,
+        actionDetails: {
+          documentId: paramsResult.data.documentId,
+          versionNumber: nextVersion,
+          originalFilename: stored.originalFilename,
+          mimeType: stored.mimeType,
+          fileSizeBytes: stored.fileSizeBytes,
+          extracted: stored.extractedContent !== null,
+        },
+        requestId: requestIdOf(request.headers),
+      });
+
+      return reply.status(201).send({
+        documentVersion: created,
+        extraction: {
+          extracted: stored.extractedContent !== null,
+          message:
+            stored.extractedContent !== null
+              ? 'Conteúdo extraído com sucesso (texto puro).'
+              : 'Arquivo armazenado, mas extração de conteúdo não implementada para este formato ainda.',
+        },
+      });
     }
   );
 }

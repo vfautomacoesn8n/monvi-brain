@@ -1,4 +1,5 @@
 import Fastify, { type FastifyInstance } from "fastify";
+import multipart from "@fastify/multipart";
 import type { AppConfig } from "../config/environment.js";
 import { registerErrorHandler } from "../errors/error-handler.js";
 import { registerHealthRoutes } from "../http/routes/health.js";
@@ -42,6 +43,10 @@ export async function buildApp(
   });
 
   registerErrorHandler(app);
+
+  await app.register(multipart, {
+    limits: { fileSize: 20 * 1024 * 1024, files: 1 }
+  });
 
   await app.register(registerHealthRoutes, {
     prefix: "/api/v1",
@@ -125,7 +130,8 @@ export async function buildApp(
   });
 
   await app.register(registerDocumentVersionRoutes, {
-    prefix: "/api/v1"
+    prefix: "/api/v1",
+    config
   });
 
   await app.register(registerDocumentPermissionRoutes, {

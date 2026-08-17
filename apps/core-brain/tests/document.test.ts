@@ -101,4 +101,15 @@ describe('Document routes — proteção de acesso (Fase 7)', () => {
 
     expect(response.statusCode).toBe(401);
   });
+
+  it('rejeita POST /documents/:documentId/versions/upload sem token com 401', async () => {
+    app = await buildTestApp();
+
+    const response = await app.inject({
+      method: 'POST',
+      url: '/api/v1/documents/00000000-0000-0000-0000-000000000000/versions/upload',
+    });
+
+    expect(response.statusCode).toBe(401);
+  });
 });

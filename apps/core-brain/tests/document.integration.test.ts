@@ -191,4 +191,41 @@ describe('Fluxo real de documentos e versões — PostgreSQL local (Fase 7)', ()
     });
     expect(getAfterDeleteResponse.statusCode).toBe(404);
   });
+
+  it('faz upload real de um arquivo de texto puro e extrai o conteúdo de verdade', async () => {
+    const uploadDocumentResponse = await app.inject({
+      method: 'POST',
+      url: '/api/v1/documents',
+      headers: { authorization: `Bearer ${sessionToken}` },
+      payload: { title: 'Documento para upload real', sourceId: createdSourceId },
+    });
+    const uploadDocumentId = uploadDocumentResponse.json().document.id;
+
+    const boundary = '----monviTestBoundary';
+    const fileContent = 'Conteúdo real extraído de um upload de verdade.';
+    const payload =
+      `--${boundary}\r\n` +
+      'Content-Disposition: form-data; name="file"; filename="nota.txt"\r\n' +
+      'Content-Type: text/plain\r\n\r\n' +
+      `${fileContent}\r\n` +
+      `--${boundary}--\r\n`;
+
+    const uploadResponse = await app.inject({
+      method: 'POST',
+      url: `/api/v1/documents/${uploadDocumentId}/versions/upload`,
+      headers: {
+        authorization: `Bearer ${sessionToken}`,
+        'content-type': `multipart/form-data; boundary=${boundary}`,
+      },
+      payload,
+    });
+    expect(uploadResponse.statusCode).toBe(201);
+    const uploaded = uploadResponse.json();
+    expect(uploaded.documentVersion.content).toBe(fileContent);
+    expect(uploaded.documentVersion.originalFilename).toBe('nota.txt');
+    expect(uploaded.extraction.extracted).toBe(true);
+
+    await db.delete(documentVersion).where(eq(documentVersion.documentId, uploadDocumentId));
+    await db.delete(document).where(eq(document.id, uploadDocumentId));
+  });
 });
