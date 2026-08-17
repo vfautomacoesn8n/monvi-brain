@@ -12,6 +12,7 @@ describe('Fluxo real de integrações externas — PostgreSQL local (Fase 10)', 
   let sessionToken: string;
   let personId: string;
   let createdIntegrationId: string | undefined;
+  let createdGithubIntegrationId: string | undefined;
 
   beforeAll(async () => {
     app = await buildApp(loadConfig({ NODE_ENV: 'test', LOG_LEVEL: 'silent' }));
@@ -51,6 +52,9 @@ describe('Fluxo real de integrações externas — PostgreSQL local (Fase 10)', 
   afterAll(async () => {
     if (createdIntegrationId) {
       await db.delete(integration).where(eq(integration.id, createdIntegrationId));
+    }
+    if (createdGithubIntegrationId) {
+      await db.delete(integration).where(eq(integration.id, createdGithubIntegrationId));
     }
     if (personId) {
       await db.delete(identity).where(eq(identity.personId, personId));
@@ -118,5 +122,22 @@ describe('Fluxo real de integrações externas — PostgreSQL local (Fase 10)', 
       headers: { authorization: `Bearer ${sessionToken}` },
     });
     expect(getAfterDeleteResponse.statusCode).toBe(404);
+  });
+
+  it('retorna 424 ao chamar GET .../github/repository sem GITHUB_PAT configurado', async () => {
+    const createResponse = await app.inject({
+      method: 'POST',
+      url: '/api/v1/integrations',
+      headers: { authorization: `Bearer ${sessionToken}` },
+      payload: { provider: 'github', name: 'GitHub — teste de falha de credencial' },
+    });
+    createdGithubIntegrationId = createResponse.json().integration.id;
+
+    const response = await app.inject({
+      method: 'GET',
+      url: `/api/v1/integrations/${createdGithubIntegrationId}/github/repository?owner=vfautomacoesn8n&repo=monvi-brain`,
+      headers: { authorization: `Bearer ${sessionToken}` },
+    });
+    expect(response.statusCode).toBe(424);
   });
 });

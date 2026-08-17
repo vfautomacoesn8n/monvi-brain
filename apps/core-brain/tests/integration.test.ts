@@ -78,4 +78,15 @@ describe('Integration routes — proteção de acesso (Fase 10)', () => {
 
     expect(response.statusCode).toBe(401);
   });
+
+  it('rejeita GET /integrations/:id/github/repository sem token com 401', async () => {
+    app = await buildTestApp();
+
+    const response = await app.inject({
+      method: 'GET',
+      url: '/api/v1/integrations/00000000-0000-0000-0000-000000000000/github/repository?owner=vfautomacoesn8n&repo=monvi-brain',
+    });
+
+    expect(response.statusCode).toBe(401);
+  });
 });
