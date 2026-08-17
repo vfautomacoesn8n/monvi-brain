@@ -161,7 +161,8 @@ export async function buildApp(
   });
 
   await app.register(registerIntegrationRoutes, {
-    prefix: "/api/v1"
+    prefix: "/api/v1",
+    config
   });
 
   return app;

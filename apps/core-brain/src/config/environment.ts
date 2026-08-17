@@ -10,7 +10,8 @@ const environmentSchema = z.object({
     .enum(["fatal", "error", "warn", "info", "debug", "trace", "silent"])
     .default("info"),
   SERVICE_NAME: z.string().min(1).default("monvi-core-brain"),
-  SERVICE_VERSION: z.string().min(1).default("0.1.0")
+  SERVICE_VERSION: z.string().min(1).default("0.1.0"),
+  GITHUB_PAT: z.string().min(1).optional()
 });
 
 export type AppConfig = z.infer<typeof environmentSchema>;
