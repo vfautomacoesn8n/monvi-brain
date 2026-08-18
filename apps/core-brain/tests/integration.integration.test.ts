@@ -140,4 +140,44 @@ describe('Fluxo real de integrações externas — PostgreSQL local (Fase 10)', 
     });
     expect(response.statusCode).toBe(424);
   });
+
+  it('retorna 424 ao chamar POST .../github/issues/:issueNumber/comments sem GITHUB_PAT configurado', async () => {
+    const createResponse = await app.inject({
+      method: 'POST',
+      url: '/api/v1/integrations',
+      headers: { authorization: `Bearer ${sessionToken}` },
+      payload: { provider: 'github', name: 'GitHub — teste de falha de credencial (comentário)' },
+    });
+    const createdGithubCommentIntegrationId = createResponse.json().integration.id;
+
+    const response = await app.inject({
+      method: 'POST',
+      url: `/api/v1/integrations/${createdGithubCommentIntegrationId}/github/issues/1/comments?owner=vfautomacoesn8n&repo=monvi-brain`,
+      headers: { authorization: `Bearer ${sessionToken}` },
+      payload: { body: 'Comentário de teste.' },
+    });
+    expect(response.statusCode).toBe(424);
+
+    await db.delete(integration).where(eq(integration.id, createdGithubCommentIntegrationId));
+  });
+
+  it('retorna 400 ao chamar POST .../github/issues/:issueNumber/comments em integração não-github', async () => {
+    const createResponse = await app.inject({
+      method: 'POST',
+      url: '/api/v1/integrations',
+      headers: { authorization: `Bearer ${sessionToken}` },
+      payload: { provider: 'n8n', name: 'n8n — não é github' },
+    });
+    const createdNonGithubIntegrationId = createResponse.json().integration.id;
+
+    const response = await app.inject({
+      method: 'POST',
+      url: `/api/v1/integrations/${createdNonGithubIntegrationId}/github/issues/1/comments?owner=vfautomacoesn8n&repo=monvi-brain`,
+      headers: { authorization: `Bearer ${sessionToken}` },
+      payload: { body: 'Comentário de teste.' },
+    });
+    expect(response.statusCode).toBe(400);
+
+    await db.delete(integration).where(eq(integration.id, createdNonGithubIntegrationId));
+  });
 });

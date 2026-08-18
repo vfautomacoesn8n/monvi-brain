@@ -89,4 +89,16 @@ describe('Integration routes — proteção de acesso (Fase 10)', () => {
 
     expect(response.statusCode).toBe(401);
   });
+
+  it('rejeita POST /integrations/:id/github/issues/:issueNumber/comments sem token com 401', async () => {
+    app = await buildTestApp();
+
+    const response = await app.inject({
+      method: 'POST',
+      url: '/api/v1/integrations/00000000-0000-0000-0000-000000000000/github/issues/1/comments?owner=vfautomacoesn8n&repo=monvi-brain',
+      payload: { body: 'Comentário de teste.' },
+    });
+
+    expect(response.statusCode).toBe(401);
+  });
 });
