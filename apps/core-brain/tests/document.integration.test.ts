@@ -1,6 +1,7 @@
 import { afterAll, beforeAll, describe, expect, it } from 'vitest';
 import { eq } from 'drizzle-orm';
 import type { FastifyInstance } from 'fastify';
+import JSZip from 'jszip';
 import { buildApp } from '../src/app/build-app.js';
 import { loadConfig } from '../src/config/environment.js';
 import { db, queryClient } from '../src/db/client.js';
@@ -284,6 +285,73 @@ describe('Fluxo real de documentos e versões — PostgreSQL local (Fase 7)', ()
     const uploaded = uploadResponse.json();
     expect(uploaded.documentVersion.content).toBe('Conteudo real de um PDF via upload');
     expect(uploaded.documentVersion.mimeType).toBe('application/pdf');
+    expect(uploaded.extraction.extracted).toBe(true);
+
+    await db.delete(documentVersion).where(eq(documentVersion.documentId, uploadDocumentId));
+    await db.delete(document).where(eq(document.id, uploadDocumentId));
+  });
+
+  it('faz upload real de um DOCX e extrai o conteúdo de verdade', async () => {
+    const uploadDocumentResponse = await app.inject({
+      method: 'POST',
+      url: '/api/v1/documents',
+      headers: { authorization: `Bearer ${sessionToken}` },
+      payload: { title: 'Documento DOCX para upload real', sourceId: createdSourceId },
+    });
+    const uploadDocumentId = uploadDocumentResponse.json().document.id;
+
+    const zip = new JSZip();
+    zip.file(
+      '[Content_Types].xml',
+      '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>' +
+        '<Types xmlns="http://schemas.openxmlformats.org/package/2006/content-types">' +
+        '<Default Extension="rels" ContentType="application/vnd.openxmlformats-package.relationships+xml"/>' +
+        '<Default Extension="xml" ContentType="application/xml"/>' +
+        '<Override PartName="/word/document.xml" ContentType="application/vnd.openxmlformats-officedocument.wordprocessingml.document.main+xml"/>' +
+        '</Types>'
+    );
+    zip.folder('_rels')?.file(
+      '.rels',
+      '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>' +
+        '<Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships">' +
+        '<Relationship Id="rId1" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/officeDocument" Target="word/document.xml"/>' +
+        '</Relationships>'
+    );
+    zip.folder('word')?.file(
+      'document.xml',
+      '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>' +
+        '<w:document xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main">' +
+        '<w:body><w:p><w:r><w:t>Conteudo real de um DOCX via upload</w:t></w:r></w:p></w:body>' +
+        '</w:document>'
+    );
+    const docxBuffer = await zip.generateAsync({ type: 'nodebuffer' });
+
+    const docxBoundary = '----monviTestBoundaryDocx';
+    const docxMimeType = 'application/vnd.openxmlformats-officedocument.wordprocessingml.document';
+    const payload = Buffer.concat([
+      Buffer.from(
+        `--${docxBoundary}\r\n` +
+          'Content-Disposition: form-data; name="file"; filename="relatorio.docx"\r\n' +
+          `Content-Type: ${docxMimeType}\r\n\r\n`,
+        'utf-8'
+      ),
+      docxBuffer,
+      Buffer.from(`\r\n--${docxBoundary}--\r\n`, 'utf-8'),
+    ]);
+
+    const uploadResponse = await app.inject({
+      method: 'POST',
+      url: `/api/v1/documents/${uploadDocumentId}/versions/upload`,
+      headers: {
+        authorization: `Bearer ${sessionToken}`,
+        'content-type': `multipart/form-data; boundary=${docxBoundary}`,
+      },
+      payload,
+    });
+    expect(uploadResponse.statusCode).toBe(201);
+    const uploaded = uploadResponse.json();
+    expect(uploaded.documentVersion.content).toBe('Conteudo real de um DOCX via upload');
+    expect(uploaded.documentVersion.mimeType).toBe(docxMimeType);
     expect(uploaded.extraction.extracted).toBe(true);
 
     await db.delete(documentVersion).where(eq(documentVersion.documentId, uploadDocumentId));

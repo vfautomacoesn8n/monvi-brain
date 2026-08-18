@@ -2,6 +2,7 @@ import { describe, expect, it, afterAll } from 'vitest';
 import { mkdtemp, rm, readFile } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
 import path from 'node:path';
+import JSZip from 'jszip';
 import { storeUploadedFile } from '../src/modules/documents/file-storage.service.js';
 
 describe('file-storage.service — armazenamento e extração real em disco', () => {
@@ -105,11 +106,107 @@ describe('file-storage.service — armazenamento e extração real em disco', ()
     expect(bytesOnDisk.equals(buffer)).toBe(true);
   });
 
+  async function buildMinimalDocx(text: string | null): Promise<Buffer> {
+    const zip = new JSZip();
+    zip.file(
+      '[Content_Types].xml',
+      '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>' +
+        '<Types xmlns="http://schemas.openxmlformats.org/package/2006/content-types">' +
+        '<Default Extension="rels" ContentType="application/vnd.openxmlformats-package.relationships+xml"/>' +
+        '<Default Extension="xml" ContentType="application/xml"/>' +
+        '<Override PartName="/word/document.xml" ContentType="application/vnd.openxmlformats-officedocument.wordprocessingml.document.main+xml"/>' +
+        '</Types>'
+    );
+    zip.folder('_rels')?.file(
+      '.rels',
+      '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>' +
+        '<Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships">' +
+        '<Relationship Id="rId1" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/officeDocument" Target="word/document.xml"/>' +
+        '</Relationships>'
+    );
+    const body = text !== null ? `<w:p><w:r><w:t>${text}</w:t></w:r></w:p>` : '';
+    zip.folder('word')?.file(
+      'document.xml',
+      '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>' +
+        '<w:document xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main">' +
+        `<w:body>${body}</w:body>` +
+        '</w:document>'
+    );
+    return zip.generateAsync({ type: 'nodebuffer' });
+  }
+
+  it('extrai conteúdo real de um DOCX válido com texto', async () => {
+    const uploadsDir = await tempUploadsDir();
+    const buffer = await buildMinimalDocx('Conteudo real extraido de um DOCX');
+
+    const stored = await storeUploadedFile(
+      uploadsDir,
+      'relatorio.docx',
+      'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
+      buffer
+    );
+
+    expect(stored.extractedContent).toBe('Conteudo real extraido de um DOCX');
+    expect(stored.formatSupported).toBe(true);
+    expect(stored.fileSizeBytes).toBe(buffer.byteLength);
+
+    const bytesOnDisk = await readFile(stored.storagePath);
+    expect(bytesOnDisk.equals(buffer)).toBe(true);
+  });
+
+  it('armazena um DOCX válido sem texto sem erro, com content nulo', async () => {
+    const uploadsDir = await tempUploadsDir();
+    const buffer = await buildMinimalDocx(null);
+
+    const stored = await storeUploadedFile(
+      uploadsDir,
+      'vazio.docx',
+      'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
+      buffer
+    );
+
+    expect(stored.extractedContent).toBeNull();
+    expect(stored.formatSupported).toBe(true);
+  });
+
+  it('armazena um DOCX corrompido sem derrubar o upload, com content nulo', async () => {
+    const uploadsDir = await tempUploadsDir();
+    const buffer = Buffer.from('isto nao e um DOCX valido de verdade', 'utf-8');
+
+    const stored = await storeUploadedFile(
+      uploadsDir,
+      'corrompido.docx',
+      'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
+      buffer
+    );
+
+    expect(stored.extractedContent).toBeNull();
+    expect(stored.formatSupported).toBe(true);
+    expect(stored.fileSizeBytes).toBe(buffer.byteLength);
+
+    const bytesOnDisk = await readFile(stored.storagePath);
+    expect(bytesOnDisk.equals(buffer)).toBe(true);
+  });
+
   it('armazena mas não extrai conteúdo de um formato genuinamente não suportado (ex.: imagem)', async () => {
     const uploadsDir = await tempUploadsDir();
     const buffer = Buffer.from('conteúdo binário simulado de imagem', 'utf-8');
 
     const stored = await storeUploadedFile(uploadsDir, 'foto.png', 'image/png', buffer);
+
+    expect(stored.extractedContent).toBeNull();
+    expect(stored.formatSupported).toBe(false);
+    expect(stored.fileSizeBytes).toBe(buffer.byteLength);
+
+    const bytesOnDisk = await readFile(stored.storagePath);
+    expect(bytesOnDisk.equals(buffer)).toBe(true);
+  });
+
+  it('armazena mas não extrai conteúdo de Word legado (.doc, formato binário não suportado)', async () => {
+    const uploadsDir = await tempUploadsDir();
+    const buffer = Buffer.from('conteúdo binário simulado de um .doc legado', 'utf-8');
+
+    const stored = await storeUploadedFile(uploadsDir, 'antigo.doc', 'application/msword', buffer);
 
     expect(stored.extractedContent).toBeNull();
     expect(stored.formatSupported).toBe(false);
