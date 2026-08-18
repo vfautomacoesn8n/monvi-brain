@@ -2,8 +2,8 @@
 id: task-2026-091
 type: task
 title: "Fase 7 — extração real de Word/.docx (conclusão do entregável iniciado na Task 087)"
-status: active
-task_state: in-progress
+status: done
+task_state: done
 owner: ceo-monvi
 agent: claude-cursor
 reviewer: ceo-monvi
@@ -13,7 +13,7 @@ confidentiality: internal
 classification: internal
 created_at: "2026-08-18"
 updated_at: "2026-08-18"
-reviewed_at: null
+reviewed_at: "2026-08-18T14:07:47-03:00"
 review_cycle: on-change
 sources:
   - 00_SYSTEM/tasks/done/TASK-2026-087-fase7-extracao-arquivos-texto-puro.md
@@ -31,6 +31,7 @@ aliases:
 tags: [core-brain, fase-7, api, documentos, upload, extracao, docx, dependencia-nova, testes]
 allowed_paths:
   - 00_SYSTEM/tasks/active/TASK-2026-091-fase7-extracao-real-word.md
+  - 00_SYSTEM/tasks/done/TASK-2026-091-fase7-extracao-real-word.md
   - 00_SYSTEM/logs/changes.jsonl
   - 00_SYSTEM/roadmaps/Plano-Mestre-de-Construcao-Monvi-Brain.md
   - apps/core-brain/README.md
@@ -157,17 +158,49 @@ Mesma decisão já registrada desde a Task 052: a aplicação real das migraçõ
 - [x] `npm audit` sem vulnerabilidade nova. Evidência: mesmas seis vulnerabilidades pré-existentes, confirmadas antes e depois da instalação.
 - [x] `README.md` e Plano Mestre atualizados. Evidência: seção "Escopo implementado" do README e Fase 7/Parte B/Próximo gate do Plano Mestre.
 - [x] Nenhuma credencial, dado real, decisão de multi-organização ou execução de automação/agente. Evidência: diff restrito aos arquivos previstos; extração 100% local.
-- [ ] Conteúdo revisado e aprovado pelo CEO antes do merge; encerramento em PR separada (Regra Fundamental 6, exceção para código). Pendente do gate de merge do PR de implementação.
-- [ ] Retrospectiva crítica executada conforme `../workflows/retro.md` (Regra Fundamental 5). Pendente, será executada antes do gate de encerramento.
+- [x] Conteúdo revisado e aprovado pelo CEO antes do merge; encerramento em PR separada (Regra Fundamental 6, exceção para código). Evidência: gate explícito `Autorizado` para o merge do PR #109, integrado em `73a41bb0d5a89a672d88d6487ea45810e6c8137e`; este encerramento, em PR própria, é essa própria exceção em aplicação.
+- [x] Retrospectiva crítica executada conforme `../workflows/retro.md` (Regra Fundamental 5). Evidência: seção "Retrospectiva crítica" abaixo, com mudanças aceitas registradas em `changes.jsonl`.
 
 ## Riscos e gates humanos
 
 Riscos: mesmos já registrados desde a Fase 5 — migração nunca aplicada contra banco real, suposição single-tenant acumulando escopo, ausência de Docker neste ambiente; risco específico desta fatia — `mammoth` é uma árvore de dependências relativamente grande (26 pacotes, ~7,8 MB), maior que `unpdf`, mas todas de baixo nível (parsing de XML/ZIP), sem binding nativo e com 0 vulnerabilidades conhecidas; mitigado pelo mesmo raciocínio da Task 090 — extração roda 100% localmente, sem chamada a serviço externo, então o arquivo original sempre permanece em disco independentemente da biblioteca de extração. `.doc` legado (formato binário fechado, pré-XML) continua sem extração real — limitação conhecida e documentada, não um bug; suportá-lo exigiria uma biblioteca completamente diferente, provavelmente com heurísticas menos confiáveis.
 
-Gate vigente: aguardando autorização do CEO para o merge do PR de implementação.
+Gate vigente: encerrado. O merge do PR #109 foi autorizado (`Autorizado`) e executado por squash em `73a41bb0d5a89a672d88d6487ea45810e6c8137e`. Esta task está formalmente concluída. Word legado (`.doc`) e OCR de PDF digitalizado permanecem fora deste encerramento, deliberadamente adiados.
 
-Histórico de gates desta task: encerramento da Task 090 → CEO pergunta "Helpper, o que você propõe que façamos agora?" → recomendo completar a extração real de Word (`.docx`) como continuação natural → CEO responde "Sim" → avalio `mammoth`, testando os três cenários necessários → apresento a comparação e o escopo técnico restrito a `.docx` moderno → `Autorizado`.
+Histórico de gates desta task: encerramento da Task 090 → CEO pergunta "Helpper, o que você propõe que façamos agora?" → recomendo completar a extração real de Word (`.docx`) como continuação natural → CEO responde "Sim" → avalio `mammoth`, testando os três cenários necessários → apresento a comparação e o escopo técnico restrito a `.docx` moderno → `Autorizado` (execução completa do escopo, criação da task, branch, commit, push e PR) → `Autorizado` (merge do PR #109, integrado em `73a41bb0d5a89a672d88d6487ea45810e6c8137e`).
 
 ## Revisão e entrega
 
-Apresentarei o diff completo, as validações locais (`typecheck`, `test`, `build`, `test:integration` com falha esperada e documentada, `npm audit`) e o estado Git, e solicitarei explicitamente o gate de merge antes de integrar esta mudança em `main`.
+Apresentei o diff completo, as validações locais (`typecheck`, `test`, `build`, `test:integration` com falha esperada e documentada, `npm audit`) e o estado Git, e solicitei explicitamente o gate de merge antes de integrar esta mudança em `main`.
+
+## Encerramento — 2026-08-18
+
+**Gate de encerramento**: o CEO autorizou (`Autorizado`) o squash merge do PR #109.
+
+**Integração**: PR #109 integrado em `main` via squash merge, commit `73a41bb0d5a89a672d88d6487ea45810e6c8137e`, em 2026-08-18T17:07:47Z. Escopo integrado: exatamente os 9 arquivos previstos em `allowed_paths` — criação de `00_SYSTEM/tasks/active/TASK-2026-091-fase7-extracao-real-word.md`; edição de `src/modules/documents/file-storage.service.ts`, `tests/file-storage.service.test.ts`, `tests/document.integration.test.ts`, `package.json`, `package-lock.json`, `README.md`, o Plano Mestre e `changes.jsonl`. Nenhuma mudança de schema, nenhuma rota nova.
+
+**Verificação pós-merge**: sincronizei `main` local via fast-forward (`git pull --ff-only`, `a3d1b9b..73a41bb`), rodei `npm install` para alinhar `node_modules` ao `package-lock.json` sincronizado, e reexecutei `npm run typecheck`, `npm test` e `npm run build` diretamente contra o `main` já integrado — typecheck limpo, 142/142 testes passando em 33 arquivos, build sem erros. `npm audit` pós-instalação confirmou as mesmas seis vulnerabilidades pré-existentes, nenhuma nova.
+
+**Estado final**: a extração real de conteúdo de documentos — iniciada na Task 087 para `.txt`/`.md`, estendida na Task 090 para `.pdf` — agora cobre também `.docx`, via `mammoth`. Os três formatos de documento mais comuns no dia a dia (texto puro, PDF, Word) têm extração real. DOCX corrompido ou sem texto é tratado graciosamente (`content: null`, sem quebrar o upload), mesmo padrão de três estados já usado no PDF. Word legado (`.doc`) e OCR de PDF digitalizado permanecem deliberadamente fora de escopo. Embeddings/busca vetorial continuam sendo o próximo entregável formal não iniciado da Fase 7 — com esta task, a extração real de arquivos está tão completa quanto faz sentido sem OCR ou uma decisão de custo real (embeddings).
+
+**Escopo preservado**: nenhuma alteração fora de `allowed_paths` foi feita; nenhum código de identidade/autenticação/autorização foi tocado; nenhuma credencial ou dado real foi introduzido; nenhuma decisão de multi-organização foi tomada ou presumida; nenhuma chamada a serviço externo foi introduzida (extração 100% local); nenhuma mudança de schema ou rota nova.
+
+## Retrospectiva crítica (conforme `../workflows/retro.md`)
+
+**Objetivo**: completar a extração real de conteúdo de documentos, cobrindo `.docx` além de texto puro (Task 087) e PDF (Task 090), fechando os três formatos mais comuns sem introduzir dependências pesadas ou serviços externos.
+
+**Resultado conhecido**: `document_version.content` agora é populado de verdade a partir de arquivos `.docx` reais, via uma dependência sem vulnerabilidades e sem binding nativo; os quatro cenários relevantes (DOCX válido, vazio, corrompido, e `.doc` legado não suportado) estão cobertos por testes reais, sem mocks.
+
+**O que ajudou**: reaproveitar exatamente o padrão já validado na Task 090 (avaliar a biblioteca antes de propor, testar os três cenários de borda antes de escrever código de produção, manter a mensagem de resposta com os mesmos três estados) tornou esta task mais rápida e previsível — não houve surpresas na escolha da biblioteca (`mammoth` é o padrão de fato, sem alternativas leves competindo como no caso do PDF) nem na implementação.
+
+**O que dificultou**: construir um `.docx` válido à mão exige entender a estrutura mínima do formato Office Open XML (três partes: `[Content_Types].xml`, `_rels/.rels`, `word/document.xml`) dentro de um contêiner ZIP — mais peças móveis que o PDF (que é um único fluxo de bytes). Resolvido usando `jszip` (já uma dependência transitiva de `mammoth`, declarada explicitamente como devDependency) para montar o ZIP corretamente, em vez de tentar construir bytes de ZIP à mão — decisão deliberada de não repetir o tipo de risco que apareceu no bug do PDF (formato binário construído à mão é frágil).
+
+**Surpresas**: nenhuma. O teste multipart de integração exigiu `Buffer.concat` em vez de concatenação de strings, porque o conteúdo do `.docx` é binário de verdade (comprimido via ZIP), diferente do PDF de teste (que era ASCII puro) — isso já era esperado antes de escrever o teste, não uma descoberta.
+
+**Riscos materializados**: nenhum. Diferente da Task 090 (que pegou um bug real no fixture de PDF), esta task não teve nenhum problema inesperado — provavelmente porque usei uma biblioteca (`jszip`) para construir o fixture em vez de bytes manuais.
+
+**Perguntas em aberto**: nenhuma nova. Com texto puro, PDF e Word cobertos, a próxima decisão real da Fase 7 é sobre embeddings/busca vetorial, que depende de uma decisão de custo (API de embeddings) ainda não tomada pelo CEO — não uma questão técnica em aberto.
+
+**Ações propostas**: nenhuma ação de processo nova; a prática de "avaliar biblioteca com teste real antes de propor escopo" já está bem estabelecida (Tasks 090 e 091) e deve continuar sendo aplicada a qualquer dependência nova futura.
+
+**Mudanças aceitas**: registradas em `00_SYSTEM/logs/changes.jsonl`.
