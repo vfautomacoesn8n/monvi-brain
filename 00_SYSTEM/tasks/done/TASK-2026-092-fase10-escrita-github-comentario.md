@@ -2,8 +2,8 @@
 id: task-2026-092
 type: task
 title: "Fase 10 — primeira capacidade de escrita real no GitHub (comentar em issue/PR)"
-status: active
-task_state: in-progress
+status: done
+task_state: done
 owner: ceo-monvi
 agent: claude-cursor
 reviewer: ceo-monvi
@@ -13,7 +13,7 @@ confidentiality: internal
 classification: internal
 created_at: "2026-08-18"
 updated_at: "2026-08-18"
-reviewed_at: null
+reviewed_at: "2026-08-18T14:37:22-03:00"
 review_cycle: on-change
 sources:
   - 00_SYSTEM/tasks/done/TASK-2026-085-fase10-integracao-saida-github.md
@@ -28,6 +28,7 @@ aliases:
 tags: [core-brain, fase-10, api, integracoes, github, escrita, testes]
 allowed_paths:
   - 00_SYSTEM/tasks/active/TASK-2026-092-fase10-escrita-github-comentario.md
+  - 00_SYSTEM/tasks/done/TASK-2026-092-fase10-escrita-github-comentario.md
   - 00_SYSTEM/logs/changes.jsonl
   - 00_SYSTEM/roadmaps/Plano-Mestre-de-Construcao-Monvi-Brain.md
   - apps/core-brain/README.md
@@ -153,17 +154,49 @@ Mesma decisão já registrada desde a Task 052: a aplicação real das migraçõ
 - [x] `typecheck`, `test` e `build` continuam passando (143/143 testes). Evidência: execução local antes do commit.
 - [x] `README.md` e Plano Mestre atualizados, incluindo o requisito de escopo do `GITHUB_PAT`. Evidência: seção "Escopo implementado" do README e Fase 10/Parte B/Próximo gate do Plano Mestre.
 - [x] Nenhuma credencial nova, dado real, ou decisão de multi-organização. Evidência: diff restrito aos arquivos previstos; `GITHUB_PAT` continua sendo a mesma variável de ambiente já existente.
-- [ ] Conteúdo revisado e aprovado pelo CEO antes do merge; encerramento em PR separada (Regra Fundamental 6, exceção para código). Pendente do gate de merge do PR de implementação.
-- [ ] Retrospectiva crítica executada conforme `../workflows/retro.md` (Regra Fundamental 5). Pendente, será executada antes do gate de encerramento.
+- [x] Conteúdo revisado e aprovado pelo CEO antes do merge; encerramento em PR separada (Regra Fundamental 6, exceção para código). Evidência: gate explícito `Autorizado` para o merge do PR #111, integrado em `69c65e4aff883603b7fa706266d3bd1925a9bf12`; este encerramento, em PR própria, é essa própria exceção em aplicação.
+- [x] Retrospectiva crítica executada conforme `../workflows/retro.md` (Regra Fundamental 5). Evidência: seção "Retrospectiva crítica" abaixo, com mudanças aceitas registradas em `changes.jsonl`.
 
 ## Riscos e gates humanos
 
 Riscos: mesmos já registrados desde a Fase 5 — migração nunca aplicada contra banco real, suposição single-tenant acumulando escopo, ausência de Docker neste ambiente; risco específico desta fatia — esta é a **primeira ação de escrita real a um serviço externo em todo o projeto** (todas as chamadas anteriores, Task 085 incluída, eram só leitura). Uma vez que o CEO atualizar o `GITHUB_PAT` com escopo de escrita, qualquer chamada bem-sucedida a esta rota posta um comentário real e visível publicamente (se o repositório for público) em uma issue/PR real — mitigado pela rota exigir autenticação e RBAC (`integration:write`) como qualquer outra rota da API, mesmo padrão de controle de acesso já usado em todo o sistema; nenhuma automação ou agente chama esta rota automaticamente hoje, então o único caminho de invocação é uma chamada HTTP autenticada deliberada. O escopo do `GITHUB_PAT` permanece responsabilidade do CEO — a aplicação nunca armazena nem teria como validar previamente se o escopo do token é suficiente antes de tentar a chamada real (o GitHub retornaria `403`/`404` nesse caso, capturado como `GithubApiError` e traduzido para `502`).
 
-Gate vigente: aguardando autorização do CEO para o merge do PR de implementação.
+Gate vigente: encerrado. O merge do PR #111 foi autorizado (`Autorizado`) e executado por squash em `69c65e4aff883603b7fa706266d3bd1925a9bf12`. Esta task está formalmente concluída. Criar issue e as demais ações de escrita (editar/apagar comentário, labels, assignees, fechar issue, merge de PR) permanecem fora deste encerramento, deliberadamente adiadas.
 
-Histórico de gates desta task: encerramento da Task 091 → CEO pergunta "O que você sugere?" → recomendo Fase 10 (escrita no GitHub) vs. restante da Fase 8, sinalizando a dependência de ação externa do CEO → CEO responde "Vamos seguir então" → investigo a API do GitHub, confirmo que comentário cobre issue e PR → apresento a proposta restrita a comentar → `Autorizado`.
+Histórico de gates desta task: encerramento da Task 091 → CEO pergunta "O que você sugere?" → recomendo Fase 10 (escrita no GitHub) vs. restante da Fase 8, sinalizando a dependência de ação externa do CEO → CEO responde "Vamos seguir então" → investigo a API do GitHub, confirmo que comentário cobre issue e PR → apresento a proposta restrita a comentar → `Autorizado` (execução completa do escopo, criação da task, branch, commit, push e PR) → `Autorizado` (merge do PR #111, integrado em `69c65e4aff883603b7fa706266d3bd1925a9bf12`).
 
 ## Revisão e entrega
 
-Apresentarei o diff completo, as validações locais (`typecheck`, `test`, `build`, `test:integration` com falha esperada e documentada) e o estado Git, e solicitarei explicitamente o gate de merge antes de integrar esta mudança em `main`.
+Apresentei o diff completo, as validações locais (`typecheck`, `test`, `build`, `test:integration` com falha esperada e documentada) e o estado Git, e solicitei explicitamente o gate de merge antes de integrar esta mudança em `main`.
+
+## Encerramento — 2026-08-18
+
+**Gate de encerramento**: o CEO autorizou (`Autorizado`) o squash merge do PR #111.
+
+**Integração**: PR #111 integrado em `main` via squash merge, commit `69c65e4aff883603b7fa706266d3bd1925a9bf12`, em 2026-08-18T17:37:22Z. Escopo integrado: exatamente os 8 arquivos previstos em `allowed_paths` — criação de `00_SYSTEM/tasks/active/TASK-2026-092-fase10-escrita-github-comentario.md`; edição de `src/modules/integrations/github.service.ts`, `src/http/routes/integration.ts`, `tests/integration.test.ts`, `tests/integration.integration.test.ts`, `README.md`, o Plano Mestre e `changes.jsonl`. Nenhuma mudança de schema, nenhuma dependência nova.
+
+**Verificação pós-merge**: sincronizei `main` local via fast-forward (`git pull --ff-only`, `10afe1b..69c65e4`) e reexecutei `npm run typecheck`, `npm test` e `npm run build` diretamente contra o `main` já integrado — typecheck limpo, 143/143 testes passando em 33 arquivos, build sem erros.
+
+**Estado final**: o projeto agora tem sua primeira capacidade de escrita real a um serviço externo — comentar em uma issue ou Pull Request existente do GitHub, via `POST /integrations/:id/github/issues/:issueNumber/comments`. A capacidade está implementada e testada (401/400/424), mas ainda não pode ser usada de fato neste ambiente: o `GITHUB_PAT` configurado só tem escopo "Contents: Read-only" (Task 085); usá-la de verdade exige que o CEO gere um token novo com "Issues: Read and write" — ação dele, fora do escopo técnico desta task. Criar issue, editar/apagar comentário, labels, assignees, fechar issue e merge de PR permanecem deliberadamente fora de escopo, para fatias futuras.
+
+**Escopo preservado**: nenhuma alteração fora de `allowed_paths` foi feita; nenhum código de identidade/autenticação/autorização foi tocado; nenhuma credencial nova foi introduzida (reaproveita `GITHUB_PAT` já existente); nenhuma decisão de multi-organização foi tomada ou presumida; nenhuma mudança de schema ou dependência nova.
+
+## Retrospectiva crítica (conforme `../workflows/retro.md`)
+
+**Objetivo**: dar ao projeto sua primeira capacidade de escrita real a um serviço externo, restrita a uma única ação de baixo risco (comentar), reaproveitando integralmente o padrão de erros/auditoria/credencial já validado na Task 085.
+
+**Resultado conhecido**: a rota nova está implementada, testada (nos limites do que o ambiente permite — sem `GITHUB_PAT` real, sem chamada de verdade ao GitHub) e documentada, incluindo o requisito de escopo ampliado do token que o CEO precisará atender antes do primeiro uso real.
+
+**O que ajudou**: investigar a API do GitHub antes de propor o escopo revelou que comentários em PR e em issue usam exatamente o mesmo endpoint — isso simplificou a proposta (uma capacidade cobre os dois exemplos que o CEO mencionou) e evitou construir duas rotas ou dois caminhos de código para o mesmo conceito.
+
+**O que dificultou**: nada de técnico. A decisão mais delicada foi de escopo — resistir à tentação de incluir "criar issue" na mesma task, já que tecnicamente seria simples (mesmo padrão de POST). Mantive a linha de "uma ação de escrita por vez", consistente com a disciplina já estabelecida nas Tasks 090/091 para extração de arquivos.
+
+**Surpresas**: nenhuma. O comportamento foi previsível de ponta a ponta, dado que esta task reaproveitou quase integralmente a estrutura da Task 085.
+
+**Riscos materializados**: nenhum. Esta é a primeira capacidade de escrita real do projeto, mas nenhuma chamada real foi feita (nem poderia, sem um `GITHUB_PAT` com escopo de escrita configurado neste ambiente).
+
+**Perguntas em aberto**: qual será a próxima capacidade de escrita — criar issue é a mais natural, mas também caberia perguntar ao CEO se ele prefere conectar um segundo provedor de integração (Google Workspace) antes de aprofundar mais no GitHub.
+
+**Ações propostas**: nenhuma ação de processo nova. Ao propor a próxima capacidade de escrita (aqui ou em outro provedor), reaplicar a mesma disciplina: uma ação por task, escopo de credencial documentado explicitamente, e confirmação de que a suíte de testes não depende de credencial real.
+
+**Mudanças aceitas**: registradas em `00_SYSTEM/logs/changes.jsonl`.
