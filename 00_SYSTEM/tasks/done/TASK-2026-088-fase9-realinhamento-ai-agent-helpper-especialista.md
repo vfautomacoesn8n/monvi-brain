@@ -2,8 +2,8 @@
 id: task-2026-088
 type: task
 title: "Fase 9 — realinhamento de ai_agent ao contrato canônico de Helpper especialista (Tasks 028/030/031)"
-status: draft
-task_state: active
+status: done
+task_state: done
 owner: ceo-monvi
 agent: claude-cursor
 reviewer: ceo-monvi
@@ -13,7 +13,7 @@ confidentiality: internal
 classification: internal
 created_at: "2026-08-17"
 updated_at: "2026-08-17"
-reviewed_at: "2026-08-17"
+reviewed_at: "2026-08-17T15:42:00-03:00"
 review_cycle: on-change
 sources:
   - 00_SYSTEM/architecture/Arquitetura-Helpper-Core-Especialistas-e-Agentes-Individuais.md
@@ -234,28 +234,60 @@ Mesma decisão já registrada desde a Task 052: a aplicação real das migraçõ
 
 ## Critérios de aceite
 
-- [ ] Pesquisa documental executada e evidenciada ao CEO antes da proposta de escopo. Evidência: mensagens da conversa citando `Arquitetura-Helpper-Core-Especialistas-e-Agentes-Individuais.md`, `Especificacao-funcional-Helpper-Core-Especialistas-Individuais.md`, `Modelo-ciclo-de-vida-e-estados-de-agentes-Monvi.md` e demais fontes, com tabela comparativa contrato-vs-implementação.
-- [ ] Campos novos mapeando o contrato mínimo canônico. Evidência: `apps/core-brain/src/db/schema/ai-agent.ts`.
-- [ ] `status` realinhado a 13 estados canônicos. Evidência: `aiAgentStatusEnum` em `ai-agent.ts`; teste de integração percorre 5 estados diferentes.
-- [ ] Migração gerada (não aplicada) correspondendo ao schema desenhado. Evidência: `apps/core-brain/drizzle/0025_cynical_mother_askani.sql`, conferida manualmente.
-- [ ] Rotas estendidas sem rota nova. Evidência: `apps/core-brain/src/http/routes/ai-agent.ts`.
-- [ ] Nenhum enforcement de transição, custo ou monitoramento. Evidência: nenhuma validação de transição no handler `PATCH`; nenhum campo de custo/métrica no schema.
-- [ ] Nenhuma alteração em outros arquivos de schema ou rotas. Evidência: `git status --short` local confirmou apenas os arquivos previstos em `allowed_paths`.
-- [ ] Teste de integração real estendido, isolado da suíte padrão, não executado. Evidência: `tests/ai-agent.integration.test.ts`, cenários estendidos presentes na suíte de integração.
-- [ ] `typecheck`, `test` e `build` continuam passando (135/135 testes). Evidência: execução local antes do commit.
-- [ ] `README.md` e Plano Mestre atualizados, citando as fontes arquiteturais. Evidência: seção "Escopo implementado" do README e seção 19 do Plano Mestre.
-- [ ] Nenhuma credencial, dado real, decisão de multi-organização, tabela nova ou execução real. Evidência: diff restrito aos arquivos previstos; nenhuma tabela nova; nenhuma chamada a serviço externo.
-- [ ] Conteúdo revisado e aprovado pelo CEO antes do merge; encerramento em PR separada (Regra Fundamental 6, exceção para código). Evidência: gate explícito para o merge do PR de implementação; este encerramento, em PR própria, é essa própria exceção em aplicação.
-- [ ] Retrospectiva crítica executada conforme `../workflows/retro.md` (Regra Fundamental 5). Evidência: seção "Retrospectiva crítica" a ser adicionada no encerramento, com mudanças aceitas registradas em `changes.jsonl`.
+- [x] Pesquisa documental executada e evidenciada ao CEO antes da proposta de escopo. Evidência: mensagens da conversa citando `Arquitetura-Helpper-Core-Especialistas-e-Agentes-Individuais.md`, `Especificacao-funcional-Helpper-Core-Especialistas-Individuais.md`, `Modelo-ciclo-de-vida-e-estados-de-agentes-Monvi.md` e demais fontes, com tabela comparativa contrato-vs-implementação.
+- [x] Campos novos mapeando o contrato mínimo canônico. Evidência: `apps/core-brain/src/db/schema/ai-agent.ts`, integrado em `main` no commit `31e5960407b350c37911d514543e3d12263bac9f`.
+- [x] `status` realinhado a 13 estados canônicos. Evidência: `aiAgentStatusEnum` em `ai-agent.ts`; teste de integração percorre 5 estados diferentes.
+- [x] Migração gerada (não aplicada) correspondendo ao schema desenhado. Evidência: `apps/core-brain/drizzle/0025_cynical_mother_askani.sql`, conferida manualmente.
+- [x] Rotas estendidas sem rota nova. Evidência: `apps/core-brain/src/http/routes/ai-agent.ts`.
+- [x] Nenhum enforcement de transição, custo ou monitoramento. Evidência: nenhuma validação de transição no handler `PATCH`; nenhum campo de custo/métrica no schema.
+- [x] Nenhuma alteração em outros arquivos de schema ou rotas. Evidência: `git status --short` local confirmou apenas os arquivos previstos em `allowed_paths`; PR #103 integrou exatamente os 10 arquivos previstos.
+- [x] Teste de integração real estendido, isolado da suíte padrão, não executado. Evidência: `tests/ai-agent.integration.test.ts`, cenários estendidos presentes na suíte de integração.
+- [x] `typecheck`, `test` e `build` continuam passando (135/135 testes). Evidência: execução local antes do commit e reexecução pós-merge contra `main` sincronizado (commit `31e5960407b350c37911d514543e3d12263bac9f`).
+- [x] `README.md` e Plano Mestre atualizados, citando as fontes arquiteturais. Evidência: seção "Escopo implementado" do README e seção 19 do Plano Mestre.
+- [x] Nenhuma credencial, dado real, decisão de multi-organização, tabela nova ou execução real. Evidência: diff restrito aos arquivos previstos; nenhuma tabela nova; nenhuma chamada a serviço externo.
+- [x] Conteúdo revisado e aprovado pelo CEO antes do merge; encerramento em PR separada (Regra Fundamental 6, exceção para código). Evidência: gate explícito `Autorizado` para o merge do PR #103, integrado em `31e5960407b350c37911d514543e3d12263bac9f`; este encerramento, em PR própria, é essa própria exceção em aplicação.
+- [x] Retrospectiva crítica executada conforme `../workflows/retro.md` (Regra Fundamental 5). Evidência: seção "Retrospectiva crítica" abaixo, com mudanças aceitas registradas em `changes.jsonl`.
 
 ## Riscos e gates humanos
 
 Riscos: mesmos já registrados desde a Fase 5 — migração nunca aplicada contra banco real, suposição single-tenant acumulando escopo, ausência de Docker neste ambiente; risco específico desta fatia — a migração recria o tipo enum de status via `DROP TYPE`/`CREATE TYPE` (necessário porque `paused` foi removido, e Postgres não permite remover valores de enum diretamente); isso seria uma operação de risco real contra um banco com dados existentes, mas como nenhum banco real existe neste projeto (Parte B nunca aplicada), o risco é puramente teórico agora — documentado para quando a Parte B for tratada; `status` continua sem enforcement de transição, então nada impede pular de `draft` direto para `archived` — mesma limitação já presente em todo campo de status do sistema, não uma regressão introduzida aqui.
 
-Gate vigente: aguardando revisão e autorização do CEO para abrir o PR de implementação.
+Gate vigente: encerrado. O merge do PR #103 foi autorizado (`Autorizado`) e executado por squash em `31e5960407b350c37911d514543e3d12263bac9f`. Esta task está formalmente concluída. Os demais entregáveis da Fase 9 (avaliações, métricas de qualidade, fallback, controle de custo, proteção contra prompt injection), dependentes de decisão sobre execução real de agentes, permanecem fora deste encerramento.
 
-Histórico de gates desta task: encerramento da Task 087 → CEO pede para retomar a Fase 9 (`Vamos começar retinar a Fase 9`) → esclareço direção via pergunta estruturada → CEO responde com orientação conceitual detalhada (Persona/Agente/Helpper, pesquisar antes de propor) → pesquiso e apresento evidência (rodada 1: hierarquia + contrato mínimo + ciclo de vida) → CEO pede para ler mais antes de propor (`Leia antes de propor qualquer escopo`) → pesquiso os documentos restantes e apresento síntese completa → CEO confirma (`Sim`) → proponho o escopo técnico desta task → `Autorizado`.
+Histórico de gates desta task: encerramento da Task 087 → CEO pede para retomar a Fase 9 (`Vamos começar retinar a Fase 9`) → esclareço direção via pergunta estruturada → CEO responde com orientação conceitual detalhada (Persona/Agente/Helpper, pesquisar antes de propor) → pesquiso e apresento evidência (rodada 1: hierarquia + contrato mínimo + ciclo de vida) → CEO pede para ler mais antes de propor (`Leia antes de propor qualquer escopo`) → pesquiso os documentos restantes e apresento síntese completa → CEO confirma (`Sim`) → proponho o escopo técnico desta task → `Autorizado` (execução completa do escopo, criação da task, branch, commit, push e PR) → `Autorizado` (merge do PR #103, integrado em `31e5960407b350c37911d514543e3d12263bac9f`).
 
 ## Revisão e entrega
 
-Apresentarei o diff completo, as validações locais (`typecheck`, `test`, `build`, `test:integration` com falha esperada e documentada) e o estado Git, e solicitarei explicitamente o gate de merge antes de integrar esta mudança em `main`.
+Apresentei o diff completo, as validações locais (`typecheck`, `test`, `build`, `test:integration` com falha esperada e documentada) e o estado Git, e solicitei explicitamente o gate de merge antes de integrar esta mudança em `main`.
+
+## Encerramento — 2026-08-17
+
+**Gate de encerramento**: o CEO autorizou (`Autorizado`) o squash merge do PR #103.
+
+**Integração**: PR #103 integrado em `main` via squash merge, commit `31e5960407b350c37911d514543e3d12263bac9f`, em 2026-08-17T18:37:56Z. Escopo integrado: exatamente os 10 arquivos previstos em `allowed_paths` — criação de `00_SYSTEM/tasks/active/TASK-2026-088-fase9-realinhamento-ai-agent-helpper-especialista.md`, `drizzle/0025_cynical_mother_askani.sql` e `drizzle/meta/0025_snapshot.json`; edição de `src/db/schema/ai-agent.ts`, `src/http/routes/ai-agent.ts`, `tests/ai-agent.integration.test.ts`, `drizzle/meta/_journal.json`, `README.md`, o Plano Mestre e `changes.jsonl`. Nenhuma alteração em outros arquivos de schema ou rotas.
+
+**Verificação pós-merge**: sincronizei `main` local via fast-forward (`git pull --ff-only`, `2cc9362..31e5960`) e reexecutei `npm run typecheck`, `npm test` e `npm run build` diretamente contra o `main` já integrado — typecheck limpo, 135/135 testes passando em 33 arquivos, build sem erros.
+
+**Estado final**: `ai_agent` está realinhado ao contrato canônico do Helpper especialista já aprovado nas Tasks 028/030/031, com nove campos novos e um ciclo de vida de 13 estados no lugar dos 4 anteriores. A representação/administração de agentes de IA agora reflete a arquitetura já aprovada pelo CEO, corrigindo uma divergência introduzida pelas Tasks 081-083 (que não consultaram essa arquitetura ao construir a entidade). Nenhuma execução real de agente foi introduzida — a Fase 9 permanece com cinco entregáveis pendentes (avaliações, métricas de qualidade, fallback, controle de custo, proteção contra prompt injection), todos dependentes de uma decisão ainda não tomada sobre execução real. A Fase 10 permanece em andamento. O modelo de multi-organização permanece formalmente fechado (Task 086). A Parte B permanece explicitamente pendente.
+
+**Escopo preservado**: nenhuma alteração fora de `allowed_paths` foi feita; nenhum código de identidade/autenticação/autorização foi tocado; nenhuma credencial ou dado real foi introduzido; nenhuma decisão de multi-organização foi tomada ou presumida; nenhuma execução real de agente foi implementada; nenhuma entidade formal de `repository`/`skill` da biblioteca foi criada, respeitando a regra de implementação progressiva já aprovada.
+
+## Retrospectiva crítica (conforme `../workflows/retro.md`)
+
+**Objetivo**: corrigir a divergência entre `ai_agent` (como construído nas Tasks 081-083) e o contrato canônico do Helpper especialista já aprovado pelo CEO desde 2026-07-22, sem introduzir nenhuma execução real ou funcionalidade não documentada.
+
+**Resultado conhecido**: `ai_agent` agora tem todos os campos do contrato mínimo canônico e um ciclo de vida de 13 estados alinhado à arquitetura aprovada; a pesquisa documental que fundamentou isso foi apresentada ao CEO com citações completas antes de qualquer proposta de escopo.
+
+**O que ajudou**: seguir literalmente a instrução do CEO de pesquisar primeiro e mostrar evidência antes de propor — isso revelou uma divergência real que eu não tinha percebido ao construir as Tasks 081-083, e que só veio à tona porque o CEO pediu uma leitura completa (14 documentos) em vez de aceitar minha primeira síntese parcial ("Leia antes de propor qualquer escopo" foi um pedido explícito para ir mais fundo). Isso é uma correção de processo, não só de código: nas próximas tasks que tocarem conceitos já cobertos por `00_SYSTEM/architecture/` ou `00_SYSTEM/policies/`, devo consultar essas fontes antes de propor esquema, não depois.
+
+**O que dificultou**: decidir onde parar — a arquitetura completa (biblioteca de skills, execução supervisionada com filas/retry/idempotência, políticas de ambiente/aprovação/custo/monitoramento) é muito mais ampla do que cabe numa fatia de representação pura; tracei a linha em "o que é catalogável sem execução real" versus "o que só faz sentido quando houver execução", e mantive rigorosamente essa linha mesmo quando os documentos ofereciam campos tentadores de adicionar (ex.: métricas de custo/sucesso/falha).
+
+**Surpresas**: a maior surpresa foi descobrir que a arquitetura completa já existia, aprovada, havia mais de três semanas (2026-07-22) antes da Fase 9 começar (Task 081, 2026-08-17) — um intervalo de tempo em que essa arquitetura deveria ter sido a fonte primária de consulta e não foi.
+
+**Riscos materializados**: um — a divergência arquitetural em si já era um risco materializado (não descoberto durante o desenho original das Tasks 081-083, mas sim agora, retroativamente). Foi corrigido nesta task, não apenas documentado.
+
+**Perguntas em aberto**: se a "Helpper individual" (`profile.profileType = 'helpper_individual'`, Fase 2) deveria ganhar uma referência formal a `ai_agent`/Helpper especialista no futuro, já que a hierarquia canônica os conecta (`Helpper individual → Helpper especialista → Helpper Core`) mas o schema atual os mantém desconectados; e se/quando a "Biblioteca única" de skills/ferramentas/repositórios (`Modelo-biblioteca-skills-ferramentas-e-promocao-conhecimento.md`) deveria virar uma entidade real, em vez de `skills`/`repositories` continuarem como listas de texto livre em `ai_agent`.
+
+**Ações propostas**: antes de propor scope em qualquer área que pareça ter arquitetura própria (ex.: automações, integrações, futuras fases), verificar primeiro se existe documentação já aprovada em `00_SYSTEM/architecture/` ou `00_SYSTEM/policies/` — não assumir que a ausência de menção na conversa atual significa ausência de decisão documentada.
+
+**Mudanças aceitas**: registradas em `00_SYSTEM/logs/changes.jsonl`.
