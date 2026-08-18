@@ -2,8 +2,8 @@
 id: task-2026-093
 type: task
 title: "Fase 10 — segunda capacidade de escrita real no GitHub (criar issue)"
-status: active
-task_state: in-progress
+status: done
+task_state: done
 owner: ceo-monvi
 agent: claude-cursor
 reviewer: ceo-monvi
@@ -13,7 +13,7 @@ confidentiality: internal
 classification: internal
 created_at: "2026-08-18"
 updated_at: "2026-08-18"
-reviewed_at: null
+reviewed_at: "2026-08-18T15:21:37-03:00"
 review_cycle: on-change
 sources:
   - 00_SYSTEM/tasks/done/TASK-2026-092-fase10-escrita-github-comentario.md
@@ -28,6 +28,7 @@ aliases:
 tags: [core-brain, fase-10, api, integracoes, github, escrita, testes]
 allowed_paths:
   - 00_SYSTEM/tasks/active/TASK-2026-093-fase10-escrita-github-criar-issue.md
+  - 00_SYSTEM/tasks/done/TASK-2026-093-fase10-escrita-github-criar-issue.md
   - 00_SYSTEM/logs/changes.jsonl
   - 00_SYSTEM/roadmaps/Plano-Mestre-de-Construcao-Monvi-Brain.md
   - apps/core-brain/README.md
@@ -153,17 +154,49 @@ Mesma decisão já registrada desde a Task 052: a aplicação real das migraçõ
 - [x] `typecheck`, `test` e `build` continuam passando (144/144 testes). Evidência: execução local antes do commit.
 - [x] `README.md` e Plano Mestre atualizados. Evidência: seção "Escopo implementado" do README e Fase 10/Parte B/Próximo gate do Plano Mestre.
 - [x] Nenhuma credencial nova, dado real, ou decisão de multi-organização. Evidência: diff restrito aos arquivos previstos; `GITHUB_PAT` continua sendo a mesma variável de ambiente já existente.
-- [ ] Conteúdo revisado e aprovado pelo CEO antes do merge; encerramento em PR separada (Regra Fundamental 6, exceção para código). Pendente do gate de merge do PR de implementação.
-- [ ] Retrospectiva crítica executada conforme `../workflows/retro.md` (Regra Fundamental 5). Pendente, será executada antes do gate de encerramento.
+- [x] Conteúdo revisado e aprovado pelo CEO antes do merge; encerramento em PR separada (Regra Fundamental 6, exceção para código). Evidência: gate explícito `Autorizado` para o merge do PR #113, integrado em `82297d60249106baa9774c13e6037dbc95c8071e`; este encerramento, em PR própria, é essa própria exceção em aplicação.
+- [x] Retrospectiva crítica executada conforme `../workflows/retro.md` (Regra Fundamental 5). Evidência: seção "Retrospectiva crítica" abaixo, com mudanças aceitas registradas em `changes.jsonl`.
 
 ## Riscos e gates humanos
 
 Riscos: mesmos já registrados desde a Fase 5 — migração nunca aplicada contra banco real, suposição single-tenant acumulando escopo, ausência de Docker neste ambiente; risco específico desta fatia — mesmo raciocínio já documentado na Task 092: uma vez que o CEO atualizar o `GITHUB_PAT` com escopo de escrita, qualquer chamada bem-sucedida a esta rota cria uma issue real e visível publicamente (se o repositório for público) — mitigado pela rota exigir autenticação e RBAC (`integration:write`), mesmo padrão de controle de acesso já usado em todo o sistema; nenhuma automação ou agente chama esta rota automaticamente hoje.
 
-Gate vigente: aguardando autorização do CEO para o merge do PR de implementação.
+Gate vigente: encerrado. O merge do PR #113 foi autorizado (`Autorizado`) e executado por squash em `82297d60249106baa9774c13e6037dbc95c8071e`. Esta task está formalmente concluída. Labels, assignees, milestone e qualquer outra ação de escrita além de comentar e criar issue permanecem fora deste encerramento, deliberadamente adiadas.
 
-Histórico de gates desta task: encerramento da Task 092 → CEO pergunta "Helpper, o que você sugere que façamos agora?" → recomendo criar issue como último item zero-custo, sinalizando que a lista está quase esgotada → CEO pergunta se prefere fechar isso ou parar para decidir algo maior → CEO responde "Vamos seguir com a sua recomendação" → proponho o escopo técnico restrito a title/body → `Autorizado`.
+Histórico de gates desta task: encerramento da Task 092 → CEO pergunta "Helpper, o que você sugere que façamos agora?" → recomendo criar issue como último item zero-custo, sinalizando que a lista está quase esgotada → CEO pergunta se prefere fechar isso ou parar para decidir algo maior → CEO responde "Vamos seguir com a sua recomendação" → proponho o escopo técnico restrito a title/body → `Autorizado` (execução completa do escopo, criação da task, branch, commit, push e PR) → `Autorizado` (merge do PR #113, integrado em `82297d60249106baa9774c13e6037dbc95c8071e`).
 
 ## Revisão e entrega
 
-Apresentarei o diff completo, as validações locais (`typecheck`, `test`, `build`, `test:integration` com falha esperada e documentada) e o estado Git, e solicitarei explicitamente o gate de merge antes de integrar esta mudança em `main`.
+Apresentei o diff completo, as validações locais (`typecheck`, `test`, `build`, `test:integration` com falha esperada e documentada) e o estado Git, e solicitei explicitamente o gate de merge antes de integrar esta mudança em `main`.
+
+## Encerramento — 2026-08-18
+
+**Gate de encerramento**: o CEO autorizou (`Autorizado`) o squash merge do PR #113.
+
+**Integração**: PR #113 integrado em `main` via squash merge, commit `82297d60249106baa9774c13e6037dbc95c8071e`, em 2026-08-18T18:21:37Z. Escopo integrado: exatamente os 8 arquivos previstos em `allowed_paths` — criação de `00_SYSTEM/tasks/active/TASK-2026-093-fase10-escrita-github-criar-issue.md`; edição de `src/modules/integrations/github.service.ts`, `src/http/routes/integration.ts`, `tests/integration.test.ts`, `tests/integration.integration.test.ts`, `README.md`, o Plano Mestre e `changes.jsonl`. Nenhuma mudança de schema, nenhuma dependência nova.
+
+**Verificação pós-merge**: sincronizei `main` local via fast-forward (`git pull --ff-only`, `de0e37e..82297d6`) e reexecutei `npm run typecheck`, `npm test` e `npm run build` diretamente contra o `main` já integrado — typecheck limpo, 144/144 testes passando em 33 arquivos, build sem erros.
+
+**Estado final**: o projeto agora tem duas capacidades de escrita real no GitHub — comentar em issue/PR (Task 092) e criar issue (Task 093) — ambas implementadas e testadas, mas ainda não usáveis de fato neste ambiente sem um `GITHUB_PAT` com escopo "Issues: Read and write" (ação pendente do CEO). Labels, assignees, milestone e qualquer ação de escrita de maior risco (editar/fechar issue, merge de PR) permanecem deliberadamente fora de escopo. Com esta task, conforme sinalizado na conversa que a autorizou, a lista de fatias "zero-custo e autossuficientes" que eu conseguia identificar e executar sem depender de orçamento ou de uma decisão maior do CEO está praticamente esgotada — o próximo avanço real depende de uma decisão explícita dele.
+
+**Escopo preservado**: nenhuma alteração fora de `allowed_paths` foi feita; nenhum código de identidade/autenticação/autorização foi tocado; nenhuma credencial nova foi introduzida (reaproveita `GITHUB_PAT` já existente); nenhuma decisão de multi-organização foi tomada ou presumida; nenhuma mudança de schema ou dependência nova.
+
+## Retrospectiva crítica (conforme `../workflows/retro.md`)
+
+**Objetivo**: adicionar a segunda capacidade de escrita real do projeto — criar issue — completando o par de exemplos que o CEO mencionou ao autorizar a via de escrita no GitHub (Task 092: "comentar em PR, criar issue"), sem expandir escopo além disso.
+
+**Resultado conhecido**: a rota nova está implementada, testada (nos limites do ambiente) e documentada; o par "comentar + criar issue" está completo.
+
+**O que ajudou**: reaproveitar quase integralmente a estrutura da Task 092 (mesmo helper `githubPost`, mesmo padrão de erros/auditoria) tornou esta task rápida e de baixo risco — não houve nenhuma decisão de design nova, só aplicar um padrão já validado a um segundo endpoint do GitHub.
+
+**O que dificultou**: nada técnico. A única reflexão real desta task foi de escopo maior — junto com a proposta, sinalizei explicitamente ao CEO que esta seria provavelmente a última fatia "zero-custo e autossuficiente" disponível, para não dar a impressão de que sempre haveria mais uma tarefinha técnica a fazer sem nenhuma decisão de orçamento ou infraestrutura de sua parte.
+
+**Surpresas**: nenhuma.
+
+**Riscos materializados**: nenhum. Nenhuma chamada real ao GitHub foi feita.
+
+**Perguntas em aberto**: qual das decisões maiores o CEO vai priorizar agora — orçamento para embeddings/execução de agentes/OCR, ou credenciais para conectar Google Workspace. Não é uma pergunta técnica; é dele.
+
+**Ações propostas**: nenhuma ação de processo nova. Ao retomar a Fase 10 (labels/assignees/ações de maior risco) ou qualquer nova integração, reaplicar a mesma disciplina de uma ação por task com escopo de credencial documentado.
+
+**Mudanças aceitas**: registradas em `00_SYSTEM/logs/changes.jsonl`.
