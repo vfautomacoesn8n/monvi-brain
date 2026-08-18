@@ -228,4 +228,65 @@ describe('Fluxo real de documentos e versões — PostgreSQL local (Fase 7)', ()
     await db.delete(documentVersion).where(eq(documentVersion.documentId, uploadDocumentId));
     await db.delete(document).where(eq(document.id, uploadDocumentId));
   });
+
+  it('faz upload real de um PDF e extrai o conteúdo de verdade', async () => {
+    const uploadDocumentResponse = await app.inject({
+      method: 'POST',
+      url: '/api/v1/documents',
+      headers: { authorization: `Bearer ${sessionToken}` },
+      payload: { title: 'Documento PDF para upload real', sourceId: createdSourceId },
+    });
+    const uploadDocumentId = uploadDocumentResponse.json().document.id;
+
+    const pdfObjects = [
+      '1 0 obj\n<< /Type /Catalog /Pages 2 0 R >>\nendobj\n',
+      '2 0 obj\n<< /Type /Pages /Kids [3 0 R] /Count 1 >>\nendobj\n',
+      '3 0 obj\n<< /Type /Page /Parent 2 0 R /Resources << /Font << /F1 4 0 R >> >> /MediaBox [0 0 500 200] /Contents 5 0 R >>\nendobj\n',
+      '4 0 obj\n<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>\nendobj\n',
+    ];
+    const streamContent = 'BT /F1 12 Tf 20 100 Td (Conteudo real de um PDF via upload) Tj ET';
+    pdfObjects.push(
+      `5 0 obj\n<< /Length ${streamContent.length} >>\nstream\n${streamContent}\nendstream\nendobj\n`
+    );
+
+    let pdfContent = '%PDF-1.4\n';
+    const pdfOffsets: number[] = [0];
+    for (const obj of pdfObjects) {
+      pdfOffsets.push(pdfContent.length);
+      pdfContent += obj;
+    }
+    const pdfXrefStart = pdfContent.length;
+    let pdfXref = `xref\n0 ${pdfObjects.length + 1}\n0000000000 65535 f \n`;
+    for (let i = 1; i <= pdfObjects.length; i++) {
+      pdfXref += `${String(pdfOffsets[i]).padStart(10, '0')} 00000 n \n`;
+    }
+    pdfContent += pdfXref;
+    pdfContent += `trailer\n<< /Size ${pdfObjects.length + 1} /Root 1 0 R >>\nstartxref\n${pdfXrefStart}\n%%EOF`;
+
+    const boundary = '----monviTestBoundaryPdf';
+    const payload =
+      `--${boundary}\r\n` +
+      'Content-Disposition: form-data; name="file"; filename="relatorio.pdf"\r\n' +
+      'Content-Type: application/pdf\r\n\r\n' +
+      `${pdfContent}\r\n` +
+      `--${boundary}--\r\n`;
+
+    const uploadResponse = await app.inject({
+      method: 'POST',
+      url: `/api/v1/documents/${uploadDocumentId}/versions/upload`,
+      headers: {
+        authorization: `Bearer ${sessionToken}`,
+        'content-type': `multipart/form-data; boundary=${boundary}`,
+      },
+      payload,
+    });
+    expect(uploadResponse.statusCode).toBe(201);
+    const uploaded = uploadResponse.json();
+    expect(uploaded.documentVersion.content).toBe('Conteudo real de um PDF via upload');
+    expect(uploaded.documentVersion.mimeType).toBe('application/pdf');
+    expect(uploaded.extraction.extracted).toBe(true);
+
+    await db.delete(documentVersion).where(eq(documentVersion.documentId, uploadDocumentId));
+    await db.delete(document).where(eq(document.id, uploadDocumentId));
+  });
 });

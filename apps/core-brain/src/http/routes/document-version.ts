@@ -25,6 +25,16 @@ function requestIdOf(headers: Record<string, unknown>): string | null {
   return (headers['x-request-id'] as string) || null;
 }
 
+function extractionMessage(extracted: boolean, formatSupported: boolean): string {
+  if (extracted) {
+    return 'Conteúdo extraído com sucesso.';
+  }
+  if (formatSupported) {
+    return 'Arquivo armazenado, mas nenhum texto pôde ser extraído (arquivo vazio, corrompido, ou sem camada de texto — ex.: PDF digitalizado).';
+  }
+  return 'Arquivo armazenado, mas extração de conteúdo não implementada para este formato ainda.';
+}
+
 async function findActiveDocument(documentId: string) {
   const [found] = await db
     .select({ id: document.id })
@@ -206,10 +216,7 @@ export async function registerDocumentVersionRoutes(
         documentVersion: created,
         extraction: {
           extracted: stored.extractedContent !== null,
-          message:
-            stored.extractedContent !== null
-              ? 'Conteúdo extraído com sucesso (texto puro).'
-              : 'Arquivo armazenado, mas extração de conteúdo não implementada para este formato ainda.',
+          message: extractionMessage(stored.extractedContent !== null, stored.formatSupported),
         },
       });
     }
