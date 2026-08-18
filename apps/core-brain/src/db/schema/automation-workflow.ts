@@ -1,4 +1,4 @@
-import { pgTable, uuid, varchar, pgEnum, text, boolean, timestamp } from 'drizzle-orm/pg-core';
+import { pgTable, uuid, varchar, pgEnum, text, boolean, integer, timestamp } from 'drizzle-orm/pg-core';
 import { person } from './person.js';
 
 export const automationTriggerTypeEnum = pgEnum('automation_trigger_type', [
@@ -23,6 +23,7 @@ export const automationWorkflow = pgTable('automation_workflow', {
   triggerType: automationTriggerTypeEnum('trigger_type').notNull().default('manual'),
   status: automationWorkflowStatusEnum('status').notNull().default('draft'),
   requiresApproval: boolean('requires_approval').notNull().default(false),
+  timeoutSeconds: integer('timeout_seconds'),
   notes: text('notes'),
   createdAt: timestamp('created_at', { withTimezone: true }).notNull().defaultNow(),
   updatedAt: timestamp('updated_at', { withTimezone: true }).notNull().defaultNow(),

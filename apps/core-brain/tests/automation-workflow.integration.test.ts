@@ -69,12 +69,14 @@ describe('Fluxo real de workflows de automação — PostgreSQL local (Fase 8)',
         name: 'Notificar time comercial sobre novo lead',
         triggerType: 'webhook',
         ownerPersonId: personId,
+        timeoutSeconds: 120,
       },
     });
     expect(createResponse.statusCode).toBe(201);
     const created = createResponse.json().automationWorkflow;
     createdAutomationWorkflowId = created.id;
     expect(created.status).toBe('draft');
+    expect(created.timeoutSeconds).toBe(120);
 
     const listResponse = await app.inject({
       method: 'GET',
@@ -100,10 +102,11 @@ describe('Fluxo real de workflows de automação — PostgreSQL local (Fase 8)',
       method: 'PATCH',
       url: `/api/v1/automation-workflows/${createdAutomationWorkflowId}`,
       headers: { authorization: `Bearer ${sessionToken}` },
-      payload: { status: 'active' },
+      payload: { status: 'active', timeoutSeconds: 300 },
     });
     expect(updateResponse.statusCode).toBe(200);
     expect(updateResponse.json().automationWorkflow.status).toBe('active');
+    expect(updateResponse.json().automationWorkflow.timeoutSeconds).toBe(300);
 
     const deleteResponse = await app.inject({
       method: 'DELETE',

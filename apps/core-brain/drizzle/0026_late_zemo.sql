@@ -1,0 +1,1 @@
+ALTER TABLE "automation_workflow" ADD COLUMN "timeout_seconds" integer;
