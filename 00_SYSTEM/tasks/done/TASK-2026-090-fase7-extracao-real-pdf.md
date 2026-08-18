@@ -2,8 +2,8 @@
 id: task-2026-090
 type: task
 title: "Fase 7 — extração real de PDF (continuação da Task 087)"
-status: active
-task_state: in-progress
+status: done
+task_state: done
 owner: ceo-monvi
 agent: claude-cursor
 reviewer: ceo-monvi
@@ -13,7 +13,7 @@ confidentiality: internal
 classification: internal
 created_at: "2026-08-18"
 updated_at: "2026-08-18"
-reviewed_at: null
+reviewed_at: "2026-08-18T12:23:37-03:00"
 review_cycle: on-change
 sources:
   - 00_SYSTEM/tasks/done/TASK-2026-087-fase7-extracao-arquivos-texto-puro.md
@@ -29,6 +29,7 @@ aliases:
 tags: [core-brain, fase-7, api, documentos, upload, extracao, pdf, dependencia-nova, testes]
 allowed_paths:
   - 00_SYSTEM/tasks/active/TASK-2026-090-fase7-extracao-real-pdf.md
+  - 00_SYSTEM/tasks/done/TASK-2026-090-fase7-extracao-real-pdf.md
   - 00_SYSTEM/logs/changes.jsonl
   - 00_SYSTEM/roadmaps/Plano-Mestre-de-Construcao-Monvi-Brain.md
   - apps/core-brain/README.md
@@ -160,17 +161,49 @@ Mesma decisão já registrada desde a Task 052: a aplicação real das migraçõ
 - [x] `npm audit` sem vulnerabilidade nova. Evidência: mesmas seis vulnerabilidades pré-existentes, confirmadas antes e depois da instalação.
 - [x] `README.md` e Plano Mestre atualizados. Evidência: seção "Escopo implementado" do README e Fase 7/Parte B/Próximo gate do Plano Mestre.
 - [x] Nenhuma credencial, dado real, decisão de multi-organização ou execução de automação/agente. Evidência: diff restrito aos arquivos previstos; nenhuma chamada a serviço externo (extração é 100% local).
-- [ ] Conteúdo revisado e aprovado pelo CEO antes do merge; encerramento em PR separada (Regra Fundamental 6, exceção para código). Pendente do gate de merge do PR de implementação.
-- [ ] Retrospectiva crítica executada conforme `../workflows/retro.md` (Regra Fundamental 5). Pendente, será executada antes do gate de encerramento.
+- [x] Conteúdo revisado e aprovado pelo CEO antes do merge; encerramento em PR separada (Regra Fundamental 6, exceção para código). Evidência: gate explícito `Autorizado` para o merge do PR #107, integrado em `d6fb3e610ab3e0118f9b9800b6b7c881fb778232`; este encerramento, em PR própria, é essa própria exceção em aplicação.
+- [x] Retrospectiva crítica executada conforme `../workflows/retro.md` (Regra Fundamental 5). Evidência: seção "Retrospectiva crítica" abaixo, com mudanças aceitas registradas em `changes.jsonl`.
 
 ## Riscos e gates humanos
 
 Riscos: mesmos já registrados desde a Fase 5 — migração nunca aplicada contra banco real, suposição single-tenant acumulando escopo, ausência de Docker neste ambiente; risco específico desta fatia — `unpdf` é uma dependência relativamente nova (comparada a `pdf-parse`), então sua superfície de manutenção de longo prazo é menos comprovada; mitigado pela escolha deliberada de uma biblioteca com 0 vulnerabilidades conhecidas e footprint mínimo, e pelo fato de que toda a extração roda localmente, sem chamada a serviço externo, então uma eventual descontinuação da biblioteca não quebra nenhum dado já armazenado (o arquivo original sempre fica em disco, `content` é apenas uma conveniência derivada). PDFs digitalizados (imagem, sem camada de texto) continuam sem extração real — isso é uma limitação conhecida e documentada, não um bug; OCR ficaria para uma fatia totalmente separada, provavelmente com custo real (serviço de OCR).
 
-Gate vigente: aguardando autorização do CEO para o merge do PR de implementação.
+Gate vigente: encerrado. O merge do PR #107 foi autorizado (`Autorizado`) e executado por squash em `d6fb3e610ab3e0118f9b9800b6b7c881fb778232`. Esta task está formalmente concluída. Word (`.docx`) e OCR de PDF digitalizado permanecem fora deste encerramento, deliberadamente adiados.
 
-Histórico de gates desta task: encerramento da Task 089 → CEO pergunta "O que podemos fazer hoje... e o que está pendente ainda?" → apresento o estado do projeto → CEO pergunta "O que você recomenda que eu faça?" → recomendo extração real de PDF/Word como maior valor prático imediato → CEO responde "Vamos seguir então" → avalio três bibliotecas candidatas, testando os três cenários necessários com a escolhida → apresento a comparação e o escopo técnico restrito a `.pdf` → `Autorizado`.
+Histórico de gates desta task: encerramento da Task 089 → CEO pergunta "O que podemos fazer hoje... e o que está pendente ainda?" → apresento o estado do projeto → CEO pergunta "O que você recomenda que eu faça?" → recomendo extração real de PDF/Word como maior valor prático imediato → CEO responde "Vamos seguir então" → avalio três bibliotecas candidatas, testando os três cenários necessários com a escolhida → apresento a comparação e o escopo técnico restrito a `.pdf` → `Autorizado` (execução completa do escopo, criação da task, branch, commit, push e PR) → `Autorizado` (merge do PR #107, integrado em `d6fb3e610ab3e0118f9b9800b6b7c881fb778232`).
 
 ## Revisão e entrega
 
-Apresentarei o diff completo, as validações locais (`typecheck`, `test`, `build`, `test:integration` com falha esperada e documentada, `npm audit`) e o estado Git, e solicitarei explicitamente o gate de merge antes de integrar esta mudança em `main`.
+Apresentei o diff completo, as validações locais (`typecheck`, `test`, `build`, `test:integration` com falha esperada e documentada, `npm audit`) e o estado Git, e solicitei explicitamente o gate de merge antes de integrar esta mudança em `main`.
+
+## Encerramento — 2026-08-18
+
+**Gate de encerramento**: o CEO autorizou (`Autorizado`) o squash merge do PR #107.
+
+**Integração**: PR #107 integrado em `main` via squash merge, commit `d6fb3e610ab3e0118f9b9800b6b7c881fb778232`, em 2026-08-18T15:23:37Z. Escopo integrado: exatamente os 10 arquivos previstos em `allowed_paths` — criação de `00_SYSTEM/tasks/active/TASK-2026-090-fase7-extracao-real-pdf.md`; edição de `src/modules/documents/file-storage.service.ts`, `src/http/routes/document-version.ts`, `tests/file-storage.service.test.ts`, `tests/document.integration.test.ts`, `package.json`, `package-lock.json`, `README.md`, o Plano Mestre e `changes.jsonl`. Nenhuma mudança de schema, nenhuma rota nova.
+
+**Verificação pós-merge**: sincronizei `main` local via fast-forward (`git pull --ff-only`, `439fc2f..d6fb3e6`), rodei `npm install` para alinhar `node_modules` ao `package-lock.json` sincronizado, e reexecutei `npm run typecheck`, `npm test` e `npm run build` diretamente contra o `main` já integrado — typecheck limpo, 138/138 testes passando em 33 arquivos, build sem erros. `npm audit` pós-instalação confirmou as mesmas seis vulnerabilidades pré-existentes (esbuild/drizzle-kit, fast-uri, nanoid), nenhuma nova.
+
+**Estado final**: a extração real de conteúdo de documentos, iniciada na Task 087 para `.txt`/`.md`, agora cobre também `.pdf`/`application/pdf`, via `unpdf` — biblioteca escolhida após avaliação comparativa com `pdf-parse` v1/v2, por ser a mais leve e sem dependência nativa. PDF corrompido ou sem camada de texto (digitalizado) é tratado graciosamente (`content: null`, sem quebrar o upload). A resposta de upload agora distingue três estados de extração. Word (`.docx`) e OCR de PDF digitalizado permanecem deliberadamente fora de escopo, para uma fatia futura. Embeddings/busca vetorial continuam sendo o próximo entregável formal não iniciado da Fase 7.
+
+**Escopo preservado**: nenhuma alteração fora de `allowed_paths` foi feita; nenhum código de identidade/autenticação/autorização foi tocado; nenhuma credencial ou dado real foi introduzido; nenhuma decisão de multi-organização foi tomada ou presumida; nenhuma chamada a serviço externo foi introduzida (extração 100% local); nenhuma mudança de schema ou rota nova.
+
+## Retrospectiva crítica (conforme `../workflows/retro.md`)
+
+**Objetivo**: estender a extração real de conteúdo (Task 087) para cobrir PDF, a fatia de maior valor prático imediato recomendada ao CEO, sem introduzir dependências pesadas, serviços externos, ou mudanças de schema.
+
+**Resultado conhecido**: `document_version.content` agora é populado de verdade a partir de PDFs reais, via uma dependência leve e sem vulnerabilidades; os três cenários de borda (PDF válido, sem texto, corrompido) estão cobertos por testes reais, sem mocks.
+
+**O que ajudou**: testar as bibliotecas candidatas de forma prática (instalar, medir footprint, extrair texto de um PDF real) antes de propor o escopo ao CEO, em vez de decidir só por documentação — isso revelou que `pdf-parse` v2 (a versão "atual" e aparentemente óbvia) trazia um binding nativo pesado desnecessário, e que `unpdf` era uma alternativa muito melhor mas menos conhecida. Sem esse teste prático, eu provavelmente teria proposto `pdf-parse` só por ser o nome mais familiar.
+
+**O que dificultou**: construir PDFs de teste válidos à mão (sem depender de nenhuma biblioteca de geração de PDF, para não adicionar uma dependência só para testes) — o formato exige uma tabela `xref` com offsets de byte exatos, o que é sensível a qualquer mudança no conteúdo do PDF. Isso também revelou um bug real no meu primeiro fixture (MediaBox estreito demais truncando texto), que só apareceu ao testar uma string mais longa — reforça o valor de testar com dados variados, não só o caso mais simples.
+
+**Surpresas**: a truncagem silenciosa de texto por causa do `MediaBox` foi inesperada — não é um erro óbvio (não lança exceção, não aparece nos logs), só um texto ligeiramente mais curto que o esperado. Se esse bug tivesse ficado no teste, ele teria mascarado um problema real de extração incompleta em PDFs com texto próximo à borda da página, então vale a pena lembrar que MediaBox largo o suficiente é um cuidado necessário em qualquer teste futuro que construa PDFs à mão.
+
+**Riscos materializados**: um, mas capturado e corrigido antes do merge — o truncamento do fixture de teste por `MediaBox` estreito, descrito acima. Nenhum risco chegou a `main`.
+
+**Perguntas em aberto**: nenhuma nova. As de sempre (Word/`.docx`, OCR, embeddings/busca vetorial) já estavam documentadas como fora de escopo desde o início desta task.
+
+**Ações propostas**: ao construir fixtures de PDF à mão em testes futuros (ex.: se uma fatia de OCR ou Word vier a precisar de fixtures binários semelhantes), usar sempre uma página larga o suficiente para o texto de teste, e considerar adicionar um teste explícito com texto propositalmente longo para pegar problemas de truncamento cedo.
+
+**Mudanças aceitas**: registradas em `00_SYSTEM/logs/changes.jsonl`.
