@@ -2,8 +2,8 @@
 id: task-2026-089
 type: task
 title: "Fase 8 — timeoutSeconds declarativo em automation_workflow (realinhamento parcial ao modelo canônico de execução supervisionada)"
-status: active
-task_state: in-progress
+status: done
+task_state: done
 owner: ceo-monvi
 agent: claude-cursor
 reviewer: ceo-monvi
@@ -13,7 +13,7 @@ confidentiality: internal
 classification: internal
 created_at: "2026-08-18"
 updated_at: "2026-08-18"
-reviewed_at: null
+reviewed_at: "2026-08-18T10:26:31-03:00"
 review_cycle: on-change
 sources:
   - 00_SYSTEM/architecture/Modelo-execucao-supervisionada-filas-retry-timeout-idempotencia.md
@@ -35,6 +35,7 @@ aliases:
 tags: [core-brain, fase-8, api, automacoes, realinhamento-arquitetural, schema, migracao, testes]
 allowed_paths:
   - 00_SYSTEM/tasks/active/TASK-2026-089-fase8-timeout-declarativo-automation-workflow.md
+  - 00_SYSTEM/tasks/done/TASK-2026-089-fase8-timeout-declarativo-automation-workflow.md
   - 00_SYSTEM/logs/changes.jsonl
   - 00_SYSTEM/roadmaps/Plano-Mestre-de-Construcao-Monvi-Brain.md
   - apps/core-brain/README.md
@@ -237,17 +238,49 @@ Mesma decisão já registrada desde a Task 052: a aplicação real das migraçõ
 - [x] `typecheck`, `test` e `build` continuam passando (135/135 testes). Evidência: execução local antes do commit.
 - [x] `README.md` e Plano Mestre atualizados, citando as fontes arquiteturais e o que foi adiado. Evidência: seção "Escopo implementado" do README e seções 19/Fase 8 do Plano Mestre.
 - [x] Nenhuma credencial, dado real, decisão de multi-organização, tabela nova ou comportamento de execução real. Evidência: diff restrito aos arquivos previstos; nenhuma tabela nova; nenhum worker introduzido.
-- [ ] Conteúdo revisado e aprovado pelo CEO antes do merge; encerramento em PR separada (Regra Fundamental 6, exceção para código). Pendente do gate de merge do PR de implementação.
-- [ ] Retrospectiva crítica executada conforme `../workflows/retro.md` (Regra Fundamental 5). Pendente, será executada antes do gate de encerramento.
+- [x] Conteúdo revisado e aprovado pelo CEO antes do merge; encerramento em PR separada (Regra Fundamental 6, exceção para código). Evidência: gate explícito `Autorizado` para o merge do PR #105, integrado em `e3df62aef98b2460561cbbebe59683024917c011`; este encerramento, em PR própria, é essa própria exceção em aplicação.
+- [x] Retrospectiva crítica executada conforme `../workflows/retro.md` (Regra Fundamental 5). Evidência: seção "Retrospectiva crítica" abaixo, com mudanças aceitas registradas em `changes.jsonl`.
 
 ## Riscos e gates humanos
 
 Riscos: mesmos já registrados desde a Fase 5 — migração nunca aplicada contra banco real, suposição single-tenant acumulando escopo, ausência de Docker neste ambiente; risco específico desta fatia: como não existe worker real, `timeoutSeconds` fica sem qualquer efeito prático até que a Fase 8 ganhe um consumidor real de fila — documentado explicitamente para não passar a falsa impressão de que timeouts já são aplicados; a divergência maior identificada (12 estados canônicos vs. 5 implementados) permanece sem correção, deliberadamente, e deve ser retomada apenas mediante nova decisão explícita do CEO, dado que toca comportamento de execução já testado (Tasks 078/079).
 
-Gate vigente: aguardando autorização do CEO para o merge do PR de implementação.
+Gate vigente: encerrado. O merge do PR #105 foi autorizado (`Autorizado`) e executado por squash em `e3df62aef98b2460561cbbebe59683024917c011`. Esta task está formalmente concluída. O restante do modelo canônico de execução supervisionada da Fase 8 (máquina de 12 estados, retry diferenciado, separação de funções de aprovação, concorrência/locks, `cost_limit`) permanece fora deste encerramento, deliberadamente adiado.
 
-Histórico de gates desta task: encerramento da Task 088 → CEO pergunta recomendação sobre `profile`↔`ai_agent` e biblioteca única → recomendo não construir nenhuma das duas agora → CEO concorda (`Concordo, vamos seguir`) → releio a arquitetura de execução supervisionada contra o estado atual da Fase 8 → apresento a divergência encontrada → CEO pergunta recomendação sobre o quanto endereçar → recomendo a divisão conservadora (só `timeoutSeconds` agora) → CEO responde `Vamos seguir a sua recomendação` → proponho o escopo técnico concreto desta task → `Autorizado`.
+Histórico de gates desta task: encerramento da Task 088 → CEO pergunta recomendação sobre `profile`↔`ai_agent` e biblioteca única → recomendo não construir nenhuma das duas agora → CEO concorda (`Concordo, vamos seguir`) → releio a arquitetura de execução supervisionada contra o estado atual da Fase 8 → apresento a divergência encontrada → CEO pergunta recomendação sobre o quanto endereçar → recomendo a divisão conservadora (só `timeoutSeconds` agora) → CEO responde `Vamos seguir a sua recomendação` → proponho o escopo técnico concreto desta task → `Autorizado` (execução completa do escopo, criação da task, branch, commit, push e PR) → `Autorizado` (merge do PR #105, integrado em `e3df62aef98b2460561cbbebe59683024917c011`).
 
 ## Revisão e entrega
 
-Apresentarei o diff completo, as validações locais (`typecheck`, `test`, `build`, `test:integration` com falha esperada e documentada) e o estado Git, e solicitarei explicitamente o gate de merge antes de integrar esta mudança em `main`.
+Apresentei o diff completo, as validações locais (`typecheck`, `test`, `build`, `test:integration` com falha esperada e documentada) e o estado Git, e solicitei explicitamente o gate de merge antes de integrar esta mudança em `main`.
+
+## Encerramento — 2026-08-18
+
+**Gate de encerramento**: o CEO autorizou (`Autorizado`) o squash merge do PR #105.
+
+**Integração**: PR #105 integrado em `main` via squash merge, commit `e3df62aef98b2460561cbbebe59683024917c011`, em 2026-08-18T13:26:31Z. Escopo integrado: exatamente os 10 arquivos previstos em `allowed_paths` — criação de `00_SYSTEM/tasks/active/TASK-2026-089-fase8-timeout-declarativo-automation-workflow.md`, `drizzle/0026_late_zemo.sql` e `drizzle/meta/0026_snapshot.json`; edição de `src/db/schema/automation-workflow.ts`, `src/http/routes/automation-workflow.ts`, `tests/automation-workflow.integration.test.ts`, `drizzle/meta/_journal.json`, `README.md`, o Plano Mestre e `changes.jsonl`. Nenhuma alteração em outros arquivos de schema ou rotas.
+
+**Verificação pós-merge**: sincronizei `main` local via fast-forward (`git pull --ff-only`, `e840033..e3df62a`) e reexecutei `npm run typecheck`, `npm test` e `npm run build` diretamente contra o `main` já integrado — typecheck limpo, 135/135 testes passando em 33 arquivos, build sem erros.
+
+**Estado final**: `automation_workflow.timeoutSeconds` está integrado, puramente declarativo — mesmo padrão de `ai_agent.timeoutSeconds` (Task 082), sem nenhum enforcement real, já que não existe worker consumindo a fila. A pesquisa arquitetural que fundamentou esta task identificou uma divergência maior entre o modelo canônico de execução supervisionada e o estado atual de `automation_workflow`/`automation_invocation`, mas — por decisão explícita do CEO, seguindo minha recomendação conservadora — apenas este único campo foi endereçado agora, dado que a Fase 8 já tem comportamento real testado (Tasks 078/079) e qualquer mudança mais ampla exigiria uma conversa dedicada. A Fase 8 permanece com a integração com n8n como único entregável formal pendente; o realinhamento arquitetural mais amplo (12 estados, retry diferenciado, separação de funções, concorrência/locks, `cost_limit`) fica registrado como pendência distinta, não vinculada a nenhum entregável específico do Plano Mestre original. A Parte B permanece explicitamente pendente.
+
+**Escopo preservado**: nenhuma alteração fora de `allowed_paths` foi feita; nenhum código de identidade/autenticação/autorização foi tocado; nenhuma credencial ou dado real foi introduzido; nenhuma decisão de multi-organização foi tomada ou presumida; nenhum worker real ou enforcement de timeout foi implementado; nenhuma outra parte do modelo canônico de execução supervisionada foi endereçada, respeitando rigorosamente a divisão conservadora recomendada e autorizada.
+
+## Retrospectiva crítica (conforme `../workflows/retro.md`)
+
+**Objetivo**: adicionar um campo declarativo seguro (`timeoutSeconds`) a `automation_workflow`, como primeiro passo conservador de realinhamento ao modelo canônico de execução supervisionada, sem tocar nenhum comportamento de execução já testado (Tasks 078/079).
+
+**Resultado conhecido**: `automation_workflow.timeoutSeconds` está integrado em `main`, mesmo padrão de `ai_agent.timeoutSeconds`; a divergência mais ampla entre o modelo canônico e a implementação atual foi documentada e apresentada ao CEO com citações, mas deliberadamente não corrigida nesta fatia.
+
+**O que ajudou**: aplicar a mesma disciplina de pesquisa-antes-de-propor já estabelecida na Task 088 a um domínio diferente (execução de automações em vez de agentes de IA) confirmou que o padrão se generaliza: sempre que uma task tocar um domínio já coberto por `00_SYSTEM/architecture/` ou `00_SYSTEM/policies/`, vale a pena reler essas fontes contra o estado atual antes de propor qualquer escopo, mesmo quando o CEO não pede explicitamente (como pediu na Task 088) — a pesquisa revelou uma divergência real que eu não teria notado só olhando o código existente.
+
+**O que dificultou**: julgar a fronteira entre "endereçar a divergência" e "não tocar comportamento real testado" — diferente da Task 088 (pura representação, sem execução real), aqui `automation_invocation` já tem fila, retries e aprovações funcionando de verdade via API (Tasks 078/079), então qualquer mudança na máquina de estados ou no modelo de retry teria risco real de regressão. Resolvi isso perguntando a recomendação do CEO explicitamente antes de propor escopo, em vez de decidir sozinho onde parar.
+
+**Surpresas**: nenhuma surpresa técnica — a migração gerada foi exatamente a esperada (um único `ALTER TABLE ADD COLUMN`, sem alteração de enum, já que `automationWorkflowStatusEnum` não foi tocado). A única observação notável foi confirmar que a divergência arquitetural na Fase 8 é proporcionalmente maior que na Fase 9, por ter mais superfície de execução real construída ao longo de mais tasks (076-080) sem nunca ter sido confrontada com a arquitetura aprovada.
+
+**Riscos materializados**: nenhum novo. O `timeoutSeconds` não tem nenhum efeito prático (não há worker real), então não há risco de comportamento inesperado introduzido por esta task.
+
+**Perguntas em aberto**: quando (e se) o CEO decidirá retomar o restante do modelo canônico de execução supervisionada da Fase 8 — não há prazo nem gatilho definido, apenas o registro de que a divergência existe e foi documentada. Também permanece em aberto se essa retomada deveria vir junto com a decisão sobre execução real de agentes da Fase 9 (já que ambas dependem de um modelo mais robusto de aprovação/execução) ou se são independentes.
+
+**Ações propostas**: ao propor qualquer novo escopo em `automation_workflow`/`automation_invocation`/`ai_agent` no futuro, reconsultar `Modelo-execucao-supervisionada-filas-retry-timeout-idempotencia.md` e `Politica-aprovacao-e-separacao-de-funcoes-agentes.md` para verificar se a divergência documentada aqui ainda é atual, já que pode mudar conforme novas fatias forem adicionadas.
+
+**Mudanças aceitas**: registradas em `00_SYSTEM/logs/changes.jsonl`.
