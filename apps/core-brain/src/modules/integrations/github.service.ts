@@ -31,6 +31,14 @@ export interface GithubIssueComment {
   createdAt: string;
 }
 
+export interface GithubIssue {
+  number: number;
+  title: string;
+  body: string | null;
+  htmlUrl: string;
+  createdAt: string;
+}
+
 const GITHUB_API_BASE_URL = 'https://api.github.com';
 const USER_AGENT = 'monvi-brain-core';
 
@@ -130,6 +138,41 @@ export async function createGithubIssueComment(
 
   return {
     id: data.id,
+    body: data.body,
+    htmlUrl: data.html_url,
+    createdAt: data.created_at,
+  };
+}
+
+export async function createGithubIssue(
+  owner: string,
+  repo: string,
+  title: string,
+  body: string | undefined,
+  token: string | undefined
+): Promise<GithubIssue> {
+  if (!token) {
+    throw new GithubCredentialMissingError();
+  }
+
+  const response = await githubPost(`/repos/${owner}/${repo}/issues`, token, { title, body });
+
+  if (!response.ok) {
+    const responseBody = (await response.json().catch(() => ({}))) as { message?: string };
+    throw new GithubApiError(response.status, responseBody.message ?? 'erro desconhecido');
+  }
+
+  const data = (await response.json()) as {
+    number: number;
+    title: string;
+    body: string | null;
+    html_url: string;
+    created_at: string;
+  };
+
+  return {
+    number: data.number,
+    title: data.title,
     body: data.body,
     htmlUrl: data.html_url,
     createdAt: data.created_at,

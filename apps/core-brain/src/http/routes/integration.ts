@@ -10,6 +10,7 @@ import { recordAuditEvent } from '../../modules/audit/audit.service.js';
 import {
   fetchGithubRepository,
   createGithubIssueComment,
+  createGithubIssue,
   GithubApiError,
   GithubCredentialMissingError,
 } from '../../modules/integrations/github.service.js';
@@ -51,6 +52,11 @@ const githubIssueCommentParamsSchema = z.object({
 
 const githubIssueCommentBodySchema = z.object({
   body: z.string().min(1),
+});
+
+const githubCreateIssueBodySchema = z.object({
+  title: z.string().min(1),
+  body: z.string().optional(),
 });
 
 function requestIdOf(headers: Record<string, unknown>): string | null {
@@ -426,6 +432,119 @@ export async function registerIntegrationRoutes(
               owner,
               repo,
               issueNumber,
+              outcome: 'github_api_error',
+              githubStatus: err.status,
+            },
+            requestId: requestIdOf(request.headers),
+          });
+
+          return reply.status(502).send({
+            statusCode: 502,
+            error: 'Bad Gateway',
+            message: `GitHub retornou erro: ${err.githubMessage}`,
+          });
+        }
+
+        throw err;
+      }
+    }
+  );
+
+  app.post(
+    '/integrations/:id/github/issues',
+    { preHandler: [authenticateRequest, requirePermission('integration:write')] },
+    async (request, reply) => {
+      const paramsResult = idParamsSchema.safeParse(request.params);
+      if (!paramsResult.success) {
+        return reply.status(400).send({
+          statusCode: 400,
+          error: 'Bad Request',
+          message: 'Identificador de integração inválido.',
+        });
+      }
+
+      const queryResult = githubRepositoryQuerySchema.safeParse(request.query);
+      if (!queryResult.success) {
+        return reply.status(400).send({
+          statusCode: 400,
+          error: 'Bad Request',
+          message: 'owner e repo são obrigatórios.',
+          details: queryResult.error.flatten(),
+        });
+      }
+
+      const bodyResult = githubCreateIssueBodySchema.safeParse(request.body);
+      if (!bodyResult.success) {
+        return reply.status(400).send({
+          statusCode: 400,
+          error: 'Bad Request',
+          message: 'title é obrigatório.',
+          details: bodyResult.error.flatten(),
+        });
+      }
+
+      const [found] = await db
+        .select()
+        .from(integration)
+        .where(and(eq(integration.id, paramsResult.data.id), isNull(integration.deletedAt)));
+
+      if (!found) {
+        return reply.status(404).send({
+          statusCode: 404,
+          error: 'Not Found',
+          message: 'Integração não encontrada.',
+        });
+      }
+
+      if (found.provider !== 'github') {
+        return reply.status(400).send({
+          statusCode: 400,
+          error: 'Bad Request',
+          message: `Esta integração é do provedor '${found.provider}', não 'github'.`,
+        });
+      }
+
+      const { owner, repo } = queryResult.data;
+      const { title, body } = bodyResult.data;
+
+      try {
+        const issue = await createGithubIssue(owner, repo, title, body, dependencies.config.GITHUB_PAT);
+
+        await recordAuditEvent({
+          eventType: 'integration:github_call',
+          severity: 'info',
+          actorPersonId: request.user?.personId ?? null,
+          actionDetails: { integrationId: found.id, owner, repo, outcome: 'success' },
+          requestId: requestIdOf(request.headers),
+        });
+
+        return reply.status(201).send({ issue });
+      } catch (err) {
+        if (err instanceof GithubCredentialMissingError) {
+          await recordAuditEvent({
+            eventType: 'integration:github_call',
+            severity: 'warn',
+            actorPersonId: request.user?.personId ?? null,
+            actionDetails: { integrationId: found.id, owner, repo, outcome: 'credential_missing' },
+            requestId: requestIdOf(request.headers),
+          });
+
+          return reply.status(424).send({
+            statusCode: 424,
+            error: 'Failed Dependency',
+            message: 'GITHUB_PAT não configurado neste ambiente.',
+          });
+        }
+
+        if (err instanceof GithubApiError) {
+          await recordAuditEvent({
+            eventType: 'integration:github_call',
+            severity: 'warn',
+            actorPersonId: request.user?.personId ?? null,
+            actionDetails: {
+              integrationId: found.id,
+              owner,
+              repo,
               outcome: 'github_api_error',
               githubStatus: err.status,
             },
