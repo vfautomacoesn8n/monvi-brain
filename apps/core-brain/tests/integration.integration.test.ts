@@ -180,4 +180,44 @@ describe('Fluxo real de integrações externas — PostgreSQL local (Fase 10)', 
 
     await db.delete(integration).where(eq(integration.id, createdNonGithubIntegrationId));
   });
+
+  it('retorna 424 ao chamar POST .../github/issues sem GITHUB_PAT configurado', async () => {
+    const createResponse = await app.inject({
+      method: 'POST',
+      url: '/api/v1/integrations',
+      headers: { authorization: `Bearer ${sessionToken}` },
+      payload: { provider: 'github', name: 'GitHub — teste de falha de credencial (criar issue)' },
+    });
+    const createdGithubIssueIntegrationId = createResponse.json().integration.id;
+
+    const response = await app.inject({
+      method: 'POST',
+      url: `/api/v1/integrations/${createdGithubIssueIntegrationId}/github/issues?owner=vfautomacoesn8n&repo=monvi-brain`,
+      headers: { authorization: `Bearer ${sessionToken}` },
+      payload: { title: 'Issue de teste' },
+    });
+    expect(response.statusCode).toBe(424);
+
+    await db.delete(integration).where(eq(integration.id, createdGithubIssueIntegrationId));
+  });
+
+  it('retorna 400 ao chamar POST .../github/issues em integração não-github', async () => {
+    const createResponse = await app.inject({
+      method: 'POST',
+      url: '/api/v1/integrations',
+      headers: { authorization: `Bearer ${sessionToken}` },
+      payload: { provider: 'nuvemshop', name: 'Nuvemshop — não é github' },
+    });
+    const createdNonGithubIssueIntegrationId = createResponse.json().integration.id;
+
+    const response = await app.inject({
+      method: 'POST',
+      url: `/api/v1/integrations/${createdNonGithubIssueIntegrationId}/github/issues?owner=vfautomacoesn8n&repo=monvi-brain`,
+      headers: { authorization: `Bearer ${sessionToken}` },
+      payload: { title: 'Issue de teste' },
+    });
+    expect(response.statusCode).toBe(400);
+
+    await db.delete(integration).where(eq(integration.id, createdNonGithubIssueIntegrationId));
+  });
 });
