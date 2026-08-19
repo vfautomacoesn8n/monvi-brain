@@ -38,4 +38,8 @@ npm run build
 
 ## Fora de escopo (deliberadamente, nesta fatia)
 
-Qualquer tela de escrita (criar/editar/excluir), autenticação de produção real, deploy. Validação end-to-end com login real não foi possível durante o desenvolvimento desta fatia por falta de um Postgres local (mesma limitação da Parte B documentada no Plano Mestre) — a verificação feita foi de wiring (CORS, compilação/servimento real via `vite dev`, `dev-login` falhando exatamente com o erro de conexão já conhecido) mais os testes automatizados, que cobrem o fluxo de login e a renderização dos três dashboards com dados simulados.
+Qualquer tela de escrita (criar/editar/excluir), autenticação de produção real, deploy.
+
+## Validação end-to-end
+
+Durante o desenvolvimento inicial desta fatia (Task 094), a validação com login real não foi possível por falta de um Postgres local (mesma limitação da Parte B documentada no Plano Mestre) — a verificação feita foi só de wiring. Isso foi resolvido logo em seguida (Task 095, mesmo dia): com um Postgres local real rodando, login e os três dashboards foram exercitados de ponta a ponta com sucesso, incluindo a partir da origem exata deste app (`http://localhost:5173`). Ver a seção "Parte B" do [Plano Mestre](../../00_SYSTEM/roadmaps/Plano-Mestre-de-Construcao-Monvi-Brain.md) para os detalhes de como o Postgres local foi configurado (sem Docker, sem admin).
