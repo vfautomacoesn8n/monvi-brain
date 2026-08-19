@@ -2,8 +2,8 @@
 id: task-2026-094
 type: task
 title: "Hub interno (frontend) — primeira fatia, dashboards em modo leitura"
-status: active
-task_state: in-progress
+status: done
+task_state: done
 owner: ceo-monvi
 agent: claude-cursor
 reviewer: ceo-monvi
@@ -13,7 +13,7 @@ confidentiality: internal
 classification: internal
 created_at: "2026-08-19"
 updated_at: "2026-08-19"
-reviewed_at: null
+reviewed_at: "2026-08-19T10:24:48-03:00"
 review_cycle: on-change
 sources:
   - apps/core-brain/src/http/routes/dashboard.ts
@@ -32,6 +32,7 @@ aliases:
 tags: [hub, frontend, react, vite, dashboards, cors, testes]
 allowed_paths:
   - 00_SYSTEM/tasks/active/TASK-2026-094-hub-interno-primeira-fatia.md
+  - 00_SYSTEM/tasks/done/TASK-2026-094-hub-interno-primeira-fatia.md
   - 00_SYSTEM/logs/changes.jsonl
   - 00_SYSTEM/roadmaps/Plano-Mestre-de-Construcao-Monvi-Brain.md
   - apps/core-brain/README.md
@@ -151,17 +152,49 @@ Mesma decisão já registrada desde a Task 052. Quando o CEO tiver Postgres loca
 - [x] Verificação real de wiring com os dois servidores rodando. Evidência: seção "Verificação real de wiring" acima, com os três checks executados de fato.
 - [x] Documentação criada/atualizada. Evidência: `apps/hub/README.md` novo; `apps/core-brain/README.md` e Plano Mestre (nova seção 21) atualizados.
 - [x] Nenhuma credencial, dado real, decisão de multi-organização ou de deploy. Evidência: diff restrito aos arquivos previstos; nenhuma variável de ambiente de credencial nova; hub roda só localmente.
-- [ ] Conteúdo revisado e aprovado pelo CEO antes do merge; encerramento em PR separada (Regra Fundamental 6, exceção para código). Pendente do gate de merge do PR de implementação.
-- [ ] Retrospectiva crítica executada conforme `../workflows/retro.md` (Regra Fundamental 5). Pendente, será executada antes do gate de encerramento.
+- [x] Conteúdo revisado e aprovado pelo CEO antes do merge; encerramento em PR separada (Regra Fundamental 6, exceção para código). Evidência: gate explícito `Autorizado` para o merge do PR #115, integrado em `aff6eec022b4d128b1e7614ac8078ef7bac12570`; este encerramento, em PR própria, é essa própria exceção em aplicação.
+- [x] Retrospectiva crítica executada conforme `../workflows/retro.md` (Regra Fundamental 5). Evidência: seção "Retrospectiva crítica" abaixo, com mudanças aceitas registradas em `changes.jsonl`.
 
 ## Riscos e gates humanos
 
 Riscos: mesmos já registrados desde a Fase 5 — migração nunca aplicada contra banco real (não se aplica aqui, nenhuma migração nesta task), suposição single-tenant, ausência de Docker/Postgres neste ambiente, agora também afetando a validação do hub (login real não testável ponta a ponta). Risco específico desta fatia: `sessionStorage` guarda o token de sessão em texto puro no navegador — aceitável para uma ferramenta interna de desenvolvimento local, mas não seria uma escolha adequada se este hub um dia for exposto para além do uso local do CEO (mesma ressalva de "autenticação de produção real" já registrada em outras partes do plano). CORS foi configurado restrito a uma única origem confiável, não aberto (`origin: '*'` teria sido mais simples mas incorreto).
 
-Gate vigente: aguardando autorização do CEO para o merge do PR de implementação.
+Gate vigente: encerrado. O merge do PR #115 foi autorizado (`Autorizado`) e executado por squash em `aff6eec022b4d128b1e7614ac8078ef7bac12570`. Esta task está formalmente concluída. Qualquer tela de escrita, autenticação de produção real e deploy permanecem fora deste encerramento, deliberadamente adiadas.
 
-Histórico de gates desta task: encerramento da Task 093 → CEO pergunta "O que falta para finalizar o projeto por completo?" → apresento panorama completo → CEO pergunta "O que você acha sobre criar um hub para esse projeto?" → pergunta esclarecedora (pergunta ambígua) → CEO escolhe "painel/dashboard interno (frontend)" → dou minha opinião e recomendo uma primeira fatia mínima, só leitura → CEO pede escopo concreto ("Sim por favor") → proponho o escopo técnico → `Autorizado`.
+Histórico de gates desta task: encerramento da Task 093 → CEO pergunta "O que falta para finalizar o projeto por completo?" → apresento panorama completo → CEO pergunta "O que você acha sobre criar um hub para esse projeto?" → pergunta esclarecedora (pergunta ambígua) → CEO escolhe "painel/dashboard interno (frontend)" → dou minha opinião e recomendo uma primeira fatia mínima, só leitura → CEO pede escopo concreto ("Sim por favor") → proponho o escopo técnico → `Autorizado` (execução completa do escopo, criação da task, branch, commit, push e PR) → `Autorizado` (merge do PR #115, integrado em `aff6eec022b4d128b1e7614ac8078ef7bac12570`).
 
 ## Revisão e entrega
 
-Apresentarei o diff completo, as validações locais (`typecheck`, `test`, `build` nos dois pacotes, `npm audit`, verificação real de wiring com os dois servidores) e o estado Git, e solicitarei explicitamente o gate de merge antes de integrar esta mudança em `main`.
+Apresentei o diff completo, as validações locais (`typecheck`, `test`, `build` nos dois pacotes, `npm audit`, verificação real de wiring com os dois servidores) e o estado Git, e solicitei explicitamente o gate de merge antes de integrar esta mudança em `main`.
+
+## Encerramento — 2026-08-19
+
+**Gate de encerramento**: o CEO autorizou (`Autorizado`) o squash merge do PR #115.
+
+**Integração**: PR #115 integrado em `main` via squash merge, commit `aff6eec022b4d128b1e7614ac8078ef7bac12570`, em 2026-08-19T13:24:48Z. Escopo integrado: exatamente os 36 arquivos previstos em `allowed_paths` — criação de `00_SYSTEM/tasks/active/TASK-2026-094-hub-interno-primeira-fatia.md`, de todo o pacote `apps/hub` (27 arquivos: scaffold, código-fonte, testes, documentação) e das entradas de `package-lock.json`; edição de `apps/core-brain/src/app/build-app.ts`, `src/config/environment.ts`, `.env.example`, `package.json`, `README.md`, o Plano Mestre e `changes.jsonl`. Nenhuma rota nova de negócio no backend, nenhuma mudança de schema.
+
+**Verificação pós-merge**: sincronizei `main` local via fast-forward (`git pull --ff-only`, `3f5c0ab..aff6eec`), rodei `npm install` em ambos os pacotes para alinhar `node_modules` aos `package-lock.json` sincronizados, e reexecutei `npm run typecheck`, `npm test` e `npm run build` diretamente contra o `main` já integrado — em `apps/core-brain`: typecheck limpo, 144/144 testes passando, build sem erros, `npm audit` com as mesmas seis vulnerabilidades pré-existentes; em `apps/hub`: typecheck limpo, 9/9 testes passando, build sem erros, `npm audit` com 0 vulnerabilidades.
+
+**Estado final**: o projeto tem sua primeira interface visual — `apps/hub`, um painel interno em modo leitura com login e três dashboards (comercial, automações, projeto), consumindo a API já existente sem nenhuma rota nova de negócio. Documentado como iniciativa transversal na nova seção 21 do Plano Mestre, fora da numeração sequencial de Fases. Nenhuma tela de escrita, nenhum deploy, nenhuma decisão de infraestrutura foi tomada ou presumida. A validação ponta a ponta com login real permanece pendente até o CEO ter Postgres local disponível (mesma limitação da Parte B) — a verificação desta task ficou nos limites do que era possível neste ambiente: wiring real confirmado (CORS, compilação/servimento do bundle) e testes automatizados com rede simulada.
+
+**Escopo preservado**: nenhuma alteração fora de `allowed_paths` foi feita; nenhum código de identidade/autenticação/autorização do backend foi tocado além do CORS estritamente necessário; nenhuma credencial nova foi introduzida; nenhuma decisão de multi-organização, deploy ou infraestrutura de produção foi tomada ou presumida; nenhuma tela de escrita foi implementada.
+
+## Retrospectiva crítica (conforme `../workflows/retro.md`)
+
+**Objetivo**: entregar a primeira interface visual do projeto — um hub interno, só leitura, reaproveitando dashboards já existentes no backend, sem introduzir nenhuma rota nova de negócio, decisão de deploy, ou comprometer a disciplina de escopo estreito já estabelecida.
+
+**Resultado conhecido**: `apps/hub` está integrado, com login e três dashboards funcionais (nos limites do que pôde ser verificado sem Postgres local); o backend ganhou CORS restrito, sem abrir a API para qualquer origem.
+
+**O que ajudou**: esclarecer a ambiguidade da palavra "hub" via pergunta estruturada antes de propor qualquer escopo — a primeira leitura possível ("hub de conhecimento/documentação", "hub de integrações") teria me levado a um trabalho completamente diferente do que o CEO realmente queria. Também ajudou reaproveitar integralmente rotas já existentes (os três dashboards agregados) em vez de desenhar novos endpoints — isso manteve o backend praticamente intocado (só CORS) e reduziu a superfície de risco desta primeira fatia.
+
+**O que dificultou**: verificar de verdade sem um banco de dados real. Em vez de aceitar isso como bloqueio total, separei o que dava para verificar (compilação real do bundle, CORS real entre os dois servidores, a natureza exata do erro do `dev-login`) do que não dava (o fluxo autenticado completo) — e documentei essa fronteira explicitamente, em vez de alegar uma cobertura de teste que não existe. Isso segue a mesma disciplina já usada durante toda a Parte B.
+
+**Surpresas**: nenhuma técnica. A maior reflexão foi de escopo/governança — este é o primeiro pacote do projeto que não é "mais uma entidade numa fase já prevista", e documentar isso exigiu criar uma seção nova no Plano Mestre (seção 21) em vez de forçar o encaixe em uma Fase existente.
+
+**Riscos materializados**: nenhum. O CORS foi verificado restringindo corretamente antes do merge (não só assumido); nenhuma chamada real foi feita a nenhum dado de produção.
+
+**Perguntas em aberto**: se/quando o hub crescer além de dashboards — telas de CRUD, ações de escrita — será uma decisão nova do CEO, não uma extensão automática desta fatia. Também fica em aberto se o hub um dia precisará de autenticação além do `dev-login` (hoje aceitável, já que é uma ferramenta interna de uso local).
+
+**Ações propostas**: ao propor qualquer nova fatia do hub, manter a mesma disciplina de "reaproveitar rota existente antes de desenhar rota nova" sempre que possível, e continuar distinguindo explicitamente o que foi verificado de verdade do que ficou limitado pela ausência de Postgres local.
+
+**Mudanças aceitas**: registradas em `00_SYSTEM/logs/changes.jsonl`.
