@@ -12,7 +12,8 @@ const environmentSchema = z.object({
   SERVICE_NAME: z.string().min(1).default("monvi-core-brain"),
   SERVICE_VERSION: z.string().min(1).default("0.1.0"),
   GITHUB_PAT: z.string().min(1).optional(),
-  UPLOADS_DIR: z.string().min(1).default("./uploads")
+  UPLOADS_DIR: z.string().min(1).default("./uploads"),
+  HUB_ORIGIN: z.string().min(1).default("http://localhost:5173")
 });
 
 export type AppConfig = z.infer<typeof environmentSchema>;

@@ -1,5 +1,6 @@
 import Fastify, { type FastifyInstance } from "fastify";
 import multipart from "@fastify/multipart";
+import cors from "@fastify/cors";
 import type { AppConfig } from "../config/environment.js";
 import { registerErrorHandler } from "../errors/error-handler.js";
 import { registerHealthRoutes } from "../http/routes/health.js";
@@ -43,6 +44,10 @@ export async function buildApp(
   });
 
   registerErrorHandler(app);
+
+  await app.register(cors, {
+    origin: [config.HUB_ORIGIN]
+  });
 
   await app.register(multipart, {
     limits: { fileSize: 20 * 1024 * 1024, files: 1 }
