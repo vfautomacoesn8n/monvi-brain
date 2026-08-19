@@ -1,6 +1,15 @@
 import { eq, and, gt, isNull } from 'drizzle-orm';
 import { db } from '../../db/client.js';
-import { session, person, identity, profile, role, permission, rolePermission } from '../../db/schema/index.js';
+import {
+  session,
+  person,
+  identity,
+  profile,
+  role,
+  permission,
+  rolePermission,
+  personRole,
+} from '../../db/schema/index.js';
 import { generateSessionToken, hashToken } from './tokens.js';
 import type { AuthenticatedUser } from '../../types/fastify.js';
 
@@ -58,14 +67,11 @@ export async function validateSessionToken(rawToken: string): Promise<Authentica
         email: identity.email,
         profileId: profile.id,
         profileType: profile.profileType,
-        roleId: role.id,
-        roleName: role.name,
       })
       .from(session)
       .innerJoin(person, eq(session.personId, person.id))
       .innerJoin(identity, eq(session.identityId, identity.id))
       .leftJoin(profile, eq(profile.personId, person.id))
-      .leftJoin(role, eq(role.name, 'admin'))
       .where(
         and(
           eq(session.sessionTokenHash, tokenHash),
@@ -76,14 +82,33 @@ export async function validateSessionToken(rawToken: string): Promise<Authentica
 
     if (!sessionRecord) return null;
 
+    // Resolve o papel real da pessoa via person_role; quando não há atribuição
+    // explícita, cai de volta para 'admin' — preserva o comportamento de antes desta
+    // tabela existir (Task 096), já que nenhuma pessoa tinha papel atribuído até então.
+    const [explicitRole] = await db
+      .select({ roleId: role.id, roleName: role.name })
+      .from(personRole)
+      .innerJoin(role, eq(personRole.roleId, role.id))
+      .where(eq(personRole.personId, sessionRecord.personId))
+      .limit(1);
+
+    const resolvedRole =
+      explicitRole ??
+      (await db
+        .select({ roleId: role.id, roleName: role.name })
+        .from(role)
+        .where(eq(role.name, 'admin'))
+        .limit(1)
+        .then((rows) => rows[0]));
+
     // Resolve permissions
     let permissionsList: string[] = ['core_brain:read'];
-    if (sessionRecord.roleId) {
+    if (resolvedRole?.roleId) {
       const rolePerms = await db
         .select({ resource: permission.resource, action: permission.action })
         .from(rolePermission)
         .innerJoin(permission, eq(rolePermission.permissionId, permission.id))
-        .where(eq(rolePermission.roleId, sessionRecord.roleId));
+        .where(eq(rolePermission.roleId, resolvedRole.roleId));
 
       if (rolePerms.length > 0) {
         permissionsList = rolePerms.map((p) => `${p.resource}:${p.action}`);
@@ -96,8 +121,8 @@ export async function validateSessionToken(rawToken: string): Promise<Authentica
       email: sessionRecord.email,
       profileId: sessionRecord.profileId,
       profileType: sessionRecord.profileType,
-      roleId: sessionRecord.roleId,
-      roleName: sessionRecord.roleName,
+      roleId: resolvedRole?.roleId ?? null,
+      roleName: resolvedRole?.roleName ?? null,
       permissions: permissionsList,
       sessionId: sessionRecord.sessionId,
     };
