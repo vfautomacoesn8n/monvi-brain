@@ -2,8 +2,8 @@
 id: task-2026-096
 type: task
 title: "Atribuição real de papel por pessoa (person_role) e cobertura real do caminho de negação (403)"
-status: active
-task_state: in-progress
+status: done
+task_state: done
 owner: ceo-monvi
 agent: claude-cursor
 reviewer: ceo-monvi
@@ -12,8 +12,8 @@ active_project: null
 confidentiality: internal
 classification: internal
 created_at: "2026-08-19"
-updated_at: "2026-08-19"
-reviewed_at: null
+updated_at: "2026-08-20"
+reviewed_at: "2026-08-20T10:15:25-03:00"
 review_cycle: on-change
 sources:
   - apps/core-brain/src/modules/auth/session.service.ts
@@ -29,6 +29,7 @@ aliases:
 tags: [core-brain, rbac, seguranca, schema, migracao, testes-integracao]
 allowed_paths:
   - 00_SYSTEM/tasks/active/TASK-2026-096-person-role-real-e-teste-403.md
+  - 00_SYSTEM/tasks/done/TASK-2026-096-person-role-real-e-teste-403.md
   - 00_SYSTEM/logs/changes.jsonl
   - 00_SYSTEM/roadmaps/Plano-Mestre-de-Construcao-Monvi-Brain.md
   - apps/core-brain/README.md
@@ -157,17 +158,49 @@ Atribuir papéis reais a pessoas reais do sistema (isso é uma decisão de segur
 - [x] `typecheck`, `test`, `build` continuam passando. Evidência: 144/144 testes unitários, build limpo.
 - [x] Documentação atualizada. Evidência: seção "Escopo implementado" do README de `apps/core-brain` e seção "Concluído"/Parte B do Plano Mestre.
 - [x] Nenhuma credencial, dado real, decisão de multi-organização. Evidência: diff restrito aos arquivos previstos; nenhum papel real atribuído.
-- [ ] Conteúdo revisado e aprovado pelo CEO; encerramento em PR separada (Regra Fundamental 6). Pendente do gate de merge.
-- [ ] Retrospectiva crítica executada conforme `../workflows/retro.md` (Regra Fundamental 5). Pendente, será executada antes do gate de encerramento.
+- [x] Conteúdo revisado e aprovado pelo CEO; encerramento em PR separada (Regra Fundamental 6). Evidência: gate explícito `Autorizado` para o merge do PR #119, integrado em `a6751832767cb321d272a2b96294a1d91f5027ca`; este encerramento, em PR própria, é essa própria exceção em aplicação.
+- [x] Retrospectiva crítica executada conforme `../workflows/retro.md` (Regra Fundamental 5). Evidência: seção "Retrospectiva crítica" abaixo, com mudanças aceitas registradas em `changes.jsonl`.
 
 ## Riscos e gates humanos
 
 Riscos: o fallback para `admin` significa que, na prática, o comportamento de segurança do sistema não mudou hoje — toda pessoa sem atribuição explícita continua efetivamente `admin`. Isso é deliberado (evita uma mudança de comportamento não solicitada em produção), mas significa que esta task, por si só, **não é uma correção de segurança** — é o que a torna testável. Uma correção de segurança de verdade (atribuir papéis reais, ou inverter o fallback para negar por padrão) é uma decisão distinta, maior, e explicitamente fora desta fatia. Documentado aqui para não ser confundido com "RBAC agora está seguro".
 
-Gate vigente: aguardando autorização do CEO para o merge do PR de implementação.
+Gate vigente: encerrado. O merge do PR #119 foi autorizado (`Autorizado`) e executado por squash em `a6751832767cb321d272a2b96294a1d91f5027ca`. Esta task está formalmente concluída. Atribuição real de papéis a pessoas reais do sistema permanece fora deste encerramento, deliberadamente adiada para uma decisão futura separada.
 
-Histórico de gates desta task: encerramento da Task 095 → CEO pergunta "O que podemos fazer agora?" → recomendo fechar a lacuna de cobertura do 403, sinalizando que é a única coisa que só a Parte B destravava → CEO responde "Feche essa lacuna e vamos começar a elaborar um hub melhor" → investigo antes de implementar, descubro que não existe tabela pessoa↔papel nenhuma → reporto o achado com proposta de escopo conservadora (fallback preserva comportamento atual) → CEO confirma ("Aprovo o escopo") e pede para tratar o hub como conversa de elaboração separada, não produção ainda.
+Histórico de gates desta task: encerramento da Task 095 → CEO pergunta "O que podemos fazer agora?" → recomendo fechar a lacuna de cobertura do 403, sinalizando que é a única coisa que só a Parte B destravava → CEO responde "Feche essa lacuna e vamos começar a elaborar um hub melhor" → investigo antes de implementar, descubro que não existe tabela pessoa↔papel nenhuma → reporto o achado com proposta de escopo conservadora (fallback preserva comportamento atual) → CEO confirma ("Aprovo o escopo") e pede para tratar o hub como conversa de elaboração separada, não produção ainda → `Autorizado` (execução completa do escopo, criação da task, branch, commit, push e PR) → `Autorizado` (merge do PR #119, integrado em `a6751832767cb321d272a2b96294a1d91f5027ca`).
 
 ## Revisão e entrega
 
-Apresentarei o diff completo, as validações locais (`typecheck`, `test`, `build`, `test:integration` real contra Postgres local, 50/50) e o estado Git, e solicitarei explicitamente o gate de merge antes de integrar esta mudança em `main`.
+Apresentei o diff completo, as validações locais (`typecheck`, `test`, `build`, `test:integration` real contra Postgres local, 50/50) e o estado Git, e solicitei explicitamente o gate de merge antes de integrar esta mudança em `main`.
+
+## Encerramento — 2026-08-20
+
+**Gate de encerramento**: o CEO autorizou (`Autorizado`) o squash merge do PR #119.
+
+**Integração**: PR #119 integrado em `main` via squash merge, commit `a6751832767cb321d272a2b96294a1d91f5027ca`, em 2026-08-20T13:15:25Z. Escopo integrado: exatamente os 11 arquivos previstos em `allowed_paths` — criação de `00_SYSTEM/tasks/active/TASK-2026-096-person-role-real-e-teste-403.md`, `src/db/schema/person-role.ts`, `drizzle/0027_tense_wild_pack.sql` e `drizzle/meta/0027_snapshot.json`; edição de `src/db/schema/index.ts`, `src/modules/auth/session.service.ts`, `tests/document-permission.integration.test.ts`, `drizzle/meta/_journal.json`, `README.md`, o Plano Mestre e `changes.jsonl`. Nenhuma outra rota ou middleware tocado.
+
+**Verificação pós-merge**: sincronizei `main` local via fast-forward (`git pull --ff-only`, `84bca25..a675183`). Antes de rodar qualquer teste, verifiquei portas 3000/5173 por processos órfãos (lição da Task 095) — encontrei e encerrei um processo remanescente na porta 3000 antes de prosseguir. Confirmei o Postgres local (Task 095) ainda ativo, e reexecutei `npm run typecheck`, `npm test` e `npm run build` diretamente contra o `main` já integrado — typecheck limpo, 144/144 testes unitários, build sem erros — e `npm run test:integration` contra o Postgres real: **50/50 testes passando**, 26 arquivos.
+
+**Estado final**: `person_role` está integrada e em uso — `validateSessionToken` consulta atribuições reais, com fallback para `admin` preservando o comportamento de toda sessão já existente. O caminho de negação (403) de acesso granular a documento, sem cobertura desde a Task 072 e reconfirmado como pendente na Task 095, agora tem um teste real e passando. Nenhuma pessoa do sistema recebeu atribuição de papel real — essa continua sendo uma decisão de segurança separada, não tomada por esta task.
+
+**Escopo preservado**: nenhuma alteração fora de `allowed_paths` foi feita; nenhuma rota HTTP foi modificada; nenhuma atribuição real de papel foi feita; nenhuma credencial ou dado real foi introduzido; nenhuma decisão de multi-organização foi tomada ou presumida; nenhum trabalho no hub interno foi iniciado (permanece em fase de elaboração/conversa, sem escopo técnico definido).
+
+## Retrospectiva crítica (conforme `../workflows/retro.md`)
+
+**Objetivo**: tornar real a atribuição de papel por pessoa, sem mudar o comportamento de nenhuma sessão hoje existente, para finalmente testar o caminho de negação (403) de acesso granular a documento — lacuna conhecida desde a Task 072, só destravável depois da Parte B (Task 095).
+
+**Resultado conhecido**: `person_role` existe e é consultada de verdade; o teste real do `403` passa; nenhum dos 25 outros arquivos de teste de integração precisou de qualquer mudança.
+
+**O que ajudou**: investigar a causa raiz antes de escrever qualquer código revelou que o problema era maior do que a descrição original sugeria (nenhuma tabela pessoa↔papel jamais existiu, não um atalho pontual) — reportar isso ao CEO antes de agir, com uma proposta de escopo deliberadamente conservadora (fallback para `admin`), evitou transformar um pedido de "fechar uma lacuna de teste" numa reforma de RBAC não solicitada. Também ajudou, ao debugar o `401` inesperado, ignorar a hipótese óbvia (algo errado na lógica nova) e investigar o real motivo (migração gerada mas não aplicada) em vez de reescrever código que já estava correto.
+
+**O que dificultou**: o erro inicial (`401` genérico) escondia a causa real porque `validateSessionToken` engole qualquer exceção num `catch` silencioso — precisei duplicar a lógica de consulta fora desse `try/catch`, num script descartável, só para ver o erro verdadeiro (`relação "person_role" não existe`). Esse padrão (capturar tudo e retornar `null`) é deliberado para não vazar detalhes de erro de autenticação ao cliente, mas dificulta debugar durante o desenvolvimento — vale lembrar disso da próxima vez que algo relacionado a sessão falhar de forma pouco informativa.
+
+**Surpresas**: a causa raiz real (nenhuma tabela pessoa↔papel jamais existiu) foi mais significativa do que a task original enquadrava — vale registrar como um padrão a observar: descrições herdadas de tasks/notas antigas podem estar desatualizadas ou simplificadas, e vale investigar antes de assumir que o escopo é pequeno.
+
+**Riscos materializados**: um, menor, capturado e corrigido antes de qualquer PR — o esquecimento de aplicar a migração gerada contra o banco local antes de testar, causando o `401` investigado acima.
+
+**Perguntas em aberto**: quando (e se) o CEO vai querer atribuir papéis reais a pessoas reais do sistema — essa é a próxima decisão de segurança de verdade que esta task deixou pronta para ser tomada, mas não tomou.
+
+**Ações propostas**: nenhuma ação de processo nova. Ao investigar falhas de autenticação/sessão no futuro, lembrar que `validateSessionToken` engole exceções silenciosamente — extrair a lógica suspeita para fora do `try/catch` é o caminho mais rápido para ver o erro real.
+
+**Mudanças aceitas**: registradas em `00_SYSTEM/logs/changes.jsonl`.
