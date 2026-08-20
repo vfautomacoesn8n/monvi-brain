@@ -1,6 +1,6 @@
 # Monvi Hub
 
-Painel interno (frontend) do Monvi Brain, autorizado pela Task 094 (Fase transversal — ver seção 21 do [Plano Mestre](../../00_SYSTEM/roadmaps/Plano-Mestre-de-Construcao-Monvi-Brain.md)). Até esta task, todo o projeto era 100% API (`apps/core-brain`), sem nenhuma tela. A Task 097 (2026-08-20) alinhou o visual à identidade oficial da marca Monvi, sem adicionar nenhuma tela ou funcionalidade nova. A Task 098 (2026-08-20) trocou o tema único do hub para modo escuro premium, usando exclusivamente as cores oficiais do manual recombinadas — nenhuma cor nova, nenhuma funcionalidade nova.
+Painel interno (frontend) do Monvi Brain, autorizado pela Task 094 (Fase transversal — ver seção 21 do [Plano Mestre](../../00_SYSTEM/roadmaps/Plano-Mestre-de-Construcao-Monvi-Brain.md)). Até esta task, todo o projeto era 100% API (`apps/core-brain`), sem nenhuma tela. A Task 097 (2026-08-20) alinhou o visual à identidade oficial da marca Monvi, sem adicionar nenhuma tela ou funcionalidade nova. A Task 098 (2026-08-20) trocou o tema único do hub para modo escuro premium, usando exclusivamente as cores oficiais do manual recombinadas — nenhuma cor nova, nenhuma funcionalidade nova. A Task 099 (2026-08-20) substituiu a navegação por cards na tela de Início por uma sidebar fixa à esquerda, inspirada numa imagem de referência enviada pelo CEO — mesmas quatro views já existentes, sem nenhuma rota ou tela nova.
 
 ## Escopo desta primeira fatia — só leitura
 
@@ -39,6 +39,8 @@ Tipografia: Inter (corpo) e IBM Plex Mono (números e dados de tabela) — as du
 | Texto secundário | `medium-gray` | apoio | apoio (rótulos, labels de card) |
 
 O modo escuro passou a ser o único tema do hub (não é um toggle claro/escuro — é a nova aparência padrão). Não foi replicado o gráfico de tendência histórica da imagem de referência: a API do hub só expõe contagens do momento atual (sem série temporal), e inventar dados fictícios para preencher um gráfico teria sido fabricar informação — decisão deliberada de não fazer isso.
+
+**Sidebar de navegação (Task 099)**: o CEO revisitou a mesma imagem de referência da Task 098 e pediu uma reformulação estrutural — "um hub com abas laterais, opções que fazem sentido com a Monvi". A referência usa uma sidebar estreita só com ícones; propus ícone + texto (mais claro para um hub interno de poucos usuários) e o CEO confirmou. `src/components/Sidebar.tsx` (novo): sidebar fixa à esquerda (~224px, `w-56`), com o wordmark no topo, os quatro itens reais do hub (Início/`Home`, Comercial/`TrendingUp`, Automações/`Workflow`, Projetos/`Briefcase`) com destaque no item ativo (`bg-signal-blue/10 text-signal-blue`), e "Sair" fixado no rodapé. O cabeçalho horizontal anterior (`App.tsx`) foi removido — a sidebar assume a navegação principal. A tela de Início deixa de ser a única forma de navegar e passa a ser um atalho rápido complementar (mesmos três cards da Task 097/098, só com o texto ajustado). Nenhuma rota nova, nenhum `react-router` (mesmo controle de estado por `HubView` de antes), nenhuma cor nova.
 
 ## Rodando localmente
 
