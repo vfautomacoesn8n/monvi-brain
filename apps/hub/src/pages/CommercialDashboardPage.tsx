@@ -41,7 +41,7 @@ export function CommercialDashboardPage({ token }: { token: string }) {
 
   if (error) {
     return (
-      <p role="alert" className="text-sm text-red-600">
+      <p role="alert" className="text-sm text-red-400">
         {error}
       </p>
     );
@@ -53,7 +53,7 @@ export function CommercialDashboardPage({ token }: { token: string }) {
 
   return (
     <div className="flex flex-col gap-6">
-      <h1 className="text-xl font-semibold text-graphite">Dashboard comercial</h1>
+      <h1 className="text-xl font-semibold text-off-white">Dashboard comercial</h1>
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
         <CountsCard title="Leads" total={data.leads.total} byKey={data.leads.byStatus} />
         <CountsCard title="Oportunidades" total={data.opportunities.total} byKey={data.opportunities.byStage} />

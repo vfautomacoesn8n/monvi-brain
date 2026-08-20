@@ -14,8 +14,8 @@ function AuthenticatedApp({ token }: { token: string }) {
   const [view, setView] = useState<HubView>('home');
 
   return (
-    <div className="min-h-screen bg-off-white">
-      <header className="flex items-center justify-between border-b border-light-gray px-6 py-4">
+    <div className="min-h-screen bg-deep-graphite">
+      <header className="flex items-center justify-between border-b border-off-white/10 px-6 py-4">
         <button type="button" onClick={() => setView('home')} className="flex items-center gap-2">
           <Wordmark />
           <span className="font-mono text-xs text-medium-gray">hub</span>

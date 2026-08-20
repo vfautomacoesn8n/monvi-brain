@@ -1,6 +1,6 @@
 # Monvi Hub
 
-Painel interno (frontend) do Monvi Brain, autorizado pela Task 094 (Fase transversal — ver seção 21 do [Plano Mestre](../../00_SYSTEM/roadmaps/Plano-Mestre-de-Construcao-Monvi-Brain.md)). Até esta task, todo o projeto era 100% API (`apps/core-brain`), sem nenhuma tela. A Task 097 (2026-08-20) alinhou o visual à identidade oficial da marca Monvi, sem adicionar nenhuma tela ou funcionalidade nova.
+Painel interno (frontend) do Monvi Brain, autorizado pela Task 094 (Fase transversal — ver seção 21 do [Plano Mestre](../../00_SYSTEM/roadmaps/Plano-Mestre-de-Construcao-Monvi-Brain.md)). Até esta task, todo o projeto era 100% API (`apps/core-brain`), sem nenhuma tela. A Task 097 (2026-08-20) alinhou o visual à identidade oficial da marca Monvi, sem adicionar nenhuma tela ou funcionalidade nova. A Task 098 (2026-08-20) trocou o tema único do hub para modo escuro premium, usando exclusivamente as cores oficiais do manual recombinadas — nenhuma cor nova, nenhuma funcionalidade nova.
 
 ## Escopo desta primeira fatia — só leitura
 
@@ -27,6 +27,18 @@ React + TypeScript + Vite. `fetch` nativo para chamar a API (sem `axios`). Teste
 | `light-gray` | `#E4E3DF` | apoio |
 
 Tipografia: Inter (corpo) e IBM Plex Mono (números e dados de tabela) — as duas famílias oficiais do manual, auto-hospedadas via `@fontsource` (sem CDN externo). Ícones: `lucide-react` (traço fino, geométrico — compatível com a orientação de iconografia do manual). **Sem logo real ainda** — o manual é um PDF sem camada vetorial, e nenhum arquivo de logo oficial foi localizado no repositório; o hub usa por enquanto só o wordmark "MONVI" em texto (`src/components/Wordmark.tsx`), substituível quando o arquivo original existir. Todo esse material de marca está com `status: review` nos metadados da Wiki (nunca formalmente aprovado) — o CEO autorizou o uso para esta primeira versão do hub, com alinhamento contínuo esperado.
+
+**Modo escuro premium (Task 098)**: o CEO pediu algo "visualmente mais premium", com uma imagem de referência de um dashboard cripto/Web3 em modo escuro (fundo quase preto, glow em verde atrás dos números, cards ricos, badges). Optamos por manter a técnica (modo escuro, glow, cards com profundidade, badges/pills) mas remapear as cores para a paleta oficial da Monvi — sem introduzir nenhuma cor nova:
+
+| Papel visual | Token | Uso na Task 097 (claro) | Uso na Task 098 (escuro) |
+| --- | --- | --- | --- |
+| Fundo da página | `deep-graphite` | apoio | fundo principal |
+| Fundo dos cards | `graphite` | texto | fundo dos cards (mais claro que o da página — cria profundidade) |
+| Texto principal | `off-white` | fundo | texto principal |
+| Destaque/glow | `signal-blue` | ações, links, destaques | único acento — inclusive um glow sutil (`CardGlow`) atrás dos números principais dos cards, no lugar do verde da referência |
+| Texto secundário | `medium-gray` | apoio | apoio (rótulos, labels de card) |
+
+O modo escuro passou a ser o único tema do hub (não é um toggle claro/escuro — é a nova aparência padrão). Não foi replicado o gráfico de tendência histórica da imagem de referência: a API do hub só expõe contagens do momento atual (sem série temporal), e inventar dados fictícios para preencher um gráfico teria sido fabricar informação — decisão deliberada de não fazer isso.
 
 ## Rodando localmente
 

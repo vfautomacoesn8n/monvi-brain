@@ -14,13 +14,13 @@ export function LoginPage() {
   }
 
   return (
-    <div className="flex min-h-screen items-center justify-center bg-off-white">
+    <div className="flex min-h-screen items-center justify-center bg-deep-graphite">
       <form
         onSubmit={handleSubmit}
-        className="flex w-80 flex-col gap-4 rounded-lg border border-light-gray bg-off-white p-8 shadow-sm"
+        className="flex w-80 flex-col gap-4 rounded-lg border border-off-white/10 bg-graphite p-8 shadow-lg"
       >
         <div className="flex flex-col gap-1">
-          <h1 className="font-sans text-xl font-bold tracking-tight text-graphite">Monvi Hub</h1>
+          <h1 className="font-sans text-xl font-bold tracking-tight text-off-white">Monvi Hub</h1>
           <p className="text-sm text-medium-gray">Entre com seu e-mail para acessar os painéis.</p>
         </div>
         <div className="flex flex-col gap-1.5">
@@ -39,7 +39,7 @@ export function LoginPage() {
           {loggingIn ? 'Entrando...' : 'Entrar'}
         </Button>
         {loginError && (
-          <p role="alert" className="text-sm text-red-600">
+          <p role="alert" className="text-sm text-red-400">
             {loginError}
           </p>
         )}

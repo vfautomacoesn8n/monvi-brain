@@ -24,7 +24,7 @@ function ProjectPicker({
           <button type="button" onClick={() => onSelect(project.id)} className="block w-full max-w-md text-left">
             <Card className="transition-colors hover:border-signal-blue">
               <CardContent className="flex items-center justify-between p-4">
-                <span className="text-sm font-medium text-graphite">{project.name}</span>
+                <span className="text-sm font-medium text-off-white">{project.name}</span>
                 <span className="font-mono text-xs text-medium-gray">{project.status}</span>
               </CardContent>
             </Card>
@@ -73,7 +73,7 @@ function ProjectDashboard({ token, projectId }: { token: string; projectId: stri
 
   if (error) {
     return (
-      <p role="alert" className="text-sm text-red-600">
+      <p role="alert" className="text-sm text-red-400">
         {error}
       </p>
     );
@@ -85,7 +85,7 @@ function ProjectDashboard({ token, projectId }: { token: string; projectId: stri
 
   return (
     <div className="flex flex-col gap-6">
-      <h1 className="text-xl font-semibold text-graphite">{data.project.name}</h1>
+      <h1 className="text-xl font-semibold text-off-white">{data.project.name}</h1>
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
         <CountsCard title="Tarefas" total={data.tasks.total} byKey={data.tasks.byStatus} />
         <CountsCard title="Entregáveis" total={data.deliverables.total} byKey={data.deliverables.byStatus} />
@@ -136,9 +136,9 @@ export function ProjectsDashboardPage({ token }: { token: string }) {
 
   return (
     <div className="flex flex-col gap-6">
-      <h1 className="text-xl font-semibold text-graphite">Projetos</h1>
+      <h1 className="text-xl font-semibold text-off-white">Projetos</h1>
       {error && (
-        <p role="alert" className="text-sm text-red-600">
+        <p role="alert" className="text-sm text-red-400">
           {error}
         </p>
       )}
