@@ -2,8 +2,8 @@
 id: task-2026-097
 type: task
 title: "Hub interno — identidade visual alinhada à marca Monvi (reskin, sem funcionalidade nova)"
-status: active
-task_state: in-progress
+status: done
+task_state: done
 owner: ceo-monvi
 agent: claude-cursor
 reviewer: ceo-monvi
@@ -13,7 +13,7 @@ confidentiality: internal
 classification: internal
 created_at: "2026-08-20"
 updated_at: "2026-08-20"
-reviewed_at: null
+reviewed_at: "2026-08-20T13:16:27-03:00"
 review_cycle: on-change
 sources:
   - 01_RAW/monvi/Monvi - Manual da marca.pdf
@@ -32,6 +32,7 @@ aliases:
 tags: [hub, frontend, marca, identidade-visual, tailwind, design-system]
 allowed_paths:
   - 00_SYSTEM/tasks/active/TASK-2026-097-hub-identidade-visual-marca.md
+  - 00_SYSTEM/tasks/done/TASK-2026-097-hub-identidade-visual-marca.md
   - 00_SYSTEM/logs/changes.jsonl
   - 00_SYSTEM/roadmaps/Plano-Mestre-de-Construcao-Monvi-Brain.md
   - apps/hub/README.md
@@ -134,17 +135,49 @@ Logo real (arquivo vetorial oficial não localizado — o PDF do manual não tem
 - [x] Nenhuma mudança em `apps/core-brain`. Evidência: `git status --short` restrito a `apps/hub` (fora dos dois artefatos de autocrlf já conhecidos).
 - [x] Documentação atualizada. Evidência: `apps/hub/README.md` (nova seção de identidade visual) e Plano Mestre (seção 21 estendida).
 - [x] Nenhuma credencial, dado real, decisão de multi-organização. Evidência: nenhuma nova variável de ambiente, nenhum dado real usado.
-- [ ] Conteúdo revisado e aprovado pelo CEO; encerramento em PR separada (Regra Fundamental 6). Pendente do gate de merge.
-- [ ] Retrospectiva crítica executada conforme `../workflows/retro.md` (Regra Fundamental 5). Pendente, será executada antes do gate de encerramento.
+- [x] Conteúdo revisado e aprovado pelo CEO; encerramento em PR separada (Regra Fundamental 6). Evidência: gate explícito `Autorizado` para o merge do PR #121, integrado em `8eb60e4336a0866000bf74f4668a00382eb75522`; este encerramento, em PR própria, é essa própria exceção em aplicação.
+- [x] Retrospectiva crítica executada conforme `../workflows/retro.md` (Regra Fundamental 5). Evidência: seção "Retrospectiva crítica" abaixo, com mudanças aceitas registradas em `changes.jsonl`.
 
 ## Riscos e gates humanos
 
 Riscos: o material de marca usado está formalmente `status: review` — se o manual mudar numa revisão futura (cores, tipografia), o hub precisará ser reajustado; isso é esperado e aceito pelo CEO ("vamos fazer a primeira versão e depois ir alinhando"). A ausência de um logo real é uma lacuna visível (o wordmark textual é claramente um substituto, não uma tentativa de recriar o logo verdadeiro — evita o uso proibido de "recriar ou redesenhar a tipografia do logo", listado como uso proibido no próprio manual). Nenhum risco técnico novo — mudança puramente de apresentação, sem lógica nova.
 
-Gate vigente: aguardando autorização do CEO para o merge do PR de implementação.
+Gate vigente: encerrado. O merge do PR #121 foi autorizado (`Autorizado`) e executado por squash em `8eb60e4336a0866000bf74f4668a00382eb75522`. Esta task está formalmente concluída. Logo real e qualquer decisão funcional para as próximas fatias do hub permanecem fora deste encerramento.
 
-Histórico de gates desta task: encerramento da Task 096 → CEO pede para elaborar o hub antes de produzir → apresento propostas funcionais e visuais → CEO pergunta sobre visual → recomendo Tailwind + shadcn, mas sinalizo desconhecer a identidade da Monvi → CEO instrui: "Você é o Helpper, use o cérebro... preciso que você entenda tudo sobre a Monvi" → pesquiso o Manual da Marca (PDF original + Wiki) antes de propor qualquer coisa → apresento síntese fundamentada com dois pontos em aberto (logo real, status review) → CEO responde "Eu autorizo, vamos fazer a primeira versão e depois ir alinhando ela, você pode sugerir skills, repositórios e etc" → proponho o escopo técnico concreto → CEO confirma ("Confirmo").
+Histórico de gates desta task: encerramento da Task 096 → CEO pede para elaborar o hub antes de produzir → apresento propostas funcionais e visuais → CEO pergunta sobre visual → recomendo Tailwind + shadcn, mas sinalizo desconhecer a identidade da Monvi → CEO instrui: "Você é o Helpper, use o cérebro... preciso que você entenda tudo sobre a Monvi" → pesquiso o Manual da Marca (PDF original + Wiki) antes de propor qualquer coisa → apresento síntese fundamentada com dois pontos em aberto (logo real, status review) → CEO responde "Eu autorizo, vamos fazer a primeira versão e depois ir alinhando ela, você pode sugerir skills, repositórios e etc" → proponho o escopo técnico concreto → CEO confirma ("Confirmo") → `Autorizado` (execução completa do escopo, criação da task, branch, commit, push e PR) → `Autorizado` (merge do PR #121, integrado em `8eb60e4336a0866000bf74f4668a00382eb75522`).
 
 ## Revisão e entrega
 
-Apresentarei o diff completo, as validações locais (`typecheck`, `test` 9/9, `build`, verificação real com os dois servidores) e o estado Git, e solicitarei explicitamente o gate de merge antes de integrar esta mudança em `main`.
+Apresentei o diff completo, as validações locais (`typecheck`, `test` 9/9, `build`, verificação real com os dois servidores) e o estado Git, e solicitei explicitamente o gate de merge antes de integrar esta mudança em `main`.
+
+## Encerramento — 2026-08-20
+
+**Gate de encerramento**: o CEO autorizou (`Autorizado`) o squash merge do PR #121.
+
+**Integração**: PR #121 integrado em `main` via squash merge, commit `8eb60e4336a0866000bf74f4668a00382eb75522`, em 2026-08-20T16:16:27Z. Escopo integrado: exatamente os 21 arquivos previstos em `allowed_paths` — criação de `00_SYSTEM/tasks/active/TASK-2026-097-hub-identidade-visual-marca.md`, `src/components/Wordmark.tsx`, `src/components/ui/{button,card,input,label}.tsx`, `src/lib/utils.ts`; edição de `vite.config.ts`, `src/index.css`, `src/App.tsx`, `src/auth/LoginPage.tsx`, `src/components/CountsCard.tsx`, as quatro páginas em `src/pages/`, `package.json`, `package-lock.json`, `README.md`, o Plano Mestre e `changes.jsonl`. Nenhuma alteração em `apps/core-brain`.
+
+**Verificação pós-merge**: sincronizei `main` local via fast-forward (`git pull --ff-only`, `9a7346f..8eb60e4`), rodei `npm install` em `apps/hub` para alinhar `node_modules` ao `package-lock.json` sincronizado (0 vulnerabilidades confirmadas), e reexecutei `npm run typecheck`, `npm test` e `npm run build` diretamente contra o `main` já integrado — em `apps/hub`: typecheck limpo, **9/9 testes passando**, build sem erros; confirmei também que `apps/core-brain` continua typechecking e buildando normalmente (não deveria ter sido afetado, e não foi).
+
+**Estado final**: o hub interno agora reflete a identidade visual oficial da Monvi — paleta, tipografia e iconografia do Manual da Marca V1.0, aplicadas às quatro telas já existentes, sem nenhuma mudança de comportamento. Nenhum logo real foi usado (arquivo oficial não localizado); o material de marca usado permanece formalmente `status: review` na Wiki, com uso autorizado pelo CEO para esta fatia. A direção funcional das próximas fatias do hub (que entidade ganha capacidade de escrita, se alguma) segue em aberto, como conversa de elaboração distinta desta task.
+
+**Escopo preservado**: nenhuma alteração fora de `allowed_paths` foi feita; nenhuma tela nova, funcionalidade nova, ou mudança de comportamento foi introduzida; nenhuma alteração em `apps/core-brain`; nenhuma credencial ou dado real; nenhuma decisão de multi-organização.
+
+## Retrospectiva crítica (conforme `../workflows/retro.md`)
+
+**Objetivo**: alinhar a identidade visual das quatro telas já existentes do hub à marca Monvi real, pesquisando a fonte oficial antes de propor qualquer coisa, sem adicionar nenhuma funcionalidade nova.
+
+**Resultado conhecido**: o hub agora usa a paleta, tipografia e iconografia documentadas no Manual da Marca V1.0; os 9 testes existentes continuam passando sem nenhuma alteração de asserção, confirmando que foi puramente visual.
+
+**O que ajudou**: seguir a instrução literal do CEO ("use o cérebro para... entender tudo sobre a Monvi") investigando a fonte primária (o PDF original, visualizado diretamente) em vez de só confiar na transcrição já feita na Wiki — isso confirmou que a transcrição estava correta, mas também me deu contexto adicional (posicionamento institucional, tom de voz, o princípio "Menos tarefa manual. Mais resultado.") que não estava estritamente necessário para o CSS, mas ajudou a calibrar decisões de tom (ex.: manter a estética utilitária, sem exagero decorativo, alinhada ao "menos elementos, mais clareza" do próprio manual).
+
+**O que dificultou**: decidir onde preservar texto exato de testes versus onde mudar estrutura livremente — resolvido caso a caso, sempre perguntando "esse texto está sendo verificado por um teste?" antes de alterar, em vez de reescrever tudo e só depois checar o que quebrou.
+
+**Surpresas**: encontrar um manual de marca completo e bem documentado já dentro do repositório foi a maior surpresa — não era óbvio, a partir da conversa até aquele ponto, que esse material existia e estava tão pronto para uso. Reforça uma lição já registrada em tasks anteriores (088, 096): vale sempre verificar se já existe documentação/decisão sobre um assunto antes de propor algo do zero.
+
+**Riscos materializados**: um, já bem conhecido — `TaskStop` nos servidores de desenvolvimento background novamente não matou os processos filhos órfãos (mesmo padrão das Tasks 095/096), detectado e corrigido antes de qualquer problema real.
+
+**Perguntas em aberto**: a direção funcional das próximas fatias do hub (nenhuma decidida ainda — conversa de elaboração separada, explicitamente pedida pelo CEO); quando/se um arquivo de logo real vai ficar disponível; se/quando o material de marca em si (hoje `status: review`) vai passar por aprovação formal.
+
+**Ações propostas**: nenhuma ação de processo nova — a prática de pesquisar fontes primárias antes de propor escopo já está bem estabelecida nesta sessão e continua valendo.
+
+**Mudanças aceitas**: registradas em `00_SYSTEM/logs/changes.jsonl`.
