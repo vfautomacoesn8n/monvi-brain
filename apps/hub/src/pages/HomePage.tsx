@@ -32,7 +32,7 @@ export function HomePage({ onNavigate }: HomePageProps) {
   return (
     <div className="flex flex-col gap-6">
       <div>
-        <h1 className="text-xl font-semibold text-graphite">Painéis</h1>
+        <h1 className="text-xl font-semibold text-off-white">Painéis</h1>
         <p className="text-sm text-medium-gray">Escolha um painel para visualizar.</p>
       </div>
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">

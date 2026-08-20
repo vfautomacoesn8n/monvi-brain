@@ -31,9 +31,15 @@
   --color-light-gray: var(--color-light-gray);
 }
 
+/*
+ * Modo escuro como tema único do hub (Task 098) — usa só as seis cores
+ * oficiais do manual, recombinadas: Deep Graphite como fundo da página,
+ * Graphite como fundo dos cards (mais claro, cria profundidade), Off-White
+ * como texto principal, Signal Blue como único destaque/glow.
+ */
 body {
   margin: 0;
-  background-color: var(--color-off-white);
-  color: var(--color-graphite);
+  background-color: var(--color-deep-graphite);
+  color: var(--color-off-white);
   font-family: var(--font-sans);
 }

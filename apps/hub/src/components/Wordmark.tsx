@@ -10,7 +10,7 @@ interface WordmarkProps {
  * disponível — ver Manual da Marca V1.0, seção visual 5-7. Usa só o
  * wordmark em Inter, sem recriar ou redesenhar a tipografia do logo real.
  */
-export function Wordmark({ className, dark = false }: WordmarkProps) {
+export function Wordmark({ className, dark = true }: WordmarkProps) {
   return (
     <span
       className={cn(
