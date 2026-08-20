@@ -2,8 +2,8 @@
 id: task-2026-098
 type: task
 title: "Hub interno — modo escuro premium, fiel à marca Monvi (reskin, sem funcionalidade nova)"
-status: draft
-task_state: active
+status: done
+task_state: done
 owner: ceo-monvi
 agent: claude-cursor
 reviewer: ceo-monvi
@@ -13,6 +13,7 @@ confidentiality: internal
 classification: internal
 created_at: "2026-08-20"
 updated_at: "2026-08-20"
+reviewed_at: "2026-08-20T16:35:00-03:00"
 review_cycle: on-change
 sources:
   - 01_RAW/monvi/Monvi - Manual da marca.pdf
@@ -120,35 +121,63 @@ Gráfico de tendência histórica (sem dados de série temporal disponíveis na 
 
 ## Critérios de aceite
 
-- [ ] Nenhuma tela/funcionalidade/chamada de API nova. Evidência: `git status` restrito a `apps/hub`.
-- [ ] Nenhuma cor nova. Evidência: `src/index.css` — tokens `@theme` inalterados desde a Task 097.
-- [ ] Modo escuro como tema único. Evidência: `body` em `src/index.css` sem media query ou classe condicional de tema.
-- [ ] Glow em Signal Blue atrás dos números. Evidência: `CardGlow` em `card.tsx`, usado em `CountsCard.tsx`.
-- [ ] Cards com profundidade. Evidência: `Card` com `bg-graphite` sobre página `bg-deep-graphite`.
-- [ ] Badges/pills para contagens. Evidência: `CountsCard.tsx`, `byKey` renderizado como `rounded-full`.
-- [ ] Nenhum gráfico histórico fabricado. Evidência: nenhum novo componente de gráfico, nenhuma nova chamada de API.
-- [ ] 9/9 testes passando, sem alteração de asserção. Evidência: `npm test`, diff de `tests/` vazio.
-- [ ] `typecheck`/`test`/`build` passando. Evidência: execução local.
-- [ ] `npm audit` sem vulnerabilidades novas. Evidência: execução local.
-- [ ] Verificação real com os dois servidores rodando. Evidência: CSS bundle inspecionado, login real e dashboard confirmados.
-- [ ] Nenhuma mudança em `apps/core-brain`. Evidência: `git status --short` restrito a `apps/hub` (fora dos artefatos de autocrlf já conhecidos).
-- [ ] Documentação atualizada. Evidência: `apps/hub/README.md` e Plano Mestre (seção 21).
-- [ ] Nenhuma credencial, dado real, decisão de multi-organização. Evidência: nenhuma nova variável de ambiente.
-- [ ] Conteúdo revisado e aprovado pelo CEO; encerramento em PR separada (Regra Fundamental 6).
-- [ ] Retrospectiva crítica executada conforme `../workflows/retro.md` (Regra Fundamental 5).
+- [x] Nenhuma tela/funcionalidade/chamada de API nova. Evidência: `git status --short` restrito a `apps/hub` + governança/documentação.
+- [x] Nenhuma cor nova. Evidência: `src/index.css` — tokens `@theme` inalterados desde a Task 097.
+- [x] Modo escuro como tema único. Evidência: `body` em `src/index.css` sem media query ou classe condicional de tema.
+- [x] Glow em Signal Blue atrás dos números. Evidência: `CardGlow` em `card.tsx`, usado em `CountsCard.tsx`.
+- [x] Cards com profundidade. Evidência: `Card` com `bg-graphite` sobre página `bg-deep-graphite`.
+- [x] Badges/pills para contagens. Evidência: `CountsCard.tsx`, `byKey` renderizado como `rounded-full`.
+- [x] Nenhum gráfico histórico fabricado. Evidência: nenhum novo componente de gráfico, nenhuma nova chamada de API.
+- [x] 9/9 testes passando, sem alteração de asserção. Evidência: `npm test` (local e pós-merge), diff de `tests/` vazio.
+- [x] `typecheck`/`test`/`build` passando. Evidência: execução local e reexecução direta contra `main` sincronizado após o merge.
+- [x] `npm audit` sem vulnerabilidades novas. Evidência: 0 vulnerabilidades, execução local.
+- [x] Verificação real com os dois servidores rodando. Evidência: CSS bundle inspecionado (`deep-graphite`, `from-signal-blue` presentes), login real (`POST /api/v1/auth/dev-login`) e `GET /api/v1/commercial/dashboard` confirmados de ponta a ponta.
+- [x] Nenhuma mudança em `apps/core-brain`. Evidência: `git status --short` restrito a `apps/hub` (fora dos artefatos de autocrlf já conhecidos); `typecheck`/`build` de `apps/core-brain` reconfirmados limpos pós-merge.
+- [x] Documentação atualizada. Evidência: `apps/hub/README.md` (seção "Modo escuro premium") e Plano Mestre (seção 21, parágrafo Task 098).
+- [x] Nenhuma credencial, dado real, decisão de multi-organização. Evidência: nenhuma nova variável de ambiente.
+- [x] Conteúdo revisado e aprovado pelo CEO; encerramento em PR separada (Regra Fundamental 6). Evidência: gate `Autorizado` para o merge do PR #123, integrado em `12ab16d0b6b56acf537023abd30bc324fbf345e2`; este encerramento, em PR própria, é essa própria exceção em aplicação.
+- [x] Retrospectiva crítica executada conforme `../workflows/retro.md` (Regra Fundamental 5). Evidência: seção "Retrospectiva crítica" abaixo.
 
 ## Riscos e gates humanos
 
 Riscos: o material de marca usado permanece formalmente `status: review` — se o manual mudar numa revisão futura, o hub precisará ser reajustado novamente, risco já aceito desde a Task 097. Risco de subjetividade visual ("premium" é uma percepção, não um critério objetivo) — mitigado apresentando a tensão de cores explicitamente ao CEO antes de implementar, em vez de decidir sozinho. Nenhum risco técnico novo — mudança puramente de apresentação, sem lógica nova, sem dado fabricado.
 
-Gate vigente: aguardando revisão do diff e solicitação de merge, após a implementação completa e a validação local.
+Gate vigente: encerrado. O merge do PR #123 foi autorizado (`Autorizado`) e executado por squash em `12ab16d0b6b56acf537023abd30bc324fbf345e2`. Esta task está formalmente concluída.
 
-Histórico de gates desta task: encerramento da Task 097 → CEO envia imagem de referência ("Eu quero algo visualmente mais premium, analise a imagem de referência para você ter uma noção do que eu quero") → analiso a imagem, identifico a tensão de paleta com o manual, apresento via pergunta estruturada → CEO escolhe "Premium, mas fiel à marca Monvi (Recomendado)" → proponho escopo concreto (modo escuro único, glow em Signal Blue, badges, recusa explícita do gráfico fabricado) → `Autorizado`.
+Histórico de gates desta task: encerramento da Task 097 → CEO envia imagem de referência ("Eu quero algo visualmente mais premium, analise a imagem de referência para você ter uma noção do que eu quero") → analiso a imagem, identifico a tensão de paleta com o manual, apresento via pergunta estruturada → CEO escolhe "Premium, mas fiel à marca Monvi (Recomendado)" → proponho escopo concreto (modo escuro único, glow em Signal Blue, badges, recusa explícita do gráfico fabricado) → `Autorizado` (execução completa do escopo, criação da task, branch, commit, push e PR #123) → `Autorizado` (merge do PR #123, integrado em `12ab16d0b6b56acf537023abd30bc324fbf345e2`).
 
 ## Revisão e entrega
 
-Pendente — a apresentar ao CEO o diff completo, as validações locais (`typecheck`, `test` 9/9, `build`, `audit`, verificação real com os dois servidores) e o estado Git, solicitando o gate de merge antes de integrar esta mudança em `main`.
+Apresentei o diff completo, as validações locais (`typecheck`, `test` 9/9, `build`, `audit` 0 vulnerabilidades, verificação real com os dois servidores) e o estado Git, e solicitei explicitamente o gate de merge antes de integrar esta mudança em `main`.
+
+## Encerramento — 2026-08-20
+
+**Gate de encerramento**: o CEO autorizou (`Autorizado`) o squash merge do PR #123.
+
+**Integração**: PR #123 integrado em `main` via squash merge, commit `12ab16d0b6b56acf537023abd30bc324fbf345e2`, em 2026-08-20. Escopo integrado: exatamente os 17 arquivos previstos em `allowed_paths` — criação de `00_SYSTEM/tasks/active/TASK-2026-098-hub-modo-escuro-premium.md`; edição de `src/index.css`, `src/App.tsx`, `src/auth/LoginPage.tsx`, `src/components/CountsCard.tsx`, `src/components/Wordmark.tsx`, `src/components/ui/{button,card,input,label}.tsx`, as quatro páginas em `src/pages/`, `apps/hub/README.md`, o Plano Mestre e `changes.jsonl`. Nenhuma alteração em `apps/core-brain`, nenhuma dependência nova, nenhuma cor nova.
+
+**Verificação pós-merge**: sincronizei `main` local via fast-forward (`git pull --ff-only`, `75f3974..12ab16d`), confirmei ausência de processos de desenvolvimento órfãos nas portas 3000/5173 antes de testar, e reexecutei `npm run typecheck`, `npm test` e `npm run build` diretamente contra o `main` já integrado — em `apps/hub`: typecheck limpo, **9/9 testes passando**, build sem erros; em `apps/core-brain`: typecheck e build também limpos, confirmando que não foi afetado.
+
+**Estado final**: o hub interno agora usa modo escuro como tema visual único, remapeando as seis cores já oficiais do Manual da Marca V1.0 (Deep Graphite como fundo, Graphite como fundo dos cards, Off-White como texto principal, Signal Blue como único acento/glow, Medium Gray como texto secundário), aplicado às quatro telas já existentes, sem nenhuma cor nova, mudança de comportamento, ou dado fabricado. O gráfico de tendência histórica da imagem de referência foi deliberadamente não implementado, por falta de dados de série temporal reais na API. A direção funcional das próximas fatias do hub segue em aberto, como conversa de elaboração distinta desta task.
+
+**Escopo preservado**: nenhuma alteração fora de `allowed_paths` foi feita; nenhuma tela nova, funcionalidade nova, cor nova, ou mudança de comportamento foi introduzida; nenhuma alteração em `apps/core-brain`; nenhuma credencial ou dado real; nenhuma decisão de multi-organização; nenhum dado fabricado para o gráfico histórico recusado.
 
 ## Retrospectiva crítica (conforme `../workflows/retro.md`)
 
-Pendente — a executar antes da solicitação do gate de encerramento, conforme a Regra Fundamental 5.
+**Objetivo**: trocar o tema visual do hub para modo escuro "premium", em resposta a uma imagem de referência trazida pelo CEO, sem quebrar a paleta oficial da marca Monvi e sem fabricar dados para preencher lacunas visuais da referência.
+
+**Resultado conhecido**: o hub agora tem um modo escuro único, tecnicamente equivalente à referência (glow, profundidade, badges) mas inteiramente dentro da paleta oficial já existente; os 9 testes continuam passando sem nenhuma alteração de asserção, confirmando reskin puro.
+
+**O que ajudou**: separar explicitamente *técnica* de *cor* antes de propor qualquer coisa — em vez de tratar "seguir a referência" como uma decisão binária (sim/não), decompor o pedido em partes independentes permitiu atender ao pedido real do CEO ("mais premium") sem sacrificar a identidade de marca já estabelecida na Task 097. Apresentar essa decomposição como pergunta estruturada, em vez de decidir sozinho, deixou a escolha de fato nas mãos do CEO.
+
+**O que dificultou**: nenhuma dificuldade técnica nova — a estrutura de componentes (`Card`, `Button`, `Input`, `Label`) já criada na Task 097 tornou o reskin mecânico (trocar tokens de cor arquivo por arquivo), sem necessidade de refatoração estrutural.
+
+**Surpresas**: nenhuma surpresa técnica. A única observação notável é que o pedido do CEO ("mais premium") era, à primeira vista, uma tensão direta com o compromisso de fidelidade à marca da Task 097 — mas se resolveu bem porque as duas coisas (estética premium, fidelidade de cor) eram na verdade independentes uma da outra.
+
+**Riscos materializados**: nenhum novo. O padrão já conhecido de processos de desenvolvimento órfãos (Tasks 095/096/097) foi verificado preventivamente antes dos testes pós-merge, sem incidente desta vez.
+
+**Perguntas em aberto**: as mesmas da Task 097 — direção funcional das próximas fatias do hub, disponibilidade futura de um logo real, aprovação formal do material de marca. Adicionalmente: se/quando a API do hub ganhará dados de série temporal reais, o que reabriria a possibilidade do gráfico de tendência histórica recusado nesta task.
+
+**Ações propostas**: nenhuma ação de processo nova — a prática de separar tecnica de decisão visual de decisão de conteúdo/dados (não fabricar o gráfico) já reflete os princípios já estabelecidos nesta sessão.
+
+**Mudanças aceitas**: registradas em `00_SYSTEM/logs/changes.jsonl`.
