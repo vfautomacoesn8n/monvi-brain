@@ -36,11 +36,15 @@ export function CommercialDashboardPage({ token }: { token: string }) {
   }, [token]);
 
   if (loading) {
-    return <p>Carregando...</p>;
+    return <p className="text-sm text-medium-gray">Carregando...</p>;
   }
 
   if (error) {
-    return <p role="alert">{error}</p>;
+    return (
+      <p role="alert" className="text-sm text-red-600">
+        {error}
+      </p>
+    );
   }
 
   if (!data) {
@@ -48,9 +52,9 @@ export function CommercialDashboardPage({ token }: { token: string }) {
   }
 
   return (
-    <div className="dashboard-page">
-      <h1>Dashboard comercial</h1>
-      <div className="dashboard-cards">
+    <div className="flex flex-col gap-6">
+      <h1 className="text-xl font-semibold text-graphite">Dashboard comercial</h1>
+      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
         <CountsCard title="Leads" total={data.leads.total} byKey={data.leads.byStatus} />
         <CountsCard title="Oportunidades" total={data.opportunities.total} byKey={data.opportunities.byStage} />
         <CountsCard title="Atividades (por status)" total={data.activities.total} byKey={data.activities.byStatus} />

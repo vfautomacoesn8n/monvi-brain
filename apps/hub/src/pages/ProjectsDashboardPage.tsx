@@ -1,7 +1,10 @@
 import { useEffect, useState } from 'react';
+import { ArrowLeft } from 'lucide-react';
 import { apiGet, ApiError } from '../api/client.js';
 import type { Project, ProjectDashboardResponse, ProjectsListResponse } from '../api/types.js';
 import { CountsCard } from '../components/CountsCard.js';
+import { Button } from '../components/ui/button.js';
+import { Card, CardContent } from '../components/ui/card.js';
 
 function ProjectPicker({
   projects,
@@ -11,15 +14,20 @@ function ProjectPicker({
   onSelect: (projectId: string) => void;
 }) {
   if (projects.length === 0) {
-    return <p>Nenhum projeto encontrado.</p>;
+    return <p className="text-sm text-medium-gray">Nenhum projeto encontrado.</p>;
   }
 
   return (
-    <ul className="project-picker">
+    <ul className="flex flex-col gap-2">
       {projects.map((project) => (
         <li key={project.id}>
-          <button type="button" onClick={() => onSelect(project.id)}>
-            {project.name} <span className="project-status">{project.status}</span>
+          <button type="button" onClick={() => onSelect(project.id)} className="block w-full max-w-md text-left">
+            <Card className="transition-colors hover:border-signal-blue">
+              <CardContent className="flex items-center justify-between p-4">
+                <span className="text-sm font-medium text-graphite">{project.name}</span>
+                <span className="font-mono text-xs text-medium-gray">{project.status}</span>
+              </CardContent>
+            </Card>
           </button>
         </li>
       ))}
@@ -60,11 +68,15 @@ function ProjectDashboard({ token, projectId }: { token: string; projectId: stri
   }, [token, projectId]);
 
   if (loading) {
-    return <p>Carregando...</p>;
+    return <p className="text-sm text-medium-gray">Carregando...</p>;
   }
 
   if (error) {
-    return <p role="alert">{error}</p>;
+    return (
+      <p role="alert" className="text-sm text-red-600">
+        {error}
+      </p>
+    );
   }
 
   if (!data) {
@@ -72,9 +84,9 @@ function ProjectDashboard({ token, projectId }: { token: string; projectId: stri
   }
 
   return (
-    <div className="dashboard-page">
-      <h1>{data.project.name}</h1>
-      <div className="dashboard-cards">
+    <div className="flex flex-col gap-6">
+      <h1 className="text-xl font-semibold text-graphite">{data.project.name}</h1>
+      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
         <CountsCard title="Tarefas" total={data.tasks.total} byKey={data.tasks.byStatus} />
         <CountsCard title="Entregáveis" total={data.deliverables.total} byKey={data.deliverables.byStatus} />
         <CountsCard title="Riscos (por status)" total={data.risks.total} byKey={data.risks.byStatus} />
@@ -112,20 +124,25 @@ export function ProjectsDashboardPage({ token }: { token: string }) {
 
   if (selectedProjectId) {
     return (
-      <div>
-        <button type="button" onClick={() => setSelectedProjectId(null)}>
-          &larr; Voltar para a lista de projetos
-        </button>
+      <div className="flex flex-col gap-4">
+        <Button variant="ghost" size="sm" className="w-fit" onClick={() => setSelectedProjectId(null)}>
+          <ArrowLeft className="h-4 w-4" />
+          Voltar para a lista de projetos
+        </Button>
         <ProjectDashboard token={token} projectId={selectedProjectId} />
       </div>
     );
   }
 
   return (
-    <div className="dashboard-page">
-      <h1>Projetos</h1>
-      {error && <p role="alert">{error}</p>}
-      {!error && !projects && <p>Carregando...</p>}
+    <div className="flex flex-col gap-6">
+      <h1 className="text-xl font-semibold text-graphite">Projetos</h1>
+      {error && (
+        <p role="alert" className="text-sm text-red-600">
+          {error}
+        </p>
+      )}
+      {!error && !projects && <p className="text-sm text-medium-gray">Carregando...</p>}
       {!error && projects && <ProjectPicker projects={projects} onSelect={setSelectedProjectId} />}
     </div>
   );

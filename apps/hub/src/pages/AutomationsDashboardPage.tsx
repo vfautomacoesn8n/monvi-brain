@@ -36,11 +36,15 @@ export function AutomationsDashboardPage({ token }: { token: string }) {
   }, [token]);
 
   if (loading) {
-    return <p>Carregando...</p>;
+    return <p className="text-sm text-medium-gray">Carregando...</p>;
   }
 
   if (error) {
-    return <p role="alert">{error}</p>;
+    return (
+      <p role="alert" className="text-sm text-red-600">
+        {error}
+      </p>
+    );
   }
 
   if (!data) {
@@ -48,9 +52,9 @@ export function AutomationsDashboardPage({ token }: { token: string }) {
   }
 
   return (
-    <div className="dashboard-page">
-      <h1>Dashboard de automações</h1>
-      <div className="dashboard-cards">
+    <div className="flex flex-col gap-6">
+      <h1 className="text-xl font-semibold text-graphite">Dashboard de automações</h1>
+      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
         <CountsCard title="Workflows" total={data.workflows.total} byKey={data.workflows.byStatus} />
         <CountsCard title="Invocações" total={data.invocations.total} byKey={data.invocations.byStatus} />
       </div>

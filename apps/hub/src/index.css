@@ -1,144 +1,39 @@
+@import 'tailwindcss';
+@import '@fontsource/inter/400.css';
+@import '@fontsource/inter/500.css';
+@import '@fontsource/inter/600.css';
+@import '@fontsource/inter/700.css';
+@import '@fontsource/ibm-plex-mono/400.css';
+@import '@fontsource/ibm-plex-mono/500.css';
+
+/*
+ * Tokens de cor extraídos do Manual da Marca Monvi V1.0
+ * (01_RAW/monvi/Monvi - Manual da marca.pdf, seção visual 8).
+ */
 :root {
-  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
-  color-scheme: light;
+  --color-graphite: #424242;
+  --color-off-white: #f5f5f3;
+  --color-signal-blue: #1a4aff;
+  --color-deep-graphite: #2b2b2b;
+  --color-medium-gray: #9a9a97;
+  --color-light-gray: #e4e3df;
+}
+
+@theme {
+  --font-sans: 'Inter', system-ui, sans-serif;
+  --font-mono: 'IBM Plex Mono', ui-monospace, monospace;
+
+  --color-graphite: var(--color-graphite);
+  --color-off-white: var(--color-off-white);
+  --color-signal-blue: var(--color-signal-blue);
+  --color-deep-graphite: var(--color-deep-graphite);
+  --color-medium-gray: var(--color-medium-gray);
+  --color-light-gray: var(--color-light-gray);
 }
 
 body {
   margin: 0;
-  background: #f5f5f7;
-  color: #1a1a1a;
-}
-
-.login-page {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 100vh;
-}
-
-.login-form {
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
-  width: 320px;
-  padding: 2rem;
-  background: white;
-  border-radius: 8px;
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
-}
-
-.login-form input {
-  padding: 0.5rem;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-}
-
-.login-form button {
-  padding: 0.6rem;
-  border: none;
-  border-radius: 4px;
-  background: #2563eb;
-  color: white;
-  cursor: pointer;
-}
-
-.login-form button:disabled {
-  opacity: 0.6;
-  cursor: not-allowed;
-}
-
-.app-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1rem 1.5rem;
-  background: white;
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
-}
-
-.app-header button {
-  border: none;
-  background: none;
-  cursor: pointer;
-  font-size: 1rem;
-}
-
-main {
-  padding: 1.5rem;
-}
-
-.home-cards {
-  display: flex;
-  gap: 1rem;
-  flex-wrap: wrap;
-}
-
-.home-card {
-  display: block;
-  text-align: left;
-  width: 220px;
-  padding: 1.25rem;
-  border: none;
-  border-radius: 8px;
-  background: white;
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
-  cursor: pointer;
-}
-
-.dashboard-cards {
-  display: flex;
-  gap: 1rem;
-  flex-wrap: wrap;
-}
-
-.counts-card {
-  width: 220px;
-  padding: 1rem;
-  border-radius: 8px;
-  background: white;
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
-}
-
-.counts-card-total {
-  font-size: 2rem;
-  font-weight: 700;
-  margin: 0.25rem 0;
-}
-
-.counts-card ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.counts-card li {
-  display: flex;
-  justify-content: space-between;
-  padding: 0.15rem 0;
-  font-size: 0.9rem;
-  color: #444;
-}
-
-.project-picker {
-  list-style: none;
-  padding: 0;
-}
-
-.project-picker button {
-  display: flex;
-  justify-content: space-between;
-  width: 100%;
-  max-width: 400px;
-  padding: 0.6rem 1rem;
-  margin-bottom: 0.5rem;
-  border: none;
-  border-radius: 6px;
-  background: white;
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
-  cursor: pointer;
-}
-
-.project-status {
-  color: #666;
-  font-size: 0.85rem;
+  background-color: var(--color-off-white);
+  color: var(--color-graphite);
+  font-family: var(--font-sans);
 }

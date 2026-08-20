@@ -1,3 +1,5 @@
+import { Card, CardContent, CardHeader, CardTitle } from './ui/card.js';
+
 interface CountsCardProps {
   title: string;
   total: number;
@@ -6,19 +8,23 @@ interface CountsCardProps {
 
 export function CountsCard({ title, total, byKey }: CountsCardProps) {
   return (
-    <div className="counts-card">
-      <h3>{title}</h3>
-      <p className="counts-card-total">{total}</p>
-      {byKey && (
-        <ul>
-          {Object.entries(byKey).map(([key, count]) => (
-            <li key={key}>
-              <span>{key}</span>
-              <span>{count}</span>
-            </li>
-          ))}
-        </ul>
-      )}
-    </div>
+    <Card>
+      <CardHeader>
+        <CardTitle>{title}</CardTitle>
+      </CardHeader>
+      <CardContent className="flex flex-col gap-2">
+        <p className="font-mono text-3xl font-semibold text-graphite">{total}</p>
+        {byKey && (
+          <ul className="flex flex-col gap-1">
+            {Object.entries(byKey).map(([key, count]) => (
+              <li key={key} className="flex justify-between text-sm text-medium-gray">
+                <span>{key}</span>
+                <span className="font-mono text-graphite">{count}</span>
+              </li>
+            ))}
+          </ul>
+        )}
+      </CardContent>
+    </Card>
   );
 }

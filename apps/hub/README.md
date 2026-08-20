@@ -1,6 +1,6 @@
 # Monvi Hub
 
-Painel interno (frontend) do Monvi Brain, autorizado pela Task 094 (Fase transversal — ver seção 21 do [Plano Mestre](../../00_SYSTEM/roadmaps/Plano-Mestre-de-Construcao-Monvi-Brain.md)). Até esta task, todo o projeto era 100% API (`apps/core-brain`), sem nenhuma tela.
+Painel interno (frontend) do Monvi Brain, autorizado pela Task 094 (Fase transversal — ver seção 21 do [Plano Mestre](../../00_SYSTEM/roadmaps/Plano-Mestre-de-Construcao-Monvi-Brain.md)). Até esta task, todo o projeto era 100% API (`apps/core-brain`), sem nenhuma tela. A Task 097 (2026-08-20) alinhou o visual à identidade oficial da marca Monvi, sem adicionar nenhuma tela ou funcionalidade nova.
 
 ## Escopo desta primeira fatia — só leitura
 
@@ -13,7 +13,20 @@ Nenhuma ação de escrita, nenhuma tela de CRUD completo, nenhuma rota nova no b
 
 ## Stack
 
-React + TypeScript + Vite, sem biblioteca de componentes (CSS puro nesta fatia). `fetch` nativo para chamar a API (sem `axios`). Testes com Vitest + React Testing Library.
+React + TypeScript + Vite. `fetch` nativo para chamar a API (sem `axios`). Testes com Vitest + React Testing Library.
+
+**Identidade visual (Task 097)**: Tailwind CSS v4 + componentes no padrão shadcn/ui (copiados para `src/components/ui/`, não instalados como pacote — você é dono do código). Paleta, tipografia e grid seguem o **Manual da Marca Monvi V1.0** (`01_RAW/monvi/Monvi - Manual da marca.pdf`, seção visual 8-11):
+
+| Token | Hex | Uso |
+| --- | --- | --- |
+| `graphite` | `#424242` | texto, base neutra |
+| `off-white` | `#F5F5F3` | fundo |
+| `signal-blue` | `#1A4AFF` | ações, links, destaques |
+| `deep-graphite` | `#2B2B2B` | apoio |
+| `medium-gray` | `#9A9A97` | apoio |
+| `light-gray` | `#E4E3DF` | apoio |
+
+Tipografia: Inter (corpo) e IBM Plex Mono (números e dados de tabela) — as duas famílias oficiais do manual, auto-hospedadas via `@fontsource` (sem CDN externo). Ícones: `lucide-react` (traço fino, geométrico — compatível com a orientação de iconografia do manual). **Sem logo real ainda** — o manual é um PDF sem camada vetorial, e nenhum arquivo de logo oficial foi localizado no repositório; o hub usa por enquanto só o wordmark "MONVI" em texto (`src/components/Wordmark.tsx`), substituível quando o arquivo original existir. Todo esse material de marca está com `status: review` nos metadados da Wiki (nunca formalmente aprovado) — o CEO autorizou o uso para esta primeira versão do hub, com alinhamento contínuo esperado.
 
 ## Rodando localmente
 
