@@ -1,35 +1,26 @@
 import { useState } from 'react';
-import { LogOut } from 'lucide-react';
 import { useAuth } from './auth/AuthContext.js';
 import { LoginPage } from './auth/LoginPage.js';
 import { HomePage, type HubView } from './pages/HomePage.js';
 import { CommercialDashboardPage } from './pages/CommercialDashboardPage.js';
 import { AutomationsDashboardPage } from './pages/AutomationsDashboardPage.js';
 import { ProjectsDashboardPage } from './pages/ProjectsDashboardPage.js';
-import { Wordmark } from './components/Wordmark.js';
-import { Button } from './components/ui/button.js';
+import { Sidebar } from './components/Sidebar.js';
 
 function AuthenticatedApp({ token }: { token: string }) {
   const { logout } = useAuth();
   const [view, setView] = useState<HubView>('home');
 
   return (
-    <div className="min-h-screen bg-deep-graphite">
-      <header className="flex items-center justify-between border-b border-off-white/10 px-6 py-4">
-        <button type="button" onClick={() => setView('home')} className="flex items-center gap-2">
-          <Wordmark />
-          <span className="font-mono text-xs text-medium-gray">hub</span>
-        </button>
-        <Button variant="ghost" size="sm" onClick={logout}>
-          <LogOut className="h-4 w-4" />
-          Sair
-        </Button>
-      </header>
-      <main className="mx-auto max-w-5xl p-6">
-        {view === 'home' && <HomePage onNavigate={setView} />}
-        {view === 'commercial' && <CommercialDashboardPage token={token} />}
-        {view === 'automations' && <AutomationsDashboardPage token={token} />}
-        {view === 'projects' && <ProjectsDashboardPage token={token} />}
+    <div className="flex min-h-screen bg-deep-graphite">
+      <Sidebar view={view} onNavigate={setView} onLogout={logout} />
+      <main className="flex-1 overflow-y-auto p-6">
+        <div className="mx-auto max-w-4xl">
+          {view === 'home' && <HomePage onNavigate={setView} />}
+          {view === 'commercial' && <CommercialDashboardPage token={token} />}
+          {view === 'automations' && <AutomationsDashboardPage token={token} />}
+          {view === 'projects' && <ProjectsDashboardPage token={token} />}
+        </div>
       </main>
     </div>
   );

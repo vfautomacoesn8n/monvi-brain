@@ -44,7 +44,7 @@ describe('LoginPage', () => {
     await user.click(screen.getByRole('button', { name: 'Entrar' }));
 
     await waitFor(() => {
-      expect(screen.getByText('Escolha um painel para visualizar.')).toBeInTheDocument();
+      expect(screen.getByRole('heading', { name: 'Início' })).toBeInTheDocument();
     });
 
     expect(fetchMock).toHaveBeenCalledWith(
